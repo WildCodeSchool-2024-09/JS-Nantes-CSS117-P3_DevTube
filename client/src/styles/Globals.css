@@ -1,0 +1,180 @@
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Carter+One&family=Inria+Sans:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Madimi+One&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  /* COLORS */
+  --primary-color: #0d0d0d;
+  --secondary-color: #131313;
+  --tertiary-color: #1c1e1f;
+  --text-color: #e6dbe3;
+  --accent-color-1: #fc666a;
+  --accent-color-2: #fc8f70;
+  /*FONT TITLE H1*/
+  --title-font-family: "Manrope", sans-serif;
+  --title-font-weight: bold;
+  --title-font-size-mobile: 20px;
+  --title-font-size-desktop: 30px;
+  /*FONT SUBTITLE H2*/
+  --sub-title-font-family: "Manrope", sans-serif;
+  --sub-title-font-weight: bold;
+  --sub-title-font-size-mobile: 16px;
+  --sub-title-font-size-desktop: 24px;
+  /*BODY*/
+  --body-font-family: "Inria Sans", sans-serif;
+  --body-font-size: 12px;
+  --body-font-family-desktop: 20px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(----body-font-size);
+  background-color: var(--tertiary-color);
+}
+
+h1 {
+  font-family: var(--title-font-family);
+  font-weight: var(--title-font-weight);
+  font-size: var(--title-font-size-mobile);
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-family: var(--sub-title-font-family);
+  font-weight: var(--sub-title-font-weight);
+  font-size: var(--sub-title-font-size-mobile);
+  color: var(--accent-color-1);
+}
+
+a {
+  text-decoration: none;
+  color: white;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.standard-button {
+  background: var(--primary-color);
+  color: var(text-color);
+  border: solid 2px var(--accent-color-1);
+  border-radius: 8px;
+  color: var(--text-color);
+  font-size: 16px;
+  height: 40px;
+  width: 100px;
+  transition: all 100ms ease-in;
+}
+
+.standard-button:hover {
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  color: black;
+  font-weight: bold;
+}
+
+.big-cta {
+  font-size: 16px;
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  transition: all 100ms ease-in;
+}
+
+.big-cta:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.little-cta {
+  font-size: 16px;
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  width: 92px;
+  height: 35px;
+  border-radius: 8px;
+  color: white;
+  transition: all 100ms ease-in;
+}
+
+.little-cta:hover {
+  color: black;
+  font-weight: bold;
+}
+
+.arrow-button {
+  height: 30px;
+  width: 30px;
+  transition: all 100ms ease-in;
+}
+
+.arrow-button:hover {
+  height: 40px;
+  width: 40px;
+}
+
+main {
+  background: var(--primary-color);
+}
+
+@media screen and (min-width: 950px) {
+  body {
+    font-size: var(--body-font-family-desktop);
+  }
+
+  h1 {
+    font-size: var(--title-font-size-desktop);
+  }
+
+  h2 {
+    font-size: var(--sub-title-font-size-desktop);
+  }
+
+  .big-cta {
+    height: 60px;
+  }
+
+  .little-cta {
+    width: 100px;
+    height: 40px;
+  }
+
+  .arrow-button {
+    height: 48px;
+    width: 48px;
+    transition: all 100ms ease-in;
+  }
+
+  .arrow-button:hover {
+    height: 58px;
+    width: 50px;
+  }
+}
