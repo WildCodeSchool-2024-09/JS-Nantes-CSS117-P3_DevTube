@@ -4,7 +4,9 @@ import "./styles/Globals.css";
 function App() {
   return (
     <>
-      <Outlet />
+      <main>
+        <Outlet />
+      </main>
     </>
   );
 }

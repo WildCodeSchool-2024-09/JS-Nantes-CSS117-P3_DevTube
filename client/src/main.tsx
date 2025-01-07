@@ -1,13 +1,12 @@
 // Import necessary modules from React and React Router
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import { RouterProvider } from "react-router-dom";
 
 /* ************************************************************************* */
+import { router } from "./router.tsx";
 
 // Import the main app component
-import App from "./App";
-import Course from "./pages/Course/Course";
 
 // Import additional components for new routes
 // Try creating these components in the "pages" folder
@@ -19,19 +18,6 @@ import Course from "./pages/Course/Course";
 
 // Create router configuration with routes
 // You can add more routes as you build out your app!
-const router = createBrowserRouter([
-  {
-    path: "/", // The root path
-    element: <App />, // Renders the App component for the home page
-    children: [
-      {
-        path: "/course",
-        element: <Course />,
-      },
-    ],
-  },
-  // Try adding a new route! For example, "/about" with an About component
-]);
 
 /* ************************************************************************* */
 

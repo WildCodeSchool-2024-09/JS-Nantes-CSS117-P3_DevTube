@@ -35,6 +35,9 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(----body-font-size);
+}
+
+main {
   background-color: var(--tertiary-color);
 }
 
