@@ -37,9 +37,12 @@
 
 body {
   color: var(--text-color);
-  background-color: var(--primary-color);
   font-family: var(--body-font-family);
   font-size: var(----body-font-size);
+}
+
+main {
+  background-color: var(--primary-color);
 }
 
 h1 {
