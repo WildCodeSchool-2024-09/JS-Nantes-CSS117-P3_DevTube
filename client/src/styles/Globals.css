@@ -5,7 +5,7 @@
   /* COLORS */
   --primary-color: #0d0d0d;
   --secondary-color: #131313;
-  --tertiary-color: #1c1e1f;
+  --tertairy-color: #1c1e1f;
   --text-color: #e6dbe3;
   --accent-color-1: #fc666a;
   --accent-color-2: #fc8f70;
@@ -19,6 +19,9 @@
   --sub-title-font-weight: bold;
   --sub-title-font-size-mobile: 16px;
   --sub-title-font-size-desktop: 24px;
+  /*FONT*/
+  --font-small: 12px;
+  --font-normal: 16px;
   /*BODY*/
   --body-font-family: "Inria Sans", sans-serif;
   --body-font-size: 12px;
@@ -28,17 +31,15 @@
 * {
   margin: 0;
   padding: 0;
+  list-style-type: none;
   box-sizing: border-box;
 }
 
 body {
   color: var(--text-color);
+  background-color: var(--primary-color);
   font-family: var(--body-font-family);
   font-size: var(----body-font-size);
-}
-
-main {
-  background-color: var(--tertiary-color);
 }
 
 h1 {
@@ -121,8 +122,8 @@ button {
     var(--accent-color-2),
     var(--accent-color-1)
   );
-  width: 92px;
-  height: 35px;
+  width: 100px;
+  height: 40px;
   border-radius: 8px;
   color: white;
   transition: all 100ms ease-in;
@@ -163,11 +164,6 @@ main {
 
   .big-cta {
     height: 60px;
-  }
-
-  .little-cta {
-    width: 100px;
-    height: 40px;
   }
 
   .arrow-button {
