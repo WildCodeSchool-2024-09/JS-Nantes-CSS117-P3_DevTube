@@ -3,16 +3,16 @@ import { initReactI18next } from "react-i18next";
 
 // Dynamic import of JSON files languages
 import common_en from "./locales/en/common.json";
-import freemium_en from "./locales/en/freemium.json";
 import footer_en from "./locales/en/footer.json";
+import freemium_en from "./locales/en/freemium.json";
 import videoPlayer_en from "./locales/en/videoPlayer.json";
 import common_fr from "./locales/fr/common.json";
-import freemium_fr from "./locales/fr/freemium.json";
 import footer_fr from "./locales/fr/footer.json";
+import freemium_fr from "./locales/fr/freemium.json";
 import videoPlayer_fr from "./locales/fr/videoPlayer.json";
 import common_sp from "./locales/sp/common.json";
-import freemium_sp from "./locales/sp/freemium.json";
 import footer_sp from "./locales/sp/footer.json";
+import freemium_sp from "./locales/sp/freemium.json";
 import videoPlayer_sp from "./locales/sp/videoPlayer.json";
 // 📖...and so on for other components or pages wich we want translate
 
