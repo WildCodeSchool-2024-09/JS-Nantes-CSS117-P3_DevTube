@@ -1,4 +1,4 @@
-.page-freenium {
+.page-fremium {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,26 +8,21 @@
   padding-bottom: 28px;
 }
 
-.page-freenium {
+.page-fremium {
   text-align: center;
 }
 
-.title-freenium {
+.title-fremium {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.orange-star-icon {
-  height: 14px;
-  width: 14px;
-}
-
-.intro-text-freenium {
+.intro-text-fremium {
   padding-top: 47px;
 }
 
-.information-freenium {
+.information-fremium {
   padding: 57px;
   display: flex;
   flex-direction: column;
@@ -35,7 +30,7 @@
   gap: 100px;
 }
 
-.card-information-freenium {
+.card-information-fremium {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -69,16 +64,43 @@
   padding-top: 32px;
 }
 
+.articles-information-fremium {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 52px;
+}
+
+.articles-information-fremium article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.articles-information-fremium article h2 {
+  padding-bottom: 16px;
+}
+
+.orange-star-icon {
+  height: 14px;
+  width: 14px;
+}
+
 .white-star-icon {
   height: 14px;
   width: 14px;
 }
 
 @media screen and (min-width: 600px) {
-  .intro-text-freenium {
+  .intro-text-fremium {
     width: 500px;
   }
-  .card-information-freenium {
+  .card-information-fremium {
+    width: 500px;
+  }
+
+  .articles-information-fremium article {
     width: 500px;
   }
 }
@@ -95,16 +117,17 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .page-freemium {
+  .page-fremium {
     padding-top: 60px;
     padding-bottom: 60px;
   }
 
-  .intro-text-freemium {
+  .intro-text-fremium {
     padding-top: 80px;
     width: 718px;
   }
-  .information-freenium {
+
+  .information-fremium {
     padding-top: 57px;
     display: flex;
     flex-direction: row;
@@ -113,7 +136,7 @@
     padding-top: 0px;
   }
 
-  .card-information-freenium {
+  .card-information-fremium {
     padding-top: 100px;
   }
 
