@@ -117,6 +117,19 @@ footer {
     padding: 10px;
   }
 
+  .dropdown-label {
+    width: 220px;
+  }
+
+  .dropdown-label-text,
+  .dropdown-content {
+    width: 185px;
+  }
+
+  .choice-language-button {
+    padding: 10px;
+  }
+
   .social-network-footer {
     order: 2;
   }
