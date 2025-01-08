@@ -83,12 +83,15 @@ export default function Course() {
             return (
               <figure key={el.id} className="course-figure-background">
                 <img className="figure-course-logo" src={el.img} alt="" />
-                <h3>{el.title}</h3>
                 <section className="figure-description-wrapper">
-                  <p>{el.description}</p>
+                  <article className="figure-description-article">
+                    <h2>{el.title}</h2>
+                    <p>{el.description}</p>
+                  </article>
                   <button
                     type="button"
                     className="figure-course-navigation-button"
+                    aria-label="Navigate to the course."
                   >
                     <img
                       className="figure-course-navigation"

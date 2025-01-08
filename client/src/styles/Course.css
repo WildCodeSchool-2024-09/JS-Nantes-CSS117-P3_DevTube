@@ -1,25 +1,20 @@
-:root {
-  --font-small: 10px;
-}
 .section-course-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 80%;
   margin: 0 auto;
   padding: 2rem 0;
 }
 .article-course-title {
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-items: center;
+  max-width: 500px;
+  min-width: 300px;
 
   & h1 {
-    text-align: center;
     margin-bottom: 1rem;
-  }
-
-  & p {
-    text-align: justify;
   }
 }
 .section-bases {
@@ -35,11 +30,10 @@
   max-height: 180px;
   min-height: 100px;
   margin-top: 3rem;
-  padding: 1rem;
+  padding: .8rem 0 1rem;
   background-color: var(--tertiary-color);
   & h3 {
     margin-top: 2rem;
-    font-size: var(--font-small);
   }
 }
 .figure-course-logo {
@@ -61,13 +55,19 @@
   height: 30px;
 }
 .figure-description-wrapper {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 50px;
+  grid-template-rows: 1fr;
 
   & p {
+    margin-top: .8rem;
     font-size: var(--font-small);
   }
 
   & button {
     align-self: flex-end;
   }
+}
+.figure-description-article {
+  padding: .5rem 0 0 1rem;
 }
