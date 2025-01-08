@@ -1,0 +1,43 @@
+.videoCard {
+  width: 296px;
+  height: 226px;
+  background: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}
+
+.card-content {
+  height: 150px;
+  background: #414141;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+}
+
+.firstRow-card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.time-video-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+}
+
+.clock-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.heart-icon {
+  align-self: flex-end;
+  width: 33px;
+  height: 33px;
+}

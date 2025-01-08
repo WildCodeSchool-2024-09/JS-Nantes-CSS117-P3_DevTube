@@ -1,6 +1,6 @@
 import clock from "/clock.png";
 import orangeHeart from "/orange-heart.png";
-import "../style/videoCard.css";
+import "./../styles/VideoCard.css";
 
 function VideoCard() {
   // TODO : variable for time video + favorites gestion with heart empty or orange heart
@@ -12,11 +12,11 @@ function VideoCard() {
           <div className="firstRow-card-footer">
             <p>Title video</p>
             <div className="time-video-wrapper">
-              <img className="clockIcon" src={clock} alt="clock" />
+              <img className="clock-icon" src={clock} alt="clock" />
               <p className="time">60 min</p>
             </div>
           </div>
-          <img className="heartIcon" src={orangeHeart} alt="heart icon" />
+          <img className="heart-icon" src={orangeHeart} alt="heart icon" />
         </section>
       </article>
     </>
