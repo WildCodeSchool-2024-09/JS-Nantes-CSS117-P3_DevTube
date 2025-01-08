@@ -9,7 +9,7 @@ function VideoCard() {
       <article className="video-card">
         <section className="card-content">Video</section>
         <section className="card-footer">
-          <div className="firstRow-card-footer">
+          <div className="first-row-card-footer">
             <p>Title video</p>
             <div className="time-video-wrapper">
               <img className="clock-icon" src={clock} alt="clock" />
