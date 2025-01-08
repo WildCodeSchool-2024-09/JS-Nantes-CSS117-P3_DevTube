@@ -27,6 +27,62 @@
   padding-top: 47px;
 }
 
+.information-freenium {
+  padding: 57px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+}
+
+.card-information-freenium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - 56px);
+}
+
+.card-block {
+  border-bottom: solid 2px black;
+  width: 100%;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  color: var(--accent-color-1);
+  background: var(--tertiary-color);
+}
+
+.card-block-1 {
+  text-decoration: var(--accent-color-1) underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+  height: 65px;
+  line-height: 65px;
+}
+
+.card-block-4 {
+  border-bottom: none;
+}
+
+.card-block-button {
+  background: none;
+  padding-top: 32px;
+}
+
+.white-star-icon {
+  height: 14px;
+  width: 14px;
+}
+
+@media screen and (min-width: 600px) {
+  .intro-text-freenium {
+    width: 500px;
+  }
+  .card-information-freenium {
+    width: 500px;
+  }
+}
+
 @media screen and (min-width: 950px) {
   .page-fremium {
     text-align: left;
@@ -47,5 +103,27 @@
   .intro-text-freemium {
     padding-top: 80px;
     width: 718px;
+  }
+  .information-freenium {
+    padding-top: 57px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    padding-top: 0px;
+  }
+
+  .card-information-freenium {
+    padding-top: 100px;
+  }
+
+  .card-block-1 {
+    height: 131px;
+    line-height: 131px;
+  }
+
+  .card-block {
+    height: 170px;
+    line-height: 170px;
   }
 }
