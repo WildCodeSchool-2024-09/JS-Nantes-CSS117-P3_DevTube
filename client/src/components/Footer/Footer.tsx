@@ -19,15 +19,11 @@ export default function Footer() {
           &copy; 2024 <span>DevTube</span> Team
         </p>
         <nav className="nav-footer">
-          <p href="" className="link-nav-footer">
-            Cookies
-          </p>
+          <p className="link-nav-footer">Cookies</p>
           {/*  TODO  => CHANGE FOR LINK WHEN THE PAGE WILL BE DONE */}
-          <p href="" className="link-nav-footer">
-            Legal notices
-          </p>
+          <p className="link-nav-footer">Legal notices</p>
           {/* TODO  => CHANGE FOR LINK WHEN THE PAGE WILL BE DONE */}
-          <p href="" className="link-nav-footer link-confidentiality">
+          <p className="link-nav-footer link-confidentiality">
             Confidentiality policy
           </p>
           {/* TODO  => CHANGE FOR LINK WHEN THE PAGE WILL BE DONE */}
