@@ -1,3 +1,6 @@
+:root {
+  --font-small: 10px;
+}
 .section-course-container {
   display: flex;
   flex-direction: column;
@@ -22,7 +25,7 @@
 .section-bases {
   display: grid;
   justify-content: center;
-  gap: 4rem;
+  gap: 3rem;
   padding: 2rem 0;
 }
 .course-figure-background {
@@ -33,7 +36,7 @@
   min-height: 100px;
   margin-top: 3rem;
   padding: 1rem;
-  background-color: var(--tertairy-color);
+  background-color: var(--tertiary-color);
   & h3 {
     margin-top: 2rem;
     font-size: var(--font-small);
@@ -47,9 +50,15 @@
   width: 60px;
   height: auto;
 }
+.figure-course-navigation-button {
+  transition: transform .2s ease-in;
+}
+.figure-course-navigation-button:hover {
+  transform: scale(110%, 110%);
+}
 .figure-course-navigation {
   width: 30px;
-  height: auto;
+  height: 30px;
 }
 .figure-description-wrapper {
   display: flex;

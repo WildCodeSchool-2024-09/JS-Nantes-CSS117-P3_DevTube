@@ -3,7 +3,7 @@ import "../../styles/Course.css";
 const lstCourse = [
   {
     id: 1,
-    title: "HTML",
+    title: "Learn HTML",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
     img: "logo-html.png",
@@ -86,7 +86,10 @@ export default function Course() {
                 <h3>{el.title}</h3>
                 <section className="figure-description-wrapper">
                   <p>{el.description}</p>
-                  <button type="button">
+                  <button
+                    type="button"
+                    className="figure-course-navigation-button"
+                  >
                     <img
                       className="figure-course-navigation"
                       src="button-see-course.png"
