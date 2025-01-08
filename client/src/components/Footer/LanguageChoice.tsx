@@ -9,19 +9,32 @@ export default function LanguageChoice() {
   };
 
   return (
-    <section className="dropdown-language-choice">
+    <section
+      className="dropdown-language-choice"
+      aria-label="Languages selector" // provide an accessible description of the component to screen readers
+    >
       <div className="dropdown-label">
         <p className="dropdown-label-text" />
-        <button type="button" className="dropdown-btn" onClick={handleClick}>
+        <button
+          type="button"
+          className="dropdown-btn"
+          aria-haspopup="true" // to indicate that it opens a menu
+          aria-expanded={isMenuOpen} //  to indicate the menu status (open or closed).
+          onClick={handleClick}
+        >
           <img
             src={arrowDropdownMenu}
-            alt="arrow"
+            alt="arrow to expand langugae menu"
             className="arrow-dropdown-menu-language"
           />
         </button>
       </div>
       {isMenuOpen ? (
-        <div id="dropdown-language" className="dropdown-content">
+        <div
+          id="dropdown-language"
+          className="dropdown-content"
+          aria-labelledby="dropdown-label"
+        >
           <button
             type="button"
             className="choice-language-button"
