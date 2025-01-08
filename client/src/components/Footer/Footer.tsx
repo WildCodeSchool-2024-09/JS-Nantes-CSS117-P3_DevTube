@@ -2,8 +2,7 @@ import fbIcon from "/fb-icon-for-dark-theme.png";
 import instaIcon from "/insta-icon-for-dark-theme.png";
 import xIcon from "/x-icon-for-dark-theme.png";
 import LanguageChoice from "./LanguageChoice";
-import "../Global.css";
-import "../style/footer.css";
+import "../../styles/Footer.css";
 
 export default function Footer() {
   return (
