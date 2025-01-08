@@ -6,7 +6,7 @@ function VideoCard() {
   // TODO : variable for time video + favorites gestion with heart empty or orange heart
   return (
     <>
-      <article className="videoCard">
+      <article className="video-card">
         <section className="card-content">Video</section>
         <section className="card-footer">
           <div className="firstRow-card-footer">
