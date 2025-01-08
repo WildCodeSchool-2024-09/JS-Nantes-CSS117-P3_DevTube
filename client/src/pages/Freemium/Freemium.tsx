@@ -7,12 +7,12 @@ export default function Freemium() {
   const { t } = useTranslation();
 
   return (
-    <div className="page-fremium">
-      <section className="title-fremium">
+    <div className="page-freemium">
+      <section className="title-freemium">
         <img className="orange-star-icon" src={bigStarFreenium} alt="star" />
         <h1>{t("title")}</h1>
       </section>
-      <p className="intro-text-fremium">
+      <p className="intro-text-freemium">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
         veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
@@ -21,9 +21,9 @@ export default function Freemium() {
         occaecat cupidatat non proident, sunt in culpa qui officia deserunt
         mollit anim id est laborum.
       </p>
-      <section className="information-fremium">
-        <figure className="block-information-fremium">
-          <div className="card-information-fremium">
+      <section className="information-freemium">
+        <figure className="block-information-freemium">
+          <div className="card-information-freemium">
             <h2 className="card-block card-block-1">{t("card-title")}</h2>
             <p className="card-block card-block-2">{t("bonus-1")}</p>
             <p className="card-block card-block-3">{t("bonus-2")}</p>
@@ -38,7 +38,7 @@ export default function Freemium() {
             </div>
           </div>
         </figure>
-        <section className="articles-information-fremium">
+        <section className="articles-information-freemium">
           <article>
             <h2>{t("article-title-1")}</h2>
             <p>

@@ -1,4 +1,4 @@
-.page-fremium {
+.page-freemium {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -9,17 +9,17 @@
   text-align: center;
 }
 
-.title-fremium {
+.title-freemium {
   display: flex;
   align-items: center;
   gap: 8px;
 }
 
-.intro-text-fremium {
+.intro-text-freemium {
   padding-top: 47px;
 }
 
-.information-fremium {
+.information-freemium {
   padding: 57px;
   display: flex;
   flex-direction: column;
@@ -27,7 +27,7 @@
   gap: 100px;
 }
 
-.card-information-fremium {
+.card-information-freemium {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -61,21 +61,21 @@
   padding-top: 32px;
 }
 
-.articles-information-fremium {
+.articles-information-freemium {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 52px;
 }
 
-.articles-information-fremium article {
+.articles-information-freemium article {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 8px;
 }
 
-.articles-information-fremium article h2 {
+.articles-information-freemium article h2 {
   padding-bottom: 16px;
 }
 
@@ -90,20 +90,20 @@
 }
 
 @media screen and (min-width: 600px) {
-  .intro-text-fremium {
+  .intro-text-freemium {
     width: 500px;
   }
-  .card-information-fremium {
+  .card-information-freemium {
     width: 500px;
   }
 
-  .articles-information-fremium article {
+  .articles-information-freemium article {
     width: 500px;
   }
 }
 
 @media screen and (min-width: 950px) {
-  .page-fremium {
+  .page-freemium {
     text-align: left;
   }
 
@@ -114,17 +114,17 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .page-fremium {
+  .page-freemium {
     padding-top: 60px;
     padding-bottom: 60px;
   }
 
-  .intro-text-fremium {
+  .intro-text-freemium {
     padding-top: 80px;
     width: 718px;
   }
 
-  .information-fremium {
+  .information-freemium {
     padding-top: 57px;
     display: flex;
     flex-direction: row;
@@ -133,7 +133,7 @@
     padding-top: 0px;
   }
 
-  .card-information-fremium {
+  .card-information-freemium {
     padding-top: 100px;
   }
 
