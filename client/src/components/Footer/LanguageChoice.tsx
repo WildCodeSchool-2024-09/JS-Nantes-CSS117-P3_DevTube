@@ -1,4 +1,5 @@
 import arrowDropdownMenu from "/arrow-dropdown-menu-for-dark-theme.png";
+import "../../styles/Footer.css";
 
 export default function LanguageChoice() {
   return (
