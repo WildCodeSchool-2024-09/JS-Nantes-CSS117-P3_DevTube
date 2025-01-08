@@ -1,0 +1,51 @@
+.page-freenium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 28px;
+  padding-left: 28px;
+  padding-top: 40px;
+  padding-bottom: 28px;
+}
+
+.page-freenium {
+  text-align: center;
+}
+
+.title-freenium {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.orange-star-icon {
+  height: 14px;
+  width: 14px;
+}
+
+.intro-text-freenium {
+  padding-top: 47px;
+}
+
+@media screen and (min-width: 950px) {
+  .page-fremium {
+    text-align: left;
+  }
+
+  .orange-star-icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page-freemium {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .intro-text-freemium {
+    padding-top: 80px;
+    width: 718px;
+  }
+}
