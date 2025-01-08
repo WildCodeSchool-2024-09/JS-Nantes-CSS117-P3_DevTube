@@ -22,7 +22,7 @@ export default function LanguageChoice() {
         <button type="button" className="dropdown-btn" onClick={handleClick}>
           <img
             src={arrowDropdownMenu}
-            alt="arrow"
+            alt="arrow to dropdown menu"
             className="arrow-dropdown-menu-language"
           />
         </button>

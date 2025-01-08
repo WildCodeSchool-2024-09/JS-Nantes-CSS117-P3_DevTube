@@ -37,7 +37,7 @@ export default function Header() {
               <NavLink to={"/course"}>Course</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Freemium</NavLink>
+              <NavLink to={"/freemium"}>Freemium</NavLink>
             </li>
             <li>
               <NavLink to={""}>Testimonials</NavLink>

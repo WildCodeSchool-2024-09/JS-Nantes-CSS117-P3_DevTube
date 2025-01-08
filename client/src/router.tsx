@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Course from "./pages/Course/Course";
+import Freemium from "./pages/Freemium/Freemium";
 
 export const router = createBrowserRouter([
   {
@@ -10,6 +11,10 @@ export const router = createBrowserRouter([
       {
         path: "/course",
         element: <Course />,
+      },
+      {
+        path: "/freemium",
+        element: <Freemium />,
       },
     ],
   },
