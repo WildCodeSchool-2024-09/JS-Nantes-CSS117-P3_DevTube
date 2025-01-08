@@ -1,0 +1,9 @@
+{
+  "button": {
+    "sign up": "Sign Up",
+    "log in": "Log in"
+  },
+  "error": {
+    "notFound": "Page not found"
+  }
+}

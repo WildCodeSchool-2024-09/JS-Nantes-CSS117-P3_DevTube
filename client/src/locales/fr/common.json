@@ -1,0 +1,9 @@
+{
+  "button": {
+    "sign up": "S'inscrire",
+    "log in": "Se connecter"
+  },
+  "error": {
+    "notFound": "Page non trouvee"
+  }
+}
