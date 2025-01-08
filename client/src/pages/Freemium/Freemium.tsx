@@ -7,7 +7,7 @@ export default function Freemium() {
   const { t } = useTranslation();
 
   return (
-    <section className="page-fremium">
+    <div className="page-fremium">
       <section className="title-fremium">
         <img className="orange-star-icon" src={bigStarFreenium} alt="star" />
         <h1>{t("title")}</h1>
@@ -67,6 +67,6 @@ export default function Freemium() {
           </article>
         </section>
       </section>
-    </section>
+    </div>
   );
 }
