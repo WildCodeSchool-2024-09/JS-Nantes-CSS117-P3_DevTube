@@ -1,0 +1,90 @@
+:root {
+  /* COLORS */
+  --primary-color: #0d0d0d;
+  --secondary-color: #131313;
+  --tertairy-color: #1c1e1f;
+  --text-color: #e6dbe3;
+  --accent-color-1: #fc666a;
+  --accent-color-2: #fc8f70;
+  /*FONT TITLE H1*/
+  --title-font-family: "Manrope", sans-serif;
+  --title-font-weight: bold;
+  --title-font-size-mobile: 20px;
+  --title-font-size-desktop: 30px;
+  /*FONT SUBTITLE H2*/
+  --sub-title-font-family: "Manrope", sans-serif;
+  --sub-title-font-weight: bold;
+  --sub-title-font-size-mobile: 16px;
+  --sub-title-font-size-desktop: 24px;
+  /*BODY*/
+  --body-font-family: "Inria Sans", sans-serif;
+  --body-font-size: 12px;
+  --body-font-family-desktop: 20px;
+}
+.quation_p {
+  padding-top: 50px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+}
+
+.icon-team {
+  background-color: var(--text-color);
+  border-radius: 50%;
+  width: 30px;
+  cursor: pointer;
+  margin-left: 5px;
+}
+.team-job {
+  margin-top: 10%;
+}
+
+.info_prsenelle {
+  display: flex;
+}
+.icon-admine h3 {
+  font-size: 19px;
+  font-weight: bold;
+  color: var(--accent-color-2);
+}
+
+.cards-sectionf {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+}
+
+.info_prsenelle h4 {
+  font-size: 15px;
+  margin-right: 100px;
+}
+.info_prsenelle h3 {
+  font-size: 15px;
+}
+.icon-admine {
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  display: flex;
+  width: 590px;
+  height: 240px;
+  background-color: var(--secondary-color);
+  padding: 1px;
+}
+
+.info_head {
+  border-bottom: #fc666a solid 5px;
+}
+
+.img_admine {
+  border-radius: 50%;
+
+  margin-right: 15px;
+  object-fit: cover;
+}
