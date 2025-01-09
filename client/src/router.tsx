@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
-import Course from "./styles/Course/Course";
 import Testimonials from "./components/Testimonials/Testimonials";
+import Course from "./styles/Course/Course";
 
 export const router = createBrowserRouter([
   {
