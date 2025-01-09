@@ -1,0 +1,9 @@
+{
+  "button": {
+    "sign up": "Registro",
+    "log in": "Acceso"
+  },
+  "error": {
+    "notFound": "Página no encontrada"
+  }
+}
