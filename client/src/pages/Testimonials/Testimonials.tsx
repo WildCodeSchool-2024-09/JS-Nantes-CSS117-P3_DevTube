@@ -1,3 +1,4 @@
+import "../../styles/Testimonials/testimonials.css";
 import "/Users/utilisateur/Desktop/projet_trois/JS-Nantes-CSS117-P3_DevTube/client/src/styles/Globals.css";
 export default function Testimonials() {
 	return (
