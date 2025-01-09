@@ -1,0 +1,149 @@
+.page-freemium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-right: 28px;
+  padding-left: 28px;
+  padding-top: 40px;
+  padding-bottom: 28px;
+  text-align: center;
+}
+
+.title-freemium {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.intro-text-freemium {
+  padding-top: 47px;
+}
+
+.information-freemium {
+  padding: 57px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 100px;
+}
+
+.card-information-freemium {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: calc(100vw - 56px);
+}
+
+.card-block {
+  border-bottom: solid 2px black;
+  width: 100%;
+  height: 120px;
+  line-height: 120px;
+  text-align: center;
+  color: var(--accent-color-1);
+  background: var(--tertiary-color);
+}
+
+.card-block-1 {
+  text-decoration: var(--accent-color-1) underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 8px;
+  height: 65px;
+  line-height: 65px;
+}
+
+.card-block-4 {
+  border-bottom: none;
+}
+
+.card-block-button {
+  background: none;
+  padding-top: 32px;
+}
+
+.articles-information-freemium {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 52px;
+}
+
+.articles-information-freemium article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.articles-information-freemium article h2 {
+  padding-bottom: 16px;
+}
+
+.orange-star-icon {
+  height: 14px;
+  width: 14px;
+}
+
+.white-star-icon {
+  height: 14px;
+  width: 14px;
+}
+
+@media screen and (min-width: 600px) {
+  .intro-text-freemium {
+    width: 500px;
+  }
+  .card-information-freemium {
+    width: 500px;
+  }
+
+  .articles-information-freemium article {
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .page-freemium {
+    text-align: left;
+  }
+
+  .orange-star-icon {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .page-freemium {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+
+  .intro-text-freemium {
+    padding-top: 80px;
+    width: 718px;
+  }
+
+  .information-freemium {
+    padding-top: 57px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 100px;
+    padding-top: 0px;
+  }
+
+  .card-information-freemium {
+    padding-top: 100px;
+  }
+
+  .card-block-1 {
+    height: 131px;
+    line-height: 131px;
+  }
+
+  .card-block {
+    height: 170px;
+    line-height: 170px;
+  }
+}
