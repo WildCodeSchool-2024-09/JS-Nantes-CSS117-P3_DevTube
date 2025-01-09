@@ -1,91 +1,120 @@
 import "../../styles/Course.css";
 
-const lstCourse = [
+type Course = {
+  id: number;
+  title: string;
+  description: string;
+  img: string;
+  type: string;
+};
+const lstCourse: Course[] = [
   {
     id: 1,
     title: "Learn HTML",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "HTML (HyperText Markup Language) is the standard language for creating web pages and web applications. It structures content using elements such as headings, paragraphs, links, and multimedia.",
     img: "logo-html.png",
+    type: "Bases",
   },
   {
     id: 2,
     title: "Discover  le CSS",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation of web pages. It defines the layout, colors, fonts, and overall visual appearance of HTML elements.",
     img: "logo-css.png",
+    type: "Bases",
   },
   {
     id: 3,
     title: "Algo basics",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving.",
     img: "logo-algo-basics.png",
+    type: "Bases",
   },
   {
     id: 4,
-    title: "Know everything about JavaScript ",
+    title: "Know everything about JavaScript",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "JavaScript is a versatile programming language used to create dynamic and interactive web content. It enables developers to manipulate HTML, handle events, and build complex web applications.",
     img: "logo-javascript.png",
+    type: "Front-end",
   },
   {
     id: 5,
     title: "Know everything about Node.js",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "Node.js is a runtime environment that allows JavaScript to run on the server side. It is designed for building scalable, high-performance applications using non-blocking, event-driven architecture.",
     img: "logo-node.png",
+    type: "Back-end",
   },
   {
     id: 6,
     title: "Welcome to REACT",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "React is a popular JavaScript library for building user interfaces. It enables developers to create reusable components and manage dynamic data efficiently with a virtual DOM.",
     img: "logo-react.png",
+    type: "Front-end",
   },
   {
     id: 7,
     title: "Master the GitHub workflow",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "The GitHub workflow involves using Git for version control, collaborating through branches, and managing changes with pull requests. It streamlines teamwork, code review, and deployment in software development.",
     img: "logo-github.png",
+    type: "Front-end",
   },
   {
     id: 8,
     title: "The wondefull world of MySQL",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "MySQL is a widely used open-source relational database management system. It allows developers to store, manage, and retrieve data efficiently using structured queries with SQL.",
     img: "logo-sql.png",
+    type: "Back-end",
   },
   {
     id: 9,
     title: "Server rating with  Express",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam non nisi et dolor aliquam pretium. Maecenas et finibus neque, vitae.",
+      "Express is a fast and minimalist web framework for Node.js. It simplifies server creation by providing robust tools for handling routes, middleware, and HTTP requests.",
     img: "logo-express.png",
+    type: "Back-end",
   },
 ];
 export default function Course() {
+  const getCourseByType = (type: string) =>
+    lstCourse.filter((el) => el.type === type);
+  const listBasesCourses = getCourseByType("Bases");
+  const listFrontEndCourses = getCourseByType("Front-end");
+  const listBackEndCourses = getCourseByType("Back-end");
+
   return (
     <>
       <section className="section-course-container">
         <article className="article-course-title">
           <h1>Learn Web developement</h1>
           <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla ac
-            efficitur mauris. Aenean vel odio orci. Donec aliquam dignissim
-            purus id tempus. Vivamus et ultricies tortor.
+            Master the fundamentals of web development and learn how to create
+            modern, fully functional websites step by step.
           </p>
         </article>
+        {/* Vertical line */}
+        <img
+          className="vertical-line"
+          src="vertical-line-course-link.png"
+          alt=""
+        />
 
+        {/* Bases section */}
         <section className="section-bases">
-          {lstCourse.map((el) => {
+          <h2>Bases</h2>
+          {listBasesCourses.map((el) => {
             return (
               <figure key={el.id} className="course-figure-background">
                 <img className="figure-course-logo" src={el.img} alt="" />
                 <section className="figure-description-wrapper">
                   <article className="figure-description-article">
-                    <h2>{el.title}</h2>
+                    <h3>{el.title}</h3>
                     <p>{el.description}</p>
                   </article>
                   <button
@@ -103,6 +132,84 @@ export default function Course() {
               </figure>
             );
           })}
+        </section>
+        {/* Specialization section */}
+        <section className="section-specialization">
+          {/* Horizontal line */}
+          <img
+            className="horizontal-line"
+            src="horizontal-line-course-link.png"
+            alt=""
+          />
+          {/* Left vertical line */}
+          <img
+            className="vertical-line-left"
+            src="vertical-line-course-link.png"
+            alt=""
+          />
+          {/* Right vertical line */}
+          <img
+            className="vertical-line-right"
+            src="vertical-line-course-link.png"
+            alt=""
+          />
+          {/* Front-end section */}
+          <section className="section-front-end">
+            <h2>Front-end</h2>
+            {listFrontEndCourses.map((el) => {
+              return (
+                <figure key={el.id} className="course-figure-background">
+                  <img className="figure-course-logo" src={el.img} alt="" />
+                  <section className="figure-description-wrapper">
+                    <article className="figure-description-article">
+                      <h3>{el.title}</h3>
+                      <p>{el.description}</p>
+                    </article>
+                    <button
+                      type="button"
+                      className="figure-course-navigation-button"
+                      aria-label="Navigate to the course."
+                    >
+                      <img
+                        className="figure-course-navigation"
+                        src="button-see-course.png"
+                        alt=""
+                      />
+                    </button>
+                  </section>
+                </figure>
+              );
+            })}
+          </section>
+
+          {/* Back-end section */}
+          <section className="section-back-end">
+            <h2>Back-end</h2>
+            {listBackEndCourses.map((el) => {
+              return (
+                <figure key={el.id} className="course-figure-background">
+                  <img className="figure-course-logo" src={el.img} alt="" />
+                  <section className="figure-description-wrapper">
+                    <article className="figure-description-article">
+                      <h3>{el.title}</h3>
+                      <p>{el.description}</p>
+                    </article>
+                    <button
+                      type="button"
+                      className="figure-course-navigation-button"
+                      aria-label="Navigate to the course."
+                    >
+                      <img
+                        className="figure-course-navigation"
+                        src="button-see-course.png"
+                        alt=""
+                      />
+                    </button>
+                  </section>
+                </figure>
+              );
+            })}
+          </section>
         </section>
       </section>
     </>
