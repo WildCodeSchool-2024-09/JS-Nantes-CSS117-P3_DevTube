@@ -2,12 +2,17 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
+import Subscribe from "./pages/Subsribe/Subscribe";
 
 export const router = createBrowserRouter([
   {
     path: "/", // The root path
     element: <App />, // Renders the App component for the home page
     children: [
+      {
+        path: "/subscribe",
+        element: <Subscribe />,
+      },
       {
         path: "/course",
         element: <Course />,

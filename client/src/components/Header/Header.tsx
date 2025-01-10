@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
 import { useState } from "react";
 
@@ -13,6 +13,8 @@ export default function Header() {
   function handleClick() {
     setOpenSearchBar(!openSearchBar);
   }
+
+  const navToSignUpPage = useNavigate();
 
   return (
     <header className="header-container">
@@ -46,7 +48,7 @@ export default function Header() {
               <NavLink to={""}>Login</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Sign up</NavLink>
+              <NavLink to={"/subscribe"}>Sign up</NavLink>
             </li>
             <li>
               <input
@@ -71,7 +73,13 @@ export default function Header() {
         <button type="button" className="btn-login">
           Login
         </button>
-        <button type="button" className="little-cta">
+        <button
+          type="button"
+          className="little-cta"
+          onClick={() => {
+            navToSignUpPage("/subscribe");
+          }}
+        >
           Sign up
         </button>
       </section>
