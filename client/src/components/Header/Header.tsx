@@ -68,9 +68,9 @@ export default function Header() {
       />
       <img className="img-light-mode" src="light_mode.png" alt="" />
       <section className="login-sign-up-container">
-        <button type="button" className="btn-login">
-          <NavLink to={"/login"}>Login</NavLink>
-        </button>
+        <NavLink to={"/login"} className="btn-login">
+          Login
+        </NavLink>
         <button type="button" className="little-cta">
           Sign up
         </button>

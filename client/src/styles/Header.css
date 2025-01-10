@@ -136,8 +136,10 @@
   }
   .login-sign-up-container {
     display: flex;
+    align-items: center;
     margin-left: auto;
     gap: 1rem;
+    font-size: var(--font-normal);
   }
   .search-bar-burger-menu {
     display: none;
