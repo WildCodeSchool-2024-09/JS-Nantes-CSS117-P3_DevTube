@@ -1,7 +1,7 @@
 GET http://localhost:3310/api/users
 ###
 
-GET http://localhost:3310/api/users/3
+GET http://localhost:3310/api/users/1
 ###
 
 POST http://localhost:3310/api/users HTTP/1.1
@@ -9,6 +9,8 @@ content-type: application/json
 
 {
   "email": "pupu@gmail.com",
+  "github_url": "github",
+  "linkedin_url": "linkedin",
   "firstname": "popo",
   "lastname": "pipi",
   "level": 2,
@@ -23,6 +25,8 @@ content-type: application/json
 
 {
   "email": "pupu@gmail.com",
+  "github_url": "github",
+  "linkedin_url": "linkedin",
   "firstname": "popo",
   "lastname": "choubidou",
   "level": 2,
@@ -32,4 +36,4 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3310/api/users/3
+DELETE http://localhost:3310/api/users/1

@@ -43,6 +43,8 @@ const add: RequestHandler = async (req, res, next) => {
     // Extract the user data from the request body
     const newUser = {
       email: req.body.email,
+      github_url: req.body.github_url,
+      linkedin_url: req.body.linkedin_url,
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       level: req.body.level,
@@ -81,6 +83,8 @@ const edit: RequestHandler = async (req, res, next) => {
     const { id } = req.params;
     const {
       email,
+      github_url,
+      linkedin_url,
       firstname,
       lastname,
       level,
@@ -91,6 +95,8 @@ const edit: RequestHandler = async (req, res, next) => {
     const updateUser = await userRepository.update(
       id,
       email,
+      github_url,
+      linkedin_url,
       firstname,
       lastname,
       level,

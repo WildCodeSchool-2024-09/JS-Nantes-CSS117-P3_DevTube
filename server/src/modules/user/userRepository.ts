@@ -4,6 +4,8 @@ import type { Result, Rows } from "../../../database/client";
 
 type User = {
   email: string;
+  github_url: string;
+  linkedin_url: string;
   firstname: string;
   lastname: string;
   level: number;
@@ -17,9 +19,11 @@ class UserRepository {
   async create(user: User) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (email, firstname, lastname, level, register_date, profil_img, is_admin) values (?, ?, ?, ?, ?, ?, ?)",
+      "insert into user (email, github_url, linkedin_url, firstname, lastname, level, register_date, profil_img, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         user.email,
+        user.github_url,
+        user.linkedin_url,
         user.firstname,
         user.lastname,
         user.level,
@@ -58,6 +62,8 @@ class UserRepository {
   async update(
     id: string,
     email: string,
+    github_url: string,
+    linkedin_url: string,
     firstname: string,
     lastname: string,
     level: number,
@@ -66,9 +72,11 @@ class UserRepository {
     is_admin: boolean,
   ) {
     const [row] = await databaseClient.query<Result>(
-      "UPDATE user SET email = ?, firstname = ?, lastname = ?, level = ?, register_date = ?, profil_img = ?, is_admin = ? WHERE id = ?",
+      "UPDATE user SET email = ?, github_url = ?, linkedin_url = ?, firstname = ?, lastname = ?, level = ?, register_date = ?, profil_img = ?, is_admin = ? WHERE id = ?",
       [
         email,
+        github_url,
+        linkedin_url,
         firstname,
         lastname,
         level,
