@@ -11,6 +11,6 @@ CREATE TABLE user (
 
 INSERT INTO user (email, firstname, lastname, level, register_date, profil_img, is_admin)
 VALUES
-  ("emilie.deduyver", "Emilie", "De Duyver", 1, "2025/01/10", "../public/assets/images/userprofil/profil-emilie.jpg", true);
+  ("emilie.deduyver", "Emilie", "De Duyver", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true);
   
 

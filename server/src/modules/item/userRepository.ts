@@ -6,19 +6,19 @@ type User = {
   email: string;
   firstname: string;
   lastname: string;
-  level: string;
+  level: number;
   register_date: string;
   profil_img: string;
-  is_admin: string;
+  is_admin: boolean;
 };
 
 class UserRepository {
   // The C of CRUD - Create operation
 
-  async create(user: Omit<User, "id">) {
+  async create(user: User) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (email, firstname, lastname, level, register_date, profil_img, is_admin) values (?, ?)",
+      "insert into user (email, firstname, lastname, level, register_date, profil_img, is_admin) values (?, ?, ?, ?, ?, ?, ?)",
       [
         user.email,
         user.firstname,

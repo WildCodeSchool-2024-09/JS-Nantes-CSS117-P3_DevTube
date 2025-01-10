@@ -1,0 +1,18 @@
+GET http://localhost:3310/api/users
+###
+
+GET http://localhost:3310/api/users/1
+###
+
+POST http://localhost:3310/api/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "pupu@gmail.com",
+  "firstname": "popo",
+  "lastname": "pipi",
+  "level": 2,
+  "register_date": "2025/01/10",
+  "profil_img": "coucou",
+  "is_admin": true
+}
