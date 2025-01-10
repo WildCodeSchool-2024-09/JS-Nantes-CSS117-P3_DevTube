@@ -21,7 +21,6 @@
 }
 .devTube-title {
   color: var(--accent-color-1);
-  font-size: var(--font-normal);
 }
 .img-light-mode {
   cursor: pointer;
@@ -41,7 +40,7 @@
   right: 10px;
   width: fit-content;
   padding: 1rem;
-  background-color: var(--tertairy-color);
+  background-color: var(--tertiary-color);
   border-radius: 4px;
   opacity: 0;
   transform: translateX(10px);
@@ -54,16 +53,17 @@
   transform: translateX(0);
   visibility: visible;
   pointer-events: auto;
+  z-index: 3;
 }
 .header-nav-container ul {
   display: flex;
   flex-flow: column nowrap;
-  font-size: var(--font-normal);
   gap: .8rem;
 }
 .header-nav-container ul li {
   display: flex;
   justify-content: center;
+  font-size: var(--font-normal);
 }
 .header-nav-container a {
   position: relative;
@@ -96,7 +96,7 @@
 .search-bar {
   display: none;
 }
-@media screen and (min-width: 970px) {
+@media screen and (min-width: 990px) {
   .section-nav-container {
     display: flex;
   }
@@ -129,11 +129,9 @@
     display: none;
   }
   .img-light-mode {
-    position: fixed;
     left: calc(100vw - 210px);
   }
   .btn-login {
-    font-size: var(--font-normal);
     color: white;
   }
   .login-sign-up-container {
