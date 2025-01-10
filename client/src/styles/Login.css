@@ -1,4 +1,4 @@
-.main-form-login {
+main .main-form-login {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -21,15 +21,14 @@
 .form-login-container input {
   width: 100%;
   height: 35px;
+  margin-top: .8rem;
   padding-left: .5rem;
 }
 .form-login-container button {
   align-self: center;
-  margin-top: .8rem;
 }
 @media screen and (min-width: 768px) {
   .form-login-container {
     width: 600px;
-    height: 300px;
   }
 }
