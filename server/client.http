@@ -1,0 +1,39 @@
+GET http://localhost:3310/api/users
+###
+
+GET http://localhost:3310/api/users/1
+###
+
+POST http://localhost:3310/api/users HTTP/1.1
+content-type: application/json
+
+{
+  "email": "pupu@gmail.com",
+  "github_url": "github",
+  "linkedin_url": "linkedin",
+  "firstname": "popo",
+  "lastname": "pipi",
+  "level": 2,
+  "register_date": "2025/01/10",
+  "profil_img": "coucou",
+  "is_admin": true
+}
+
+###
+PUT http://localhost:3310/api/users/2 HTTP/1.1
+content-type: application/json
+
+{
+  "email": "pupu@gmail.com",
+  "github_url": "github",
+  "linkedin_url": "linkedin",
+  "firstname": "popo",
+  "lastname": "choubidou",
+  "level": 2,
+  "register_date": "2025/01/10",
+  "profil_img": "coucou",
+  "is_admin": true
+}
+
+###
+DELETE http://localhost:3310/api/users/1
