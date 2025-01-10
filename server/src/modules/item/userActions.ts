@@ -7,10 +7,10 @@ import itemRepository from "./itemRepository";
 const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all items
-    const items = await itemRepository.readAll();
+    const users = await itemRepository.readAll();
 
     // Respond with the items in JSON format
-    res.json(items);
+    res.json(users);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -21,15 +21,15 @@ const browse: RequestHandler = async (req, res, next) => {
 const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific item based on the provided ID
-    const itemId = Number(req.params.id);
-    const item = await itemRepository.read(itemId);
+    const userId = Number(req.params.id);
+    const user = await itemRepository.read(userId);
 
     // If the item is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the item in JSON format
-    if (item == null) {
+    if (user == null) {
       res.sendStatus(404);
     } else {
-      res.json(item);
+      res.json(user);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -41,13 +41,18 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the item data from the request body
-    const newItem = {
-      title: req.body.title,
-      user_id: req.body.user_id,
+    const newUser = {
+      email: req.body.email,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      level: req.body.level,
+      register_date: req.body.register_date,
+      profil_img: req.body.profil_img,
+      is_admin: req.body.is_admin,
     };
 
     // Create the item
-    const insertId = await itemRepository.create(newItem);
+    const insertId = await itemRepository.create(newUser);
 
     // Respond with HTTP 201 (Created) and the ID of the newly inserted item
     res.status(201).json({ insertId });
