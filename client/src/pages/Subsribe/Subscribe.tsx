@@ -3,7 +3,7 @@ import "../../styles/Subscribe.css";
 export default function Subscribe() {
   return (
     <section className="main-form-subscribe">
-      <form action="submit" method="get" className="form-subscribe-container">
+      <form className="form-subscribe-container">
         {/* Section firstname */}
         <section className="form-subscribe-label">
           <label id="firstname" htmlFor="firstname">
@@ -73,7 +73,7 @@ export default function Subscribe() {
             required
           />
         </section>
-        <button type="button" className="little-cta">
+        <button type="submit" className="little-cta">
           Sign up
         </button>
       </form>
