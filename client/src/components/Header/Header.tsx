@@ -43,7 +43,7 @@ export default function Header() {
               <NavLink to={""}>Testimonials</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Login</NavLink>
+              <NavLink to={"/login"}>Login</NavLink>
             </li>
             <li>
               <NavLink to={""}>Sign up</NavLink>
@@ -69,7 +69,7 @@ export default function Header() {
       <img className="img-light-mode" src="light_mode.png" alt="" />
       <section className="login-sign-up-container">
         <button type="button" className="btn-login">
-          Login
+          <NavLink to={"/login"}>Login</NavLink>
         </button>
         <button type="button" className="little-cta">
           Sign up

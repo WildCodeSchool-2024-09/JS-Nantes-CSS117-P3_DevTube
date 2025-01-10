@@ -5,26 +5,32 @@ export default function Login() {
     <section className="main-form-login">
       <form action="submit" method="get" className="form-login-container">
         <ul>
-          <li>
-            <label htmlFor="username">Username</label>
+          <li className="form-login-label">
+            <label id="username" htmlFor="username">
+              Username
+            </label>
           </li>
           <li>
             <input
               type="text"
               name="username"
+              aria-labelledby="username"
               placeholder="Enter your username."
               required
             />
           </li>
         </ul>
         <ul>
-          <li>
-            <label htmlFor="password">Password</label>
+          <li className="form-login-label">
+            <label id="password" htmlFor="password">
+              Password
+            </label>
           </li>
           <li>
             <input
               type="text"
               name="password"
+              aria-labelledby="password"
               placeholder="Enter your password."
               required
             />
