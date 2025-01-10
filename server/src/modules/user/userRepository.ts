@@ -13,8 +13,7 @@ type User = {
 };
 
 class UserRepository {
-  // The C of CRUD - Create operation
-
+  // Create operation
   async create(user: User) {
     // Execute the SQL INSERT query to add a new user to the "user" table
     const [result] = await databaseClient.query<Result>(
@@ -29,13 +28,12 @@ class UserRepository {
         user.is_admin,
       ],
     );
-
-    // Return the ID of the newly inserted item
+    // Return the ID of the newly inserted user
     return result.insertId;
   }
 
-  // The Rs of CRUD - Read operations
-
+  // Read operations
+  // By id
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await databaseClient.query<Rows>(
@@ -43,31 +41,54 @@ class UserRepository {
       [id],
     );
 
-    // Return the first row of the result, which represents the item
+    // Return the first row of the result, which represents the user
     return rows[0] as User;
   }
 
+  //All
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "item" table
+    // Execute the SQL SELECT query to retrieve all items from the "user" table
     const [rows] = await databaseClient.query<Rows>("select * from user");
 
     // Return the array of items
     return rows as User[];
   }
 
-  // The U of CRUD - Update operation
-  // TODO: Implement the update operation to modify an existing item
+  // Update operation
+  async update(
+    id: string,
+    email: string,
+    firstname: string,
+    lastname: string,
+    level: number,
+    register_date: string,
+    profil_img: string,
+    is_admin: boolean,
+  ) {
+    const [row] = await databaseClient.query<Result>(
+      "UPDATE user SET email = ?, firstname = ?, lastname = ?, level = ?, register_date = ?, profil_img = ?, is_admin = ? WHERE id = ?",
+      [
+        email,
+        firstname,
+        lastname,
+        level,
+        register_date,
+        profil_img,
+        is_admin,
+        id,
+      ],
+    );
+    return row.affectedRows;
+  }
 
-  // async update(item: Item) {
-  //   ...
-  // }
-
-  // The D of CRUD - Delete operation
-  // TODO: Implement the delete operation to remove an item by its ID
-
-  // async delete(id: number) {
-  //   ...
-  // }
+  // Delete operation
+  async remove(id: number) {
+    const [rows] = await databaseClient.query<Rows>(
+      "DELETE FROM user where id = ?",
+      [id],
+    );
+    return rows[0] as User;
+  }
 }
 
 export default new UserRepository();
