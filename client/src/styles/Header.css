@@ -121,14 +121,14 @@
     padding: 0;
     gap: 0;
   }
-  li {
+  .header-nav-container ul li {
+    font-size: var(--font-normal);
     padding: 0 0 0 1rem;
   }
-  li:not(:last-child):nth-last-child(-n + 3) {
+  .header-nav-container ul li:not(:last-child):nth-last-child(-n + 3) {
     display: none;
   }
   .img-light-mode {
-    /* position: absolute; */
     left: calc(100vw - 210px);
   }
   .btn-login {
@@ -136,8 +136,10 @@
   }
   .login-sign-up-container {
     display: flex;
+    align-items: center;
     margin-left: auto;
     gap: 1rem;
+    font-size: var(--font-normal);
   }
   .search-bar-burger-menu {
     display: none;
