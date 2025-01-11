@@ -9,6 +9,9 @@ type Video = {
   description: string;
   category_id: number;
   is_freemium: boolean;
+  added_date: string;
+  is_heroSlide: true;
+  is_popular: true;
 };
 
 class VideoRepository {
@@ -16,7 +19,7 @@ class VideoRepository {
   async create(video: Video) {
     // Execute the SQL INSERT query to add a new video to the "video" table
     const [result] = await databaseClient.query<Result>(
-      "insert into video (name, duration, thumbnail, description, category_id, is_freemium) values (?, ?, ?, ?, ?, ?)",
+      "insert into video (name, duration, thumbnail, description, category_id, is_freemium, added_date, is_heroSlide, is_popular) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         video.name,
         video.duration,
@@ -24,6 +27,9 @@ class VideoRepository {
         video.description,
         video.category_id,
         video.is_freemium,
+        video.added_date,
+        video.is_heroSlide,
+        video.is_popular,
       ],
     );
     // Return the ID of the newly inserted video
@@ -61,10 +67,24 @@ class VideoRepository {
     description: string,
     category_id: number,
     is_freemium: boolean,
+    added_date: string,
+    is_heroSlide: true,
+    is_popular: true,
   ) {
     const [row] = await databaseClient.query<Result>(
-      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, description = ?, category_id = ?, is_freemium = ? WHERE id = ?",
-      [name, duration, thumbnail, description, category_id, is_freemium, id],
+      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, description = ?, category_id = ?, is_freemium = ?, added_date = ?, is_heroSlide = ?, is_popular = ? WHERE id = ?",
+      [
+        name,
+        duration,
+        thumbnail,
+        description,
+        category_id,
+        is_freemium,
+        added_date,
+        is_heroSlide,
+        is_popular,
+        id,
+      ],
     );
     return row.affectedRows;
   }

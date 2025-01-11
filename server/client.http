@@ -54,7 +54,10 @@ content-type: application/json
   "thumbnail": "/assets/videos/Quest-Welcomonboard(part1).mp4",
   "descrition": "Quelle belle video !",
   "category_id": 3,
-  "is_freemium": false
+  "is_freemium": false,
+  "added_date": "2025-11-01",
+  "is_heroSlide": true,
+  "is_popular": true
 }
 
 ###
@@ -67,7 +70,10 @@ content-type: application/json
   "thumbnail": "/assets/videos/Quest-Welcomonboard(part1).mp4",
   "descrition": "Encore plus de videos !",
   "category_id": 3,
-  "is_freemium": false
+  "is_freemium": false,
+  "added_date": "2025-11-01",
+  "is_heroSlide": true,
+  "is_popular": true
 }
 
 ###

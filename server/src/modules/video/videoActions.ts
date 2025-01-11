@@ -48,6 +48,9 @@ const add: RequestHandler = async (req, res, next) => {
       description: req.body.description,
       category_id: req.body.category_id,
       is_freemium: req.body.is_freemium,
+      added_date: req.body.added_date,
+      is_heroSlide: req.body.is_heroSlide,
+      is_popular: req.body.is_popular,
     };
 
     // Create the user
@@ -84,7 +87,10 @@ const edit: RequestHandler = async (req, res, next) => {
       thumbnail,
       description,
       category_id,
-      lis_freemium,
+      is_freemium,
+      added_date,
+      is_heroSlide,
+      is_popular,
     } = req.body;
     const updateVideo = await videoRepository.update(
       id,
@@ -93,7 +99,10 @@ const edit: RequestHandler = async (req, res, next) => {
       thumbnail,
       description,
       category_id,
-      lis_freemium,
+      is_freemium,
+      added_date,
+      is_heroSlide,
+      is_popular,
     );
     if (updateVideo) {
       res.status(200).end("Félicitation");
