@@ -1,16 +1,16 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
-import userRepository from "./videoRepository";
+import videoRepository from "./videoRepository";
 
 // Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch all items
-    const users = await userRepository.readAll();
+    // Fetch all videos
+    const videos = await videoRepository.readAll();
 
-    // Respond with the items in JSON format
-    res.json(users);
+    // Respond with the videos in JSON format
+    res.json(videos);
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -20,16 +20,16 @@ const browse: RequestHandler = async (req, res, next) => {
 // Read operation
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific user based on the provided ID
-    const userId = Number(req.params.id);
-    const user = await userRepository.read(userId);
+    // Fetch a specific video based on the provided ID
+    const videoId = Number(req.params.id);
+    const video = await videoRepository.read(videoId);
 
-    // If the user is not found, respond with HTTP 404 (Not Found)
-    // Otherwise, respond with the user in JSON format
-    if (user == null) {
+    // If the video is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the video in JSON format
+    if (video == null) {
       res.sendStatus(404);
     } else {
-      res.json(user);
+      res.json(video);
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -40,23 +40,20 @@ const read: RequestHandler = async (req, res, next) => {
 // Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
-    // Extract the user data from the request body
-    const newUser = {
-      email: req.body.email,
-      github_url: req.body.github_url,
-      linkedin_url: req.body.linkedin_url,
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      level: req.body.level,
-      register_date: req.body.register_date,
-      profil_img: req.body.profil_img,
-      is_admin: req.body.is_admin,
+    // Extract the video data from the request body
+    const newVideo = {
+      name: req.body.name,
+      duration: req.body.duration,
+      thumbnail: req.body.thumbnail,
+      description: req.body.description,
+      category_id: req.body.category_id,
+      is_freemium: req.body.is_freemium,
     };
 
     // Create the user
-    const insertId = await userRepository.create(newUser);
+    const insertId = await videoRepository.create(newVideo);
 
-    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted video
     res.status(201).json({ insertId });
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -67,10 +64,10 @@ const add: RequestHandler = async (req, res, next) => {
 // REMOVE operation
 const remove: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
+    const videoId = Number(req.params.id);
 
-    const userToRemove = await userRepository.remove(userId);
-    res.status(201).json({ userToRemove });
+    const videoToRemove = await videoRepository.remove(videoId);
+    res.status(201).json({ videoToRemove });
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);
@@ -82,29 +79,23 @@ const edit: RequestHandler = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
-      email,
-      github_url,
-      linkedin_url,
-      firstname,
-      lastname,
-      level,
-      register_date,
-      profil_img,
-      is_admin,
+      name,
+      duration,
+      thumbnail,
+      description,
+      category_id,
+      lis_freemium,
     } = req.body;
-    const updateUser = await userRepository.update(
+    const updateVideo = await videoRepository.update(
       id,
-      email,
-      github_url,
-      linkedin_url,
-      firstname,
-      lastname,
-      level,
-      register_date,
-      profil_img,
-      is_admin,
+      name,
+      duration,
+      thumbnail,
+      description,
+      category_id,
+      lis_freemium,
     );
-    if (updateUser) {
+    if (updateVideo) {
       res.status(200).end("Félicitation");
     } else {
       res.sendStatus(401);
