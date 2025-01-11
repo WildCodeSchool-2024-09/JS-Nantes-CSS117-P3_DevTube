@@ -15,6 +15,14 @@ router.post("/api/users", userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
+import videoActions from "./modules/video/videoActions";
+
+router.get("/api/videos", videoActions.browse);
+router.get("/api/videos/:id", videoActions.read);
+router.post("/api/videos", videoActions.add);
+router.put("/api/videos/:id", videoActions.edit);
+router.delete("/api/videos/:id", videoActions.remove);
+
 /* ************************************************************************* */
 
 export default router;

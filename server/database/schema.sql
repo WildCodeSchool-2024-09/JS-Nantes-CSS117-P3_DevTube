@@ -44,7 +44,7 @@ VALUES
 INSERT INTO category (name)
 VALUES
   ("html"),
-  ("css")
+  ("css"),
   ("algo"),
   ("javascript"),
   ("node.js"),
