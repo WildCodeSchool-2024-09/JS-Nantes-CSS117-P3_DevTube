@@ -91,11 +91,11 @@ class UserRepository {
 
   // Delete operation
   async remove(id: number) {
-    const [rows] = await databaseClient.query<Rows>(
+    const [rows] = await databaseClient.query<Result>(
       "DELETE FROM user where id = ?",
       [id],
     );
-    return rows[0] as User;
+    return rows.affectedRows;
   }
 }
 

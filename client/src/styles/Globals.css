@@ -164,12 +164,16 @@ main {
   background: var(--primary-color);
 }
 
-input {
+input,
+select,
+textarea {
   outline: none;
   border: 2px solid transparent;
 }
 
-input:focus {
+input:focus,
+select:focus,
+textarea:focus {
   border: 2px solid var(--accent-color-1);
 }
 
