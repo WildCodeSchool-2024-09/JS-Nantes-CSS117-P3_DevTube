@@ -2,89 +2,69 @@ import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
 
-type User = {
-  email: string;
-  github_url: string;
-  linkedin_url: string;
-  firstname: string;
-  lastname: string;
-  level: number;
-  register_date: string;
-  profil_img: string;
-  is_admin: boolean;
+type Video = {
+  name: string;
+  duration: number;
+  thumbnail: string;
+  description: string;
+  category_id: number;
+  is_freemium: boolean;
 };
 
-class UserRepository {
+class VideoRepository {
   // Create operation
-  async create(user: User) {
-    // Execute the SQL INSERT query to add a new user to the "user" table
+  async create(video: Video) {
+    // Execute the SQL INSERT query to add a new video to the "video" table
     const [result] = await databaseClient.query<Result>(
-      "insert into user (email, github_url, linkedin_url, firstname, lastname, level, register_date, profil_img, is_admin) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into video (name, duration, thumbnail, description, category_id, is_freemium) values (?, ?, ?, ?, ?, ?)",
       [
-        user.email,
-        user.github_url,
-        user.linkedin_url,
-        user.firstname,
-        user.lastname,
-        user.level,
-        user.register_date,
-        user.profil_img,
-        user.is_admin,
+        video.name,
+        video.duration,
+        video.thumbnail,
+        video.description,
+        video.category_id,
+        video.is_freemium,
       ],
     );
-    // Return the ID of the newly inserted user
+    // Return the ID of the newly inserted video
     return result.insertId;
   }
 
   // Read operations
   // By id
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific item by its ID
+    // Execute the SQL SELECT query to retrieve a specific video by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where id = ?",
+      "select * from video where id = ?",
       [id],
     );
 
-    // Return the first row of the result, which represents the user
-    return rows[0] as User;
+    // Return the first row of the result, which represents the video
+    return rows[0] as Video;
   }
 
   //All
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all items from the "user" table
-    const [rows] = await databaseClient.query<Rows>("select * from user");
+    // Execute the SQL SELECT query to retrieve all videos from the "video" table
+    const [rows] = await databaseClient.query<Rows>("select * from video");
 
-    // Return the array of items
-    return rows as User[];
+    // Return the array of videos
+    return rows as Video[];
   }
 
   // Update operation
   async update(
     id: string,
-    email: string,
-    github_url: string,
-    linkedin_url: string,
-    firstname: string,
-    lastname: string,
-    level: number,
-    register_date: string,
-    profil_img: string,
-    is_admin: boolean,
+    name: string,
+    duration: number,
+    thumbnail: string,
+    description: string,
+    category_id: number,
+    is_freemium: boolean,
   ) {
     const [row] = await databaseClient.query<Result>(
-      "UPDATE user SET email = ?, github_url = ?, linkedin_url = ?, firstname = ?, lastname = ?, level = ?, register_date = ?, profil_img = ?, is_admin = ? WHERE id = ?",
-      [
-        email,
-        github_url,
-        linkedin_url,
-        firstname,
-        lastname,
-        level,
-        register_date,
-        profil_img,
-        is_admin,
-        id,
-      ],
+      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, description = ?, category_id = ?, is_freemium = ? WHERE id = ?",
+      [name, duration, thumbnail, description, category_id, is_freemium, id],
     );
     return row.affectedRows;
   }
@@ -92,11 +72,11 @@ class UserRepository {
   // Delete operation
   async remove(id: number) {
     const [rows] = await databaseClient.query<Rows>(
-      "DELETE FROM user where id = ?",
+      "DELETE FROM video where id = ?",
       [id],
     );
-    return rows[0] as User;
+    return rows[0] as Video;
   }
 }
 
-export default new UserRepository();
+export default new VideoRepository();
