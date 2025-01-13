@@ -1,18 +1,7 @@
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
-
-type Video = {
-  name: string;
-  duration: number;
-  thumbnail: string;
-  description: string;
-  category_id: number;
-  is_freemium: boolean;
-  added_date: string;
-  is_heroSlide: true;
-  is_popular: true;
-};
+import type { Video } from "./video";
 
 class VideoRepository {
   // Create operation
