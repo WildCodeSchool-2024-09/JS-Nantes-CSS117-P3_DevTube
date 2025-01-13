@@ -1,21 +1,72 @@
-create table user (
-  id int unsigned primary key auto_increment not null,
-  email varchar(255) not null unique,
-  password varchar(255) not null
+CREATE TABLE user (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  github_url VARCHAR(100),
+  linkedin_url VARCHAR(100),
+  firstname  VARCHAR(45) NOT NULL,
+  lastname  VARCHAR(45) NOT NULL,
+  level  INT NOT NULL DEFAULT 0,
+  register_date DATE NOT NULL,
+  profil_img VARCHAR(200),
+  is_admin  BOOLEAN NOT NULL DEFAULT FALSE
 );
 
-create table item (
-  id int unsigned primary key auto_increment not null,
-  title varchar(255) not null,
-  user_id int unsigned not null,
-  foreign key(user_id) references user(id)
+CREATE TABLE category (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name VARCHAR(45) NOT NULL
 );
 
-insert into user(id, email, password)
-values
-  (1, "jdoe@mail.com", "123456");
+CREATE TABLE video (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  name  VARCHAR(45) NOT NULL,
+  duration INT NOT NULL,
+  thumbnail VARCHAR(200) NOT NULL,
+  description  VARCHAR(200),
+  category_id  INT NOT NULL,
+  is_freemium BOOLEAN NOT NULL DEFAULT FALSE,
+  added_date DATE NOT NULL,
+  is_heroSlide BOOLEAN NOT NULL DEFAULT FALSE,
+  is_popular BOOLEAN NOT NULL DEFAULT FALSE,
+  FOREIGN KEY (category_id) REFERENCES category(id) 
+);
 
-insert into item(id, title, user_id)
-values
-  (1, "Stuff", 1),
-  (2, "Doodads", 1);
+CREATE TABLE favorite (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  user_id INT NOT NULL,
+  video_id INT NOT NULL,
+  FOREIGN KEY (user_id) REFERENCES user(id),
+  FOREIGN KEY (video_id) REFERENCES video(id)
+);
+
+INSERT INTO user (email, github_url, linkedin_url, firstname, lastname, level, register_date, profil_img, is_admin)
+VALUES
+  ("emilie.deduyver@gmail.com", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", "Emilie", "De Duyver", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
+  ("fabrice.atlan.56@gmail.com", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", "Fabrice", "Atlan", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("iadam606@yahoo.fr", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", "Ibrahim", "Yahiaya Adam", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
+
+INSERT INTO category (name)
+VALUES
+  ("html"),
+  ("css"),
+  ("algo"),
+  ("javascript"),
+  ("node.js"),
+  ("react"),
+  ("github"),
+  ("sql"),
+  ("express");
+
+
+INSERT INTO video (name, duration, thumbnail, description, category_id, is_freemium, added_date, is_heroSlide, is_popular)
+VALUES 
+  ("Integration d'une maquette - Partie 1", "27", "/assets/videos/Quest-Welcomeonboard(part1).mp4", "Entraîne toi à reproduire une maquette en HTML", 1, false, "2025-11-01", true, true),
+  ("Integration d'une maquette - Partie 2", "17", "/assets/videos/Quest-Welcomeonboard(part2).mp4", "Ajoute le CSS pour reproduire une maquette", 2, true, "2025-11-01", true, false),
+  ("Basics HTML & CSS - Partie 1", "12", "/assets/videos/Worksop1-HTML&CSS(Part1).mp4", "Structure ton site web avec des balises sémantiques", 1, false, "2025-11-01", true, false),
+  ("Basics HTML & CSS - Partie 2", "12", "/assets/videos/Worksop1-HTML&CSS(Part2).mp4", "Donne du style à ton site web avec les propriétés CSS", 2, true, "2025-11-01", true, true),
+  ("Responsive - Partie 1", "7", "/assets/videos/Worksop2-HTML&CSS(part1).mp4", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
+  ("Responsive - Partie 2", "4", "/assets/videos/Worksop2-HTML&CSS(part2).mp4", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
+  ("Responsive - Partie 3", "5", "/assets/videos/Worksop2-HTML&CSS(part3).mp4", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
+
+  
+
+

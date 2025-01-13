@@ -20,12 +20,12 @@ export default function Header() {
         <img
           className="header-logo-devTube"
           src="logo-devTube.png"
-          alt="Logo de devTube : deux accolades entourant un symbole lecture."
+          alt="Le logo de devTube se compose de deux accolades entourant un symbole lecture."
         />
         <p className="devTube-title">devTube</p>
       </section>
       <section className="section-nav-container">
-        <button type="button" onClick={toggleMenu}>
+        <button type="button" aria-label="Burger button." onClick={toggleMenu}>
           <img className="btn-burger-menu" src="burger-menu.png" alt="" />
         </button>
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
@@ -43,15 +43,16 @@ export default function Header() {
               <NavLink to={"/Testimonials"}>Testimonials</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Login</NavLink>
+              <NavLink to={"/login"}>Login</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Sign up</NavLink>
+              <NavLink to={"/subscribe"}>Sign up</NavLink>
             </li>
             <li>
               <input
                 type="text"
                 className="search-bar-burger-menu"
+                aria-label="Search"
                 placeholder="Search..."
               />
             </li>
@@ -62,16 +63,17 @@ export default function Header() {
         type="text"
         className={`search-bar ${openSearchBar ? "unfold" : ""}`}
         onClick={handleClick}
+        aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
       />
       <img className="img-light-mode" src="light_mode.png" alt="" />
       <section className="login-sign-up-container">
-        <button type="button" className="btn-login">
+        <NavLink to={"/login"} className="btn-login">
           Login
-        </button>
-        <button type="button" className="little-cta">
+        </NavLink>
+        <NavLink to={"/subscribe"} className="little-cta">
           Sign up
-        </button>
+        </NavLink>
       </section>
     </header>
   );
