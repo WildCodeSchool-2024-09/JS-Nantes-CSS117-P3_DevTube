@@ -1,7 +1,5 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
-import arrowLeft from "/arrow-left-white.png";
-import arrowRight from "/arrow-right-white.svg";
 import VideoCard from "../VideoCard/VideoCard";
 
 interface Video {
@@ -49,7 +47,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
           disabled={currentIndex === 0}
           className="carousel-arrow prev"
         >
-          <img className="arrow-button" src={arrowLeft} alt="arrow left" />
+          <img
+            className="arrow-button"
+            src="/arrow-left-white.png"
+            alt="arrow left"
+          />
         </button>
         <div className="carousel-container">
           <div
@@ -91,7 +93,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
           disabled={currentIndex + 1 >= videos.length}
           className="carousel-arrow next"
         >
-          <img className="arrow-button" src={arrowRight} alt="arrow right" />
+          <img
+            className="arrow-button"
+            src="/arrow-right-white.svg"
+            alt="arrow right"
+          />
         </button>
       </div>
     </>

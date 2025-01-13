@@ -1,13 +1,5 @@
-import clock from "/clock.png";
-import orangeHeart from "/orange-heart.png";
 import "./../../styles/VideoCard.css";
-
-export interface VideoCardProps {
-  title: string;
-  thumbnailUrl: string;
-  isLarge?: boolean;
-  displayCardInfo?: boolean;
-}
+import type { VideoCardProps } from "../../types/videocard";
 
 function VideoCard({
   title,
@@ -35,11 +27,15 @@ function VideoCard({
             <div className="first-row-card-footer">
               <p>{title}</p>
               <div className="time-video-wrapper">
-                <img className="clock-icon" src={clock} alt="clock" />
+                <img className="clock-icon" src="/clock.png" alt="clock" />
                 <p className="time">60 min</p>
               </div>
             </div>
-            <img className="heart-icon" src={orangeHeart} alt="heart icon" />
+            <img
+              className="heart-icon"
+              src="/orange-heart.png"
+              alt="heart icon"
+            />
           </section>
         ) : null}
       </article>
