@@ -1,16 +1,46 @@
 .video-card {
-  width: 296px;
-  height: 226px;
+  width: 300px;
   background: var(--tertiary-color);
   border-radius: 8px;
   box-shadow: 0 2px 6px var(--shadow-color);
 }
 
+.video-item {
+  width: 300px;
+  height: 168px;
+  text-align: center;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.video-thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 8px 8px 0 0;
+}
+
+.video-thumbnail.with-border-radius {
+  border-radius: 8px;
+}
+
+.video-card-large {
+  width: 100%;
+}
+
+.video-card-large .video-item {
+  width: 100%;
+  height: auto;
+}
+
 .card-content {
-  height: 150px;
+  height: 168px;
   background: #414141;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+}
+
+.video-card-large .card-content {
+  height: auto;
 }
 
 .card-footer {
