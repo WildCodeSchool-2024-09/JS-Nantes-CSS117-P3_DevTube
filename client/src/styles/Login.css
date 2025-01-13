@@ -1,0 +1,34 @@
+main .main-form-login {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+.form-login-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 300px;
+  height: fit-content;
+  padding: 2rem 1.5rem;
+  gap: 1.5rem;
+  transform: translateY(150px);
+  background-color: var(--tertiary-color);
+}
+.form-login-label {
+  margin-bottom: .8rem;
+}
+.form-login-container input {
+  width: 100%;
+  height: 35px;
+  margin-top: .8rem;
+  padding-left: .5rem;
+}
+.form-login-container button {
+  align-self: center;
+}
+@media screen and (min-width: 768px) {
+  .form-login-container {
+    width: 600px;
+  }
+}

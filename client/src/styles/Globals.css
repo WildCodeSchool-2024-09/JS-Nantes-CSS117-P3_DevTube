@@ -15,10 +15,18 @@
   --title-font-size-mobile: 20px;
   --title-font-size-desktop: 30px;
   /*FONT SUBTITLE H2*/
-  --sub-title-font-family: "Manrope", sans-serif;
-  --sub-title-font-weight: bold;
-  --sub-title-font-size-mobile: 16px;
-  --sub-title-font-size-desktop: 24px;
+  --sub-title-h2-font-family: "Manrope", sans-serif;
+  --sub-title-h2-font-weight: bold;
+  --sub-title-h2-font-size-mobile: 16px;
+  --sub-title-h2-font-size-desktop: 24px;
+  /*FONT SUBTITLE H3*/
+  --sub-title-h3-font-family: "Manrope", sans-serif;
+  --sub-title-h3-font-weight: bold;
+  --sub-title-h3-font-size-mobile: 12px;
+  --sub-title-h3-font-size-desktop: 20px;
+  /*FONT*/
+  --font-small: 12px;
+  --font-normal: 16px;
   /*BODY*/
   --body-font-family: "Inria Sans", sans-serif;
   --body-font-size: 12px;
@@ -28,17 +36,18 @@
 * {
   margin: 0;
   padding: 0;
+  list-style-type: none;
   box-sizing: border-box;
 }
 
 body {
   color: var(--text-color);
   font-family: var(--body-font-family);
-  font-size: var(----body-font-size);
+  font-size: var(--body-font-size);
 }
 
 main {
-  background-color: var(--tertiary-color);
+  background-color: var(--primary-color);
 }
 
 h1 {
@@ -56,9 +65,16 @@ h1 {
 }
 
 h2 {
-  font-family: var(--sub-title-font-family);
-  font-weight: var(--sub-title-font-weight);
-  font-size: var(--sub-title-font-size-mobile);
+  font-family: var(--sub-title-h2-font-family);
+  font-weight: var(--sub-title-h2-font-weight);
+  font-size: var(--sub-title-h2-font-size-mobile);
+  color: var(--accent-color-1);
+}
+
+h3 {
+  font-family: var(--sub-title-h3-font-family);
+  font-weight: var(--sub-title-h3-font-weight);
+  font-size: var(--sub-title-h3-font-size-mobile);
   color: var(--accent-color-1);
 }
 
@@ -121,8 +137,8 @@ button {
     var(--accent-color-2),
     var(--accent-color-1)
   );
-  width: 92px;
-  height: 35px;
+  width: 100px;
+  height: 40px;
   border-radius: 8px;
   color: white;
   transition: all 100ms ease-in;
@@ -148,6 +164,25 @@ main {
   background: var(--primary-color);
 }
 
+input {
+  outline: none;
+  border: 2px solid transparent;
+}
+
+input:focus {
+  border: 2px solid var(--accent-color-1);
+}
+
+.little-cta {
+  outline: none;
+  border: 2px solid var(--accent-color-1);
+}
+
+.little-cta:focus {
+  outline: none;
+  border: 2px solid white;
+}
+
 @media screen and (min-width: 950px) {
   body {
     font-size: var(--body-font-family-desktop);
@@ -158,16 +193,15 @@ main {
   }
 
   h2 {
-    font-size: var(--sub-title-font-size-desktop);
+    font-size: var(--sub-title-h2-font-size-desktop);
+  }
+
+  h3 {
+    font-size: var(--sub-title-h3-font-size-desktop);
   }
 
   .big-cta {
     height: 60px;
-  }
-
-  .little-cta {
-    width: 100px;
-    height: 40px;
   }
 
   .arrow-button {
