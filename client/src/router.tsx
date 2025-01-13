@@ -3,6 +3,7 @@ import App from "./App";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
+import Subscribe from "./pages/Subsribe/Subscribe";
 import HomePage from "./pages/homePage/HomePage";
 
 export const router = createBrowserRouter([
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/subscribe",
+        element: <Subscribe />,
       },
       {
         path: "/login",

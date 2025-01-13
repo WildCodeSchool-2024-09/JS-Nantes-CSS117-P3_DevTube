@@ -167,4 +167,8 @@
     background-position: 95%;
     padding: 0 1rem;
   }
+  .login-sign-up-container .little-cta {
+    text-align: center;
+    padding: .5rem;
+  }
 }
