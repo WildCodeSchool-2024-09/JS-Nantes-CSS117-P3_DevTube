@@ -31,21 +31,15 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
     }
   };
 
-  // Obtenir les vidéos à afficher en fonction de l'index courant
-  // const displayedVideos = videos.slice(
-  //   currentIndex,
-  //   currentIndex + videosPerPage,
-  // );
-
   const trackWidthPercent = 100 * videos.length; //100% * le nombre de videos = largeur de la track en pourcent
   const slideWidthPercent = 100 / videos.length; //1 unite parmis toutes les videos = 100% de la track divise par le nombre de video
 
   return (
     <>
       <div
-        className="carousel-wrapper hero-slider"
+        className="carousel-wrapper"
         style={{
-          maxWidth: 1024, // mettre ces styles sur .hero-slider
+          maxWidth: 1024,
           margin: "auto",
         }}
       >
@@ -65,7 +59,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
               transform:
                 currentIndex === 0
                   ? undefined
-                  : // on decale negqtivement la track vers la gauche (-) la largeur d'une slide multiplie par l'index courrant (ex : une slide de 400px * l'index 4 = 400px * 4 vers la gauche)
+                  : // on decale negativement la track vers la gauche (-) la largeur d'une slide multiplie par l'index courrant (ex : une slide de 400px * l'index 4 = 400px * 4 vers la gauche)
                     //  et on ajoute la valeur du gap mu;tiplie par l'index courant (donc par le nombre de slide concerne par le decalage)
                     `translateX(calc(-${slideWidthPercent * currentIndex}% - ${18 * currentIndex}px))`,
               width: `${trackWidthPercent}%`,
@@ -91,7 +85,6 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
             ))}
           </div>
         </div>
-
         <button
           type="button"
           onClick={nextSlide}

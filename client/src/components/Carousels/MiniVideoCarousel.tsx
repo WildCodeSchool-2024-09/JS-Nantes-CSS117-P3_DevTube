@@ -46,27 +46,26 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
         >
           <img className="arrow-button" src={arrowLeft} alt="arrow left" />
         </button>
-        <div className="carousel-container">
+        <section className="carousel-container">
           <div
             className="carousel-track"
             style={{
-              // on translate la track de la laregeur d une carte + le gap * par l index courant
+              // on translate la track de la largeur d'une carte + le gap * par l index courant
               transform: `translateX(-${currentIndex * slideWidthPixels}px)`,
               width: `${trackWidthPixels}px`,
             }}
           >
             {videos.map((video) => (
-              <div key={video.id} className="carousel-slide">
+              <article key={video.id} className="carousel-slide">
                 <VideoCard
                   key={video.id}
                   title={video.title}
                   thumbnailUrl={video.thumbnailUrl}
                 />
-              </div>
+              </article>
             ))}
           </div>
-        </div>
-
+        </section>
         <button
           type="button"
           onClick={nextSlide}

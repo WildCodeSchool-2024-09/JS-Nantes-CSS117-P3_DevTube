@@ -2,6 +2,7 @@ import HeroSlider from "../../components/Carousels/HeroSlider";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import "../../styles/HomePage.css";
 
+// FAKE DATA TO TEST CAROUSEL
 const videosData = [
   {
     id: "1",
