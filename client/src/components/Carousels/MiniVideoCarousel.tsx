@@ -46,7 +46,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
         <div
           className="carousel-track"
           style={{
-            // on translate la track de la largeur d'une carte + le gap * par l index courant
+            // on translate la track de la largeur d'une carte + le gap * par l'index courant
             transform: `translateX(-${currentIndex * slideWidthPixels}px)`,
             width: `${trackWidthPixels}px`,
           }}
