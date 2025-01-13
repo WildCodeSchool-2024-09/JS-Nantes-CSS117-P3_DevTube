@@ -31,7 +31,7 @@ export default function Header() {
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <NavLink to={"/"}>About</NavLink>
+              <NavLink to={"/"}>Home</NavLink>
             </li>
             <li>
               <NavLink to={"/course"}>Course</NavLink>
