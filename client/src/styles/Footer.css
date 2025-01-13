@@ -4,6 +4,12 @@ footer {
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  /* position: fixed;
+  z-index: 20;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  right: 0; */
 }
 
 /* LANGUAGES CHOICE */
