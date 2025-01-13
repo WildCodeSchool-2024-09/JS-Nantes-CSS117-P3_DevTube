@@ -7,31 +7,31 @@ import Subscribe from "./pages/Subsribe/Subscribe";
 import Testimonials from "./pages/Testimonials/Testimonials";
 
 export const router = createBrowserRouter([
-	{
-		path: "/", // The root path
-		element: <App />, // Renders the App component for the home page
-		children: [
-			{
-				path: "/subscribe",
-				element: <Subscribe />,
-			},
-			{
-				path: "/login",
-				element: <Login />,
-			},
-			{
-				path: "/course",
-				element: <Course />,
-			},
-			{
-				path: "/testimonials",
-				element: <Testimonials />,
-			},
-			{
-				path: "/freemium",
-				element: <Freemium />,
-			},
-		],
-	},
-	// Try adding a new route! For example, "/about" with an About component
+  {
+    path: "/", // The root path
+    element: <App />, // Renders the App component for the home page
+    children: [
+      {
+        path: "/subscribe",
+        element: <Subscribe />,
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/course",
+        element: <Course />,
+      },
+      {
+        path: "/testimonials",
+        element: <Testimonials />,
+      },
+      {
+        path: "/freemium",
+        element: <Freemium />,
+      },
+    ],
+  },
+  // Try adding a new route! For example, "/about" with an About component
 ]);
