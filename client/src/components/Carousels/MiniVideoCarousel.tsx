@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
-import VideoCard from "../VideoCard/VideoCard";
 import type { Video } from "../../types/video";
+import VideoCard from "../VideoCard/VideoCard";
 
 interface MiniVideoCarouselProps {
   videos: Video[];
