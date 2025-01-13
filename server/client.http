@@ -37,3 +37,44 @@ content-type: application/json
 
 ###
 DELETE http://localhost:3310/api/users/1
+
+###
+GET http://localhost:3310/api/videos
+###
+
+GET http://localhost:3310/api/videos/5
+###
+
+POST http://localhost:3310/api/videos HTTP/1.1
+content-type: application/json
+
+{
+  "name": "pupu",
+  "duration": "10",
+  "thumbnail": "/assets/videos/Quest-Welcomonboard(part1).mp4",
+  "descrition": "Quelle belle video !",
+  "category_id": 3,
+  "is_freemium": false,
+  "added_date": "2025-11-01",
+  "is_heroSlide": true,
+  "is_popular": true
+}
+
+###
+PUT http://localhost:3310/api/videos/2 HTTP/1.1
+content-type: application/json
+
+{
+  "name": "pupu",
+  "duration": "10",
+  "thumbnail": "/assets/videos/Quest-Welcomonboard(part1).mp4",
+  "descrition": "Encore plus de videos !",
+  "category_id": 3,
+  "is_freemium": false,
+  "added_date": "2025-11-01",
+  "is_heroSlide": true,
+  "is_popular": true
+}
+
+###
+DELETE http://localhost:3310/api/videos/3
