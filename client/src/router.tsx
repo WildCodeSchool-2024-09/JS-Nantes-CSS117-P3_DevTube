@@ -33,8 +33,11 @@ export const router = createBrowserRouter([
         element: <Freemium />,
       },
       {
-        path: "/video",
+        path: "/video/:id",
         element: <VideoPlayer />,
+        loader: ({ params }) => {
+          return fetch(`http://localhost:3310/api/videos/${params.id}`);
+        },
       },
     ],
   },

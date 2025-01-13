@@ -8,6 +8,7 @@ function VideoCard({
   displayCardInfo = true,
 }: VideoCardProps) {
   // TODO : variable for time video + favorites gestion with heart empty or orange heart
+
   return (
     <>
       <article className={`video-card ${isLarge ? "video-card-large" : ""}`}>
@@ -25,7 +26,7 @@ function VideoCard({
         {displayCardInfo ? (
           <section className="card-footer">
             <div className="first-row-card-footer">
-              <p>{title}</p>
+              <p className="videoTitle">{title}</p>
               <div className="time-video-wrapper">
                 <img className="clock-icon" src="/clock.png" alt="clock" />
                 <p className="time">60 min</p>

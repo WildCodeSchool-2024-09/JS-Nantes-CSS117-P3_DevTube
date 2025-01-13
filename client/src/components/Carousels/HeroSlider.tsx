@@ -1,12 +1,7 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
+import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
-
-interface Video {
-  id: string;
-  thumbnailUrl: string;
-  title: string;
-}
 
 interface HeroSliderProps {
   videos: Video[];
@@ -78,7 +73,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
                 }}
               >
                 <VideoCard
-                  title={video.title}
+                  title={video.name}
                   thumbnailUrl="https://placehold.co/1024x480"
                   isLarge
                   displayCardInfo={false}

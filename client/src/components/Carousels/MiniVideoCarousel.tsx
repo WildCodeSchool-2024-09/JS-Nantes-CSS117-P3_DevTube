@@ -55,8 +55,8 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
             <article key={video.id} className="carousel-slide">
               <VideoCard
                 key={video.id}
-                title={video.title}
-                thumbnailUrl={video.thumbnailUrl}
+                title={video.name}
+                thumbnailUrl="http://localhost:3310/assets/images/videoPreviewImages/apercu-ex.png" // TODO METTRE L'IMAGE APERCU DE LA VIDEO
               />
             </article>
           ))}
