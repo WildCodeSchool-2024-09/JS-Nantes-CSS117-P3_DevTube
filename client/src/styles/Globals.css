@@ -44,6 +44,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
+  background: var(--primary-color);
 }
 
 main {
@@ -210,8 +211,9 @@ input:focus {
     transition: all 100ms ease-in;
   }
 
+  /*  TODO  Hello team, do you like it because I'm not sure */
   .arrow-button:hover {
     height: 58px;
-    width: 50px;
+    width: 58px;
   }
 }
