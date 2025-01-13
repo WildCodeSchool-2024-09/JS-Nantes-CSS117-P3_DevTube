@@ -1,198 +1,200 @@
 import "/Users/utilisateur/Desktop/projet_trois/JS-Nantes-CSS117-P3_DevTube/client/src/styles/Globals.css";
-export default function Testimonials() {
-  return (
-    <div className="carde-contaient">
-      <div>
-        <div className="testimonials-section">
-          <header className="testimonials-header">
-            <h1>Testimonials</h1>
-            <button
-              type="button"
-              className="add-testimonial-btn"
-              aria-label="Add your testimonial"
-            >
-              Add my testimonial
-            </button>
-          </header>
-          <section className="testimonial-container">
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt=" of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p>John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p>John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="praisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-          </section>
-        </div>
-      </div>
-    </div>
-  );
+import "./../../styles/teamProfil/teamprofil.css";
+export default function profil() {
+	return (
+		<div>
+			<header className="header-container">
+				<h1>What’s DevTube ?</h1>
+				<p>
+					Lorem ipsum dolor sit amet consectetur, adipisicing elit. Accusamus
+					eveniet enim quisquam nisi sapiente, vel hic repellat! Omnis aperiam
+					temporibus animi ad suscipit ipsum libero sit magni sapiente autem?
+					Minus, reiciendis quae? Eveniet, totam quas inventore eos nam
+					veritatis, et est dignissimos porro expedita itaque? Ratione veniam
+					dignissimos excepturi dolor cupiditate, aliquam pariatur eius quasi
+					corrupti delectus libero eum in nihil accusamus amet dolores tempore
+					omnis quod unde nam et itaque fugit perferendis? Nihil assumenda iure
+					veniam eveniet debitis, necessitatibus aliquid laudantium suscipit
+					quod error id cumque commodi accusantium dolorum harum ea maxime quos
+					recusandae! Quis dolore nobis consequuntur! Ea?
+				</p>
+			</header>
+			<div className="all-of-the-cards">
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+				<div className="containers">
+					<div>
+						<div className="back_of_img">
+							<img className="profil-img" src="5097224.jpg" alt="profil-img" />
+						</div>
+					</div>
+					<section className="team-cardes">
+						<div className="team-info">
+							<h3>Prénom</h3>
+							<h3>Nom</h3>
+						</div>
+						<article className="team-prfile-icon">
+							<h3>titre</h3>
+							<div>
+								<img src="github-icon.png" alt="" />
+								<img src="linkedin-112 1.png" alt="" />
+							</div>
+						</article>
+						<div className="profil-contaient">
+							<p>
+								Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+								Tempora consequatur facilis ducimus, non architecto perferendis,
+								ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+								dolorum doloremque fugit qui unde voluptatem dignissimos autem
+								non
+							</p>
+						</div>
+					</section>
+				</div>
+			</div>
+		</div>
+	);
 }
