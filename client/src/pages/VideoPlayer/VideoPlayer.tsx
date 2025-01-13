@@ -1,6 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "../style/videoPlayer.css";
-import VideoCard from "../../components/VideoCard/VideoCard";
+// import VideoCard from "../../components/VideoCard/VideoCard";
 
 export default function VideoPlayer() {
   // TODO : variable for h1 (title of the video launched)
