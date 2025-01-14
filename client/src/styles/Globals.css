@@ -44,6 +44,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size);
+  background: var(--primary-color);
 }
 
 main {
@@ -177,6 +178,16 @@ textarea:focus {
   border: 2px solid var(--accent-color-1);
 }
 
+.little-cta {
+  outline: none;
+  border: 2px solid var(--accent-color-1);
+}
+
+.little-cta:focus {
+  outline: none;
+  border: 2px solid white;
+}
+
 @media screen and (min-width: 950px) {
   body {
     font-size: var(--body-font-family-desktop);
@@ -204,8 +215,9 @@ textarea:focus {
     transition: all 100ms ease-in;
   }
 
+  /*  TODO  Hello team, do you like it because I'm not sure */
   .arrow-button:hover {
     height: 58px;
-    width: 50px;
+    width: 58px;
   }
 }

@@ -1,0 +1,88 @@
+.carousel-wrapper {
+  position: relative;
+  /* margin-bottom: 52px; hauteur des boutons en mobile si on garde les fleches */
+  padding-bottom: 70px;
+}
+
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  overflow-x: auto;
+  width: 336px;
+  margin: auto;
+
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 500ms ease-in-out; /* Transition  entre les slides */
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.carousel-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+
+.carousel-arrows {
+  display: flex;
+  justify-content: space-between;
+}
+
+.carousel-arrow {
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  position: absolute;
+  top: 100%;
+  left: 2rem;
+
+  /*
+      hide arrows in mobile since we have the scroll snap feature
+    */
+  display: none;
+}
+
+.carousel-arrow.next {
+  left: auto;
+  right: 2rem;
+}
+
+.carousel-arrow:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+@media (min-width: 769px) {
+  .carousel-wrapper {
+    padding: 2rem;
+  }
+
+  .carousel-container {
+    width: calc(100% - 120px);
+    margin: auto;
+    overflow-x: hidden;
+  }
+
+  .carousel-arrow {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
+  }
+
+  .carousel-arrow.next {
+    left: auto;
+    right: 1rem;
+  }
+
+  .carousel-slide {
+    scroll-snap-align: initial;
+    scroll-snap-stop: initial;
+  }
+}

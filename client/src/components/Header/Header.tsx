@@ -40,14 +40,15 @@ export default function Header() {
               <NavLink to={"/freemium"}>Freemium</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Testimonials</NavLink>
+              <NavLink to={"/testimonials"}>Testimonials</NavLink>
             </li>
             <li>
               <NavLink to={"/login"}>Login</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Sign up</NavLink>
+              <NavLink to={"/subscribe"}>Sign up</NavLink>
             </li>
+
             <li>
               <input
                 type="text"
@@ -71,9 +72,9 @@ export default function Header() {
         <NavLink to={"/login"} className="btn-login">
           Login
         </NavLink>
-        <button type="button" className="little-cta">
+        <NavLink to={"/subscribe"} className="little-cta">
           Sign up
-        </button>
+        </NavLink>
       </section>
     </header>
   );
