@@ -61,7 +61,7 @@ export default function () {
   const { t } = useTranslation();
   const [infoVideos, setInfoVideos] = useState<Video[]>(); //undefined parce qu"il est nul au depart;
   useEffect(() => {
-    const urlForVideos = "http://localhost:3310/api/videos";
+    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
     recoverInfoVideos(urlForVideos);
   }, []);
 
