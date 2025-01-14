@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
+import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
 
@@ -52,13 +53,17 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
           }}
         >
           {videos.map((video) => (
-            <article key={video.id} className="carousel-slide">
+            <Link
+              to={`/video/${video.id}`}
+              key={video.id}
+              className="carousel-slide"
+            >
               <VideoCard
                 key={video.id}
                 title={video.name}
                 thumbnailUrl="http://localhost:3310/assets/images/videoPreviewImages/apercu-ex.png" // TODO METTRE L'IMAGE APERCU DE LA VIDEO
               />
-            </article>
+            </Link>
           ))}
         </div>
       </section>
