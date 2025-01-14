@@ -40,7 +40,7 @@ export default function Header() {
               <NavLink to={"/freemium"}>Freemium</NavLink>
             </li>
             <li>
-              <NavLink to={""}>Testimonials</NavLink>
+              <NavLink to={"/testimonials"}>Testimonials</NavLink>
             </li>
             <li>
               <NavLink to={"/login"}>Login</NavLink>
@@ -48,6 +48,7 @@ export default function Header() {
             <li>
               <NavLink to={"/subscribe"}>Sign up</NavLink>
             </li>
+
             <li>
               <input
                 type="text"

@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import HomePage from "./pages/homePage/HomePage";
+import Testimonials from "./pages/testimonial/Testimonial";
 
 export const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
       {
         path: "/profiluser",
         element: <ProfilUser />,
+      },
+      {
+        path: "/testimonials",
+        element: <Testimonials />,
       },
     ],
   },
