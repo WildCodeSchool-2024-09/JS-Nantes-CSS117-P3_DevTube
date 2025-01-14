@@ -1,0 +1,174 @@
+:root {
+  /* COLORS */
+  --primary-color: #0d0d0d;
+  --secondary-color: #131313;
+  --tertiary-color: #1c1e1f;
+  --text-color: #e6dbe3;
+  --accent-color-1: #fc666a;
+  --accent-color-2: #fc8f70;
+  /*FONT TITLE H1*/
+  --title-font-family: "Manrope", sans-serif;
+  --title-font-weight: bold;
+  --title-font-size-mobile: 20px;
+  --title-font-size-desktop: 30px;
+  /*FONT SUBTITLE H2*/
+  --sub-title-font-family: "Manrope", sans-serif;
+  --sub-title-font-weight: bold;
+  --sub-title-font-size-mobile: 16px;
+  --sub-title-font-size-desktop: 24px;
+  /*BODY*/
+  --body-font-family: "Inria Sans", sans-serif;
+  --body-font-size: 12px;
+  --body-font-family-desktop: 20px;
+}
+
+.team-info h3 {
+  margin-right: 5px;
+}
+.top-pragraph {
+  width: 50%;
+}
+.header-container {
+  padding-bottom: 50px;
+  margin: auto;
+}
+.top-titel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.top-titel h1 {
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.profil-img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-items: center;
+}
+.back_of_img {
+  border-right: var(--primary-color) 2px solid;
+  height: 179px;
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.team-info h3 {
+  font-size: 16px;
+  color: var(--text-color);
+}
+
+.team-prfile-icon h3 {
+  color: var(--accent-color-1);
+  font-weight: bold;
+}
+
+.team-info {
+  display: flex;
+}
+.containers {
+  display: flex;
+  width: 550px;
+  height: 185px;
+  padding: 2px;
+  margin: 30px;
+}
+
+.team-prfile-icon {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--accent-color-1);
+}
+.team-prfile-icon img {
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
+}
+
+.profil-contaient {
+  display: flex;
+  height: 165px;
+}
+
+.profil-contaient p {
+  font-size: 15px;
+}
+.team-cardes {
+  background-color: var(--secondary-color);
+}
+
+@media screen and (min-width: 950px) {
+  .all-of-the-cards {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+    justify-content: center;
+  }
+  .team-info h3 {
+    margin-right: 5px;
+  }
+  .team-cardes {
+    background-color: var(--secondary-color);
+  }
+  .header-container {
+    display: flex;
+    flex-direction: column;
+  }
+  .header-container h1 {
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profil-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+  }
+  .back_of_img {
+    background: var(--tertiary-color);
+    border-right: var(--primary-color) 2px solid;
+    height: 179px;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .team-info h3 {
+    font-size: 16px;
+  }
+
+  .team-prfile-icon h3 {
+    color: var(--accent-color-1);
+    font-weight: bold;
+  }
+
+  .team-info {
+    display: flex;
+  }
+
+  .team-prfile-icon {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--accent-color-1);
+  }
+  .team-prfile-icon img {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+  }
+
+  .profil-contaient {
+    display: flex;
+    height: 165px;
+  }
+
+  .profil-contaient p {
+    font-size: 15px;
+  }
+}

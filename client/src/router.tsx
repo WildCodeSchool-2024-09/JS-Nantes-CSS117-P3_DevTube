@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import TeamProfile from "./components/profil-team/Team-Profil";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
@@ -14,6 +15,10 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/teamprofil",
+        element: <TeamProfile />,
       },
       {
         path: "/subscribe",
