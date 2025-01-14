@@ -17,7 +17,7 @@ content-type: application/json
   "confirm_password": "tata",
   "github_url": "github",
   "linkedin_url": "linkedin",
-  "profil_img": "coucou",
+  "profil_img": "coucou"
 }
 
 ###
@@ -41,7 +41,7 @@ content-type: application/json
 
 ###
 
-DELETE http://localhost:3310/api/users/1
+DELETE http://localhost:3310/api/users/3
 
 ###
 
