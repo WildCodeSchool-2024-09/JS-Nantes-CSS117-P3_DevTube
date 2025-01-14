@@ -1,14 +1,16 @@
 CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  email VARCHAR(45) NOT NULL,
-  github_url VARCHAR(100),
-  linkedin_url VARCHAR(100),
   firstname  VARCHAR(45) NOT NULL,
   lastname  VARCHAR(45) NOT NULL,
-  level  INT NOT NULL DEFAULT 0,
-  register_date DATE NOT NULL,
+  email VARCHAR(45) NOT NULL,
+  password VARCHAR(45) NOT NULL,
+  confirm_password VARCHAR(45) NOT NULL,
+  github_url VARCHAR(80),
+  linkedin_url VARCHAR(80),
+  level INT NOT NULL DEFAULT 0,
+  register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   profil_img VARCHAR(200),
-  is_admin  BOOLEAN NOT NULL DEFAULT FALSE
+  is_admin  TINYINT DEFAULT 0 NOT NULL
 );
 
 CREATE TABLE category (
@@ -38,11 +40,11 @@ CREATE TABLE favorite (
   FOREIGN KEY (video_id) REFERENCES video(id)
 );
 
-INSERT INTO user (email, github_url, linkedin_url, firstname, lastname, level, register_date, profil_img, is_admin)
+INSERT INTO user (firstname, lastname, email, password, confirm_password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
-  ("emilie.deduyver@gmail.com", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", "Emilie", "De Duyver", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
-  ("fabrice.atlan.56@gmail.com", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", "Fabrice", "Atlan", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
-  ("iadam606@yahoo.fr", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", "Ibrahim", "Yahiaya Adam", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
+  ("Emilie", "De Duyver", "emilie.deduyver", "mdp", "mdp", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
+  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "mdp", "mdp", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "mdp", "mdp", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
 INSERT INTO category (name)
 VALUES
@@ -66,7 +68,3 @@ VALUES
   ("Responsive - Partie 1", "7", "/assets/videos/Worksop2-HTML&CSS(part1).mp4", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
   ("Responsive - Partie 2", "4", "/assets/videos/Worksop2-HTML&CSS(part2).mp4", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
   ("Responsive - Partie 3", "5", "/assets/videos/Worksop2-HTML&CSS(part3).mp4", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
-
-  
-
-

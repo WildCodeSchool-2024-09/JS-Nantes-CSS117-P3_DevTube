@@ -10,9 +10,9 @@
   justify-content: center;
   width: 300px;
   height: fit-content;
+  margin: 5rem 0;
   padding: 2rem 1.5rem;
   gap: 1.5rem;
-  transform: translateY(150px);
   background-color: var(--tertiary-color);
 }
 .form-subscribe-label {
