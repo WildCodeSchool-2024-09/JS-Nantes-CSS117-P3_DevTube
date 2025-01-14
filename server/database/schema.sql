@@ -13,11 +13,6 @@ CREATE TABLE user (
   is_admin  TINYINT DEFAULT 0 NOT NULL
 );
 
-<<<<<<< HEAD
-INSERT INTO user (email, github_url, linkedin_url, firstname, lastname, level, register_date, profil_img, is_admin)
-VALUES
-  ("emilie.deduyver", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", "Emilie", "De Duyver", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true);
-=======
 CREATE TABLE category (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   name VARCHAR(45) NOT NULL
@@ -73,4 +68,3 @@ VALUES
   ("Responsive - Partie 1", "7", "/assets/videos/Worksop2-HTML&CSS(part1).mp4", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
   ("Responsive - Partie 2", "4", "/assets/videos/Worksop2-HTML&CSS(part2).mp4", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
   ("Responsive - Partie 3", "5", "/assets/videos/Worksop2-HTML&CSS(part3).mp4", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
->>>>>>> ebed6bff408d791caca5a24ba63bd8e55e61df75
