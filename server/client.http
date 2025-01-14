@@ -10,21 +10,6 @@ POST http://localhost:3310/api/users HTTP/1.1
 content-type: application/json
 
 {
-<<<<<<< HEAD
-  "email": "pupu@gmail.com",
-  "github_url": "github",
-  "linkedin_url": "linkedin",
-  "firstname": "Fabrice",
-  "lastname": "Atlan",
-  "level": 2,
-  "register_date": "2025/01/10",
-  "profil_img": "coucou",
-  "is_admin": false
-}
-
-###
-PUT http://localhost:3310/api/users/1 HTTP/1.1
-=======
   "firstname": "popo",
   "lastname": "pipi",
   "email": "pupu@gmail.com",
@@ -38,7 +23,6 @@ PUT http://localhost:3310/api/users/1 HTTP/1.1
 ###
 
 PUT http://localhost:3310/api/users/2 HTTP/1.1
->>>>>>> ebed6bff408d791caca5a24ba63bd8e55e61df75
 content-type: application/json
 
 {
@@ -56,9 +40,6 @@ content-type: application/json
 }
 
 ###
-<<<<<<< HEAD
-DELETE http://localhost:3310/api/users/2 HTTP/1.1
-=======
 
 DELETE http://localhost:3310/api/users/3
 
@@ -107,4 +88,3 @@ content-type: application/json
 ###
 
 DELETE http://localhost:3310/api/videos/3
->>>>>>> ebed6bff408d791caca5a24ba63bd8e55e61df75
