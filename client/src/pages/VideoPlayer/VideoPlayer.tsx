@@ -25,6 +25,11 @@ export default function VideoPlayer() {
   //2. utiliser les data de la video
   //Soit fetch useEffect, soit loader
 
+  // useEffect(() => {
+  //   const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${id}`;
+  //   recoverInfoVideos(urlForVideos);
+  // }, []);
+
   return id ? (
     <>
       <h1 className="title-video-player-page">Video Title</h1>
