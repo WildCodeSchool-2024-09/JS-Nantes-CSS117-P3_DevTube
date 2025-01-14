@@ -1,7 +1,7 @@
 import "../../styles/testimonial.css";
 export default function Testimonials() {
   return (
-    <div className="carde-contaient">
+    <div className="card-container">
       <div>
         <div className="testimonials-section">
           <header className="testimonials-header">
@@ -21,7 +21,7 @@ export default function Testimonials() {
                   <img
                     className="testimonial-image"
                     src="5097224.jpg"
-                    alt=" of the person giving the testimonial"
+                    alt="presentation of the person giving the testimonial"
                   />
                 </div>
 
