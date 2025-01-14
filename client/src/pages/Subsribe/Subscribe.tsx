@@ -1,47 +1,27 @@
-import { useState } from "react";
+import { useRef } from "react";
 import "../../styles/Subscribe.css";
 
 export default function Subscribe() {
-  const [data, setData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    password: "",
-    confirm_password: "",
-    github_url: "",
-    linkedin_url: "",
-    profil_img: "",
-  });
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
-  };
+  const formRef = useRef<HTMLFormElement | null>(null);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+
     try {
-      const response = await fetch("http://localhost:3310/api/users", {
-        method: "POST",
-        headers: { "Content-type": "application/json" },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users`,
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
 
       if (response.ok) {
-        // Resetting fields
-        setData({
-          firstname: "",
-          lastname: "",
-          email: "",
-          password: "",
-          confirm_password: "",
-          github_url: "",
-          linkedin_url: "",
-          profil_img: "",
-        });
+        formRef.current?.reset();
       }
     } catch (error) {
       console.error(error);
@@ -50,7 +30,11 @@ export default function Subscribe() {
 
   return (
     <section className="main-form-subscribe">
-      <form className="form-subscribe-container" onSubmit={handleSubmit}>
+      <form
+        className="form-subscribe-container"
+        ref={formRef}
+        onSubmit={handleSubmit}
+      >
         <section className="form-subscribe-label">
           <label id="firstname" htmlFor="firstname">
             First name
@@ -58,8 +42,6 @@ export default function Subscribe() {
           <input
             type="text"
             name="firstname"
-            value={data.firstname}
-            onChange={handleChange}
             aria-labelledby="firstname"
             placeholder="Enter your first name."
             required
@@ -73,8 +55,6 @@ export default function Subscribe() {
           <input
             type="text"
             name="lastname"
-            value={data.lastname}
-            onChange={handleChange}
             aria-labelledby="lastname"
             placeholder="Enter your last name."
             required
@@ -88,8 +68,6 @@ export default function Subscribe() {
           <input
             type="email"
             name="email"
-            value={data.email}
-            onChange={handleChange}
             aria-labelledby="email"
             placeholder="Enter your email."
             required
@@ -103,8 +81,6 @@ export default function Subscribe() {
           <input
             type="password"
             name="password"
-            value={data.password}
-            onChange={handleChange}
             aria-labelledby="password"
             placeholder="Enter your password."
             required
@@ -118,8 +94,6 @@ export default function Subscribe() {
           <input
             type="password"
             name="confirm_password"
-            value={data.confirm_password}
-            onChange={handleChange}
             aria-labelledby="confirm_password"
             placeholder="Confirm your password."
             required
@@ -133,8 +107,6 @@ export default function Subscribe() {
           <input
             type="text"
             name="github_url"
-            value={data.github_url}
-            onChange={handleChange}
             aria-labelledby="github_url"
             placeholder="Enter your GitHub."
           />
@@ -147,8 +119,6 @@ export default function Subscribe() {
           <input
             type="text"
             name="linkedin_url"
-            value={data.linkedin_url}
-            onChange={handleChange}
             aria-labelledby="linkedin_url"
             placeholder="Enter your Linkedin URL."
           />
@@ -161,8 +131,6 @@ export default function Subscribe() {
           <input
             type="image"
             name="profil_img"
-            value={data.profil_img}
-            onChange={handleChange}
             aria-labelledby="profil-image"
             placeholder="Drag the user's profil image."
             required
