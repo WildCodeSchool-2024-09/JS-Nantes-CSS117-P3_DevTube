@@ -3,6 +3,7 @@ import App from "./App";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
+import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import HomePage from "./pages/homePage/HomePage";
 
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
       {
         path: "/freemium",
         element: <Freemium />,
+      },
+      {
+        path: "/profiluser",
+        element: <ProfilUser />,
       },
     ],
   },
