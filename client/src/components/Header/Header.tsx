@@ -84,7 +84,11 @@ export default function Header() {
         onClick={() => setTheme(!theme)}
         className="button-switch-theme"
       >
-        <img className="img-light-mode" src="light_mode.png" alt="" />
+        <img
+          className="icon-switch-theme"
+          src={theme ? "dark_mode.png" : "light_mode.png"}
+          alt=""
+        />
       </button>
       <section className="login-sign-up-container">
         <NavLink to={"/login"} className="btn-login">
