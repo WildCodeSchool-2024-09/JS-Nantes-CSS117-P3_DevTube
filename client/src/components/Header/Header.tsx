@@ -79,7 +79,11 @@ export default function Header() {
         aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
       />
-      <button type="button" onClick={() => setTheme(!theme)}>
+      <button
+        type="button"
+        onClick={() => setTheme(!theme)}
+        className="button-switch-theme"
+      >
         <img className="img-light-mode" src="light_mode.png" alt="" />
       </button>
       <section className="login-sign-up-container">

@@ -22,13 +22,14 @@
 .devTube-title {
   color: var(--accent-color-1);
 }
-.img-light-mode {
-  cursor: pointer;
+
+.button-switch-theme {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+}
+.img-light-mode {
   width: 25px;
-  height: auto;
 }
 .btn-burger-menu {
   width: 35px;
