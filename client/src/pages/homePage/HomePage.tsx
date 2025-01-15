@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import HeroSlider from "../../components/Carousels/HeroSlider";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import "../../styles/HomePage.css";
@@ -55,18 +56,20 @@ const videosData = [
 ];
 
 export default function () {
+  const { t } = useTranslation();
+
   return (
     <div className="home-page">
       <section>
-        <h1 className="home-page-title">Welcome to DevTube</h1>
+        <h1 className="home-page-title">{t("title-homePage")}</h1>
         <HeroSlider videos={videosData} />
       </section>
       <section>
-        <h2 className="home-page-subtitle">Popular</h2>
+        <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
         <MiniVideoCarousel videos={videosData} />
       </section>
       <section>
-        <h2 className="home-page-subtitle">New in</h2>
+        <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
         <MiniVideoCarousel videos={videosData} />
       </section>
     </div>
