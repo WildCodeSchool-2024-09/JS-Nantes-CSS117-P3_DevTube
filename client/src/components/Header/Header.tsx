@@ -78,6 +78,9 @@ export default function Header() {
         onClick={handleClick}
         aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
+        style={{
+          backgroundImage: `url(${theme ? "search-icon-for-light-theme.png" : "search-bar.png"})`,
+        }}
       />
       <button
         type="button"
