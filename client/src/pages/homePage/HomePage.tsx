@@ -59,7 +59,7 @@ import type { Video } from "../../types/video";
 
 export default function () {
   const { t } = useTranslation();
-  const [infoVideos, setInfoVideos] = useState<Video[]>(); //undefined parce qu"il est nul au depart;
+  const [infoVideos, setInfoVideos] = useState<Video[]>();
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
     recoverInfoVideos(urlForVideos);

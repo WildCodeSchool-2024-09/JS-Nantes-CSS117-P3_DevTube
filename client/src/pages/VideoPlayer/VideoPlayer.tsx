@@ -1,34 +1,33 @@
 import { useTranslation } from "react-i18next";
 import "../../styles/videoPlayer.css";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import VideoCard from "../../components/VideoCard/VideoCard";
 import type { Video } from "../../types/video";
 // import VideoCard from "../../components/VideoCard/VideoCard";
 
 export default function VideoPlayer() {
-  // TODO : variable for h1 (title of the video launched)
   const { t } = useTranslation();
-  const {
-    id,
-    thumbnail,
-    // name,
-    // duration,
-    //
-    // description,
-    // category_id,
-    // is_freemium,
-    // added_date,
-    // is_heroSlide,
-    // is_popular,
-  } = useLoaderData() as Video;
-  // console.log({ props: Object.keys(data) });
-  //1. fetcher l'api sur le endpoint video id
-  //2. utiliser les data de la video
-  //Soit fetch useEffect, soit loader
+  const [videos, setVideos] = useState<Video[]>();
+  const { id, thumbnail, description, category_id } = useLoaderData() as Video;
 
-  // useEffect(() => {
-  //   const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${id}`;
-  //   recoverInfoVideos(urlForVideos);
-  // }, []);
+  useEffect(() => {
+    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${category_id}`;
+    recoverInfoVideos(urlForVideos);
+  }, [category_id]);
+  // TODO : DON'T DISPLAY THE CUTTENT VIDEO OF THE PLAYER IN THE VIDEOS OF THE SAME CATEGORY
+
+  async function recoverInfoVideos(url: string) {
+    if (url) {
+      try {
+        const request = await fetch(url);
+        const datas = await request.json();
+        setVideos(datas);
+      } catch (error) {
+        alert("Sorry, we met a problem. Please, come back later.");
+      }
+    }
+  }
 
   return id ? (
     <>
@@ -36,30 +35,28 @@ export default function VideoPlayer() {
       <div>PLAYER</div>
       <section className="description-video">
         <h2>{t("description-title")}</h2>
-        <p className="text-description-video">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
-        </p>
+        <p className="text-description-video">{description}</p>
       </section>
       <video controls muted width="1024" poster="">
         <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
       </video>
       <section className="category-video">
         <h2>{t("category-title")}</h2>
-        <div className="card-video-container">
-          {/* <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard />
-          <VideoCard /> */}
-        </div>
+        <article className="card-video-container">
+          {videos?.map((video) => (
+            <a
+              href={`/video/${video.id}`}
+              key={video.id}
+              className="carousel-slide"
+            >
+              <VideoCard
+                key={video.id}
+                title={video.name}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
+              />
+            </a>
+          ))}
+        </article>
       </section>
     </>
   ) : null; // si je n'ai pas d'id je retourne null -> en faisant ça on s'assure que la data soit bien chargée avant de retourner le composant
