@@ -7,7 +7,7 @@ export default function Login() {
         {/* Section username */}
         <section className="form-login-label">
           <label id="username" htmlFor="username">
-            Username
+            User name
           </label>
           <input
             type="text"

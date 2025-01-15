@@ -1,34 +1,38 @@
 GET http://localhost:3310/api/users
+
 ###
 
 GET http://localhost:3310/api/users/1
+
 ###
 
 POST http://localhost:3310/api/users HTTP/1.1
 content-type: application/json
 
 {
-  "email": "pupu@gmail.com",
-  "github_url": "github",
-  "linkedin_url": "linkedin",
   "firstname": "popo",
   "lastname": "pipi",
-  "level": 2,
-  "register_date": "2025/01/10",
-  "profil_img": "coucou",
-  "is_admin": true
+  "email": "pupu@gmail.com",
+  "password": "tata",
+  "confirm_password": "tata",
+  "github_url": "github",
+  "linkedin_url": "linkedin",
+  "profil_img": "coucou"
 }
 
 ###
+
 PUT http://localhost:3310/api/users/2 HTTP/1.1
 content-type: application/json
 
 {
+  "firstname": "popo",
+  "lastname": "pipi",
   "email": "pupu@gmail.com",
+  "password": "tata",
+  "confirm_password": "tata",
   "github_url": "github",
   "linkedin_url": "linkedin",
-  "firstname": "popo",
-  "lastname": "choubidou",
   "level": 2,
   "register_date": "2025/01/10",
   "profil_img": "coucou",
@@ -36,13 +40,17 @@ content-type: application/json
 }
 
 ###
-DELETE http://localhost:3310/api/users/1
+
+DELETE http://localhost:3310/api/users/3
 
 ###
+
 GET http://localhost:3310/api/videos
+
 ###
 
 GET http://localhost:3310/api/videos/5
+
 ###
 
 POST http://localhost:3310/api/videos HTTP/1.1
@@ -61,6 +69,7 @@ content-type: application/json
 }
 
 ###
+
 PUT http://localhost:3310/api/videos/2 HTTP/1.1
 content-type: application/json
 

@@ -6,6 +6,7 @@ import Login from "./pages/Login/Login";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
+import Testimonials from "./pages/testimonial/Testimonial";
 
 export const router = createBrowserRouter([
   {
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) => {
           return fetch(`http://localhost:3310/api/videos/${params.id}`);
         },
+      },
+      {
+        path: "/testimonials",
+        element: <Testimonials />,
       },
     ],
   },
