@@ -73,113 +73,107 @@ export default function Subscribe() {
   };
 
   return (
-    <>
-      <section className="form-subscribe-container">
-        <h1>Subscribe</h1>
+    <section className="form-subscribe-container">
+      <h1>Subscribe</h1>
 
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          encType="multipart/form-data"
+      <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data">
+        <label id="firstname" htmlFor="firstname">
+          First name
+        </label>
+        <input
+          type="text"
+          name="firstname"
+          aria-labelledby="firstname"
+          placeholder="Enter your first name."
+          required
+        />
+
+        <label id="lastname" htmlFor="lastname">
+          Last name
+        </label>
+        <input
+          type="text"
+          name="lastname"
+          aria-labelledby="lastname"
+          placeholder="Enter your last name."
+          required
+        />
+
+        <label id="email" htmlFor="email">
+          Email
+        </label>
+        <input
+          type="email"
+          name="email"
+          aria-labelledby="email"
+          placeholder="Enter your email."
+          required
+        />
+
+        <label id="password" htmlFor="password">
+          Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          aria-labelledby="password"
+          placeholder="Enter your password."
+          required
+        />
+
+        <label id="confirm_password" htmlFor="confirm_password">
+          Confirm your password
+        </label>
+        <input
+          type="password"
+          name="confirm_password"
+          aria-labelledby="confirm_password"
+          placeholder="Confirm your password."
+          required
+        />
+
+        <label id="github_url" htmlFor="github_url">
+          GitHub URL
+        </label>
+        <input
+          type="text"
+          name="github_url"
+          aria-labelledby="github_url"
+          placeholder="Enter your GitHub."
+        />
+
+        <label id="linkedin_url" htmlFor="linkedin_url">
+          Linkedin URL
+        </label>
+        <input
+          type="text"
+          name="linkedin_url"
+          aria-labelledby="linkedin_url"
+          placeholder="Enter your Linkedin URL."
+        />
+
+        <section
+          onDragOver={handleDragOver}
+          onDrop={handleDrop}
+          onChange={handleFileChange}
         >
-          <label id="firstname" htmlFor="firstname">
-            First name
+          <label htmlFor="profil-image" id="profil-image">
+            Profile image
           </label>
-          <input
-            type="text"
-            name="firstname"
-            aria-labelledby="firstname"
-            placeholder="Enter your first name."
-            required
-          />
 
-          <label id="lastname" htmlFor="lastname">
-            Last name
-          </label>
-          <input
-            type="text"
-            name="lastname"
-            aria-labelledby="lastname"
-            placeholder="Enter your last name."
-            required
-          />
-
-          <label id="email" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="email"
-            name="email"
-            aria-labelledby="email"
-            placeholder="Enter your email."
-            required
-          />
-
-          <label id="password" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="password"
-            name="password"
-            aria-labelledby="password"
-            placeholder="Enter your password."
-            required
-          />
-
-          <label id="confirm_password" htmlFor="confirm_password">
-            Confirm your password
-          </label>
-          <input
-            type="password"
-            name="confirm_password"
-            aria-labelledby="confirm_password"
-            placeholder="Confirm your password."
-            required
-          />
-
-          <label id="github_url" htmlFor="github_url">
-            GitHub URL
-          </label>
-          <input
-            type="text"
-            name="github_url"
-            aria-labelledby="github_url"
-            placeholder="Enter your GitHub."
-          />
-
-          <label id="linkedin_url" htmlFor="linkedin_url">
-            Linkedin URL
-          </label>
-          <input
-            type="text"
-            name="linkedin_url"
-            aria-labelledby="linkedin_url"
-            placeholder="Enter your Linkedin URL."
-          />
-
-          <section
-            onDragOver={handleDragOver}
-            onDrop={handleDrop}
-            onChange={handleFileChange}
-          >
-            <label htmlFor="profil-image" id="profil-image">
-              Profile image
-            </label>
-
-            <section className="image-container">
-              {imgSrc ? (
-                <img src={imgSrc} alt="User's photo." />
-              ) : (
-                <p>Drag a thumbnail for your video here</p>
-              )}
-            </section>
+          <section className="image-container">
+            {imgSrc ? (
+              <img src={imgSrc} alt="User's photo." />
+            ) : (
+              <p>Drag a thumbnail for your video here</p>
+            )}
           </section>
+        </section>
 
-          <button type="submit" className="little-cta">
-            Sign up
-          </button>
-        </form>
-      </section>
-    </>
+        <button type="submit" className="little-cta">
+          Sign up
+        </button>
+      </form>
+    </section>
   );
 }
