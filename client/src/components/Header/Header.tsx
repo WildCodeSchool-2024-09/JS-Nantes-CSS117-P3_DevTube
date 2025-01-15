@@ -1,10 +1,22 @@
 import { NavLink } from "react-router-dom";
 import "../../styles/Header.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import useTheme from "../../utils/useTheme";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
+  const { theme, setTheme } = useTheme();
+
+  useEffect(() => {
+    if (theme) {
+      document.body.classList.add("light");
+      document.body.classList.remove("dark");
+    } else {
+      document.body.classList.add("dark");
+      document.body.classList.remove("light");
+    }
+  }, [theme]);
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -67,7 +79,9 @@ export default function Header() {
         aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
       />
-      <img className="img-light-mode" src="light_mode.png" alt="" />
+      <button type="button" onClick={() => setTheme(!theme)}>
+        <img className="img-light-mode" src="light_mode.png" alt="" />
+      </button>
       <section className="login-sign-up-container">
         <NavLink to={"/login"} className="btn-login">
           Login
