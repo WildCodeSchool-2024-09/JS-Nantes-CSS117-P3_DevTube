@@ -57,7 +57,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
           <div
             className="carousel-track"
             style={{
-              // on translate la track de la laregeur d une carte / par l'index courant en pourcentage
+              // on translate la track de la largeur d une carte / par l'index courant en pourcentage
               transform:
                 currentIndex === 0
                   ? undefined
