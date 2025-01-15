@@ -4,8 +4,8 @@ import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
 import Subscribe from "./pages/Subsribe/Subscribe";
-import Formulaire from "./pages/furmulair";
 import HomePage from "./pages/homePage/HomePage";
+import Testimonials from "./pages/testimonial/Testimonial";
 
 export const router = createBrowserRouter([
   {
@@ -33,8 +33,8 @@ export const router = createBrowserRouter([
         element: <Freemium />,
       },
       {
-        path: "/formulaire",
-        element: <Formulaire />,
+        path: "/testimonials",
+        element: <Testimonials />,
       },
     ],
   },
