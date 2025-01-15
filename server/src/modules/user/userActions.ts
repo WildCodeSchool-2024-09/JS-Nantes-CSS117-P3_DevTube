@@ -74,8 +74,6 @@ const remove: RequestHandler = async (req, res, next) => {
     if (userDeleted) {
       res.status(200).send("The user has been removed !");
     } else {
-      res.sendStatus(404);
-      res.send("Pas ok !");
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
