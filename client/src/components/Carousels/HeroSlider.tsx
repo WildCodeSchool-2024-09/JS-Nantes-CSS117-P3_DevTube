@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
 import VideoCard from "../VideoCard/VideoCard";
+import useTheme from "../../utils/useTheme";
 
 interface Video {
   id: string;
@@ -14,6 +15,7 @@ interface HeroSliderProps {
 
 const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { theme } = useTheme();
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -49,7 +51,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-left-white.png"
+            src={
+              theme
+                ? "/arrow-left-for-light-theme.png"
+                : "/arrow-left-white.png"
+            }
             alt="arrow left"
           />
         </button>
@@ -95,7 +101,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-right-white.svg"
+            src={
+              theme
+                ? "/arrow-right-for-light-theme.png"
+                : "/arrow-right-white.svg"
+            }
             alt="arrow right"
           />
         </button>

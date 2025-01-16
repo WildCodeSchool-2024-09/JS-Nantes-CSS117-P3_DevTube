@@ -1,6 +1,5 @@
 .carousel-wrapper {
   position: relative;
-  /* margin-bottom: 52px; hauteur des boutons en mobile si on garde les fleches */
   padding-bottom: 70px;
 }
 
@@ -39,11 +38,7 @@
   position: absolute;
   top: 100%;
   left: 2rem;
-
-  /*
-      hide arrows in mobile since we have the scroll snap feature
-    */
-  display: none;
+  display: none; /* hide arrows in mobile since we have the scroll snap feature*/
 }
 
 .carousel-arrow.next {
