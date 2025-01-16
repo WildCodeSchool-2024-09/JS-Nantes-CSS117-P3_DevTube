@@ -10,14 +10,12 @@
   overflow-x: auto;
   width: 336px;
   margin: auto;
-
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
 }
 
 .carousel-track {
   display: flex;
-  gap: 18px;
   transition: transform 500ms ease-in-out; /* Transition  entre les slides */
   align-items: center;
   justify-content: flex-start;
@@ -26,6 +24,7 @@
 .carousel-slide {
   scroll-snap-align: start;
   scroll-snap-stop: always;
+  padding: 9px;
 }
 
 .carousel-arrows {
