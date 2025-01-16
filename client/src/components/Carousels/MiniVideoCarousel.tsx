@@ -27,7 +27,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
     }
   };
 
-  const slideWidthPixels = 300 + 18;
+  const slideWidthPixels = 300 + 18; //on ajoute la shadow
   const trackWidthPixels = videos.length * slideWidthPixels;
 
   return (

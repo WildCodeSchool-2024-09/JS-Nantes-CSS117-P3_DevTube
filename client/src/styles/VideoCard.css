@@ -24,6 +24,7 @@
 
 .video-card-large {
   width: 100%;
+  box-shadow: none;
 }
 
 .video-card-large .video-item {
