@@ -1,7 +1,7 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
-import VideoCard from "../VideoCard/VideoCard";
 import useTheme from "../../utils/useTheme";
+import VideoCard from "../VideoCard/VideoCard";
 
 interface Video {
   id: string;
