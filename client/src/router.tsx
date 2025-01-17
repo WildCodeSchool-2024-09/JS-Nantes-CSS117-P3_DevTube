@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import About from "./pages/About/About";
+import Admin from "./pages/Admin/Admin";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
@@ -10,12 +12,20 @@ import Testimonials from "./pages/testimonial/Testimonial";
 
 export const router = createBrowserRouter([
   {
-    path: "/", // The root path
-    element: <App />, // Renders the App component for the home page
+    path: "/",
+    element: <App />,
     children: [
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
       {
         path: "/",
         element: <HomePage />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
       {
         path: "/subscribe",
@@ -37,7 +47,9 @@ export const router = createBrowserRouter([
         path: "/video/:id",
         element: <VideoPlayer />,
         loader: ({ params }) => {
-          return fetch(`http://localhost:3310/api/videos/${params.id}`);
+          return fetch(
+            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+          );
         },
       },
       {
@@ -46,5 +58,4 @@ export const router = createBrowserRouter([
       },
     ],
   },
-  // Try adding a new route! For example, "/about" with an About component
 ]);

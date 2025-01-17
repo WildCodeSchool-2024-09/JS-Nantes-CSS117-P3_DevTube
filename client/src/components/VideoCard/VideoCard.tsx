@@ -26,7 +26,7 @@ function VideoCard({
         {displayCardInfo ? (
           <section className="card-footer">
             <div className="first-row-card-footer">
-              <p className="videoTitle">{title}</p>
+              <p className="video-title">{title}</p>
               <div className="time-video-wrapper">
                 <img className="clock-icon" src="/clock.png" alt="clock" />
                 <p className="time">60 min</p>
