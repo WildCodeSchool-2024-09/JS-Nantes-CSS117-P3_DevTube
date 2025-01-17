@@ -49,6 +49,11 @@ router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 router.delete("/api/videos/:id", videoActions.remove);
 
+import categoryActions from "./modules/category/categoryActions";
+
+router.get("/api/category/:id", categoryActions.read);
+//vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
+
 /* ************************************************************************* */
 
 export default router;

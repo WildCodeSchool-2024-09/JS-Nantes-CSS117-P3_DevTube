@@ -1,12 +1,8 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
+import { Link } from "react-router-dom";
+import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
-
-interface Video {
-  id: string;
-  thumbnailUrl: string;
-  title: string;
-}
 
 interface HeroSliderProps {
   videos: Video[];
@@ -68,7 +64,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
             }}
           >
             {videos.map((video) => (
-              <div
+              <Link
+                to={`/video/${video.id}`}
                 className="carousel-slide"
                 key={video.id}
                 style={{
@@ -78,12 +75,12 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
                 }}
               >
                 <VideoCard
-                  title={video.title}
+                  title={video.name}
                   thumbnailUrl="https://placehold.co/1024x480"
                   isLarge
                   displayCardInfo={false}
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>

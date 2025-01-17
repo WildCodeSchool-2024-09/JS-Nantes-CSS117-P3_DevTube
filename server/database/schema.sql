@@ -61,10 +61,14 @@ VALUES
 
 INSERT INTO video (name, duration, thumbnail, description, category_id, is_freemium, added_date, is_heroSlide, is_popular)
 VALUES 
-  ("Integration d'une maquette - Partie 1", "27", "/assets/videos/Quest-Welcomeonboard(part1).mp4", "Entraîne toi à reproduire une maquette en HTML", 1, false, "2025-11-01", true, true),
-  ("Integration d'une maquette - Partie 2", "17", "/assets/videos/Quest-Welcomeonboard(part2).mp4", "Ajoute le CSS pour reproduire une maquette", 2, true, "2025-11-01", true, false),
-  ("Basics HTML & CSS - Partie 1", "12", "/assets/videos/Worksop1-HTML&CSS(Part1).mp4", "Structure ton site web avec des balises sémantiques", 1, false, "2025-11-01", true, false),
-  ("Basics HTML & CSS - Partie 2", "12", "/assets/videos/Worksop1-HTML&CSS(Part2).mp4", "Donne du style à ton site web avec les propriétés CSS", 2, true, "2025-11-01", true, true),
-  ("Responsive - Partie 1", "7", "/assets/videos/Worksop2-HTML&CSS(part1).mp4", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
-  ("Responsive - Partie 2", "4", "/assets/videos/Worksop2-HTML&CSS(part2).mp4", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
-  ("Responsive - Partie 3", "5", "/assets/videos/Worksop2-HTML&CSS(part3).mp4", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
+  ("Integration - Partie 1", "27", "/assets/videos/Quest-Welcomeonboard(part1).mp4", "Entraîne toi à reproduire une maquette en HTML", 1, false, "2025-11-01", true, true),
+  ("Integration - Partie 2", "17", "/assets/videos/Quest-Welcomeonboard(part2).mp4", "Ajoute le CSS pour reproduire une maquette", 2, true, "2025-11-01", true, false),
+  ("Basics HTML & CSS - Partie 1", "12", "/assets/videos/Workshop1-HTML&CSS(Part1).mp4", "Structure ton site web avec des balises sémantiques", 1, false, "2025-11-01", true, false),
+  ("Basics HTML & CSS - Partie 2", "12", "/assets/videos/Workshop1-HTML&CSS(Part2).mp4", "Donne du style à ton site web avec les propriétés CSS", 2, true, "2025-11-01", true, true),
+  ("Responsive - Partie 1", "7", "/assets/videos/Workshop2-HTML&CSS-Responsive(part1).mp4", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
+  ("Responsive - Partie 2", "4", "/assets/videos/Workshop2-HTML&CSS-Responsive(part2).mp4", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
+  ("Responsive - Partie 3", "5", "/assets/videos/Workshop2-HTML&CSS-Responsive(part3).mp4", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
+
+  
+
+
