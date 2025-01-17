@@ -72,8 +72,13 @@ body {
   --shadow-color: rgb(0 0 0 / 90%);
 }
 
+header {
+  color: var(--text-color);
+}
+
 main {
   background-color: var(--primary-color);
+  color: var(--text-color);
 }
 
 h1 {
@@ -211,6 +216,11 @@ textarea:focus {
 .little-cta:focus {
   outline: none;
   border: 2px solid white;
+}
+
+footer {
+  color: var(--text-color);
+  background: var(--secondary-color);
 }
 
 @media screen and (min-width: 950px) {

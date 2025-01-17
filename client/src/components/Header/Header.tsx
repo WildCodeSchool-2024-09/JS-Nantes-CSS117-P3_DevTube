@@ -17,7 +17,7 @@ export default function Header() {
   }
 
   return (
-    <header className="header-container">
+    <header className={`header-container ${theme ? "light" : "dark"}`}>
       <section className="devTube-logo-title">
         <img
           className="header-logo-devTube"

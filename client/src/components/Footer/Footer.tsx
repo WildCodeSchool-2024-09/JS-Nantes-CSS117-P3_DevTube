@@ -8,7 +8,7 @@ export default function Footer() {
   const { theme } = useTheme();
 
   return (
-    <footer>
+    <footer className={theme ? "light" : "dark"}>
       <LanguageChoice />
       <section className="social-network-footer">
         <img
