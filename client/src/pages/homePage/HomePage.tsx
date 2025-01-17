@@ -27,7 +27,7 @@ export default function () {
       );
       setVideosPopular(videosPopularData);
       //FILTER BY NEW IN - THE LAST REGISTER
-      const videosNewInData = datas.slice(0, 4);
+      const videosNewInData = datas.slice(0, 9);
       // console.log({ "video recentes": videosNewInData });
       setVideosNewIn(videosNewInData);
       // console.log({ "video recentes state": videosNewIn });
