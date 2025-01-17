@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
         element: <VideoPlayer />,
         loader: ({ params }) => {
           return fetch(
-            `${import.meta.env.VITE_API_URL}http://localhost:3310/api/videos/${params.id}`,
+            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
           );
         },
       },

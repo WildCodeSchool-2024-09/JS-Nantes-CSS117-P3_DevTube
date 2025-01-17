@@ -32,7 +32,6 @@ export default function VideoPlayer() {
           <p>{description}</p>
         </article>
         <video controls muted poster="">
-          {/* width="1024" for desktop */}
           <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
         </video>
       </section>
