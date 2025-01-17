@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import type { Video } from "../../types/video";
-// import VideoCard from "../../components/VideoCard/VideoCard";
 
 export default function VideoPlayer() {
   const { t } = useTranslation();
@@ -19,15 +18,9 @@ export default function VideoPlayer() {
   // TODO : DON'T DISPLAY THE CUTTENT VIDEO OF THE PLAYER IN THE VIDEOS OF THE SAME CATEGORY
 
   async function recoverInfoVideos(url: string) {
-    if (url) {
-      try {
-        const request = await fetch(url);
-        const datas = await request.json();
-        setVideos(datas);
-      } catch (error) {
-        alert("Sorry, we met a problem. Please, come back later.");
-      }
-    }
+    const request = await fetch(url);
+    const datas = await request.json();
+    setVideos(datas);
   }
 
   return id ? (
