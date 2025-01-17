@@ -9,6 +9,7 @@
   --text-color: #e6dbe3;
   --accent-color-1: #fc666a;
   --accent-color-2: #fc8f70;
+  --shadow-color: rgb(0 0 0 / 25%);
   /*FONT TITLE H1*/
   --title-font-family: "Manrope", sans-serif;
   --title-font-weight: bold;
@@ -47,6 +48,30 @@ body {
   background: var(--primary-color);
 }
 
+body.light {
+  /* COLORS LIGHT THEME*/
+  --primary-color: #ffffff;
+  --secondary-color: #fdfcfd;
+  --tertiary-color: #f7f7f7;
+  --text-color: #131313;
+  --accent-color-1: #fc666a;
+  --accent-color-2: #fc8f70;
+  --accent-color-3: #49ad7b;
+  --shadow-color: rgb(0 0 0 / 25%);
+}
+
+body.dark {
+  /* COLORS */
+  --primary-color: #0d0d0d;
+  --secondary-color: #131313;
+  --tertiary-color: #1c1e1f;
+  --text-color: #e6dbe3;
+  --accent-color-1: #fc666a;
+  --accent-color-2: #fc8f70;
+  --accent-color-3: #49ad7b;
+  --shadow-color: rgb(0 0 0 / 90%);
+}
+
 main {
   background-color: var(--primary-color);
 }
@@ -81,7 +106,7 @@ h3 {
 
 a {
   text-decoration: none;
-  color: white;
+  color: var(--textColor);
 }
 
 button {
