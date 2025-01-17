@@ -1,22 +1,12 @@
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/Header.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useTheme from "../../utils/useTheme";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
-
-  useEffect(() => {
-    if (theme) {
-      document.body.classList.add("light");
-      document.body.classList.remove("dark");
-    } else {
-      document.body.classList.add("dark");
-      document.body.classList.remove("light");
-    }
-  }, [theme]);
 
   function toggleMenu() {
     setIsOpen(!isOpen);

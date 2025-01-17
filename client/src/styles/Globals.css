@@ -48,7 +48,7 @@ body {
   background: var(--primary-color);
 }
 
-body.light {
+.light {
   /* COLORS LIGHT THEME*/
   --primary-color: #ffffff;
   --secondary-color: #fdfcfd;
@@ -60,7 +60,7 @@ body.light {
   --shadow-color: rgb(0 0 0 / 25%);
 }
 
-body.dark {
+.dark {
   /* COLORS */
   --primary-color: #0d0d0d;
   --secondary-color: #131313;
