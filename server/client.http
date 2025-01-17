@@ -10,14 +10,14 @@ POST http://localhost:3310/api/users HTTP/1.1
 content-type: application/json
 
 {
-  "firstname": "popo",
-  "lastname": "pipi",
-  "email": "pupu@gmail.com",
-  "password": "tata",
-  "confirm_password": "tata",
+  "firstname": "John",
+  "lastname": "Do",
+  "email": "johndoe@gmail.com",
+  "password": "password",
+  "confirm_password": "password",
   "github_url": "github",
   "linkedin_url": "linkedin",
-  "profil_img": "coucou"
+  "profil_img": "johndo.png"
 }
 
 ###
@@ -86,5 +86,9 @@ content-type: application/json
 }
 
 ###
-
 DELETE http://localhost:3310/api/videos/3
+
+###
+
+GET http://localhost:3310/api/category/1
+

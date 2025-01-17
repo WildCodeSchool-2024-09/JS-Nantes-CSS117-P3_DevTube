@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import "../../styles/Header.css";
 import { useEffect, useState } from "react";
 import useTheme from "../../utils/useTheme";
@@ -34,7 +34,9 @@ export default function Header() {
           src="logo-devTube.png"
           alt="Le logo de devTube se compose de deux accolades entourant un symbole lecture."
         />
-        <p className="devTube-title">devTube</p>
+        <Link to={"/"}>
+          <p className="devTube-title">devTube</p>
+        </Link>
       </section>
       <section className="section-nav-container">
         <button type="button" aria-label="Burger button." onClick={toggleMenu}>
@@ -43,7 +45,7 @@ export default function Header() {
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <NavLink to={"/"}>About</NavLink>
+              <NavLink to={"/about"}>About</NavLink>
             </li>
             <li>
               <NavLink to={"/course"}>Course</NavLink>
