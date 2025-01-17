@@ -6,6 +6,7 @@ import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
 import Subscribe from "./pages/Subsribe/Subscribe";
+import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
 import Testimonials from "./pages/testimonial/Testimonial";
 
@@ -41,6 +42,15 @@ export const router = createBrowserRouter([
       {
         path: "/freemium",
         element: <Freemium />,
+      },
+      {
+        path: "/video/:id",
+        element: <VideoPlayer />,
+        loader: ({ params }) => {
+          return fetch(
+            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+          );
+        },
       },
       {
         path: "/testimonials",
