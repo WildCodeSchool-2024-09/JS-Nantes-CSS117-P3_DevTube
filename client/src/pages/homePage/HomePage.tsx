@@ -60,6 +60,8 @@ import type { Video } from "../../types/video";
 export default function () {
   const { t } = useTranslation();
   const [infoVideos, setInfoVideos] = useState<Video[]>();
+  const [videosPopular, setVideosPopular] = useState<Video[]>();
+
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
     recoverInfoVideos(urlForVideos);
@@ -71,6 +73,10 @@ export default function () {
         const request = await fetch(url);
         const datas = await request.json();
         setInfoVideos(datas); //currentState au cas ou on oublie de passer une valeur ou si la donnee est caduque, il y aura toujours l,ancienne valeur qui s'affichera
+        const videoPopularData = datas.filter(
+          (video: { is_popular: number }) => video.is_popular === 1,
+        );
+        setVideosPopular(videoPopularData);
       } catch (error) {
         alert("Sorry, we met a problem. Please, come back later.");
       }
@@ -85,7 +91,7 @@ export default function () {
       </section>
       <section>
         <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
-        <MiniVideoCarousel videos={infoVideos} />
+        {videosPopular && <MiniVideoCarousel videos={videosPopular} />}
       </section>
       <section>
         <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
