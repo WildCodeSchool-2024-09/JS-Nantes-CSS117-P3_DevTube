@@ -1,8 +1,8 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
+import type { User } from "./user";
 import userRepository from "./userRepository";
-import type { User } from "./userRepository";
 
 // Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
