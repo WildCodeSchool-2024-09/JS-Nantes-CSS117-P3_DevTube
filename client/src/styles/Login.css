@@ -6,6 +6,9 @@
   min-height: 100vh;
   margin: 6rem 0 3rem;
 }
+.main-form-login > h1 {
+  margin: 0 0 2rem;
+}
 .main-form-login > form {
   display: flex;
   flex-direction: column;

@@ -69,11 +69,13 @@ export default function Header() {
         aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
       />
+
       <img className="img-light-mode" src="light_mode.png" alt="" />
       <section className="login-sign-up-container">
         <NavLink to={"/login"} className="btn-login">
-          Login
+          Log in
         </NavLink>
+
         <NavLink to={"/subscribe"} className="little-cta">
           Sign up
         </NavLink>
