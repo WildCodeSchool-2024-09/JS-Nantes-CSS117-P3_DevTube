@@ -30,7 +30,11 @@ export default function Header() {
       </section>
       <section className="section-nav-container">
         <button type="button" aria-label="Burger button." onClick={toggleMenu}>
-          <img className="btn-burger-menu" src="burger-menu.png" alt="" />
+          <img
+            className="btn-burger-menu"
+            src="burger-menu.png"
+            alt="menu icon"
+          />
         </button>
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
           <ul>
@@ -82,7 +86,7 @@ export default function Header() {
         <img
           className="icon-switch-theme"
           src={theme ? "dark_mode.png" : "light_mode.png"}
-          alt=""
+          alt="switch theme icon"
         />
       </button>
       <section className="login-sign-up-container">
