@@ -22,6 +22,30 @@
   --body-font-family-desktop: 20px;
 }
 
+.formulaire-testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-personell {
+  width: 500px;
+  height: 50px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  border-radius: 5px;
+}
+.commentaire-user {
+  width: 500px;
+  height: 200px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+
+  margin-top: 5px;
+}
+.formulaire-testimonial label {
+  display: block;
+}
+
 .add-testimonial-btn {
   background: linear-gradient(to right, #fc8f70, #fd5868);
   outline: none;

@@ -69,6 +69,14 @@ content-type: application/json
 }
 
 ###
+POST http://localhost:3310/api/testimonials HTTP/1.1
+content-type: application/json
+
+{
+  "text_testimonial":"Pour commencer ton périple, et avant de coder, tu dois comprendre ce qu'est JavaScript, et comment il fonctionne."
+}
+
+###
 
 PUT http://localhost:3310/api/videos/2 HTTP/1.1
 content-type: application/json

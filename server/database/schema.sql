@@ -10,7 +10,14 @@ CREATE TABLE user (
   level INT NOT NULL DEFAULT 0,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   profil_img VARCHAR(200),
-  is_admin  TINYINT DEFAULT 0 NOT NULL
+  is_admin TINYINT DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE testimonial (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  user_id INT NOT NULL,
+  text_testimonial VARCHAR(255),
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE category (
@@ -46,6 +53,10 @@ VALUES
   ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "mdp", "mdp", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
   ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "mdp", "mdp", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
+INSERT INTO testimonial (user_id, text_testimonial)
+VALUES
+(1, "les visiteurs et nuire à l’expérience utilisateur, ce qui rend essentiel le suivi régulier de ce critère grâce à un test de vitesse pour vos pages web.");
+
 INSERT INTO category (name)
 VALUES
   ("html"),
@@ -57,7 +68,6 @@ VALUES
   ("github"),
   ("sql"),
   ("express");
-
 
 INSERT INTO video (name, duration, thumbnail, description, category_id, is_freemium, added_date, is_heroSlide, is_popular)
 VALUES 
