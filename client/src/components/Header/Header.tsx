@@ -79,8 +79,6 @@ export default function Header() {
         }}
       />
 
-      <img className="img-light-mode" src="light_mode.png" alt="" />
-
       <button
         type="button"
         onClick={() => setTheme(!theme)}
