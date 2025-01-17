@@ -1,17 +1,32 @@
 .main-form-login {
   display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   min-height: 100vh;
-  margin: 3rem 0;
+  margin: 6rem 0 3rem;
+}
+.main-form-login > form {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: fit-content;
+  padding: 2rem 1rem;
+  background-color: var(--tertiary-color);
 }
 .main-form-login label {
   display: block;
-  margin: 1.125rem 0 .8rem;
+  margin: 0 0 8px;
+}
+.main-form-login input {
+  height: 30px;
+  margin: 0 0 24px;
+}
+.main-form-login button {
+  align-self: center;
 }
 @media screen and (min-width: 768px) {
-  .form-login-container {
-    /* width: 600px; */
+  .main-form-login > form {
+    width: 350px;
   }
 }
