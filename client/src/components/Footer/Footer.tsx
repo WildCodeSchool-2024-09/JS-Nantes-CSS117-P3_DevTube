@@ -1,20 +1,39 @@
-import fbIcon from "/fb-icon-for-dark-theme.png";
-import instaIcon from "/insta-icon-for-dark-theme.png";
-import xIcon from "/x-icon-for-dark-theme.png";
 import LanguageChoice from "./LanguageChoice";
 import "../../styles/Footer.css";
 import { useTranslation } from "react-i18next";
+import useTheme from "../../utils/useTheme";
 
 export default function Footer() {
   const { t } = useTranslation();
+  const { theme } = useTheme();
 
   return (
-    <footer>
+    <footer className={theme ? "light" : "dark"}>
       <LanguageChoice />
       <section className="social-network-footer">
-        <img className="social-icon" src={fbIcon} alt="Facebook icon" />
-        <img className="social-icon" src={instaIcon} alt="Insta icon" />
-        <img className="social-icon" src={xIcon} alt="X icon" />
+        <img
+          className="social-icon"
+          src={
+            theme ? "fb-icon-for-light-theme.png" : "fb-icon-for-dark-theme.png"
+          }
+          alt="Facebook icon"
+        />
+        <img
+          className="social-icon"
+          src={
+            theme
+              ? "insta-icon-for-light-theme.png"
+              : "insta-icon-for-dark-theme.png"
+          }
+          alt="Insta icon"
+        />
+        <img
+          className="social-icon"
+          src={
+            theme ? "x-icon-for-light-theme.png" : "x-icon-for-dark-theme.png"
+          }
+          alt="X icon"
+        />
       </section>
       <section className="text-footer">
         <p className="copyright">
