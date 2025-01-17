@@ -20,7 +20,7 @@ export default function () {
       try {
         const request = await fetch(url);
         const datas = await request.json();
-        setInfoVideos(datas); //currentState au cas ou on oublie de passer une valeur ou si la donnee est caduque, il y aura toujours l,ancienne valeur qui s'affichera
+        setInfoVideos(datas);
         const videoPopularData = datas.filter(
           (video: { is_popular: number }) => video.is_popular === 1,
         );
