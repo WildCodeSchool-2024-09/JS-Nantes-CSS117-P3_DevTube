@@ -43,6 +43,15 @@
   height: auto;
 }
 
+.video-title {
+  font-size: 12px;
+  width: 150px;
+}
+
+.time {
+  font-size: 12px;
+}
+
 .card-footer {
   display: flex;
   flex-direction: column;
