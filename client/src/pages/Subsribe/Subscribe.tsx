@@ -1,11 +1,16 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../styles/Subscribe.css";
 
 export default function Subscribe() {
+  const getFocus = useRef<HTMLInputElement | null>(null);
   const formRef = useRef<HTMLFormElement | null>(null);
   const [file, setFile] = useState<File | null>(null);
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
+
+  useEffect(() => {
+    getFocus.current?.focus();
+  }, []);
 
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -83,6 +88,7 @@ export default function Subscribe() {
         <input
           type="text"
           name="firstname"
+          ref={getFocus}
           aria-labelledby="firstname"
           placeholder="Enter your first name."
           required
