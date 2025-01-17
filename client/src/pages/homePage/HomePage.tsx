@@ -17,17 +17,13 @@ export default function () {
 
   async function recoverInfoVideos(url: string) {
     if (url) {
-      try {
-        const request = await fetch(url);
-        const datas = await request.json();
-        setInfoVideos(datas);
-        const videoPopularData = datas.filter(
-          (video: { is_popular: number }) => video.is_popular === 1,
-        );
-        setVideosPopular(videoPopularData);
-      } catch (error) {
-        alert("Sorry, we met a problem. Please, come back later.");
-      }
+      const request = await fetch(url);
+      const datas = await request.json();
+      setInfoVideos(datas);
+      const videoPopularData = datas.filter(
+        (video: { is_popular: number }) => video.is_popular === 1,
+      );
+      setVideosPopular(videoPopularData);
     }
   }
 
