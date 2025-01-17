@@ -19,20 +19,22 @@ export default function () {
     setInfoVideos(datas);
   }
 
-  return infoVideos && infoVideos?.length > 0 ? (
-    <div className="home-page">
-      <section>
-        <h1 className="home-page-title">{t("title-homePage")}</h1>
-        <HeroSlider videos={infoVideos} />
-      </section>
-      <section>
-        <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
-        <MiniVideoCarousel videos={infoVideos} />
-      </section>
-      <section>
-        <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
-        <MiniVideoCarousel videos={infoVideos} />
-      </section>
-    </div>
-  ) : null;
+  return (
+    infoVideos?.length && (
+      <div className="home-page">
+        <section>
+          <h1 className="home-page-title">{t("title-homePage")}</h1>
+          <HeroSlider videos={infoVideos} />
+        </section>
+        <section>
+          <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
+          <MiniVideoCarousel videos={infoVideos} />
+        </section>
+        <section>
+          <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
+          <MiniVideoCarousel videos={infoVideos} />
+        </section>
+      </div>
+    )
+  );
 }
