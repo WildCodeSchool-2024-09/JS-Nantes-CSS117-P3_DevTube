@@ -2,6 +2,7 @@ import type { RequestHandler } from "express";
 
 // Import access to data
 import userRepository from "./userRepository";
+import type { User } from "./userRepository";
 
 // Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
@@ -41,16 +42,15 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the user data from the request body
-    const newUser = {
-      email: req.body.email,
-      github_url: req.body.github_url,
-      linkedin_url: req.body.linkedin_url,
+    const newUser: User = {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
-      level: req.body.level,
-      register_date: req.body.register_date,
+      email: req.body.email,
+      password: req.body.password,
+      confirm_password: req.body.confirm_password,
+      github_url: req.body.github_url,
+      linkedin_url: req.body.linkedin_url,
       profil_img: req.body.profil_img,
-      is_admin: req.body.is_admin,
     };
 
     // Create the user
@@ -69,8 +69,12 @@ const remove: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
 
-    const userToRemove = await userRepository.remove(userId);
-    res.status(201).json({ userToRemove });
+    const userDeleted = await userRepository.remove(userId);
+
+    if (userDeleted) {
+      res.status(200).send("The user has been removed !");
+    } else {
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

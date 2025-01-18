@@ -1,5 +1,5 @@
 .home-page {
-  padding-left: 20px;
+  padding: 20px;
 }
 
 .home-page-title {
@@ -8,5 +8,15 @@
 }
 
 .home-page-subtitle {
+  padding-top: 10px;
   padding-bottom: 20px;
+  text-align: center;
+}
+
+@media (min-width: 769px) {
+  .home-page-subtitle {
+    padding-bottom: 20px;
+    text-align: start;
+    padding-left: 100px;
+  }
 }

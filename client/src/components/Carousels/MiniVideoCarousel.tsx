@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
+import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
 
@@ -46,19 +47,23 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
         <div
           className="carousel-track"
           style={{
-            // on translate la track de la largeur d'une carte + le gap * par l index courant
+            // on translate la track de la largeur d'une carte + le gap * par l'index courant
             transform: `translateX(-${currentIndex * slideWidthPixels}px)`,
             width: `${trackWidthPixels}px`,
           }}
         >
           {videos.map((video) => (
-            <article key={video.id} className="carousel-slide">
+            <Link
+              to={`/video/${video.id}`}
+              key={video.id}
+              className="carousel-slide"
+            >
               <VideoCard
                 key={video.id}
-                title={video.title}
-                thumbnailUrl={video.thumbnailUrl}
+                title={video.name}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
               />
-            </article>
+            </Link>
           ))}
         </div>
       </section>
