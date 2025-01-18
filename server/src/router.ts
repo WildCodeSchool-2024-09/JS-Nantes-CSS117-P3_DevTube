@@ -16,7 +16,6 @@ router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
 import testimonialsAction from "./modules/Testimonials/testimonialsAction";
-
 router.post("/api/testimonial", testimonialsAction.add);
 
 import videoActions from "./modules/video/videoActions";
