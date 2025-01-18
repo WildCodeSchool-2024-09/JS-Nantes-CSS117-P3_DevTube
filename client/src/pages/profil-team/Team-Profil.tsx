@@ -146,6 +146,70 @@ export default function TeamProfile() {
             </div>
           </section>
         </div>
+        <div className="containers">
+          <div>
+            <div className="back_of_img">
+              <img className="profile-img" src="profile.jpg" alt="profile" />
+            </div>
+          </div>
+
+          <section className="team-cards">
+            <div className="team-info">
+              <h3>Prénom</h3>
+              <h3>Nom</h3>
+            </div>
+
+            <article className="team-profile-icon">
+              <h3>titre</h3>
+              <div>
+                <img src="github-icon.png" alt="github-icon" />
+                <img src="linkedin-1121.png" alt="linkedin-icon" />
+              </div>
+            </article>
+
+            <div className="profile-container">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Tempora consequatur facilis ducimus, non architecto perferendis,
+                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+                dolorum doloremque fugit qui unde voluptatem dignissimos autem
+                non
+              </p>
+            </div>
+          </section>
+        </div>
+        <div className="containers">
+          <div>
+            <div className="back_of_img">
+              <img className="profile-img" src="profile.jpg" alt="profile" />
+            </div>
+          </div>
+
+          <section className="team-cards">
+            <div className="team-info">
+              <h3>Prénom</h3>
+              <h3>Nom</h3>
+            </div>
+
+            <article className="team-profile-icon">
+              <h3>titre</h3>
+              <div>
+                <img src="github-icon.png" alt="github-icon" />
+                <img src="linkedin-1121.png" alt="linkedin-icon" />
+              </div>
+            </article>
+
+            <div className="profile-container">
+              <p>
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Tempora consequatur facilis ducimus, non architecto perferendis,
+                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
+                dolorum doloremque fugit qui unde voluptatem dignissimos autem
+                non
+              </p>
+            </div>
+          </section>
+        </div>
       </div>
     </main>
   );

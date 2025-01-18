@@ -49,9 +49,9 @@
   height: 150px;
   border-radius: 50%;
   align-items: center;
+  object-fit: cover;
 }
 .back_of_img {
-  border-right: var(--primary-color) 2px solid;
   height: 179px;
   width: 170px;
   display: flex;
@@ -130,11 +130,12 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
+    object-fit: cover;
   }
   .back_of_img {
     background: var(--tertiary-color);
-    border-right: var(--primary-color) 2px solid;
-    height: 179px;
+    border-right: var(--secondary-color) 2px solid;
+    height: 181px;
     width: 170px;
     display: flex;
     justify-content: center;

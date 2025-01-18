@@ -20,7 +20,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="presentation of the person giving the testimonial"
                   />
                 </div>
@@ -49,7 +49,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="prisentation of the person giving the testimonial"
                   />
                 </div>
@@ -78,7 +78,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="prisentation of the person giving the testimonial"
                   />
                 </div>
@@ -107,7 +107,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="praisentation of the person giving the testimonial"
                   />
                 </div>
@@ -137,7 +137,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="prisentation of the person giving the testimonial"
                   />
                 </div>
@@ -166,7 +166,7 @@ export default function Testimonials() {
                 <div className="back-of">
                   <img
                     className="testimonial-image"
-                    src="5097224.jpg"
+                    src="profile.jpg"
                     alt="prisentation of the person giving the testimonial"
                   />
                 </div>
