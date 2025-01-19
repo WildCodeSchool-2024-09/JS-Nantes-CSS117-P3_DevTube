@@ -3,6 +3,7 @@ import "./../../styles/MiniVideoCarousel.css";
 import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
+// import SkeletonCard from "./skeletonCard";
 
 interface MiniVideoCarouselProps {
   videos: Video[];
@@ -65,6 +66,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
               />
             </Link>
           ))}
+          {/* <SkeletonCard /> */}
         </div>
       </section>
       <button
