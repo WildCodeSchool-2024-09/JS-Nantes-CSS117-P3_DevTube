@@ -3,7 +3,7 @@ import "./../../styles/MiniVideoCarousel.css";
 import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
 import VideoCard from "../VideoCard/VideoCard";
-// import SkeletonCard from "./skeletonCard";
+import SkeletonCard from "./SkeletonCard";
 
 interface MiniVideoCarouselProps {
   videos: Video[];
@@ -12,6 +12,15 @@ interface MiniVideoCarouselProps {
 const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const videosPerPage = 1;
+
+  const skeletonList = Array(20)
+    .fill("skel")
+    .map((s, index) => {
+      return {
+        id: `${s}-${index}`,
+        name: "skeletonCard",
+      };
+    });
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -66,7 +75,9 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
               />
             </Link>
           ))}
-          {/* <SkeletonCard /> */}
+          {skeletonList.map((skel) => (
+            <SkeletonCard key={skel.id} />
+          ))}
         </div>
       </section>
       <button
