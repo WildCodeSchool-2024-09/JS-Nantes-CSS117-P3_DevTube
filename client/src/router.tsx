@@ -46,10 +46,26 @@ export const router = createBrowserRouter([
       {
         path: "/video/:id",
         element: <VideoPlayer />,
-        loader: ({ params }) => {
-          return fetch(
-            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
-          );
+        loader: async ({ params }) => {
+          try {
+            const response = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+            );
+
+            if (response.ok) {
+              const videoResponse = await response.json();
+              return videoResponse;
+            }
+
+            if (response.status === 403) {
+              return {
+                error: 403,
+              };
+            }
+          } catch (error) {
+            console.error("Error fetching video: ", error);
+            return null;
+          }
         },
       },
       {
