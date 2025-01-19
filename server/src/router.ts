@@ -45,6 +45,7 @@ import videoActions from "./modules/video/videoActions";
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
+// router.get("/api/videos/:id", userActions.checkIfUser, videoActions.read);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 router.delete("/api/videos/:id", videoActions.remove);

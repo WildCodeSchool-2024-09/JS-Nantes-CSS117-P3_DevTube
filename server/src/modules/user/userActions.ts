@@ -118,4 +118,19 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit };
+const checkIfUser: RequestHandler = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const GetIsUser = await userRepository.read(name);
+
+    if (GetIsUser) {
+      next();
+    } else {
+      res.status(401).send("Bah non");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, read, add, remove, edit, checkIfUser };
