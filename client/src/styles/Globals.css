@@ -184,7 +184,6 @@ button {
   height: 30px;
   width: 30px;
   border: none;
-  /* transition: transform 100ms ease-in; */
   transition: border 0.2s ease-in;
 }
 
