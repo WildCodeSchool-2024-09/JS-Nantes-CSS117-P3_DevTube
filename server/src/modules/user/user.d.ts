@@ -3,7 +3,6 @@ export type User = {
   lastname: string;
   email: string;
   password: string;
-  confirm_password: string;
   github_url: string;
   linkedin_url: string;
   level?: number;

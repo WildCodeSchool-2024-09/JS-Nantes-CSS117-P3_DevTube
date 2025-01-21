@@ -23,6 +23,13 @@ export default function Subscribe() {
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
 
+  // Reset all fields of the form
+  const resetAllFields = () => {
+    formRef.current?.reset();
+    setFile(null);
+    setImageSrc("");
+  };
+
   useEffect(() => {
     getFocus.current?.focus();
   }, []);
@@ -75,17 +82,7 @@ export default function Subscribe() {
       data.profil_img = imageProfileURL;
 
       if (data.confirm_password !== data.password) {
-        const resetPassword = formRef.current?.elements.namedItem(
-          "password",
-        ) as HTMLInputElement;
-
-        const resetConfirmPassword = formRef.current?.elements.namedItem(
-          "confirm_password",
-        ) as HTMLInputElement;
-
-        resetPassword.value = "";
-
-        resetConfirmPassword.value = "";
+        resetAllFields();
 
         notifyPassword();
       } else {
@@ -107,12 +104,6 @@ export default function Subscribe() {
       console.error(error);
       notifyError();
     }
-  };
-
-  const resetAllFields = () => {
-    formRef.current?.reset();
-    setFile(null);
-    setImageSrc("");
   };
 
   return (

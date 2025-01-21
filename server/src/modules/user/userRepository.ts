@@ -14,7 +14,6 @@ class UserRepository {
         user.lastname,
         user.email,
         user.password,
-        user.confirm_password,
         user.github_url,
         user.linkedin_url,
         user.profil_img,
