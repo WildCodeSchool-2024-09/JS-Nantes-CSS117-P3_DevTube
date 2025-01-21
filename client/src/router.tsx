@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         element: <Freemium />,
       },
       {
-        path: "/profiluser",
+        path: "/profil-user",
         element: <ProfilUser />,
       },
       {
