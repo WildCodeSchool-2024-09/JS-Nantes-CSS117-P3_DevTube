@@ -7,6 +7,21 @@
   margin: 2rem auto;
   background-color: var(--tertiary-color);
 }
+.fieldset-container form {
+  display: grid;
+  padding: 1rem;
+
+  & input,
+  p {
+    font-size: var(--font-normal);
+    height: 35px;
+    color: white;
+  }
+
+  & p {
+    margin: 2rem 0;
+  }
+}
 .section-progression-bar {
   display: flex;
   flex-direction: column;
