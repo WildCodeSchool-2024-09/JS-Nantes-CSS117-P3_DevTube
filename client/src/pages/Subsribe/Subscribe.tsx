@@ -3,6 +3,13 @@ import "../../styles/Subscribe.css";
 import { Bounce, ToastContainer, toast } from "react-toastify";
 
 export default function Subscribe() {
+  // Reset all fields of the form
+  const resetAllFields = () => {
+    formRef.current?.reset();
+    setFile(null);
+    setImageSrc("");
+  };
+
   // Setting toastify message
   const notifySuccess = (firstname: string) =>
     toast.success(`Welcome in devTube ${firstname} !!!`);
@@ -22,13 +29,6 @@ export default function Subscribe() {
 
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
-
-  // Reset all fields of the form
-  const resetAllFields = () => {
-    formRef.current?.reset();
-    setFile(null);
-    setImageSrc("");
-  };
 
   useEffect(() => {
     getFocus.current?.focus();
