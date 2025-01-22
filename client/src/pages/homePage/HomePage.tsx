@@ -21,7 +21,7 @@ export default function () {
       const datas = await request.json();
       setInfoVideos(datas);
       const videoPopularData = datas.filter(
-        (video: { is_popular: number }) => video.is_popular === 1,
+        (video: Video) => video.is_popular === 1,
       );
       setVideosPopular(videoPopularData);
     }

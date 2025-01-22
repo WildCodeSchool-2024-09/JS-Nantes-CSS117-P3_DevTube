@@ -8,5 +8,5 @@ export interface Video {
   is_freemium: boolean;
   added_date: string;
   is_heroSlide: boolean;
-  is_popular: boolean;
+  is_popular: number;
 }
