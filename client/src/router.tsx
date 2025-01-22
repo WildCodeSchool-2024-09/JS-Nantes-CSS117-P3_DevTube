@@ -8,59 +8,59 @@ import Login from "./pages/Login/Login";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
-import TeamProfile from "./pages/profil-team/Team-Profil";
+import TeamProfile from "./pages/profil-team/TeamProfil";
 import Testimonials from "./pages/testimonial/Testimonial";
 
 export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
-    children: [
-      {
-        path: "/admin",
-        element: <Admin />,
-      },
-      {
-        path: "/",
-        element: <HomePage />,
-      },
-      {
-        path: "/teamprofil",
-        element: <TeamProfile />,
-      },
-      {
-        path: "/teamprofil",
-        element: <About />,
-      },
-      {
-        path: "/subscribe",
-        element: <Subscribe />,
-      },
-      {
-        path: "/login",
-        element: <Login />,
-      },
-      {
-        path: "/course",
-        element: <Course />,
-      },
-      {
-        path: "/freemium",
-        element: <Freemium />,
-      },
-      {
-        path: "/video/:id",
-        element: <VideoPlayer />,
-        loader: ({ params }) => {
-          return fetch(
-            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
-          );
-        },
-      },
-      {
-        path: "/testimonials",
-        element: <Testimonials />,
-      },
-    ],
-  },
+	{
+		path: "/",
+		element: <App />,
+		children: [
+			{
+				path: "/admin",
+				element: <Admin />,
+			},
+			{
+				path: "/",
+				element: <HomePage />,
+			},
+			{
+				path: "/teamprofil",
+				element: <TeamProfile />,
+			},
+			{
+				path: "/teamprofil",
+				element: <About />,
+			},
+			{
+				path: "/subscribe",
+				element: <Subscribe />,
+			},
+			{
+				path: "/login",
+				element: <Login />,
+			},
+			{
+				path: "/course",
+				element: <Course />,
+			},
+			{
+				path: "/freemium",
+				element: <Freemium />,
+			},
+			{
+				path: "/video/:id",
+				element: <VideoPlayer />,
+				loader: ({ params }) => {
+					return fetch(
+						`${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+					);
+				},
+			},
+			{
+				path: "/testimonials",
+				element: <Testimonials />,
+			},
+		],
+	},
 ]);
