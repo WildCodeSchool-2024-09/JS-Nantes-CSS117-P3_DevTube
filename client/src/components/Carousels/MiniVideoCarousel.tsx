@@ -65,7 +65,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
               <VideoCard
                 key={video.id}
                 title={video.name}
-                thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
               />
             </Link>
           ))}
