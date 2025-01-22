@@ -32,7 +32,7 @@ export default function VideoPlayer() {
           <p>{description}</p>
         </article>
         <video key={thumbnail} controls muted poster="">
-          {/* //key indique a react quand rerender un element, video en a besoin donc react compare avec la key precedente */}
+          {/* key tells react when to rerender an element, video needs it so react compares with the previous key */}
           <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
         </video>
       </section>
