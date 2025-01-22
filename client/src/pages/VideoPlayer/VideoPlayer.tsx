@@ -2,7 +2,7 @@ import { useTranslation } from "react-i18next";
 import "../../styles/videoPlayer.css";
 import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import VideoCard from "../../components/VideoCard/VideoCard";
+import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import type { Video } from "../../types/video";
 
 export default function VideoPlayer() {
@@ -37,21 +37,7 @@ export default function VideoPlayer() {
       </section>
       <section className="category-video">
         <h2>{t("category-title")}</h2>
-        <article>
-          {videos?.map((video) => (
-            <a
-              href={`/video/${video.id}`}
-              key={video.id}
-              className="carousel-slide"
-            >
-              <VideoCard
-                key={video.id}
-                title={video.name}
-                thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
-              />
-            </a>
-          ))}
-        </article>
+        <article>{videos && <MiniVideoCarousel videos={videos} />}</article>
       </section>
     </div>
   ) : null; // si je n'ai pas d'id je retourne null -> en faisant ça on s'assure que la data soit bien chargée avant de retourner le composant
