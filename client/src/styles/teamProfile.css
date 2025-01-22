@@ -1,145 +1,145 @@
 .team-info h3 {
-	margin-right: 5px;
+  margin-right: 5px;
 }
 
 .top-paragraph {
-	width: 50%;
+  width: 50%;
 }
 
 .header-content {
-	padding-bottom: 50px;
-	margin: auto;
+  padding-bottom: 50px;
+  margin: auto;
 }
 .top-title {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 .top-title h1 {
-	padding: 100px;
-	display: flex;
-	align-items: center;
-	justify-content: center;
+  padding: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .profile-img {
-	width: 150px;
-	height: 150px;
-	border-radius: 50%;
-	align-items: center;
-	object-fit: cover;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  align-items: center;
+  object-fit: cover;
 }
 .back-of-img {
-	height: 179px;
-	width: 170px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  height: 179px;
+  width: 170px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .team-info h3 {
-	font-size: 16px;
-	color: var(--text-color);
+  font-size: 16px;
+  color: var(--text-color);
 }
 
 .team-profile-icon h3 {
-	color: var(--accent-color-1);
-	font-weight: bold;
+  color: var(--accent-color-1);
+  font-weight: bold;
 }
 
 .team-info {
-	display: flex;
+  display: flex;
 }
 .content {
-	display: flex;
-	width: 550px;
-	height: 185px;
-	padding: 2px;
-	margin: 30px;
+  display: flex;
+  width: 550px;
+  height: 185px;
+  padding: 2px;
+  margin: 30px;
 }
 
 .team-profile-icon {
-	display: flex;
-	justify-content: space-between;
-	border-bottom: 3px solid var(--accent-color-1);
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 3px solid var(--accent-color-1);
 }
 .team-profile-icon img {
-	width: 20px;
-	height: auto;
-	margin-right: 10px;
+  width: 20px;
+  height: auto;
+  margin-right: 10px;
 }
 
 .profile-content {
-	display: flex;
-	height: 165px;
+  display: flex;
+  height: 165px;
 }
 
 .profile-content p {
-	padding: 3px;
-	font-size: 15px;
+  padding: 3px;
+  font-size: 15px;
 }
 .team-cards {
-	background-color: var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 @media screen and (min-width: 950px) {
-	.all-of-the-cards {
-		display: grid;
-		grid-template-columns: auto auto;
-		gap: 30px;
-		justify-content: center;
-	}
-	.team-info h3 {
-		margin-right: 5px;
-	}
-	.team-cards {
-		background-color: var(--secondary-color);
-	}
-	.header-content {
-		display: flex;
-		flex-direction: column;
-	}
-	.header-content h1 {
-		padding-bottom: 50px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-	.profile-img {
-		width: 150px;
-		height: 150px;
-		border-radius: 50%;
-		object-fit: cover;
-	}
-	.back-of-img {
-		background: var(--tertiary-color);
-		border-right: var(--secondary-color) 2px solid;
-		height: 181px;
-		width: 170px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-	.team-info h3 {
-		font-size: 16px;
-	}
+  .all-of-the-cards {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 30px;
+    justify-content: center;
+  }
+  .team-info h3 {
+    margin-right: 5px;
+  }
+  .team-cards {
+    background-color: var(--secondary-color);
+  }
+  .header-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .header-content h1 {
+    padding-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .profile-img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  .back-of-img {
+    background: var(--tertiary-color);
+    border-right: var(--secondary-color) 2px solid;
+    height: 181px;
+    width: 170px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .team-info h3 {
+    font-size: 16px;
+  }
 
-	.team-profile-icon h3 {
-		color: var(--accent-color-1);
-		font-weight: bold;
-	}
+  .team-profile-icon h3 {
+    color: var(--accent-color-1);
+    font-weight: bold;
+  }
 
-	.team-profile-icon {
-		display: flex;
-		justify-content: space-between;
-		border-bottom: 3px solid var(--accent-color-1);
-	}
-	.team-profile-icon img {
-		width: 20px;
-		height: auto;
-		margin-right: 10px;
-	}
+  .team-profile-icon {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 3px solid var(--accent-color-1);
+  }
+  .team-profile-icon img {
+    width: 20px;
+    height: auto;
+    margin-right: 10px;
+  }
 
-	.profile-content p {
-		font-size: 15px;
-	}
+  .profile-content p {
+    font-size: 15px;
+  }
 }
