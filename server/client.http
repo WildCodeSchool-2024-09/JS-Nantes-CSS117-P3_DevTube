@@ -14,7 +14,6 @@ content-type: application/json
   "lastname": "Do",
   "email": "johndoe@gmail.com",
   "password": "password",
-  "confirm_password": "password",
   "github_url": "github",
   "linkedin_url": "linkedin",
   "profil_img": "johndo.png"
@@ -30,7 +29,6 @@ content-type: application/json
   "lastname": "pipi",
   "email": "pupu@gmail.com",
   "password": "tata",
-  "confirm_password": "tata",
   "github_url": "github",
   "linkedin_url": "linkedin",
   "level": 2,
