@@ -78,6 +78,7 @@ export default function Header() {
           backgroundImage: `url(${theme ? "search-icon-for-light-theme.png" : "search-bar.png"})`,
         }}
       />
+
       <button
         type="button"
         onClick={() => setTheme(!theme)}
@@ -89,10 +90,12 @@ export default function Header() {
           alt="switch theme icon"
         />
       </button>
+
       <section className="login-sign-up-container">
         <NavLink to={"/login"} className="btn-login">
-          Login
+          Log in
         </NavLink>
+
         <NavLink to={"/subscribe"} className="little-cta">
           Sign up
         </NavLink>

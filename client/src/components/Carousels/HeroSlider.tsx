@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
 import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
+import useTheme from "../../utils/useTheme";
 import VideoCard from "../VideoCard/VideoCard";
 
 interface HeroSliderProps {
@@ -10,6 +11,7 @@ interface HeroSliderProps {
 
 const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { theme } = useTheme();
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -45,7 +47,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-left-white.png"
+            src={
+              theme
+                ? "/arrow-left-for-light-theme.png"
+                : "/arrow-left-white.png"
+            }
             alt="arrow left"
           />
         </button>
@@ -58,8 +64,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
                 currentIndex === 0
                   ? undefined
                   : // on decale negativement la track vers la gauche (-) la largeur d'une slide multiplie par l'index courrant (ex : une slide de 400px * l'index 4 = 400px * 4 vers la gauche)
-                    //  et on ajoute la valeur du gap multiplie par l'index courant (donc par le nombre de slide concerne par le decalage)
-                    `translateX(calc(-${slideWidthPercent * currentIndex}% - ${18 * currentIndex}px))`,
+                    //  et on ajoute la valeur de l'index courant (donc par le nombre de slide concerne par le decalage)
+                    `translateX(calc(-${slideWidthPercent * currentIndex}% - ${currentIndex}px))`,
               width: `${trackWidthPercent}%`,
             }}
           >
@@ -92,7 +98,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-right-white.svg"
+            src={
+              theme
+                ? "/arrow-right-for-light-theme.png"
+                : "/arrow-right-white.svg"
+            }
             alt="arrow right"
           />
         </button>

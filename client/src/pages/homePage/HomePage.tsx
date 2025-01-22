@@ -22,15 +22,13 @@ export default function () {
       const datas = await request.json();
       setInfoVideos(datas);
       //FILTER BY POPULAR
-      const videosPopularData = datas.filter(
-        (video: { is_popular: number }) => video.is_popular === 1,
+      const videoPopularData = datas.filter(
+        (video: Video) => video.is_popular === 1,
       );
-      setVideosPopular(videosPopularData);
+      setVideosPopular(videoPopularData);
       //FILTER BY NEW IN - THE LAST REGISTER
       const videosNewInData = datas.slice(0, 9);
-      // console.log({ "video recentes": videosNewInData });
       setVideosNewIn(videosNewInData);
-      // console.log({ "video recentes state": videosNewIn });
     }
   }
 

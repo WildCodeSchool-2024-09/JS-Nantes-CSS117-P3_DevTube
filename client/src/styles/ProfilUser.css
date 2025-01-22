@@ -1,0 +1,46 @@
+.section-my-account-container {
+  display: grid;
+  justify-content: center;
+}
+.fieldset-container {
+  width: 90%;
+  margin: 2rem auto;
+  background-color: var(--tertiary-color);
+}
+.fieldset-container form {
+  display: grid;
+  padding: 1rem;
+
+  & input,
+  p {
+    font-size: var(--font-normal);
+    height: 35px;
+    color: white;
+  }
+
+  & p {
+    margin: 2rem 0;
+  }
+}
+.section-progression-bar {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0;
+  gap: 2rem;
+}
+.section-progression-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 2rem 0;
+  gap: 2rem;
+  align-items: center;
+}
+.progress-bar {
+  --radius: 30px;
+  width: 280px;
+  height: var(--radius);
+  border: 2px solid var(--accent-color-1);
+  border-radius: var(--radius);
+}
