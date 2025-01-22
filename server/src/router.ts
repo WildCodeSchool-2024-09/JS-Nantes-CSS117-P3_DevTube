@@ -3,6 +3,7 @@ import express from "express";
 import type { Request, Response } from "express";
 import multer from "multer";
 
+// Route user
 import userActions from "./modules/user/userActions";
 import authActions from "./utils/authentification/authActions";
 
@@ -42,6 +43,10 @@ router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
+// Route login
+router.post("/api/users/login", authActions.login);
+
+// Route video
 import videoActions from "./modules/video/videoActions";
 
 router.get("/api/videos", videoActions.browse);

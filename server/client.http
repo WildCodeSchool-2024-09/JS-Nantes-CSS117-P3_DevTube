@@ -13,10 +13,20 @@ content-type: application/json
   "firstname": "John",
   "lastname": "Do",
   "email": "johndoe@gmail.com",
-  "password": "password",
+  "password": "$argon2id$v=19$m=19456,t=2,p=1$1c7quht44dqlmWMBQfoCMQ$gwcdMZz7Efjo1d/aS7vd7rGtdBI+eWXXOaJuzcYh1g4",
   "github_url": "github",
   "linkedin_url": "linkedin",
   "profil_img": "johndo.png"
+}
+
+###
+
+POST http://localhost:3310/api/users/login HTTP/1.1
+content-type: application/json
+
+{
+	"email": "johndoe@gmail.com",
+	"password": "$argon2id$v=19$m=19456,t=2,p=1$1c7quht44dqlmWMBQfoCMQ$gwcdMZz7Efjo1d/aS7vd7rGtdBI+eWXXOaJuzcYh1g4"
 }
 
 ###
