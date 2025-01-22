@@ -14,7 +14,8 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.0",
     "multer": "^1.4.5-lts.1",
-    "mysql2": "^3.11.3"
+    "mysql2": "^3.11.3",
+    "react-toastify": "^11.0.3"
   },
   "devDependencies": {
     "@faker-js/faker": "^9.0.3",

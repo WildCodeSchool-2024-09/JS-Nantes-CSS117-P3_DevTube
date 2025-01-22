@@ -183,12 +183,13 @@ button {
 .arrow-button {
   height: 30px;
   width: 30px;
-  transition: all 100ms ease-in;
+  border: none;
+  transition: border 0.2s ease-in;
 }
 
 .arrow-button:hover {
-  height: 40px;
-  width: 40px;
+  border: solid 3px var(--accent-color-1);
+  border-radius: 50%;
 }
 
 main {
@@ -247,12 +248,5 @@ footer {
   .arrow-button {
     height: 48px;
     width: 48px;
-    transition: all 100ms ease-in;
-  }
-
-  /*  TODO  Hello team, do you like it because I'm not sure */
-  .arrow-button:hover {
-    height: 58px;
-    width: 58px;
   }
 }

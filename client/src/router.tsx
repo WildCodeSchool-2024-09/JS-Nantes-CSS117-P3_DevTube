@@ -5,6 +5,7 @@ import Admin from "./pages/Admin/Admin";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
+import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
@@ -44,6 +45,10 @@ export const router = createBrowserRouter([
         element: <Freemium />,
       },
       {
+        path: "/profil-user",
+        element: <ProfilUser />,
+      },
+      {
         path: "/video/:id",
         element: <VideoPlayer />,
         loader: async ({ params }) => {
@@ -71,6 +76,10 @@ export const router = createBrowserRouter([
       {
         path: "/testimonials",
         element: <Testimonials />,
+      },
+      {
+        path: "/about",
+        element: <About />,
       },
     ],
   },
