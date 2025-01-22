@@ -2,6 +2,7 @@ export type Video = {
   name: string;
   duration: number;
   thumbnail: string;
+  preview_image: string;
   description: string;
   category_id: number;
   is_freemium: boolean;
