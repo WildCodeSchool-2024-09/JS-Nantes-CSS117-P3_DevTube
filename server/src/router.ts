@@ -4,6 +4,7 @@ import type { Request, Response } from "express";
 import multer from "multer";
 
 import userActions from "./modules/user/userActions";
+import authActions from "./utils/authentification/authActions";
 
 const router = express.Router();
 
@@ -37,7 +38,7 @@ router.post(
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
-router.post("/api/users", userActions.add);
+router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
