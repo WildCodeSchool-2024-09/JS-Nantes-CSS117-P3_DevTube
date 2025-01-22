@@ -82,7 +82,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
               >
                 <VideoCard
                   title={video.name}
-                  thumbnailUrl="https://placehold.co/1024x480"
+                  thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
                   isLarge
                   displayCardInfo={false}
                 />
