@@ -2,6 +2,7 @@ import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
 import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
+import useTheme from "../../utils/useTheme";
 import VideoCard from "../VideoCard/VideoCard";
 
 interface MiniVideoCarouselProps {
@@ -11,6 +12,7 @@ interface MiniVideoCarouselProps {
 const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const videosPerPage = 1;
+  const { theme } = useTheme();
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -26,7 +28,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
     }
   };
 
-  const slideWidthPixels = 300 + 18;
+  const slideWidthPixels = 300 + 18; //on ajoute la shadow
   const trackWidthPixels = videos.length * slideWidthPixels;
 
   return (
@@ -39,7 +41,9 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
       >
         <img
           className="arrow-button"
-          src="/arrow-left-white.png"
+          src={
+            theme ? "/arrow-left-for-light-theme.png" : "/arrow-left-white.png"
+          }
           alt="arrow left"
         />
       </button>
@@ -75,7 +79,11 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
       >
         <img
           className="arrow-button"
-          src="/arrow-right-white.svg"
+          src={
+            theme
+              ? "/arrow-right-for-light-theme.png"
+              : "/arrow-right-white.svg"
+          }
           alt="arrow right"
         />
       </button>

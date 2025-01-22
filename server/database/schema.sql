@@ -4,7 +4,6 @@ CREATE TABLE user (
   lastname  VARCHAR(45) NOT NULL,
   email VARCHAR(45) NOT NULL,
   password VARCHAR(45) NOT NULL,
-  confirm_password VARCHAR(45) NOT NULL,
   github_url VARCHAR(80),
   linkedin_url VARCHAR(80),
   level INT NOT NULL DEFAULT 0,
@@ -40,11 +39,11 @@ CREATE TABLE favorite (
   FOREIGN KEY (video_id) REFERENCES video(id)
 );
 
-INSERT INTO user (firstname, lastname, email, password, confirm_password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
+INSERT INTO user (firstname, lastname, email, password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
-  ("Emilie", "De Duyver", "emilie.deduyver", "mdp", "mdp", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
-  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "mdp", "mdp", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
-  ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "mdp", "mdp", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
+  ("Emilie", "De Duyver", "emilie.deduyver", "mdp", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
+  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "mdp", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "mdp", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
 INSERT INTO category (name)
 VALUES
