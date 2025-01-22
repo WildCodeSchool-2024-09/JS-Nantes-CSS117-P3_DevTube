@@ -69,8 +69,12 @@ const remove: RequestHandler = async (req, res, next) => {
   try {
     const userId = Number(req.params.id);
 
-    const userToRemove = await userRepository.remove(userId);
-    res.status(201).json({ userToRemove });
+    const userDeleted = await userRepository.remove(userId);
+
+    if (userDeleted) {
+      res.status(200).send("The user has been removed !");
+    } else {
+    }
   } catch (err) {
     // Pass any errors to the error-handling middleware
     next(err);

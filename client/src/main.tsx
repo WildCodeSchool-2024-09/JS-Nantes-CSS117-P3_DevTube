@@ -4,6 +4,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
 /* ************************************************************************* */
+import ThemeProvider from "./contexts/ThemeProvider.tsx";
 import { router } from "./router.tsx";
 
 // Import the main app component
@@ -30,7 +31,9 @@ if (rootElement == null) {
 // Render the app inside the root element
 createRoot(rootElement).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ThemeProvider>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   </StrictMode>,
 );
 

@@ -1,13 +1,59 @@
 import { useState } from "react";
 import "../../styles/testimonial.css";
-export default function Testimonials() {
-  const [showmodel, setSowmodel] = useState(false);
 
-  const hadalclick = () => {
-    setSowmodel(!showmodel);
+export default function Testimonials() {
+  const [showModal, setShowModal] = useState(false);
+  const [testimonialText, setTestimonialText] = useState("");
+  const [user] = useState({ id: 1, is: "user_1" });
+
+  const handleAddTestimonialClick = () => {
+    setShowModal(!showModal);
   };
-  const hadalclick2 = () => {
-    setSowmodel(false);
+
+  const handleCloseModal = () => {
+    setShowModal(false);
+  };
+
+  //const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //setTestimonialText(event.target.value);
+  //};
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    if (!testimonialText.trim()) {
+      alert("Please write a testimonial.");
+      return;
+    }
+
+    const formData = {
+      user_id: user.id,
+      text_testimonial: testimonialText,
+    };
+
+    try {
+      const res = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/testimonial`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        },
+      );
+
+      if (res.ok) {
+        alert("Testimonial added successfully!");
+        setTestimonialText("");
+        handleCloseModal();
+      } else {
+        alert("Failed to add testimonial.");
+      }
+    } catch (error) {
+      console.error("Error submitting testimonial:", error);
+      alert("An error occurred while submitting the testimonial.");
+    }
   };
 
   return (
@@ -20,34 +66,43 @@ export default function Testimonials() {
               type="button"
               className="add-testimonial-btn"
               aria-label="Add your testimonial"
-              onClick={hadalclick}
+              onClick={handleAddTestimonialClick}
             >
               Add my testimonial
             </button>
           </header>
-          {showmodel && (
-            <section className="formulaire-testimonial ">
-              <form action="">
+
+          {showModal && (
+            <section className="formulaire-testimonial">
+              <form onSubmit={handleSubmit}>
                 <label id="text" htmlFor="text">
-                  Your commentair
+                  Your comment
                 </label>
-                <input
-                  type="text"
-                  name="name"
+                <textarea
+                  name="testimonial"
                   className="commentaire-user"
-                  placeholder="Enter your commentair"
+                  placeholder="Enter your testimonial"
+                  value={testimonialText}
+                  //	onChange={handleTextChange}
                 />
+                <button
+                  type="submit"
+                  className="add-testimonial-btn"
+                  aria-label="Submit your testimonial"
+                >
+                  Submit
+                </button>
+                <button
+                  type="button"
+                  className="cancel-btn"
+                  onClick={handleCloseModal}
+                >
+                  Cancel
+                </button>
               </form>
-              <button
-                type="button"
-                className="add-testimonial-btn"
-                aria-label="Add your testimonial"
-                onClick={hadalclick2}
-              >
-                validation
-              </button>
             </section>
           )}
+
           <section className="testimonial-container">
             <div className="testimonials-cards">
               <article className="testimonial-card">
@@ -75,152 +130,6 @@ export default function Testimonials() {
                     amet, consectetur, adipisci velit..." "There is no one who
                     loves pain itself, who seeks after it and wants to have it,
                     simply because it is pain..."
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p>John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="praisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
-                  </p>
-                </section>
-              </article>
-            </div>
-            <div className="testimonials-cards">
-              <article className="testimonial-card">
-                <div className="back-of">
-                  <img
-                    className="testimonial-image"
-                    src="5097224.jpg"
-                    alt="prisentation of the person giving the testimonial"
-                  />
-                </div>
-
-                <section className="testimonial-info">
-                  <header className="testimonial-header">
-                    <div className="testimonial-name">
-                      <p className="name">John Doe</p>
-                    </div>
-                    <div className="testimonial-formation">
-                      <h2 className="formation">Formation suivie</h2>
-                      <p className="level">| Niveau avancé</p>
-                    </div>
-                  </header>
-
-                  <p className="testimonial-description">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Fugit obcaecati id neque pariatur veniam atque possimus
-                    rerum iusto aperiam error.
                   </p>
                 </section>
               </article>
