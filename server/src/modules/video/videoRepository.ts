@@ -41,7 +41,9 @@ class VideoRepository {
   //All
   async readAll() {
     // Execute the SQL SELECT query to retrieve all videos from the "video" table
-    const [rows] = await databaseClient.query<Rows>("select * from video"); //TODO  Add an ORDER BY DATE ?
+    const [rows] = await databaseClient.query<Rows>(
+      "select * from video order by id desc",
+    );
 
     // Return the array of videos
     return rows as Video[];
