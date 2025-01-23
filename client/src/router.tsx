@@ -7,6 +7,7 @@ import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
 import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
+import TeamProfile from "./pages/TeamProfile/TeamProfile";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
 import Testimonials from "./pages/testimonial/Testimonial";
@@ -31,6 +32,10 @@ export const router = createBrowserRouter([
       {
         path: "/subscribe",
         element: <Subscribe />,
+      },
+      {
+        path: "/teamProfil",
+        element: <TeamProfile />,
       },
       {
         path: "/login",
