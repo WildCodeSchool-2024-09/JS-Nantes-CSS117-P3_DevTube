@@ -35,7 +35,7 @@ export default function VideoPlayer() {
         </article>
         <video key={thumbnail} controls muted poster="">
           <source
-            src={`${import.meta.env.VITE_API_URL}$${thumbnail}`}
+            src={`${import.meta.env.VITE_API_URL}${thumbnail}`}
             type="video/mp4"
           />
         </video>
