@@ -57,6 +57,7 @@ const login: RequestHandler = async (req, res, next) => {
 
 // Vérification du token
 const verifyToken: RequestHandler = async (req, res, next) => {
+  console.warn("Hello token !");
   try {
     const authorization = req.get("Authorization");
 

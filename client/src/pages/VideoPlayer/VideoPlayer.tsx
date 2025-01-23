@@ -15,12 +15,14 @@ export default function VideoPlayer() {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${category_id}`;
     recoverInfoVideos(urlForVideos);
   }, [category_id]);
-  // TODO : DON'T DISPLAY THE CUTTENT VIDEO OF THE PLAYER IN THE VIDEOS OF THE SAME CATEGORY
 
   async function recoverInfoVideos(url: string) {
     const request = await fetch(url);
     const datas = await request.json();
-    setVideos(datas);
+    const datasFiltered = datas.filter(
+      (data: { id: string }) => data.id !== id,
+    );
+    setVideos(datasFiltered);
   }
 
   return id ? (
@@ -31,12 +33,8 @@ export default function VideoPlayer() {
           <h2>{t("description-title")}</h2>
           <p>{description}</p>
         </article>
-        <video controls muted poster="">
-          <source
-            key={thumbnail}
-            src={`http://localhost:3310${thumbnail}`}
-            type="video/mp4"
-          />
+        <video key={thumbnail} controls muted poster="">
+          <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
         </video>
       </section>
       <section className="category-video">

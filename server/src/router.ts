@@ -43,13 +43,10 @@ router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
-// Route login
-router.post("/api/users/login", authActions.login);
-
 // Route video
 import videoActions from "./modules/video/videoActions";
 
-// router.get("/api/videos", videoActions.browse);
+router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
@@ -62,7 +59,9 @@ router.get("/api/category/:id", categoryActions.read);
 
 /* ************************************************************************* */
 
-router.get("/api/videos", videoActions.browse);
+// Route login
+router.post("/api/users/login", authActions.login);
+// TODO : Work in progress
 router.use(authActions.verifyToken);
 
 export default router;

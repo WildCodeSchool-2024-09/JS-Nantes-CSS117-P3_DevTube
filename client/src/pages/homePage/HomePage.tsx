@@ -8,15 +8,29 @@ import type { Video } from "../../types/video";
 export default function () {
   const { t } = useTranslation();
   const [infoVideos, setInfoVideos] = useState<Video[]>();
+  const [videosPopular, setVideosPopular] = useState<Video[]>();
+  const [videosNewIn, setVideosNewIn] = useState<Video[]>();
+
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
     recoverInfoVideos(urlForVideos);
   }, []);
 
   async function recoverInfoVideos(url: string) {
-    const request = await fetch(url);
-    const datas = await request.json();
-    setInfoVideos(datas);
+    if (url) {
+      const request = await fetch(url);
+      const datas = await request.json();
+      console.info("data", datas);
+      setInfoVideos(datas);
+      //FILTER BY POPULAR
+      const videoPopularData = datas.filter(
+        (video: Video) => video.is_popular === 1,
+      );
+      setVideosPopular(videoPopularData);
+      //FILTER BY NEW IN - THE LAST REGISTER
+      const videosNewInData = datas.slice(0, 9);
+      setVideosNewIn(videosNewInData);
+    }
   }
 
   return (
@@ -28,11 +42,11 @@ export default function () {
         </section>
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
-          <MiniVideoCarousel videos={infoVideos} />
+          {videosPopular && <MiniVideoCarousel videos={videosPopular} />}
         </section>
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
-          <MiniVideoCarousel videos={infoVideos} />
+          {videosNewIn && <MiniVideoCarousel videos={videosNewIn} />}
         </section>
       </div>
     )
