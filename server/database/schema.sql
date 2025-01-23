@@ -68,7 +68,7 @@ VALUES
   ("Responsive - Partie 1", "7", "/assets/videos/Workshop2-HTML&CSS-Responsive(part1).mp4", "/assets/images/videoPreviewImages/resp1.png", "Qu'est qu'un site responsive ?", 2, false, "2025-11-01", true, false),
   ("Responsive - Partie 2", "4", "/assets/videos/Workshop2-HTML&CSS-Responsive(part2).mp4", "/assets/images/videoPreviewImages/resp2.png", "Utilise Flex pour rendre ton site responsive", 2, true, "2025-11-01", true, true),
   ("Responsive - Partie 3", "5", "/assets/videos/Workshop2-HTML&CSS-Responsive(part3).mp4", "/assets/images/videoPreviewImages/resp3.png", "Comprendre les media queries pour assurer un site responsive", 2, true, "2025-11-01", true, true);
-
+  ("Discover ")
   
 
 

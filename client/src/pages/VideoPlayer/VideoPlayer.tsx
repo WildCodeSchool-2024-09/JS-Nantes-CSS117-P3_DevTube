@@ -34,7 +34,10 @@ export default function VideoPlayer() {
           <p>{description}</p>
         </article>
         <video key={thumbnail} controls muted poster="">
-          <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
+          <source
+            src={`${import.meta.env.VITE_API_URL}$${thumbnail}`}
+            type="video/mp4"
+          />
         </video>
       </section>
       <section className="category-video">
