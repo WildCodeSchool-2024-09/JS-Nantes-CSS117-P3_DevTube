@@ -49,7 +49,7 @@ router.post("/api/users/login", authActions.login);
 // Route video
 import videoActions from "./modules/video/videoActions";
 
-router.get("/api/videos", videoActions.browse);
+// router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
@@ -61,5 +61,8 @@ router.get("/api/category/:id", categoryActions.read);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 
 /* ************************************************************************* */
+
+router.get("/api/videos", videoActions.browse);
+router.use(authActions.verifyToken);
 
 export default router;

@@ -49,10 +49,43 @@ const login: RequestHandler = async (req, res, next) => {
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
-    res.json({ token, user: user.email });
+    res.status(202).json({ token, user: user.email });
   } else {
     res.sendStatus(422);
   }
 };
 
-export default { hashPassword, login };
+// Vérification du token
+const verifyToken: RequestHandler = async (req, res, next) => {
+  try {
+    const authorization = req.get("Authorization");
+
+    if (!authorization) {
+      // Récupération du header Authorization de la requête
+      throw new Error("Authorization header must be provided");
+    }
+
+    // Vérification si le mot Bearer est présent dans la requête
+    const [type, token] = authorization.split(" ");
+
+    if (type !== "Bearer") {
+      // Spliter authorization
+
+      throw new Error("Bearer must be provided");
+    }
+
+    // Vérification de la secretKey
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      throw new Error("A secret key must be provided");
+    }
+
+    jwt.verify(token, secretKey);
+
+    next();
+  } catch (err) {
+    res.status(400).send(err);
+  }
+};
+export default { hashPassword, login, verifyToken };

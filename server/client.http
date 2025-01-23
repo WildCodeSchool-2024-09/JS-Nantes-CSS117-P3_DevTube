@@ -13,7 +13,7 @@ content-type: application/json
   "firstname": "John",
   "lastname": "Do",
   "email": "johndoe@gmail.com",
-  "password": "$argon2id$v=19$m=19456,t=2,p=1$1c7quht44dqlmWMBQfoCMQ$gwcdMZz7Efjo1d/aS7vd7rGtdBI+eWXXOaJuzcYh1g4",
+  "password": "coucou",
   "github_url": "github",
   "linkedin_url": "linkedin",
   "profil_img": "johndo.png"
@@ -26,7 +26,7 @@ content-type: application/json
 
 {
 	"email": "johndoe@gmail.com",
-	"password": "$argon2id$v=19$m=19456,t=2,p=1$1c7quht44dqlmWMBQfoCMQ$gwcdMZz7Efjo1d/aS7vd7rGtdBI+eWXXOaJuzcYh1g4"
+	"password": "coucou"
 }
 
 ###
@@ -52,7 +52,7 @@ content-type: application/json
 DELETE http://localhost:3310/api/users/3
 
 ###
-
+  
 GET http://localhost:3310/api/videos
 
 ###
