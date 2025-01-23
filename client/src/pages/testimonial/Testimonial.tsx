@@ -14,7 +14,9 @@ export default function Testimonials() {
     setShowModal(false);
   };
 
-  //const handleTextChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //const handleTextChange = async (
+  //event: React.ChangeEvent<HTMLInputElement>,
+  //) => {
   //setTestimonialText(event.target.value);
   //};
 
