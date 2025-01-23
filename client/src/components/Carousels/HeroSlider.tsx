@@ -1,12 +1,9 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
+import { Link } from "react-router-dom";
+import type { Video } from "../../types/video";
+import useTheme from "../../utils/useTheme";
 import VideoCard from "../VideoCard/VideoCard";
-
-interface Video {
-  id: string;
-  thumbnailUrl: string;
-  title: string;
-}
 
 interface HeroSliderProps {
   videos: Video[];
@@ -14,6 +11,7 @@ interface HeroSliderProps {
 
 const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+  const { theme } = useTheme();
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -49,7 +47,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-left-white.png"
+            src={
+              theme
+                ? "/arrow-left-for-light-theme.png"
+                : "/arrow-left-white.png"
+            }
             alt="arrow left"
           />
         </button>
@@ -57,33 +59,34 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
           <div
             className="carousel-track"
             style={{
-              // on translate la track de la laregeur d une carte / par l index courant en pourcentage
+              // on translate la track de la largeur d une carte / par l'index courant en pourcentage
               transform:
                 currentIndex === 0
                   ? undefined
                   : // on decale negativement la track vers la gauche (-) la largeur d'une slide multiplie par l'index courrant (ex : une slide de 400px * l'index 4 = 400px * 4 vers la gauche)
-                    //  et on ajoute la valeur du gap mu;tiplie par l'index courant (donc par le nombre de slide concerne par le decalage)
-                    `translateX(calc(-${slideWidthPercent * currentIndex}% - ${18 * currentIndex}px))`,
+                    //  et on ajoute la valeur de l'index courant (donc par le nombre de slide concerne par le decalage)
+                    `translateX(calc(-${slideWidthPercent * currentIndex}% - ${currentIndex}px))`,
               width: `${trackWidthPercent}%`,
             }}
           >
             {videos.map((video) => (
-              <div
+              <Link
+                to={`/video/${video.id}`}
                 className="carousel-slide"
                 key={video.id}
                 style={{
                   flex: `0 0 ${slideWidthPercent}%`,
                   //Cette valeur determine quel espace chaque slide occupe sur la track en pourcentage
-                  // Chaque slide a un flex basis (l'espace qu"elle essaie de prendre dans le flex courrant) du pourcentage de la slide par rapport a la track
+                  // Chaque slide a un flex basis (l'espace qu'elle essaie de prendre dans le flex courant) du pourcentage de la slide par rapport a la track
                 }}
               >
                 <VideoCard
-                  title={video.title}
+                  title={video.name}
                   thumbnailUrl="https://placehold.co/1024x480"
                   isLarge
                   displayCardInfo={false}
                 />
-              </div>
+              </Link>
             ))}
           </div>
         </div>
@@ -95,7 +98,11 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         >
           <img
             className="arrow-button"
-            src="/arrow-right-white.svg"
+            src={
+              theme
+                ? "/arrow-right-for-light-theme.png"
+                : "/arrow-right-white.svg"
+            }
             alt="arrow right"
           />
         </button>

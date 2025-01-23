@@ -1,37 +1,45 @@
+import { useEffect, useRef } from "react";
 import "../../styles/Login.css";
 
 export default function Login() {
+  const getFocus = useRef<HTMLInputElement | null>(null);
+
+  useEffect(() => {
+    getFocus.current?.focus();
+  }, []);
+
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+  };
+
   return (
     <section className="main-form-login">
-      <form action="submit" method="get" className="form-login-container">
-        {/* Section username */}
-        <section className="form-login-label">
-          <label id="username" htmlFor="username">
-            Username
-          </label>
-          <input
-            type="text"
-            name="username"
-            aria-labelledby="username"
-            placeholder="Enter your username."
-            required
-          />
-        </section>
+      <h1>Log in</h1>
+      <form onSubmit={handleLogin}>
+        <label id="username" htmlFor="username">
+          User name
+        </label>
+        <input
+          type="text"
+          ref={getFocus}
+          name="username"
+          aria-labelledby="username"
+          placeholder="Enter your user name."
+          required
+        />
 
-        {/* Section password */}
-        <section className="form-login-label">
-          <label id="password" htmlFor="password">
-            Password
-          </label>
-          <input
-            type="text"
-            name="password"
-            aria-labelledby="password"
-            placeholder="Enter your password."
-            required
-          />
-        </section>
-        <button type="button" className="little-cta">
+        <label id="password" htmlFor="password">
+          Password
+        </label>
+        <input
+          type="password"
+          name="password"
+          aria-labelledby="password"
+          placeholder="Enter your password."
+          required
+        />
+
+        <button type="submit" className="little-cta">
           Sign up
         </button>
       </form>

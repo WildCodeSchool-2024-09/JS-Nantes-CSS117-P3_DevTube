@@ -1,5 +1,4 @@
 footer {
-  background: var(--secondary-color);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,6 +18,7 @@ footer {
   border-top-right-radius: 4px;
   border-top-left-radius: 4px;
   border-bottom-right-radius: 4px;
+  background-color: var(--tertiary-color);
 }
 
 .dropdown-label-text {
@@ -30,6 +30,7 @@ footer {
 .dropdown-btn {
   padding: 8px;
   width: 35px;
+  background-color: var(--tertiary-color);
 }
 
 .arrow-dropdown-menu-language {
@@ -41,7 +42,7 @@ footer {
   display: flex;
   flex-direction: column;
   position: absolute;
-  background-color: var(--secondary-color);
+  background-color: var(--tertiary-color);
   width: 95px;
   border-right: solid 1px var(--text-color);
   border-left: solid 1px var(--text-color);

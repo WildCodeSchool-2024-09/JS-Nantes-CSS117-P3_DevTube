@@ -17,7 +17,7 @@ const browse: RequestHandler = async (req, res, next) => {
   }
 };
 
-// Read operation
+// Read operation by id
 const read: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific video based on the provided ID
