@@ -20,7 +20,6 @@ export default function () {
     if (url) {
       const request = await fetch(url);
       const datas = await request.json();
-      console.info("data", datas);
       setInfoVideos(datas);
       //FILTER BY POPULAR
       const videoPopularData = datas.filter(
