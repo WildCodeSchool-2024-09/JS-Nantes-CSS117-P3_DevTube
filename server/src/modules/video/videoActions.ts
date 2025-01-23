@@ -25,7 +25,7 @@ const read: RequestHandler = async (req, res, next) => {
     const video = await videoRepository.read(videoId);
 
     const isFreemium = video.is_freemium === 1;
-    const isUserAuthenticated = false; // temporary fals variable
+    const isUserAuthenticated = true; // temporary false or true variable
 
     // If the video is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the video in JSON format
