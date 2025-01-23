@@ -81,3 +81,11 @@
   width: 33px;
   height: 33px;
 }
+
+.skeleton-card {
+  min-width: 300px;
+  height: 245px;
+  background-color: var(--tertiary-color);
+  border-radius: 8px;
+  box-shadow: 0 2px 6px var(--shadow-color);
+}

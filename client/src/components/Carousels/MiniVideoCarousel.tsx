@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import type { Video } from "../../types/video";
 import useTheme from "../../utils/useTheme";
 import VideoCard from "../VideoCard/VideoCard";
+import SkeletonCard from "./SkeletonCard";
 
 interface MiniVideoCarouselProps {
   videos: Video[];
@@ -13,6 +14,15 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const videosPerPage = 1;
   const { theme } = useTheme();
+
+  const skeletonList = Array(20)
+    .fill("skel")
+    .map((s, index) => {
+      return {
+        id: `${s}-${index}`,
+        name: "skeletonCard",
+      };
+    });
 
   // Fonction pour passer à la vidéo suivante
   const nextSlide = () => {
@@ -68,6 +78,9 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
                 thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
               />
             </Link>
+          ))}
+          {skeletonList.map((skel) => (
+            <SkeletonCard key={skel.id} />
           ))}
         </div>
       </section>
