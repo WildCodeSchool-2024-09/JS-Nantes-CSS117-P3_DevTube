@@ -1,7 +1,7 @@
 import { useTranslation } from "react-i18next";
 import "../../styles/videoPlayer.css";
 import { useEffect, useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import VideoCard from "../../components/VideoCard/VideoCard";
 import type { Video } from "../../types/video";
 
@@ -49,9 +49,9 @@ export default function VideoPlayer() {
               <h2>{t("description-title")}</h2>
               <p>{description}</p>
             </article>
-            <video controls muted poster="">
+            <video key={thumbnail} controls muted poster="">
               <source
-                src={`http://localhost:3310${thumbnail}`}
+                src={`${import.meta.env.VITE_API_URL}${thumbnail}`}
                 type="video/mp4"
               />
             </video>
@@ -60,8 +60,8 @@ export default function VideoPlayer() {
             <h2>{t("category-title")}</h2>
             <article>
               {videos?.map((video) => (
-                <a
-                  href={`/video/${video.id}`}
+                <Link
+                  to={`/video/${video.id}`}
                   key={video.id}
                   className="carousel-slide"
                 >
@@ -70,7 +70,7 @@ export default function VideoPlayer() {
                     title={video.name}
                     thumbnailUrl={`${import.meta.env.VITE_API_URL}/assets/images/videoPreviewImages/apercu-ex.png`}
                   />
-                </a>
+                </Link>
               ))}
             </article>
           </section>
