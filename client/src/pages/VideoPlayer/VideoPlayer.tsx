@@ -17,7 +17,13 @@ export default function VideoPlayer() {
   }, [category_id]);
 
   async function recoverInfoVideos(url: string) {
-    const request = await fetch(url);
+    const token = localStorage.getItem("token");
+
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const datas = await request.json();
     const datasFiltered = datas.filter(
       (data: { id: string }) => data.id !== id,
@@ -34,7 +40,10 @@ export default function VideoPlayer() {
           <p>{description}</p>
         </article>
         <video key={thumbnail} controls muted poster="">
-          <source src={`http://localhost:3310${thumbnail}`} type="video/mp4" />
+          <source
+            src={`${import.meta.env.VITE_API_URL}${thumbnail}`}
+            type="video/mp4"
+          />
         </video>
       </section>
       <section className="category-video">

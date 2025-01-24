@@ -1,7 +1,10 @@
 import { useEffect, useRef } from "react";
 import "../../styles/Login.css";
+import useToast from "../../utils/useToastify";
 
 export default function Login() {
+  const { notifySuccess, notifyError } = useToast();
+
   const getFocus = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -10,16 +13,31 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const response = await fetch(
-      `${import.meta.env.VITE_APP_URL}/api/users/login`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
         },
-      },
-    );
-    console.warn(response);
+      );
+
+      const { token } = await response.json();
+
+      if (token) {
+        notifySuccess("You are logged !");
+
+        localStorage.setItem("token", token);
+      }
+    } catch (err) {
+      notifyError("You are log out !");
+    }
   };
 
   return (

@@ -57,18 +57,17 @@ export const router = createBrowserRouter([
         path: "/video/:id",
         element: <VideoPlayer />,
         loader: ({ params }) => {
+          const token = localStorage.getItem("token");
+
           return fetch(
             `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+            { headers: { Authorization: `Bearer ${token}` } },
           );
         },
       },
       {
         path: "/testimonials",
         element: <Testimonials />,
-      },
-      {
-        path: "/about",
-        element: <About />,
       },
     ],
   },
