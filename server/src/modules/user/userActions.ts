@@ -46,7 +46,7 @@ const add: RequestHandler = async (req, res, next) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password,
+      password: req.body.hashed_password,
       github_url: req.body.github_url,
       linkedin_url: req.body.linkedin_url,
       profil_img: req.body.profil_img,
