@@ -1,7 +1,7 @@
-import path from "node:path";
+// import path from "node:path";
 import express from "express";
 import type { Request, Response } from "express";
-import multer from "multer";
+// import multer from "multer";
 
 // Route user
 import userActions from "./modules/user/userActions";
@@ -9,33 +9,33 @@ import authActions from "./utils/authentification/authActions";
 
 const router = express.Router();
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, "public/assets/images/userprofil/");
-  },
-  filename: (req, file, cb) => {
-    const fileName = path.parse(file.originalname).name;
-    const extension = path.extname(file.originalname);
-    cb(null, `${fileName}${extension}`);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, "public/assets/images/userprofil/");
+//   },
+//   filename: (req, file, cb) => {
+//     const fileName = path.parse(file.originalname).name;
+//     const extension = path.extname(file.originalname);
+//     cb(null, `${fileName}${extension}`);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
-router.post(
-  "/api/users/file/",
-  upload.single("profile-image"),
-  (req: Request, res: Response) => {
-    if (!req.file) {
-      res.status(400).send({ message: "Erreur : aucun fichier reçu" });
-      return;
-    }
+// router.post(
+//   "/api/users/file/",
+//   upload.single("profile-image"),
+//   (req: Request, res: Response) => {
+//     if (!req.file) {
+//       res.status(400).send({ message: "Erreur : aucun fichier reçu" });
+//       return;
+//     }
 
-    const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
+//     const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
 
-    res.status(200).json({ imageProfileURL });
-  },
-);
+//     res.status(200).json({ imageProfileURL });
+//   },
+// );
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);

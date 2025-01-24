@@ -10,21 +10,31 @@ export default function Login() {
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    const response = await fetch(
+      `${import.meta.env.VITE_APP_URL}/api/users/login`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      },
+    );
+    console.warn(response);
   };
 
   return (
     <section className="main-form-login">
       <h1>Log in</h1>
       <form onSubmit={handleLogin}>
-        <label id="username" htmlFor="username">
-          User name
+        <label id="email" htmlFor="email">
+          Email
         </label>
         <input
-          type="text"
+          type="email"
           ref={getFocus}
-          name="username"
-          aria-labelledby="username"
-          placeholder="Enter your user name."
+          name="email"
+          aria-labelledby="email"
+          placeholder="Enter your email."
           required
         />
 
