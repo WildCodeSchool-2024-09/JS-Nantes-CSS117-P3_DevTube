@@ -43,7 +43,7 @@ class VideoRepository {
   async readAll() {
     // Execute the SQL SELECT query to retrieve all videos from the "video" table without url for security
     const [rows] = await databaseClient.query<Rows>(
-      "select id, name, duration, description, category_id, is_freemium, added_date, is_heroSlide, is_popular from video order by id desc",
+      "select id, name, duration, description, category_id, preview_image, is_freemium, added_date, is_heroSlide, is_popular from video order by id desc",
     );
 
     // Return the array of videos
