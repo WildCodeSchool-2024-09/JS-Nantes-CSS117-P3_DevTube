@@ -2,6 +2,7 @@ import "./../../styles/VideoCard.css";
 import type { VideoCardProps } from "../../types/videocard";
 
 function VideoCard({
+  isFreemium,
   title,
   thumbnailUrl,
   isLarge,
@@ -39,6 +40,11 @@ function VideoCard({
             />
           </section>
         ) : null}
+        {isFreemium && (
+          <figure className="background-cadenas">
+            <img className="cadenas" src="cadenas-dark.png" alt="cadenas" />
+          </figure>
+        )}
       </article>
     </>
   );
