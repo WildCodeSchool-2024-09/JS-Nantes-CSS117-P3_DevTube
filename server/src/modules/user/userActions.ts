@@ -120,12 +120,12 @@ const edit: RequestHandler = async (req, res, next) => {
 const checkIfUser: RequestHandler = async (req, res, next) => {
   try {
     const { name } = req.body;
-    const GetIsUser = await userRepository.read(name);
+    const getIsUser = await userRepository.read(name);
 
-    if (GetIsUser) {
+    if (getIsUser) {
       next();
     } else {
-      res.status(401).send("Bah non");
+      res.status(401).send("This user already exists !");
     }
   } catch (err) {
     console.error(err);
