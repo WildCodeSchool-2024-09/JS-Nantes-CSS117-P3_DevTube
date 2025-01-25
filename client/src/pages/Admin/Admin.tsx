@@ -1,37 +1,40 @@
-import { useState } from "react";
-import "../../styles/Admin.css";
+// import { useState } from "react";
+// import "../../styles/Admin.css";
+import FormUserAdmin from "../../components/FormUserAdmin/FormUserAdmin";
 
 export default function Admin() {
+  /*TODO Refactoring en cours*/
   // useState for drag the selected image
-  const [imgSrc, setImageSrc] = useState<string>();
+  // const [imgSrc, setImageSrc] = useState<string>();
 
-  const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-  };
+  // const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
+  //   e.preventDefault();
+  // };
 
-  const handleDrop = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-    const newImage = e.dataTransfer.files[0];
-    if (newImage.type.startsWith("image/")) {
-      const reader = new FileReader();
-      reader.onload = () => setImageSrc(reader.result as string);
-      reader.readAsDataURL(newImage);
-    }
-  };
+  // const handleDrop = (e: React.DragEvent<HTMLScriptElement>) => {
+  //   e.preventDefault();
+  //   const newImage = e.dataTransfer.files[0];
+  //   if (newImage.type.startsWith("image/")) {
+  //     const reader = new FileReader();
+  //     reader.onload = () => setImageSrc(reader.result as string);
+  //     reader.readAsDataURL(newImage);
+  //   }
+  // };
 
   // Example for hero slider
-  const listThumbnails = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
+  // const listThumbnails = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }];
 
   return (
     <>
-      <section className="section-video-manager-container">
+      <FormUserAdmin />
+      {/* <section className="section-video-manager-container">
         <h2>devtube Manager</h2>
         <fieldset className="fieldset-container fieldset-admin-wrapper">
-          {/* Video manager */}
+          
           <legend>Video manager</legend>
 
           <fieldset className="fieldset-container fieldset-admin-wrapper">
-            {/* Main information */}
+            
             <legend>Main information</legend>
             <section className="fiedlset-input-wrapper">
               <label id="title" htmlFor="title">
@@ -46,7 +49,7 @@ export default function Admin() {
               />
             </section>
 
-            {/* Publication date */}
+            
             <section className="fiedlset-input-wrapper">
               <label id="publication-date" htmlFor="publication-date">
                 Publication date
@@ -60,7 +63,7 @@ export default function Admin() {
               />
             </section>
 
-            {/* Duration */}
+            
             <section className="fiedlset-input-wrapper">
               <label id="duration" htmlFor="duration">
                 Duration
@@ -74,7 +77,7 @@ export default function Admin() {
               />
             </section>
 
-            {/* Video description */}
+            
             <label htmlFor="description">Description</label>
             <textarea
               name="description"
@@ -82,7 +85,7 @@ export default function Admin() {
               placeholder="Enter your description here..."
             />
 
-            {/* Downloader */}
+            
             <section className="add-file-wrapper">
               <input type="file" id="videoFile" accept="video/*" />
               <section className="check-wrapper">
@@ -95,7 +98,7 @@ export default function Admin() {
               </section>
             </section>
 
-            {/* Thumbnail */}
+            
             <section
               onDragOver={handleDragOver}
               onDrop={handleDrop}
@@ -115,7 +118,7 @@ export default function Admin() {
             </section>
           </fieldset>
 
-          {/* Category manager */}
+          
           <fieldset className="fieldset-container">
             <legend>Category manager</legend>
 
@@ -144,10 +147,10 @@ export default function Admin() {
             </section>
           </fieldset>
 
-          {/* Questions manager */}
+          
           <fieldset className="fieldset-container">
             <legend>Questions manager</legend>
-            {/* Question 1 */}
+            
             <section className="question-wrapper">
               <section className="title-wrapper">
                 <p>Question 01</p>
@@ -165,7 +168,7 @@ export default function Admin() {
               />
             </section>
 
-            {/* Question 2 */}
+            
             <section className="question-wrapper">
               <section className="title-wrapper">
                 <p>Question 02</p>
@@ -184,7 +187,7 @@ export default function Admin() {
             </section>
           </fieldset>
 
-          {/* buttons video manger */}
+          
           <button type="button" className="btn-validation big-cta">
             New
           </button>
@@ -200,7 +203,7 @@ export default function Admin() {
       </section>
 
       <section className="section-hero-slider-container">
-        {/* Hero slider */}
+        
         <h3>Hero Slider</h3>
         <section className="hero-slider-wrapper">
           {listThumbnails.map((el) => (
@@ -208,7 +211,7 @@ export default function Admin() {
           ))}
         </section>
 
-        {/* Populars */}
+        
         <h3>Populars</h3>
         <section className="hero-slider-wrapper">
           {listThumbnails.map((el) => (
@@ -216,7 +219,7 @@ export default function Admin() {
           ))}
         </section>
 
-        {/* News in */}
+        
         <h3>News in</h3>
         <section className="hero-slider-wrapper">
           {listThumbnails.map((el) => (
@@ -225,17 +228,18 @@ export default function Admin() {
         </section>
       </section>
 
-      {/* User manager */}
+      
+
       <section className="section-video-manager-container">
         <h3>User manager</h3>
         <fieldset className="fieldset-container fieldset-admin-wrapper">
-          {/* User manager */}
+          
           <legend>User manager</legend>
 
-          {/* Main information */}
+          
           <legend>Main information</legend>
 
-          {/* User name */}
+          
           <section className="fiedlset-input-wrapper">
             <label id="username" htmlFor="username">
               User name
@@ -248,7 +252,7 @@ export default function Admin() {
             />
           </section>
 
-          {/* Last name */}
+          
           <section className="fiedlset-input-wrapper">
             <label id="lastname" htmlFor="lastname">
               Last name
@@ -270,7 +274,7 @@ export default function Admin() {
             />
           </section>
 
-          {/* Subscription date */}
+          
           <section className="fiedlset-input-wrapper">
             <label id="subscription-date" htmlFor="subscription-date">
               Subscription date
@@ -283,7 +287,7 @@ export default function Admin() {
             />
           </section>
 
-          {/* Email */}
+          
           <section className="fiedlset-input-wrapper">
             <label id="email" htmlFor="email">
               Email
@@ -291,7 +295,7 @@ export default function Admin() {
             <input type="email" name="email" aria-labelledby="email" required />
           </section>
 
-          {/* Level */}
+          
           <section className="fiedlset-input-wrapper">
             <label id="level" htmlFor="level">
               Level
@@ -299,7 +303,7 @@ export default function Admin() {
             <input type="level" name="level" aria-labelledby="level" required />
           </section>
 
-          {/* Avatar */}
+          
           <section
             onDragOver={handleDragOver}
             onDrop={handleDrop}
@@ -316,7 +320,7 @@ export default function Admin() {
             )}
           </section>
 
-          {/* buttons video manger */}
+          
           <section className="fieldset-button">
             <button type="button" className="standard-button">
               Update
@@ -326,7 +330,7 @@ export default function Admin() {
             </button>
           </section>
         </fieldset>
-      </section>
+      </section> */}
     </>
   );
 }

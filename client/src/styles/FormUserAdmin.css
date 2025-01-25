@@ -1,0 +1,21 @@
+/* .section-video-manager-container,
+.section-hero-slider-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90%;
+  max-width: 500px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 2rem 0;
+
+  & h2 {
+    margin-bottom: 2rem;
+  }
+
+  & h3 {
+    margin: 2rem 0;
+    font-size: var(--font-normal);
+  }
+} */

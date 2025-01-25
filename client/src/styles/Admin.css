@@ -1,4 +1,4 @@
-.section-video-manager-container,
+/* .section-video-manager-container,
 .section-hero-slider-container {
   position: relative;
   display: flex;
@@ -18,7 +18,7 @@
     margin: 2rem 0;
     font-size: var(--font-normal);
   }
-}
+} */
 .fieldset-container {
   display: grid;
   padding: .8rem;
@@ -33,6 +33,10 @@
   border: 1px solid var(--accent-color-1);
   border-radius: 8px;
   background-color: var(--tertiary-color);
+
+  & input {
+    height: 30px;
+  }
 }
 .fiedlset-img-wrapper {
   display: flex;
