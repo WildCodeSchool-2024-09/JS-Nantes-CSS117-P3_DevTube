@@ -31,7 +31,7 @@ router.post(
       return;
     }
 
-    const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
+    const imageProfileURL = `/assets/images/userprofil/${req.file.filename}`;
 
     res.status(200).json({ imageProfileURL });
   },
@@ -42,6 +42,8 @@ router.get("/api/users/:id", userActions.read);
 router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
+
+router.get("/api/users", userActions.readByEmail);
 
 // Route video
 import videoActions from "./modules/video/videoActions";
