@@ -5,7 +5,7 @@ import "../../styles/FormUserAdmin.css";
 export default function FormUserAdmin() {
   /*TODO Refactoring en cours*/
   // const [imgSrc, setImageSrc] = useState<string>();
-  const [data, setData] = useState<User[]>();
+  const [dataUser, setDataUser] = useState<User[]>();
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
   useEffect(() => {
     const getAllUsers = async () => {
@@ -17,7 +17,7 @@ export default function FormUserAdmin() {
           },
         );
         const users = await response.json();
-        setData(users);
+        setDataUser(users);
       } catch (err) {
         console.error(err);
       }
@@ -25,11 +25,25 @@ export default function FormUserAdmin() {
 
     getAllUsers();
   }, []);
-  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const userSelected = e.currentTarget.value;
-    const currentCurrent = data?.find((user) => user.email === userSelected);
-    setSelectedUser(currentCurrent);
-    console.table(selectedUser);
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const checkedAdmin = e.target.checked;
+    setSelectedUser((user) =>
+      user
+        ? {
+            ...user,
+            is_admin: checkedAdmin,
+          }
+        : user,
+    );
+  };
+  const handleSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.currentTarget.value.toLowerCase();
+    const findUserByEmail = dataUser?.find((user) =>
+      user.email.includes(input),
+    );
+    input === ""
+      ? setSelectedUser(undefined)
+      : setSelectedUser(findUserByEmail);
   };
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -43,11 +57,24 @@ export default function FormUserAdmin() {
       reader.readAsDataURL(newImage);
     }
   };
+
+  // Date converter
+  const convertRegistrationDate: Date | string = selectedUser?.register_date
+    ? new Date(selectedUser?.register_date).toLocaleDateString("fr-FR")
+    : "";
+  const handleUpdateUser = () => {
+    console.warn("coucou");
+  };
+  const handleDeleteUser = () => {
+    if (selectedUser) {
+    } else {
+    }
+  };
   return (
     <>
-      <h3>User manager</h3>
-      <form action="">
-        <fieldset className="">
+      <h1 className="h1-admin">Administration</h1>
+      <form className="form-admin">
+        <fieldset>
           <legend>User manager</legend>
 
           <label htmlFor="search-user-by-email">Search a user</label>
@@ -57,108 +84,123 @@ export default function FormUserAdmin() {
             id="search-user-by-email"
             name="search-user-by-email"
             placeholder="Search a user by email."
+            onChange={handleSearchOnChange}
           />
         </fieldset>
-      </form>
 
-      <fieldset className="">
-        <legend>Main information about user</legend>
+        <fieldset>
+          <legend>Main information about user</legend>
 
-        <label htmlFor="username">User name</label>
-        <input
-          type="text"
-          id="username"
-          name="username"
-          defaultValue={selectedUser?.firstname || ""}
-        />
+          <label htmlFor="username">First name</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            defaultValue={selectedUser?.firstname || ""}
+          />
 
-        <label id="lastname" htmlFor="lastname">
-          Last name
-        </label>
-        <input
-          type="text"
-          name="lastname"
-          defaultValue={selectedUser?.lastname || ""}
-          aria-labelledby="lastname"
-          required
-        />
-      </fieldset>
+          <label id="lastname" htmlFor="lastname">
+            Last name
+          </label>
+          <input
+            type="text"
+            name="lastname"
+            defaultValue={selectedUser?.lastname || ""}
+            required
+          />
 
-      <fieldset className="">
-        <label htmlFor="add-hero-slider">Is admin ?</label>
-        <input
-          type="checkbox"
-          defaultChecked={selectedUser?.is_admin || false}
-          id="add-hero-slider"
-          name="add-hero-slider"
-        />
-      </fieldset>
-
-      <fieldset className="">
-        <label id="subscription-date" htmlFor="subscription-date">
-          Subscription date
-        </label>
-        <input
-          type="text"
-          name="publication-date"
-          defaultValue={selectedUser?.register_date || ""}
-          aria-labelledby="publication-date"
-          required
-        />
-      </fieldset>
-
-      <fieldset className="">
-        <label id="email" htmlFor="email">
-          Email
-        </label>
-        <select
-          onChange={handleSelectChange}
-          id="user-select"
-          name="user"
-          required
-          aria-required="true"
-          defaultValue=""
-        >
-          <option value="" disabled>
-            -- Select a user --
-          </option>
-          {data?.map((e) => (
-            <option key={e.id} value={e.email}>
-              {e.email}
+          <label id="email" htmlFor="email">
+            Email
+          </label>
+          <input
+            type="text"
+            name="email"
+            defaultValue={selectedUser?.email || ""}
+            required
+          />
+          {/* <select
+            onChange={handleSelectChange}
+            id="user-select"
+            name="user"
+            required
+            aria-required="true"
+            defaultValue=""
+          >
+            <option value="" disabled>
+              -- Select a user --
             </option>
-          ))}
-        </select>
+            {dataUser?.map((e) => (
+              <option key={e.id} value={e.email}>
+                {e.email}
+              </option>
+            ))}
+          </select> */}
 
-        <label id="level" htmlFor="level">
-          Level
-        </label>
-        <input
-          type="level"
-          defaultValue={selectedUser?.level || ""}
-          name="level"
-          aria-labelledby="level"
-          required
-        />
+          <label id="level" htmlFor="level">
+            Level
+          </label>
+          <input
+            type="level"
+            defaultValue={selectedUser?.level || ""}
+            name="level"
+            aria-labelledby="level"
+            required
+          />
+
+          <label htmlFor="user-is-admin" className="admin-label-wrapper">
+            Check the box if the user is an administrator
+            <input
+              type="checkbox"
+              checked={selectedUser?.is_admin || false}
+              onChange={handleOnChange}
+              id="user-is-admin"
+              name="user-is-admin"
+              className="admin-check-box"
+            />
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <label id="subscription-date" htmlFor="subscription-date">
+            Subscription date
+          </label>
+          <input
+            type="text"
+            name="publication-date"
+            defaultValue={(convertRegistrationDate as string) || ""}
+            aria-labelledby="publication-date"
+            required
+          />
+        </fieldset>
 
         <section
           onDragOver={handleDragOver}
           onDrop={handleDrop}
-          className="fiedlset-img-wrapper"
+          className="section-img-wrapper"
         >
           <img
-            className="fieldset-thumb-loader"
             src={`${import.meta.env.VITE_API_URL}${selectedUser?.profil_img}`}
-            alt="Load the video avatar here"
+            alt="The user's profil avatar"
           />
         </section>
 
-        <button type="button" className="standard-button">
-          Update
-        </button>
-        <button type="button" className="standard-button">
-          Delete
-        </button>
-      </fieldset>
+        <section className="admin-btn-wrapper">
+          <button
+            type="button"
+            onClick={handleUpdateUser}
+            className="btntTtest standard-button"
+          >
+            Update
+          </button>
+          <button
+            type="button"
+            onClick={handleDeleteUser}
+            className="btntTtest standard-button"
+          >
+            Delete
+          </button>
+        </section>
+      </form>
     </>
   );
 }

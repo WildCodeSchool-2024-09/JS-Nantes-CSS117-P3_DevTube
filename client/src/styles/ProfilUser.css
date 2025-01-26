@@ -43,7 +43,3 @@
   border: 2px solid var(--accent-color-1);
   border-radius: var(--radius);
 }
-.search-admin {
-  text-align: center;
-  border-radius: 15px;
-}
