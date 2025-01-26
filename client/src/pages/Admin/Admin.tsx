@@ -1,6 +1,7 @@
 // import { useState } from "react";
 // import "../../styles/Admin.css";
 import FormUserAdmin from "../../components/FormUserAdmin/FormUserAdmin";
+import FormVideoAdmin from "../../components/FormVideoAdmin/FormVideoAdmin";
 
 export default function Admin() {
   /*TODO Refactoring en cours*/
@@ -26,7 +27,9 @@ export default function Admin() {
 
   return (
     <>
+      <h1 className="h1-admin">Administration</h1>
       <FormUserAdmin />
+      <FormVideoAdmin />
       {/* <section className="section-video-manager-container">
         <h2>devtube Manager</h2>
         <fieldset className="fieldset-container fieldset-admin-wrapper">

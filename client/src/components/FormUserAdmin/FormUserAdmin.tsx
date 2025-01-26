@@ -90,7 +90,6 @@ export default function FormUserAdmin() {
 
   return (
     <>
-      <h1 className="h1-admin">Administration</h1>
       <form className="form-admin">
         <fieldset>
           <legend>User manager</legend>
@@ -102,7 +101,7 @@ export default function FormUserAdmin() {
             type="search"
             id="search-user-by-email"
             name="search-user-by-email"
-            placeholder="Search a user by email."
+            placeholder="Type the user's email."
             onChange={handleSearchOnChange}
           />
         </fieldset>
@@ -116,6 +115,7 @@ export default function FormUserAdmin() {
             id="username"
             name="username"
             defaultValue={selectedUser?.firstname || ""}
+            required
           />
 
           <label id="lastname" htmlFor="lastname">
@@ -137,23 +137,6 @@ export default function FormUserAdmin() {
             defaultValue={selectedUser?.email || ""}
             required
           />
-          {/* <select
-            onChange={handleSelectChange}
-            id="user-select"
-            name="user"
-            required
-            aria-required="true"
-            defaultValue=""
-          >
-            <option value="" disabled>
-              -- Select a user --
-            </option>
-            {dataUser?.map((e) => (
-              <option key={e.id} value={e.email}>
-                {e.email}
-              </option>
-            ))}
-          </select> */}
 
           <label id="level" htmlFor="level">
             Level
@@ -175,6 +158,7 @@ export default function FormUserAdmin() {
               id="user-is-admin"
               name="user-is-admin"
               className="admin-check-box"
+              required
             />
           </label>
         </fieldset>

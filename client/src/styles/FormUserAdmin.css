@@ -1,10 +1,10 @@
-main .form-admin {
+.form-admin-container .form-admin {
   display: grid;
   width: 100%;
   max-width: 600px;
   height: fit-content;
   padding: .8rem;
-  margin: 0 auto;
+  margin: 0 auto 5rem;
   gap: 2rem;
   font-size: var(--font-normal);
   border: 2px solid var(--accent-color-1);
@@ -15,7 +15,8 @@ main .form-admin {
   text-align: center;
 }
 .form-admin input,
-.search-admin {
+.search-admin,
+.form-admin select {
   height: 40px;
 }
 .search-admin {
@@ -35,6 +36,11 @@ main .form-admin {
 }
 .form-admin fieldset label:first-of-type {
   margin: 0 0 .8rem;
+}
+.form-admin textarea {
+  height: 100px;
+  padding: .5rem;
+  resize: vertical;
 }
 .section-img-wrapper {
   display: flex;
@@ -64,4 +70,21 @@ main .form-admin {
   width: 20px;
   height: 20px;
   margin: 0 0 0 1rem;
+}
+@media screen and (min-width: 1400px) {
+  .form-admin-container {
+    display: grid;
+    grid-template-areas:
+      "title title"
+      "col1 col2";
+  }
+  .form-admin-container h1 {
+    grid-area: title;
+  }
+  .form-admin-container .form-admin:first-of-type {
+    grid-area: col1;
+  }
+  .form-admin-container .form-admin:nth-of-type(+2) {
+    grid-area: col2;
+  }
 }

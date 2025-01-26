@@ -10,7 +10,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className={theme ? "light" : "dark"}>
+      <main className={`${theme ? "light" : "dark"} form-admin-container`}>
         <Outlet />
       </main>
       <Footer />
