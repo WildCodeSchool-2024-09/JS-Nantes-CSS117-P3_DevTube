@@ -1,12 +1,8 @@
-import { useEffect, useRef } from "react";
 import "../../styles/Login.css";
+import { useSetFocus } from "../../utils/useSetFocus";
 
 export default function Login() {
-  const getFocus = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    getFocus.current?.focus();
-  }, []);
+  const focusInUsername = useSetFocus<HTMLInputElement>();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,7 +17,7 @@ export default function Login() {
         </label>
         <input
           type="text"
-          ref={getFocus}
+          ref={focusInUsername}
           name="username"
           aria-labelledby="username"
           placeholder="Enter your user name."
