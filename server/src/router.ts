@@ -43,8 +43,6 @@ router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 
-router.get("/api/users", userActions.readByEmail);
-
 // Route video
 import videoActions from "./modules/video/videoActions";
 
