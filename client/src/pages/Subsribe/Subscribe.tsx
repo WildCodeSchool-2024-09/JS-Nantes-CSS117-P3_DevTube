@@ -1,8 +1,11 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
 import { Bounce, ToastContainer, toast } from "react-toastify";
+import { useSetFocus } from "../../utils/useSetFocus";
 
 export default function Subscribe() {
+  const focusInFirstname = useSetFocus<HTMLInputElement>();
+
   // Reset all fields of the form
   const resetAllFields = () => {
     formRef.current?.reset();
@@ -19,9 +22,6 @@ export default function Subscribe() {
 
   const notifyPassword = () => toast.error("Passwords doesn't identical.");
 
-  // Set the focus on firstname input
-  const getFocus = useRef<HTMLInputElement | null>(null);
-
   // Get the form data
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -29,10 +29,6 @@ export default function Subscribe() {
 
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
-
-  useEffect(() => {
-    getFocus.current?.focus();
-  }, []);
 
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -118,7 +114,7 @@ export default function Subscribe() {
           type="text"
           name="firstname"
           id="firstname"
-          ref={getFocus}
+          ref={focusInFirstname}
           aria-labelledby="firstname"
           placeholder="Enter your first name."
           required

@@ -1,12 +1,31 @@
 import { useEffect, useState } from "react";
 import type { User } from "../../../../server/src/modules/user/user.d";
 import "../../styles/FormUserAdmin.css";
+import { useSetFocus } from "../../utils/useSetFocus";
 
 export default function FormUserAdmin() {
+  const focusInSearch = useSetFocus<HTMLInputElement>();
+
   /*TODO Refactoring en cours*/
   // const [imgSrc, setImageSrc] = useState<string>();
   const [dataUser, setDataUser] = useState<User[]>();
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
+
+  const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
+    e.preventDefault();
+  };
+
+  const handleDrop = (e: React.DragEvent<HTMLScriptElement>) => {
+    e.preventDefault();
+    const newImage = e.dataTransfer.files[0];
+    if (newImage.type.startsWith("image/")) {
+      const reader = new FileReader();
+      // reader.onload = () => setImageSrc(reader.result as string);
+      reader.readAsDataURL(newImage);
+    }
+  };
+
+  // Fetch users when the search field is filled.
   useEffect(() => {
     const getAllUsers = async () => {
       try {
@@ -22,10 +41,29 @@ export default function FormUserAdmin() {
         console.error(err);
       }
     };
-
     getAllUsers();
-  }, []);
-  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!selectedUser) return;
+  }, [selectedUser]);
+
+  // Update setSelectedUser
+  const handleSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const input = e.currentTarget.value.toLowerCase();
+    const findUserByEmail = dataUser?.find((user) =>
+      user.email.includes(input),
+    );
+
+    if (input === "") {
+      setSelectedUser(undefined);
+      return;
+    }
+
+    if (input.length < 3) return;
+
+    setSelectedUser(findUserByEmail);
+  };
+
+  // Updates the `is_admin` property of the selected user
+  const updateUserAdminStatus = (e: React.ChangeEvent<HTMLInputElement>) => {
     const checkedAdmin = e.target.checked;
     setSelectedUser((user) =>
       user
@@ -36,29 +74,8 @@ export default function FormUserAdmin() {
         : user,
     );
   };
-  const handleSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.currentTarget.value.toLowerCase();
-    const findUserByEmail = dataUser?.find((user) =>
-      user.email.includes(input),
-    );
-    input === ""
-      ? setSelectedUser(undefined)
-      : setSelectedUser(findUserByEmail);
-  };
-  const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-  };
-  const handleDrop = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-    const newImage = e.dataTransfer.files[0];
-    if (newImage.type.startsWith("image/")) {
-      const reader = new FileReader();
-      // reader.onload = () => setImageSrc(reader.result as string);
-      reader.readAsDataURL(newImage);
-    }
-  };
 
-  // Date converter
+  // Date converter to locale date string
   const convertRegistrationDate: Date | string = selectedUser?.register_date
     ? new Date(selectedUser?.register_date).toLocaleDateString("fr-FR")
     : "";
@@ -70,6 +87,7 @@ export default function FormUserAdmin() {
     } else {
     }
   };
+
   return (
     <>
       <h1 className="h1-admin">Administration</h1>
@@ -77,8 +95,9 @@ export default function FormUserAdmin() {
         <fieldset>
           <legend>User manager</legend>
 
-          <label htmlFor="search-user-by-email">Search a user</label>
+          <label htmlFor="search-user-by-email">Search a user by email</label>
           <input
+            ref={focusInSearch}
             className="search-admin"
             type="search"
             id="search-user-by-email"
@@ -152,7 +171,7 @@ export default function FormUserAdmin() {
             <input
               type="checkbox"
               checked={selectedUser?.is_admin || false}
-              onChange={handleOnChange}
+              onChange={updateUserAdminStatus}
               id="user-is-admin"
               name="user-is-admin"
               className="admin-check-box"
