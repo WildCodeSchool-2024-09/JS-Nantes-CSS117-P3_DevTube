@@ -8,11 +8,12 @@ class VideoRepository {
   async create(video: Video) {
     // Execute the SQL INSERT query to add a new video to the "video" table
     const [result] = await databaseClient.query<Result>(
-      "insert into video (name, duration, thumbnail, description, category_id, is_freemium, added_date, is_heroSlide, is_popular) values (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+      "insert into video (name, duration, thumbnail, preview_image, description, category_id, is_freemium, added_date, is_heroSlide, is_popular) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
       [
         video.name,
         video.duration,
         video.thumbnail,
+        video.preview_image,
         video.description,
         video.category_id,
         video.is_freemium,
@@ -42,7 +43,7 @@ class VideoRepository {
   async readAll() {
     // Execute the SQL SELECT query to retrieve all videos from the "video" table without url for security
     const [rows] = await databaseClient.query<Rows>(
-      "select id, name, duration, description, category_id, is_freemium, added_date, is_heroSlide, is_popular from video order by id desc",
+      "select id, name, duration, description, category_id, preview_image, is_freemium, added_date, is_heroSlide, is_popular from video order by id desc",
     );
 
     // Return the array of videos
@@ -55,6 +56,7 @@ class VideoRepository {
     name: string,
     duration: number,
     thumbnail: string,
+    preview_image: string,
     description: string,
     category_id: number,
     is_freemium: boolean,
@@ -63,11 +65,12 @@ class VideoRepository {
     is_popular: true,
   ) {
     const [row] = await databaseClient.query<Result>(
-      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, description = ?, category_id = ?, is_freemium = ?, added_date = ?, is_heroSlide = ?, is_popular = ? WHERE id = ?",
+      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, preview_image = ?, description = ?, category_id = ?, is_freemium = ?, added_date = ?, is_heroSlide = ?, is_popular = ? WHERE id = ?",
       [
         name,
         duration,
         thumbnail,
+        preview_image,
         description,
         category_id,
         is_freemium,
