@@ -56,13 +56,28 @@ export const router = createBrowserRouter([
       {
         path: "/video/:id",
         element: <VideoPlayer />,
-        loader: ({ params }) => {
-          const token = localStorage.getItem("token");
+        loader: async ({ params }) => {
+          try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+              { headers: { Authorization: `Bearer ${token}` } },
+            );
 
-          return fetch(
-            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
-            { headers: { Authorization: `Bearer ${token}` } },
-          );
+            if (response.ok) {
+              const videoResponse = await response.json();
+              return videoResponse;
+            }
+
+            if (response.status === 403) {
+              return {
+                error: 403,
+              };
+            }
+          } catch (error) {
+            console.error("Error fetching video: ", error);
+            return null;
+          }
         },
       },
       {
