@@ -22,7 +22,13 @@ export default function VideoPlayer() {
   }, [category_id]); // We fetch only if we have a category_id so if we have received a video and not an error
 
   async function recoverInfoVideos(url: string) {
-    const request = await fetch(url);
+    const token = localStorage.getItem("token");
+
+    const request = await fetch(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const datas = await request.json();
     const datasFiltered = datas.filter(
       (data: { id: string }) => data.id !== id,

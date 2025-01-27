@@ -58,8 +58,10 @@ export const router = createBrowserRouter([
         element: <VideoPlayer />,
         loader: async ({ params }) => {
           try {
+            const token = localStorage.getItem("token");
             const response = await fetch(
               `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+              { headers: { Authorization: `Bearer ${token}` } },
             );
 
             if (response.ok) {
@@ -81,10 +83,6 @@ export const router = createBrowserRouter([
       {
         path: "/testimonials",
         element: <Testimonials />,
-      },
-      {
-        path: "/about",
-        element: <About />,
       },
     ],
   },

@@ -17,8 +17,14 @@ export default function () {
   }, []);
 
   async function recoverInfoVideos(url: string) {
+    const token = localStorage.getItem("token");
+
     if (url) {
-      const request = await fetch(url);
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       const datas = await request.json();
       setInfoVideos(datas);
       //FILTER BY POPULAR

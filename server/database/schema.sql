@@ -2,7 +2,7 @@ CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   firstname  VARCHAR(45) NOT NULL,
   lastname  VARCHAR(45) NOT NULL,
-  email VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL UNIQUE,
   password VARCHAR(200) NOT NULL,
   github_url VARCHAR(80),
   linkedin_url VARCHAR(80),
