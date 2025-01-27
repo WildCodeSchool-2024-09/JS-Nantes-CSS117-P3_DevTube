@@ -37,6 +37,7 @@ export default function Login() {
 
   return (
     <section className="main-form-login">
+      <h1>Aled</h1>
       <h1>Log in</h1>
       <form onSubmit={handleLogin}>
         <label id="email" htmlFor="email">
