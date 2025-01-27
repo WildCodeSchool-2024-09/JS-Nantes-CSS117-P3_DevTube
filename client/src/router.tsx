@@ -7,6 +7,7 @@ import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
 import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
+import TeamProfile from "./pages/TeamProfile/TeamProfile";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
 import Testimonials from "./pages/testimonial/Testimonial";
@@ -33,6 +34,10 @@ export const router = createBrowserRouter([
         element: <Subscribe />,
       },
       {
+        path: "/teamProfil",
+        element: <TeamProfile />,
+      },
+      {
         path: "/login",
         element: <Login />,
       },
@@ -51,19 +56,33 @@ export const router = createBrowserRouter([
       {
         path: "/video/:id",
         element: <VideoPlayer />,
-        loader: ({ params }) => {
-          return fetch(
-            `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
-          );
+        loader: async ({ params }) => {
+          try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(
+              `${import.meta.env.VITE_API_URL}/api/videos/${params.id}`,
+              { headers: { Authorization: `Bearer ${token}` } },
+            );
+
+            if (response.ok) {
+              const videoResponse = await response.json();
+              return videoResponse;
+            }
+
+            if (response.status === 403) {
+              return {
+                error: 403,
+              };
+            }
+          } catch (error) {
+            console.error("Error fetching video: ", error);
+            return null;
+          }
         },
       },
       {
         path: "/testimonials",
         element: <Testimonials />,
-      },
-      {
-        path: "/about",
-        element: <About />,
       },
     ],
   },

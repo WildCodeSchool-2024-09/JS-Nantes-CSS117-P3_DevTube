@@ -2,8 +2,8 @@ CREATE TABLE user (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   firstname  VARCHAR(45) NOT NULL,
   lastname  VARCHAR(45) NOT NULL,
-  email VARCHAR(45) NOT NULL,
-  password VARCHAR(45) NOT NULL,
+  email VARCHAR(45) NOT NULL UNIQUE,
+  password VARCHAR(200) NOT NULL,
   github_url VARCHAR(80),
   linkedin_url VARCHAR(80),
   level INT NOT NULL DEFAULT 0,
@@ -42,9 +42,9 @@ CREATE TABLE favorite (
 
 INSERT INTO user (firstname, lastname, email, password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
-  ("Emilie", "De Duyver", "emilie.deduyver", "mdp", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
-  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "mdp", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
-  ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "mdp", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
+  ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$qDb/HRPl3P9XHHMguFOQhhLLEcIfUCkjEBsxe27q2kI", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
+  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$YJpDsIpx9qrGHnMCO/o0QLXiVrFR5HxffhLL3eRz8W0", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$XludgNxFUX2Xh/wtwJampP981YUfrmXND1RZlBylnpE", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
 INSERT INTO category (name)
 VALUES
@@ -62,7 +62,7 @@ VALUES
 INSERT INTO video (name, duration, thumbnail, preview_image, description, category_id, is_freemium, added_date, is_heroSlide, is_popular)
 VALUES 
   ("Integration - Partie 1", "27", "/assets/videos/Quest-Welcomeonboard(part1).mp4", "/assets/images/videoPreviewImages/welcomeOnBoard.png","Entraîne toi à reproduire une maquette en HTML avec Nicolas 🐨!", 1, false, "2025-11-01", true, true),
-  ("Integration - Partie 2", "17", "/assets/videos/Quest-Welcomeonboard(part2).mp4", "/assets/images/videoPreviewImages/WelcomeOnBoard2.png","Ajoute le CSS pour reproduire une maquette avec Nicolas 🐨!", 2, true, "2025-11-01", true, false),
+  ("Integration - Partie 2", "17", "/assets/videos/Quest-Welcomeonboard(part2).mp4", "/assets/images/videoPreviewImages/WelcomeOnBoard2.png","Ajoute le CSS pour reproduire une maquette avec Nicolas 🐨!", 2, true, "2025-11-01", false, false),
   ("Basics HTML", "12", "/assets/videos/Workshop1-HTML&CSS(Part1).mp4", "/assets/images/videoPreviewImages/apercu-ex.png","Structure ton site web avec des balises sémantiques avec Nicolas 🐨!", 1, false, "2025-11-01", false, false),
   ("Basics CSS", "12", "/assets/videos/Workshop1-HTML&CSS(Part2).mp4", "/assets/images/videoPreviewImages/workShop2.png", "Donne du style à ton site web avec les propriétés CSS avec Nicolas 🐨!", 2, true, "2025-11-01", false, true),
   ("Responsive - Partie 1", "7", "/assets/videos/Workshop2-HTML&CSS-Responsive(part1).mp4", "/assets/images/videoPreviewImages/resp1.png", "Qu'est qu'un site responsive 🐨 ?", 2, false, "2025-11-01", false, false),
@@ -77,12 +77,12 @@ VALUES
   ("POST request", "13", "/assets/videos/3-express-post.mp4", "/assets/images/videoPreviewImages/2-train-express.png", "Ecris ton premier POST avec Express grâce à  Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("REACT + CSS", "11", "/assets/videos/3-react-component-2.mp4", "/assets/images/videoPreviewImages/4-react.png", "Donne du style à ton composant avec Nicolas 🐨!", 6, true, "2025-01-23", false, true),
   ("PUT request", "11", "/assets/videos/4-express-put.mp4", "/assets/images/videoPreviewImages/5-express.png", "Apprends à réaliser un requête PUT avec Nicolas 🐨!", 9, true, "2025-01-23", false, true),
-  ("REACT Props", "9", "/assets/videos/4-react-props.mp4", "/assets/images/videoPreviewImages/4-react.png", "Passe des props dans tous les sens avec Nicolas 🐨!", 6, true, "2025-01-23", true, true),
+  ("REACT Props", "9", "/assets/videos/4-react-props.mp4", "/assets/images/videoPreviewImages/4-react.png", "Passe des props dans tous les sens avec Nicolas 🐨!", 6, true, "2025-01-23", false, true),
   ("Middlewares", "4", "/assets/videos/5-express-middlewares.mp4", "/assets/images/videoPreviewImages/5-express.png", "Utilise des middlewares dans tes routes Express avec Nicolas 🐨!", 9, false, "2025-01-23", false, false),
   ("Component mapping", "10", "/assets/videos/5-react-map.mp4", "/assets/images/videoPreviewImages/5-react.png", "Map tes composant dans ton appli React avec Nicolas 🐨!", 6, false, "2025-01-23", false, true),
   ("UseState()", "9", "/assets/videos/6-react-state.mp4", "/assets/images/videoPreviewImages/6-react.png", "Utilise des states dans ton application React avec Nicolas 🐨!", 6, false, "2025-01-23", false, false),
   ("Select in React", "10", "/assets/videos/7-react-select-filter.mp4", "/assets/images/videoPreviewImages/7-react.png", "Comprend comment gérer tes select dans React avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),
-  ("Fetch in React", "18", "/assets/videos/8-react-fetch.mp4", "/assets/images/videoPreviewImages/8-react.png", "Comprend comment fetcher grâce au react hook useEffect(), et avec Nicolas 🐨!", 6, true, "2025-01-23", true, false),
+  ("Fetch in React", "18", "/assets/videos/8-react-fetch.mp4", "/assets/images/videoPreviewImages/8-react.png", "Comprend comment fetcher grâce au react hook useEffect(), et avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),
   ("React Loader", "10", "/assets/videos/9-react-loader.mp4", "/assets/images/videoPreviewImages/9-react.png", "Utilise React Loader avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),
   ("React Context", "17", "/assets/videos/10-react-context.mp4", "/assets/images/videoPreviewImages/10-react.png", "Comprend le fonctionnement du Context dans React, et  avec Nicolas 🐨!", 6, true, "2025-01-23", false, true),
   ("React pagination", "17", "/assets/videos/11-react-pagination.mp4", "/assets/images/videoPreviewImages/11-react.png", "Réalise ta pagination dans React avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),

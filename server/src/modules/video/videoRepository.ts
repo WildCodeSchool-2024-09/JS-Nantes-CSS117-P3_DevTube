@@ -29,7 +29,7 @@ class VideoRepository {
   // Read operations
   // By id
   async read(id: number) {
-    // Execute the SQL SELECT query to retrieve a specific video by its ID
+    // Execute the SQL SELECT query to retrieve a specific video by its ID with url
     const [rows] = await databaseClient.query<Rows>(
       "select * from video where id = ?",
       [id],
@@ -41,9 +41,9 @@ class VideoRepository {
 
   //All
   async readAll() {
-    // Execute the SQL SELECT query to retrieve all videos from the "video" table
+    // Execute the SQL SELECT query to retrieve all videos from the "video" table without url for security
     const [rows] = await databaseClient.query<Rows>(
-      "select * from video order by id desc",
+      "select id, name, duration, description, category_id, preview_image, is_freemium, added_date, is_heroSlide, is_popular from video order by id desc",
     );
 
     // Return the array of videos
