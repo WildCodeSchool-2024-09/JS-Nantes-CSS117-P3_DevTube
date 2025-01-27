@@ -28,8 +28,10 @@ export default function Admin() {
   return (
     <>
       <h1 className="h1-admin">Administration</h1>
-      <FormUserAdmin />
-      <FormVideoAdmin />
+      <section className="form-admin-container">
+        <FormUserAdmin />
+        <FormVideoAdmin />
+      </section>
       {/* <section className="section-video-manager-container">
         <h2>devtube Manager</h2>
         <fieldset className="fieldset-container fieldset-admin-wrapper">

@@ -90,7 +90,7 @@ export default function FormUserAdmin() {
 
   return (
     <>
-      <form className="form-admin">
+      <form className="form-admin-wrapper form-admin">
         <fieldset>
           <legend>User manager</legend>
 

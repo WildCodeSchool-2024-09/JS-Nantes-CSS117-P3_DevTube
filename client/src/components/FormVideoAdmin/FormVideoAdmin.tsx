@@ -1,7 +1,7 @@
 export default function FormVideoAdmin() {
   return (
     <>
-      <form className="form-admin">
+      <form className="form-admin-wrapper form-admin">
         <fieldset>
           <legend>Video manager</legend>
 

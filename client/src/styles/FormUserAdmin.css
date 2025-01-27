@@ -1,5 +1,9 @@
-.form-admin-container .form-admin {
+.form-admin-contai {
   display: grid;
+}
+.form-admin-wrapper {
+  display: grid;
+  align-items: center;
   width: 100%;
   max-width: 600px;
   height: fit-content;
@@ -9,7 +13,6 @@
   font-size: var(--font-normal);
   border: 2px solid var(--accent-color-1);
 }
-
 .h1-admin {
   margin: 2rem 0 3rem;
   text-align: center;
@@ -78,13 +81,13 @@
       "title title"
       "col1 col2";
   }
-  .form-admin-container h1 {
+  .form-admin-wrapper h1 {
     grid-area: title;
   }
-  .form-admin-container .form-admin:first-of-type {
+  .form-admin-wrapper .form-admin:first-of-type {
     grid-area: col1;
   }
-  .form-admin-container .form-admin:nth-of-type(+2) {
+  .form-admin-wrapper .form-admin:nth-of-type(+2) {
     grid-area: col2;
   }
 }
