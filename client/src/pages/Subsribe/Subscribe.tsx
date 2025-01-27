@@ -1,10 +1,11 @@
 import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
-import { Bounce, ToastContainer, toast } from "react-toastify";
 import { useSetFocus } from "../../utils/useSetFocus";
+import useToast from "../../utils/useToastify";
 
 export default function Subscribe() {
   const focusInFirstname = useSetFocus<HTMLInputElement>();
+  const { notifySuccess, notifyError } = useToast();
 
   // Reset all fields of the form
   const resetAllFields = () => {
@@ -12,15 +13,6 @@ export default function Subscribe() {
     setFile(null);
     setImageSrc("");
   };
-
-  // Setting toastify message
-  const notifySuccess = (firstname: string) =>
-    toast.success(`Welcome in devTube ${firstname} !!!`);
-
-  const notifyError = () =>
-    toast.error("Please complete the mandatory fields (*).");
-
-  const notifyPassword = () => toast.error("Passwords doesn't identical.");
 
   // Get the form data
   const formRef = useRef<HTMLFormElement | null>(null);
@@ -80,7 +72,7 @@ export default function Subscribe() {
       if (data.confirm_password !== data.password) {
         resetAllFields();
 
-        notifyPassword();
+        notifyError("Passwords doesn't identical.");
       } else {
         const response = await fetch(
           `${import.meta.env.VITE_API_URL}/api/users`,
@@ -93,12 +85,11 @@ export default function Subscribe() {
 
         if (response.ok) {
           resetAllFields();
-          notifySuccess(data.firstname as string);
+          notifySuccess(`Welcome in devTube ${data.firstname}`);
         }
       }
     } catch (error) {
-      console.error(error);
-      notifyError();
+      notifyError("Please complete the mandatory fields (*).");
     }
   };
 
@@ -214,18 +205,6 @@ export default function Subscribe() {
         <button type="submit" className="little-cta">
           Sign up
         </button>
-        <ToastContainer
-          role="alert"
-          aria-live="assertive"
-          position="top-center"
-          autoClose={3000}
-          hideProgressBar={false}
-          closeOnClick={false}
-          pauseOnHover={true}
-          draggable={true}
-          theme="colored"
-          transition={Bounce}
-        />
       </form>
     </section>
   );

@@ -117,4 +117,19 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit };
+const checkIfUser: RequestHandler = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const getIsUser = await userRepository.read(name);
+
+    if (getIsUser) {
+      next();
+    } else {
+      res.status(401).send("This user already exists !");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, read, add, remove, edit, checkIfUser };
