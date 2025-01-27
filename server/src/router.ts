@@ -28,7 +28,7 @@ router.post(
       res.status(400).send({ message: "Erreur : aucun fichier reçu" });
       return;
     }
-    const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
+    const imageProfileURL = `/assets/images/userprofil/${req.file.filename}`;
     res.status(200).json({ imageProfileURL });
   },
 );

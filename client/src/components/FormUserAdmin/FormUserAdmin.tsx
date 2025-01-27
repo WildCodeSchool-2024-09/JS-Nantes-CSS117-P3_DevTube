@@ -182,7 +182,7 @@ export default function FormUserAdmin() {
           className="section-img-wrapper"
         >
           <img
-            src={`${import.meta.env.VITE_API_URL}${selectedUser?.profil_img}`}
+            src={`${import.meta.env.VITE_API_URL}/${selectedUser?.profil_img}`}
             alt="The user's profil avatar"
           />
         </section>

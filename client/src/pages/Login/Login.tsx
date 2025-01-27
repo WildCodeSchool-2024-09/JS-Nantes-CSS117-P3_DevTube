@@ -24,7 +24,6 @@ export default function Login() {
       );
 
       const { token } = await response.json();
-      console.warn(token);
 
       if (token) {
         notifySuccess("You are logged !");
