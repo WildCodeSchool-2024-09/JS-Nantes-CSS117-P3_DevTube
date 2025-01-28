@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import type { OutletContextProps } from "../../types/outletContext";
 import useTheme from "../../utils/useTheme";
 import useToast from "../../utils/useToastify";
+// import { Video } from "../../types/video";
 
 type Course = {
   id: number;
@@ -119,9 +120,17 @@ export default function Course() {
     }
   }
 
-  // const handleClick = (languageIc) => {
-  //   const videosByLanguages = outletContext.infoVideos.filter((video: Video => video.category_id === languageId))
-  //   outletContext.setInfoVideos(videosByLanguages);
+  // const handleClick = (
+  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  // ) => {
+  //   if (event.currentTarget.dataset.id) {
+  //     const videosByLanguages = outletContext.infoVideos.filter(
+  //       (video: Video) =>
+  //         video.category_id === parseInt(`${event.currentTarget.dataset.id}`),
+  //     );
+  //     // console.log({ videosByLanguages });
+  //     outletContext.setInfoVideos(videosByLanguages);
+  //   }
   // };
 
   return (
@@ -162,9 +171,13 @@ export default function Course() {
                     <p>{el.description}</p>
                   </article>
                   <button
+                    data-id={el.id}
                     type="button"
                     className="figure-course-navigation-button"
                     aria-label="Navigate to the course."
+                    // onClick={(event) => {
+                    //   // handleClick(event);
+                    // }}
                   >
                     <img
                       className="figure-course-navigation"
