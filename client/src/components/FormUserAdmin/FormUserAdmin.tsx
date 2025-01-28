@@ -7,23 +7,8 @@ export default function FormUserAdmin() {
   const focusInSearch = useSetFocus<HTMLInputElement>();
 
   /*TODO Refactoring en cours*/
-  // const [imgSrc, setImageSrc] = useState<string>();
   const [dataUser, setDataUser] = useState<User[]>();
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
-
-  const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-  };
-
-  const handleDrop = (e: React.DragEvent<HTMLScriptElement>) => {
-    e.preventDefault();
-    const newImage = e.dataTransfer.files[0];
-    if (newImage.type.startsWith("image/")) {
-      const reader = new FileReader();
-      // reader.onload = () => setImageSrc(reader.result as string);
-      reader.readAsDataURL(newImage);
-    }
-  };
 
   // Fetch users when the search field is filled.
   useEffect(() => {
@@ -80,12 +65,10 @@ export default function FormUserAdmin() {
     ? new Date(selectedUser?.register_date).toLocaleDateString("fr-FR")
     : "";
   const handleUpdateUser = () => {
-    console.warn("coucou");
+    // TODO Update user feature
   };
   const handleDeleteUser = () => {
-    if (selectedUser) {
-    } else {
-    }
+    // TODO delete user feature
   };
 
   return (
@@ -176,11 +159,7 @@ export default function FormUserAdmin() {
           />
         </fieldset>
 
-        <section
-          onDragOver={handleDragOver}
-          onDrop={handleDrop}
-          className="section-img-wrapper"
-        >
+        <section className="section-img-wrapper">
           <img
             src={`${import.meta.env.VITE_API_URL}/${selectedUser?.profil_img}`}
             alt="The user's profil avatar"
