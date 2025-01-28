@@ -39,12 +39,6 @@
   width: 100%;
 }
 
-/* .category-video article {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-} */
-
 @media screen and (min-width: 695px) {
   .current-video {
     flex-direction: column;
@@ -55,18 +49,6 @@
   .description-video {
     padding: 0 20px 20px 36px;
   }
-
-  /* .category-video article {
-    flex-direction: row;
-    flex-wrap: wrap;
-  } */
-
-  /* .category-video h2 {
-    padding-bottom: 36px;
-    margin-left: 106px;
-    border: solid 1px red;
-    text-align: left;
-  } */
 }
 
 @media screen and (min-width: 786px) {
@@ -85,10 +67,4 @@
   .category-video {
     padding: 150px 106px 44px 106px;
   }
-
-  /* .category-video h2 {
-    padding-bottom: 36px;
-    margin-left: 106px;
-    border: solid 1px red;
-  } */
 }

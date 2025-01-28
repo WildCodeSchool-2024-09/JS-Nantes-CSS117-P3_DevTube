@@ -33,7 +33,6 @@ const login: RequestHandler = async (req, res, next) => {
     res.sendStatus(404);
     return;
   }
-
   const isVerified = await verify(user.password as string, password);
 
   if (isVerified) {
