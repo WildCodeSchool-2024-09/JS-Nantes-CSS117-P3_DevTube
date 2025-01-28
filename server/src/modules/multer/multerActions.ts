@@ -12,14 +12,21 @@ const storage = multer.diskStorage({
     cb(null, `${fileName}${extension}`);
   },
 });
-const upload = multer({ storage });
+
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /.jpg|.jpeg|.png/;
+    const extension = fileTypes.test(
+      path.extname(file.originalname).toLowerCase(),
+    );
+    if (extension) return cb(null, true);
+    cb(null, false);
+  },
+});
 
 const single: RequestHandler = async (req, res, next) => {
-  if (!req.file) {
-    res.status(400).send({ message: "Erreur : aucun fichier reçu" });
-    return;
-  }
-  const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
+  const imageProfileURL = `assets/images/userprofil/${req.file?.filename}`;
   res.status(200).json({ imageProfileURL });
 };
 
