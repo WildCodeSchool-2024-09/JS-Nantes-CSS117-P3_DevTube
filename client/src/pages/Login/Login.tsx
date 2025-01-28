@@ -11,6 +11,7 @@ export default function Login() {
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/login`,
@@ -37,7 +38,6 @@ export default function Login() {
 
   return (
     <section className="main-form-login">
-      <h1>Aled</h1>
       <h1>Log in</h1>
       <form onSubmit={handleLogin}>
         <label id="email" htmlFor="email">
@@ -46,8 +46,8 @@ export default function Login() {
         <input
           type="text"
           ref={focusInUsername}
-          name="username"
-          aria-labelledby="username"
+          name="email"
+          aria-labelledby="email"
           placeholder="Enter your user name."
           required
         />

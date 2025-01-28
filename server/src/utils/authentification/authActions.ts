@@ -27,8 +27,6 @@ const hashPassword: RequestHandler = async (req, res, next) => {
 const login: RequestHandler = async (req, res, next) => {
   const { email, password } = req.body;
 
-  console.warn("coucou");
-
   const user = await userRepository.getUserByEmail(email);
 
   if (user === null || user === undefined) {
