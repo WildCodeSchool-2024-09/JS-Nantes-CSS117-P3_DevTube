@@ -44,7 +44,7 @@ import categoryActions from "./modules/category/categoryActions";
 // Route video
 import videoActions from "./modules/video/videoActions";
 
-router.use(authActions.verifyToken);
+// router.use(authActions.verifyToken);
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
