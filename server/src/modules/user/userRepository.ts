@@ -85,7 +85,7 @@ class UserRepository {
     return rows.affectedRows;
   }
 
-  async getUserByEmail(email: User) {
+  async getUserByEmail(email: string) {
     const [rows] = await databaseClient.query<Rows>(
       "SELECT * FROM user WHERE email = ?",
       [email],
