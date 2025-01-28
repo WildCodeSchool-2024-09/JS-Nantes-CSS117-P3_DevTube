@@ -43,7 +43,11 @@ function VideoCard({
         )}
         {isFreemium === 1 && !isLarge && (
           <div className="background-cadenas">
-            <img className="cadenas" src="cadenas-dark.png" alt="cadenas" />
+            <img
+              className="/public/cadenas"
+              src="/public/cadenas-dark.png"
+              alt="cadenas"
+            />
           </div>
         )}
       </article>
