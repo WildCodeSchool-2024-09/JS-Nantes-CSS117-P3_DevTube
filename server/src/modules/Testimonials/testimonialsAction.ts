@@ -16,5 +16,18 @@ const add: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+const browse: RequestHandler = async (req, res, next) => {
+  try {
+    const testimonialy = await TestimonialsRepository.readAll();
 
-export default { add };
+    if (!testimonialy || testimonialy.length === 0) {
+      res.sendStatus(404); // No testimonials found
+    } else {
+      res.json(testimonialy); // Return testimonials
+    }
+  } catch (err) {
+    next(err); // Pass any error to the next middleware
+  }
+};
+
+export default { add, browse };
