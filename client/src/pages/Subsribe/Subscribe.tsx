@@ -57,8 +57,6 @@ export default function Subscribe() {
 
       if (file) {
         formDataImage.append("profile-image", file);
-      } else {
-        throw new Error("Passwords doesn't identical.");
       }
 
       const responseImage = await fetch(
@@ -69,16 +67,12 @@ export default function Subscribe() {
         },
       );
 
-      if (!responseImage.ok) {
-        // throw new Error("An unknown error occurred.");
-      }
-
       const { imageProfileURL } = await responseImage.json();
 
       const formData = new FormData(e.target as HTMLFormElement);
       const data = Object.fromEntries(formData.entries());
 
-      data.profil_img = imageProfileURL;
+      data.profil_img = imageProfileURL && "";
 
       if (data.confirm_password !== data.password) {
         throw new Error("Passwords doesn't identical.");
@@ -99,7 +93,6 @@ export default function Subscribe() {
       }
     } catch (error) {
       notifyError((error as Error).message);
-      // notifyError("Please complete the mandatory fields (*).");
     }
   };
 
