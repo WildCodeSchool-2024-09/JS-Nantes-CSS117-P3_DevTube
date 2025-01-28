@@ -1,21 +1,17 @@
-import { useEffect, useRef } from "react";
 import "../../styles/Login.css";
+import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Login() {
+  const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
-
-  const getFocus = useRef<HTMLInputElement | null>(null);
-
-  useEffect(() => {
-    getFocus.current?.focus();
-  }, []);
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/login`,
@@ -48,11 +44,11 @@ export default function Login() {
           Email
         </label>
         <input
-          type="email"
-          ref={getFocus}
+          type="text"
+          ref={focusInUsername}
           name="email"
           aria-labelledby="email"
-          placeholder="Enter your email."
+          placeholder="Enter your user name."
           required
         />
 
