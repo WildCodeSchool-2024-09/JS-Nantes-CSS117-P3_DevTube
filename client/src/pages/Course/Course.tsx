@@ -1,5 +1,9 @@
+import { useOutletContext } from "react-router-dom";
 import "../../styles/Course.css";
+import { useEffect } from "react";
+import type { OutletContextProps } from "../../types/outletContext";
 import useTheme from "../../utils/useTheme";
+import useToast from "../../utils/useToastify";
 
 type Course = {
   id: number;
@@ -91,6 +95,34 @@ export default function Course() {
   const listFrontEndCourses = getCourseByType("Front-end");
   const listBackEndCourses = getCourseByType("Back-end");
   const { theme } = useTheme();
+  const outletContext = useOutletContext<OutletContextProps>();
+  const { notifyError } = useToast();
+
+  useEffect(() => {
+    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
+    recoverInfoVideos(urlForVideos);
+  }, []);
+
+  async function recoverInfoVideos(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      outletContext.setInfoVideos(datas);
+    } catch (err) {
+      notifyError("You are log out !");
+    }
+  }
+
+  // const handleClick = (languageIc) => {
+  //   const videosByLanguages = outletContext.infoVideos.filter((video: Video => video.category_id === languageId))
+  //   outletContext.setInfoVideos(videosByLanguages);
+  // };
 
   return (
     <>

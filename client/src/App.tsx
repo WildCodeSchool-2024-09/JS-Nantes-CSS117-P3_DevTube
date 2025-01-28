@@ -1,8 +1,8 @@
 import { Outlet } from "react-router-dom";
 import "./styles/Globals.css";
 import "./i18n";
-import { useState } from "react";
 import { Bounce, ToastContainer } from "react-toastify";
+import { useState } from "react";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import useTheme from "./utils/useTheme";
