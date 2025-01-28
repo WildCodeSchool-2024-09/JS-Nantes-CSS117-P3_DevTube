@@ -8,6 +8,7 @@ import type { Video } from "../../types/video";
 export default function () {
   const { t } = useTranslation();
   const [infoVideos, setInfoVideos] = useState<Video[]>();
+  const [videoHeroSlider, setvideoHeroSlider] = useState<Video[]>();
   const [videosPopular, setVideosPopular] = useState<Video[]>();
   const [videosNewIn, setVideosNewIn] = useState<Video[]>();
 
@@ -27,6 +28,11 @@ export default function () {
       });
       const datas = await request.json();
       setInfoVideos(datas);
+      const videoHeroSliderData = datas.filter(
+        (video: Video) => video.is_heroSlide === 1,
+      );
+      //FILTER FOR HEROSLIDER
+      setvideoHeroSlider(videoHeroSliderData);
       //FILTER BY POPULAR
       const videoPopularData = datas.filter(
         (video: Video) => video.is_popular === 1,
@@ -43,7 +49,7 @@ export default function () {
       <div className="home-page">
         <section>
           <h1 className="home-page-title">{t("title-homePage")}</h1>
-          <HeroSlider videos={infoVideos} />
+          {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
         </section>
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>

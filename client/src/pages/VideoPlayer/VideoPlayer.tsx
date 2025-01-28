@@ -11,7 +11,7 @@ export default function VideoPlayer() {
   const { id, thumbnail, description, category_id, name, error } =
     useLoaderData() as Partial<Video> & {
       error?: number;
-    }; // Partal because it's probably a video but it could be an error, so we add a new type at type Video (the error object)
+    }; // Partial because it's probably a video but it could be an error, so we add a new type at type Video (the error object)
   // and we add the key error in the object decomposition
 
   useEffect(() => {
