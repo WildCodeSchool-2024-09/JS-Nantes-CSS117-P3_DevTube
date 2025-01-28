@@ -3,12 +3,15 @@ import HeroSlider from "../../components/Carousels/HeroSlider";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import "../../styles/HomePage.css";
 import { useEffect, useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import type { OutletContextProps } from "../../types/outletContext";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
 
 export default function () {
   const { t } = useTranslation();
-  const [infoVideos, setInfoVideos] = useState<Video[]>();
+  // const [infoVideos, setInfoVideos] = useState();
+  const outletContext = useOutletContext<OutletContextProps>();
   const [videoHeroSlider, setvideoHeroSlider] = useState<Video[]>();
   const [videosPopular, setVideosPopular] = useState<Video[]>();
   const [videosNewIn, setVideosNewIn] = useState<Video[]>();
@@ -29,7 +32,7 @@ export default function () {
         },
       });
       const datas = await request.json();
-      setInfoVideos(datas);
+      outletContext.setInfoVideos(datas);
       const videoHeroSliderData = datas.filter(
         (video: Video) => video.is_heroSlide === 1,
       );
@@ -49,7 +52,7 @@ export default function () {
   }
 
   return (
-    infoVideos?.length && (
+    outletContext.infoVideos?.length && (
       <div className="home-page">
         <section>
           <h1 className="home-page-title">{t("title-homePage")}</h1>
