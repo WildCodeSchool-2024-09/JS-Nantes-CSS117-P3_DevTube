@@ -1,10 +1,12 @@
 import "../../styles/Course.css";
+import useTheme from "../../utils/useTheme";
 
 type Course = {
   id: number;
   title: string;
   description: string;
   img: string;
+  imgLight?: string;
   type: string;
 };
 const lstCourse: Course[] = [
@@ -78,6 +80,7 @@ const lstCourse: Course[] = [
     description:
       "Express is a fast and minimalist web framework for Node.js. It simplifies server creation by providing robust tools for handling routes, middleware, and HTTP requests.",
     img: "logo-express.png",
+    imgLight: "express-icon-for-light-theme.png",
     type: "Back-end",
   },
 ];
@@ -87,6 +90,7 @@ export default function Course() {
   const listBasesCourses = getCourseByType("Bases");
   const listFrontEndCourses = getCourseByType("Front-end");
   const listBackEndCourses = getCourseByType("Back-end");
+  const { theme } = useTheme();
 
   return (
     <>
@@ -101,7 +105,11 @@ export default function Course() {
         {/* Vertical line */}
         <img
           className="vertical-line"
-          src="vertical-line-course-link.png"
+          src={
+            theme
+              ? "vertical-line-course-light-theme.png"
+              : "vertical-line-course-link.png"
+          }
           alt=""
         />
 
@@ -111,7 +119,11 @@ export default function Course() {
           {listBasesCourses.map((el) => {
             return (
               <figure key={el.id} className="course-figure-background">
-                <img className="figure-course-logo" src={el.img} alt="" />
+                <img
+                  className="figure-course-logo"
+                  src={theme && el.imgLight ? el.imgLight : el.img}
+                  alt=""
+                />
                 <section className="figure-description-wrapper">
                   <article className="figure-description-article">
                     <h3>{el.title}</h3>
@@ -124,7 +136,11 @@ export default function Course() {
                   >
                     <img
                       className="figure-course-navigation"
-                      src="button-see-course.png"
+                      src={
+                        theme
+                          ? "button-see-course-for-light-theme.png"
+                          : "button-see-course.png"
+                      }
                       alt=""
                     />
                   </button>
@@ -138,19 +154,31 @@ export default function Course() {
           {/* Horizontal line */}
           <img
             className="horizontal-line"
-            src="horizontal-line-course-link.png"
+            src={
+              theme
+                ? "horizontal-line-course-light-theme.png"
+                : "horizontal-line-course-link.png"
+            }
             alt=""
           />
           {/* Left vertical line */}
           <img
             className="vertical-line-left"
-            src="vertical-line-course-link.png"
+            src={
+              theme
+                ? "vertical-line-course-light-theme.png"
+                : "vertical-line-course-link.png"
+            }
             alt=""
           />
           {/* Right vertical line */}
           <img
             className="vertical-line-right"
-            src="vertical-line-course-link.png"
+            src={
+              theme
+                ? "vertical-line-course-light-theme.png"
+                : "vertical-line-course-link.png"
+            }
             alt=""
           />
           {/* Front-end section */}
@@ -172,7 +200,11 @@ export default function Course() {
                     >
                       <img
                         className="figure-course-navigation"
-                        src="button-see-course.png"
+                        src={
+                          theme
+                            ? "button-see-course-for-light-theme.png"
+                            : "button-see-course.png"
+                        }
                         alt=""
                       />
                     </button>
@@ -188,7 +220,11 @@ export default function Course() {
             {listBackEndCourses.map((el) => {
               return (
                 <figure key={el.id} className="course-figure-background">
-                  <img className="figure-course-logo" src={el.img} alt="" />
+                  <img
+                    className="figure-course-logo"
+                    src={theme && el.imgLight ? el.imgLight : el.img}
+                    alt=""
+                  />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">
                       <h3>{el.title}</h3>
@@ -201,7 +237,11 @@ export default function Course() {
                     >
                       <img
                         className="figure-course-navigation"
-                        src="button-see-course.png"
+                        src={
+                          theme
+                            ? "button-see-course-for-light-theme.png"
+                            : "button-see-course.png"
+                        }
                         alt=""
                       />
                     </button>
