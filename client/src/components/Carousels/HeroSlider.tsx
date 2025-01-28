@@ -85,6 +85,8 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
                   thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
                   isLarge
                   displayCardInfo={false}
+                  isFreemium={video.is_freemium}
+                  duration={video.duration}
                 />
               </Link>
             ))}

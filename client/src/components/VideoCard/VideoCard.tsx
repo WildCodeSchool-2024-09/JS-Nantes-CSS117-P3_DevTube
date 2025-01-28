@@ -2,12 +2,14 @@ import "./../../styles/VideoCard.css";
 import type { VideoCardProps } from "../../types/videocard";
 
 function VideoCard({
+  isFreemium,
   title,
+  duration,
   thumbnailUrl,
   isLarge,
   displayCardInfo = true,
 }: VideoCardProps) {
-  // TODO : variable for time video + favorites gestion with heart empty or orange heart
+  // TODO :favorites gestion with heart empty or orange heart
 
   return (
     <>
@@ -23,13 +25,13 @@ function VideoCard({
             />
           </div>
         </section>
-        {displayCardInfo ? (
+        {displayCardInfo && (
           <section className="card-footer">
             <div className="first-row-card-footer">
               <p className="video-title">{title}</p>
               <div className="time-video-wrapper">
                 <img className="clock-icon" src="/clock.png" alt="clock" />
-                <p className="time">60 min</p>
+                <p className="time">{duration} min</p>
               </div>
             </div>
             <img
@@ -38,7 +40,16 @@ function VideoCard({
               alt="heart icon"
             />
           </section>
-        ) : null}
+        )}
+        {isFreemium === 1 && !isLarge && (
+          <div className="background-cadenas">
+            <img
+              className="/public/cadenas"
+              src="/public/cadenas-dark.png"
+              alt="cadenas"
+            />
+          </div>
+        )}
       </article>
     </>
   );
