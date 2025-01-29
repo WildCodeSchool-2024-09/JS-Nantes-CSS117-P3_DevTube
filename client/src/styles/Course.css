@@ -1,3 +1,8 @@
+.coming-soon {
+  color: var(--accent-color-3);
+  font-weight: bold;
+}
+
 .section-course-container {
   position: relative;
   display: flex;
@@ -7,6 +12,7 @@
   margin: 0 auto;
   padding: 2rem 0;
 }
+
 .article-course-title {
   display: grid;
   justify-items: center;
@@ -18,10 +24,12 @@
     margin-bottom: 1rem;
   }
 }
+
 .section-bases,
 .section-specialization {
   z-index: 1;
 }
+
 .section-bases,
 .section-front-end,
 .section-back-end {
@@ -34,6 +42,7 @@
   }
   z-index: 2;
 }
+
 .course-figure-background {
   position: relative;
   max-width: 80%;
@@ -46,6 +55,7 @@
     margin-top: 2rem;
   }
 }
+
 .figure-course-logo {
   position: absolute;
   top: -30px;
@@ -54,16 +64,20 @@
   width: 60px;
   height: auto;
 }
+
 .figure-course-navigation-button {
   transition: transform .2s ease-in;
 }
+
 .figure-course-navigation-button:hover {
   transform: scale(110%, 110%);
 }
+
 .figure-course-navigation {
   width: 30px;
   height: 30px;
 }
+
 .figure-description-wrapper {
   display: grid;
   grid-template-columns: 1fr 50px;
@@ -78,6 +92,7 @@
     align-self: flex-end;
   }
 }
+
 .figure-description-article {
   padding: .5rem 0 0 1rem;
 }
@@ -86,6 +101,7 @@
   position: absolute;
   display: none;
 }
+
 .vertical-line {
   position: absolute;
   top: 300px;
@@ -95,11 +111,13 @@
   height: 85%;
   z-index: 1;
 }
+
 .vertical-line-left,
 .vertical-line-right {
   position: absolute;
   display: none;
 }
+
 @media screen and (min-width: 950px) and (max-width: 989px) {
   .vertical-line {
     top: 350px;
