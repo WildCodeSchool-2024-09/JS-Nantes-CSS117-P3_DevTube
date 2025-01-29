@@ -102,9 +102,14 @@ export default function Course() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const urlForVideos = `${import.meta.env.VITE_API_URL}"/api/category/${idOfTheCategoryLanguage}`;
-    recoverInfoVideos(urlForVideos);
-  }, [idOfTheCategoryLanguage]);
+    if (idOfTheCategoryLanguage) {
+      const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idOfTheCategoryLanguage}`;
+      recoverInfoVideos(urlForVideos);
+      if (videosByCategory) {
+        navigate(`/video/${videosByCategory[0].id}`);
+      }
+    }
+  }, [idOfTheCategoryLanguage, videosByCategory, navigate]);
 
   const handleClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -113,11 +118,6 @@ export default function Course() {
       const idTofind = Number.parseInt(`${event.currentTarget.dataset.id}`);
       if (idTofind) {
         setIdOfTheCategoryLanguage(idTofind);
-      }
-
-      // console.log({ videosByCategory });
-      if (videosByCategory) {
-        navigate(`/video/${videosByCategory[0].id}`);
       }
     }
   };
@@ -132,9 +132,7 @@ export default function Course() {
         },
       });
       const datas = await request.json();
-      // console.log({ datas });
       setVideosByCategory(datas);
-      // console.log({ videosByCategory });
     } catch (err) {
       notifyError("You are log out !");
     }
