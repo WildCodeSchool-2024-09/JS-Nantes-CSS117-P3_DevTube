@@ -1,10 +1,9 @@
-import { useOutletContext } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "../../styles/Course.css";
-import { useEffect } from "react";
-import type { OutletContextProps } from "../../types/outletContext";
+import { useEffect, useState } from "react";
+import type { Video } from "../../types/video";
 import useTheme from "../../utils/useTheme";
 import useToast from "../../utils/useToastify";
-// import { Video } from "../../types/video";
 
 type Course = {
   id: number;
@@ -96,13 +95,32 @@ export default function Course() {
   const listFrontEndCourses = getCourseByType("Front-end");
   const listBackEndCourses = getCourseByType("Back-end");
   const { theme } = useTheme();
-  const outletContext = useOutletContext<OutletContextProps>();
+  const [videosByCategory, setVideosByCategory] = useState<Video[]>();
+  const [idOfTheCategoryLanguage, setIdOfTheCategoryLanguage] =
+    useState<number>();
   const { notifyError } = useToast();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
+    const urlForVideos = `${import.meta.env.VITE_API_URL}"/api/category/${idOfTheCategoryLanguage}`;
     recoverInfoVideos(urlForVideos);
-  }, []);
+  }, [idOfTheCategoryLanguage]);
+
+  const handleClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    if (event.currentTarget.dataset.id) {
+      const idTofind = Number.parseInt(`${event.currentTarget.dataset.id}`);
+      if (idTofind) {
+        setIdOfTheCategoryLanguage(idTofind);
+      }
+
+      // console.log({ videosByCategory });
+      if (videosByCategory) {
+        navigate(`/video/${videosByCategory[0].id}`);
+      }
+    }
+  };
 
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");
@@ -114,25 +132,13 @@ export default function Course() {
         },
       });
       const datas = await request.json();
-      outletContext.setInfoVideos(datas);
+      // console.log({ datas });
+      setVideosByCategory(datas);
+      // console.log({ videosByCategory });
     } catch (err) {
       notifyError("You are log out !");
     }
   }
-
-  // const handleClick = (
-  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  // ) => {
-  //   if (event.currentTarget.dataset.id) {
-  //     const videosByLanguages = outletContext.infoVideos.filter(
-  //       (video: Video) =>
-  //         video.category_id === parseInt(`${event.currentTarget.dataset.id}`),
-  //     );
-  //     // console.log({ videosByLanguages });
-  //     outletContext.setInfoVideos(videosByLanguages);
-  //   }
-  // };
-
   return (
     <>
       <section className="section-course-container">
@@ -175,9 +181,9 @@ export default function Course() {
                     type="button"
                     className="figure-course-navigation-button"
                     aria-label="Navigate to the course."
-                    // onClick={(event) => {
-                    //   // handleClick(event);
-                    // }}
+                    onClick={(event) => {
+                      handleClick(event);
+                    }}
                   >
                     <img
                       className="figure-course-navigation"
