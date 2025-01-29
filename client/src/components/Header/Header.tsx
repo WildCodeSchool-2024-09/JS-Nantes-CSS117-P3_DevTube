@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
 import { useState } from "react";
 import useAuth from "../../utils/useAuth";
@@ -9,6 +9,7 @@ export default function Header() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
   const { auth } = useAuth();
+  const navigate = useNavigate();
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -22,6 +23,8 @@ export default function Header() {
     alert(
       '/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate ver /logout-success*/',
     );
+
+    navigate("/logout-success");
   }
 
   return (
@@ -106,7 +109,7 @@ export default function Header() {
             className="btn-logout"
             onClick={handleLogoutBtnClick}
           >
-            {/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate ver /logout-success*/}
+            {/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate vers /logout-success*/}
             Log out
           </button>
         ) : (

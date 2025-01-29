@@ -5,6 +5,7 @@ import Admin from "./pages/Admin/Admin";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
+import Logout from "./pages/Logout/Logout";
 import ProfilUser from "./pages/ProfilUser/ProfilUser";
 import Subscribe from "./pages/Subsribe/Subscribe";
 import TeamProfile from "./pages/TeamProfile/TeamProfile";
@@ -83,6 +84,10 @@ export const router = createBrowserRouter([
       {
         path: "/testimonials",
         element: <Testimonials />,
+      },
+      {
+        path: "/logout-success",
+        element: <Logout />,
       },
     ],
   },
