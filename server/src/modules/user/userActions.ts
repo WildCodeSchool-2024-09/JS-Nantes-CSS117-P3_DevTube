@@ -1,8 +1,8 @@
 import type { RequestHandler } from "express";
 
 // Import access to data
+import type { User } from "./user";
 import userRepository from "./userRepository";
-import type { User } from "./userRepository";
 
 // Browse (Read All) operation
 const browse: RequestHandler = async (req, res, next) => {
@@ -46,8 +46,7 @@ const add: RequestHandler = async (req, res, next) => {
       firstname: req.body.firstname,
       lastname: req.body.lastname,
       email: req.body.email,
-      password: req.body.password,
-      confirm_password: req.body.confirm_password,
+      password: req.body.hashed_password,
       github_url: req.body.github_url,
       linkedin_url: req.body.linkedin_url,
       profil_img: req.body.profil_img,
@@ -118,4 +117,19 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit };
+const checkIfUser: RequestHandler = async (req, res, next) => {
+  try {
+    const { name } = req.body;
+    const getIsUser = await userRepository.read(name);
+
+    if (getIsUser) {
+      next();
+    } else {
+      res.status(401).send("This user already exists !");
+    }
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+export default { browse, read, add, remove, edit, checkIfUser };

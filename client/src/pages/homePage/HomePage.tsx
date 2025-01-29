@@ -8,15 +8,40 @@ import type { Video } from "../../types/video";
 export default function () {
   const { t } = useTranslation();
   const [infoVideos, setInfoVideos] = useState<Video[]>();
+  const [videoHeroSlider, setvideoHeroSlider] = useState<Video[]>();
+  const [videosPopular, setVideosPopular] = useState<Video[]>();
+  const [videosNewIn, setVideosNewIn] = useState<Video[]>();
+
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
     recoverInfoVideos(urlForVideos);
   }, []);
 
   async function recoverInfoVideos(url: string) {
-    const request = await fetch(url);
-    const datas = await request.json();
-    setInfoVideos(datas);
+    const token = localStorage.getItem("token");
+
+    if (url) {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setInfoVideos(datas);
+      const videoHeroSliderData = datas.filter(
+        (video: Video) => video.is_heroSlide === 1,
+      );
+      //FILTER FOR HEROSLIDER
+      setvideoHeroSlider(videoHeroSliderData);
+      //FILTER BY POPULAR
+      const videoPopularData = datas.filter(
+        (video: Video) => video.is_popular === 1,
+      );
+      setVideosPopular(videoPopularData);
+      //FILTER BY NEW IN - THE LAST REGISTER
+      const videosNewInData = datas.slice(0, 9);
+      setVideosNewIn(videosNewInData);
+    }
   }
 
   return (
@@ -24,15 +49,15 @@ export default function () {
       <div className="home-page">
         <section>
           <h1 className="home-page-title">{t("title-homePage")}</h1>
-          <HeroSlider videos={infoVideos} />
+          {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
         </section>
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
-          <MiniVideoCarousel videos={infoVideos} />
+          {videosPopular && <MiniVideoCarousel videos={videosPopular} />}
         </section>
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
-          <MiniVideoCarousel videos={infoVideos} />
+          {videosNewIn && <MiniVideoCarousel videos={videosNewIn} />}
         </section>
       </div>
     )

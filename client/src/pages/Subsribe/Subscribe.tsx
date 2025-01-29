@@ -1,11 +1,33 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import "../../styles/Subscribe.css";
+import useToast from "../../utils/useToastify";
+
+//import { Bounce, ToastContainer, toast } from "react-toastify";
 
 export default function Subscribe() {
+  const { notifySuccess, notifyError } = useToast();
+
+  // Reset all fields of the form
+  const resetAllFields = () => {
+    formRef.current?.reset();
+    setFile(null);
+    setImageSrc("");
+  };
+
+  // Set the focus on firstname input
+  const getFocus = useRef<HTMLInputElement | null>(null);
+
+  // Get the form data
   const formRef = useRef<HTMLFormElement | null>(null);
+
   const [file, setFile] = useState<File | null>(null);
+
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
+
+  useEffect(() => {
+    getFocus.current?.focus();
+  }, []);
 
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -54,21 +76,27 @@ export default function Subscribe() {
 
       data.profil_img = imageProfileURL;
 
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users`,
-        {
-          method: "POST",
-          headers: { "Content-type": "application/json" },
-          body: JSON.stringify(data),
-        },
-      );
+      if (data.confirm_password !== data.password) {
+        resetAllFields();
 
-      if (response.ok) {
-        formRef.current?.reset();
-        setFile(null);
+        notifyError("Passwords doesn't identical.");
+      } else {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/users`,
+          {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(data),
+          },
+        );
+
+        if (response.ok) {
+          resetAllFields();
+          notifySuccess(`Welcome in devTube ${data.firstname}`);
+        }
       }
     } catch (error) {
-      console.error(error);
+      notifyError("Please complete the mandatory fields (*).");
     }
   };
 
@@ -77,77 +105,81 @@ export default function Subscribe() {
       <h1>Subscribe</h1>
 
       <form ref={formRef} onSubmit={handleSubmit} encType="multipart/form-data">
-        <label id="firstname" htmlFor="firstname">
-          First name
+        <label htmlFor="firstname">
+          First name <span className="mandatory-data">*</span>
         </label>
         <input
           type="text"
           name="firstname"
+          id="firstname"
+          ref={getFocus}
           aria-labelledby="firstname"
           placeholder="Enter your first name."
           required
         />
 
-        <label id="lastname" htmlFor="lastname">
-          Last name
+        <label htmlFor="lastname">
+          Last name <span className="mandatory-data">*</span>
         </label>
         <input
           type="text"
           name="lastname"
+          id="lastname"
           aria-labelledby="lastname"
           placeholder="Enter your last name."
           required
         />
 
-        <label id="email" htmlFor="email">
-          Email
+        <label htmlFor="email">
+          Email <span className="mandatory-data">*</span>
         </label>
         <input
           type="email"
           name="email"
+          id="email"
           aria-labelledby="email"
           placeholder="Enter your email."
           required
         />
 
-        <label id="password" htmlFor="password">
-          Password
+        <label htmlFor="password">
+          Password <span className="mandatory-data">*</span>
         </label>
         <input
           type="password"
           name="password"
+          id="password"
           aria-labelledby="password"
           placeholder="Enter your password."
           required
         />
 
-        <label id="confirm_password" htmlFor="confirm_password">
-          Confirm your password
+        <label htmlFor="confirm_password">
+          Confirm your password <span className="mandatory-data">*</span>
         </label>
         <input
           type="password"
           name="confirm_password"
+          id="confirm_password"
           aria-labelledby="confirm_password"
           placeholder="Confirm your password."
           required
         />
 
-        <label id="github_url" htmlFor="github_url">
-          GitHub URL
-        </label>
+        <label htmlFor="github_url">GitHub URL</label>
         <input
           type="text"
           name="github_url"
+          id="github_url"
           aria-labelledby="github_url"
           placeholder="Enter your GitHub."
         />
 
-        <label id="linkedin_url" htmlFor="linkedin_url">
-          Linkedin URL
-        </label>
+        <label htmlFor="linkedin_url">Linkedin URL</label>
         <input
           type="text"
           name="linkedin_url"
+          id="linkedin_url"
           aria-labelledby="linkedin_url"
           placeholder="Enter your Linkedin URL."
         />
@@ -157,15 +189,22 @@ export default function Subscribe() {
           onDrop={handleDrop}
           onChange={handleFileChange}
         >
-          <label htmlFor="profil-image" id="profil-image">
-            Profile image
+          <label htmlFor="profil-image">
+            Profile image <span className="mandatory-data">*</span>
           </label>
 
           <section className="image-container">
             {imgSrc ? (
-              <img src={imgSrc} alt="User's photo." />
+              <img
+                id="profil-image"
+                aria-labelledby="linkedin_url"
+                src={imgSrc}
+                alt="User's photo."
+              />
             ) : (
-              <p>Drag a thumbnail for your video here</p>
+              <p id="profil-image" aria-labelledby="linkedin_url">
+                Drag a thumbnail for your video here
+              </p>
             )}
           </section>
         </section>

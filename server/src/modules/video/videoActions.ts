@@ -24,12 +24,27 @@ const read: RequestHandler = async (req, res, next) => {
     const videoId = Number(req.params.id);
     const video = await videoRepository.read(videoId);
 
+    const isFreemium = video.is_freemium === 1;
+    const isUserAuthenticated = true; // temporary false or true variable
+
     // If the video is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the video in JSON format
     if (video == null) {
       res.sendStatus(404);
     } else {
-      res.json(video);
+      if (isFreemium) {
+        // console.log("IS freemium");
+        if (isUserAuthenticated) {
+          // console.log("IS AUTHENTICATED , j envoie la video");
+          res.json(video);
+        } else {
+          // console.log("❌ IS NOT AUTHENTICATED - 403");
+          res.sendStatus(403);
+        }
+      } else {
+        // console.log("IS NOT FREEMIUM 💚");
+        res.json(video);
+      }
     }
   } catch (err) {
     // Pass any errors to the error-handling middleware
@@ -45,6 +60,7 @@ const add: RequestHandler = async (req, res, next) => {
       name: req.body.name,
       duration: req.body.duration,
       thumbnail: req.body.thumbnail,
+      preview_image: req.body.preview_image,
       description: req.body.description,
       category_id: req.body.category_id,
       is_freemium: req.body.is_freemium,
@@ -85,6 +101,7 @@ const edit: RequestHandler = async (req, res, next) => {
       name,
       duration,
       thumbnail,
+      preview_image,
       description,
       category_id,
       is_freemium,
@@ -97,6 +114,7 @@ const edit: RequestHandler = async (req, res, next) => {
       name,
       duration,
       thumbnail,
+      preview_image,
       description,
       category_id,
       is_freemium,
