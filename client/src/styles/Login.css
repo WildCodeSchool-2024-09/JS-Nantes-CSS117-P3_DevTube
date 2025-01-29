@@ -4,7 +4,7 @@
   align-items: center;
   width: 100%;
   min-height: 100vh;
-  margin: 6rem 0 3rem;
+  padding: 6rem 0 3rem;
 }
 .main-form-login > h1 {
   margin: 0 0 2rem;
