@@ -49,7 +49,9 @@ function VideoCard({
             <img
               className="cadenas"
               src={
-                theme ? "/public/-light-theme.png" : "/public/cadenas-dark.png"
+                theme
+                  ? "/public/cadenas-light-theme.png"
+                  : "/public/cadenas-dark.png"
               }
               alt="cadenas"
             />

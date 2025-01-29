@@ -243,9 +243,14 @@ export default function Course() {
                       <p>{el.description}</p>
                     </article>
                     <button
+                      data-id={el.id}
+                      disabled={el.id === 4 || el.id === 7}
                       type="button"
                       className="figure-course-navigation-button"
                       aria-label="Navigate to the course."
+                      onClick={(event) => {
+                        handleClick(event);
+                      }}
                     >
                       <img
                         className="figure-course-navigation"
@@ -280,9 +285,14 @@ export default function Course() {
                       <p>{el.description}</p>
                     </article>
                     <button
+                      data-id={el.id}
+                      disabled={el.id === 5}
                       type="button"
                       className="figure-course-navigation-button"
                       aria-label="Navigate to the course."
+                      onClick={(event) => {
+                        handleClick(event);
+                      }}
                     >
                       <img
                         className="figure-course-navigation"
