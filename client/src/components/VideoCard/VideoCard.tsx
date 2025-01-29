@@ -48,7 +48,11 @@ function VideoCard({
           <div className="background-cadenas">
             <img
               className="cadenas"
-              src={theme ? "cadenas-light-theme.png" : "cadenas-dark.png"}
+              src={
+                theme
+                  ? "/public/cadenas-light-theme.png"
+                  : "/public/cadenas-dark.png"
+              }
               alt="cadenas"
             />
           </div>

@@ -1,10 +1,10 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
+import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
-//import { Bounce, ToastContainer, toast } from "react-toastify";
-
 export default function Subscribe() {
+  const focusInFirstname = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
 
   // Reset all fields of the form
@@ -14,9 +14,6 @@ export default function Subscribe() {
     setImageSrc("");
   };
 
-  // Set the focus on firstname input
-  const getFocus = useRef<HTMLInputElement | null>(null);
-
   // Get the form data
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -24,10 +21,6 @@ export default function Subscribe() {
 
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
-
-  useEffect(() => {
-    getFocus.current?.focus();
-  }, []);
 
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -112,7 +105,7 @@ export default function Subscribe() {
           type="text"
           name="firstname"
           id="firstname"
-          ref={getFocus}
+          ref={focusInFirstname}
           aria-labelledby="firstname"
           placeholder="Enter your first name."
           required

@@ -12,7 +12,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className={theme ? "light" : "dark"}>
+      <main className={`${theme ? "light" : "dark"}`}>
         <Outlet />
       </main>
       <Footer />
