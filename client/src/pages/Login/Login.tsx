@@ -6,7 +6,7 @@ import useToast from "../../utils/useToastify";
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
-  const { auth, setAuth } = useAuth();
+  const { setAuth } = useAuth();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
