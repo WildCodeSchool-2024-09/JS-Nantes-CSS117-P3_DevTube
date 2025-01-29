@@ -15,6 +15,7 @@ export default function Login() {
     const data = Object.fromEntries(formData.entries());
 
     try {
+      // Ask for a token when I log in
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/login`,
         {
@@ -31,11 +32,11 @@ export default function Login() {
       if (token) {
         notifySuccess("You are logged !");
         setAuth(true);
+
         localStorage.setItem("token", token);
       }
     } catch (err) {
       notifyError("You are log out !");
-      // setAuth(!auth);
     }
   };
 

@@ -1,12 +1,14 @@
 import { Link, NavLink } from "react-router-dom";
 import "../../styles/Header.css";
 import { useState } from "react";
+import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
+  const { auth } = useAuth();
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -14,6 +16,12 @@ export default function Header() {
 
   function handleClick() {
     setOpenSearchBar(!openSearchBar);
+  }
+
+  function handleLogoutBtnClick() {
+    alert(
+      '/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate ver /logout-success*/',
+    );
   }
 
   return (
@@ -92,13 +100,25 @@ export default function Header() {
       </button>
 
       <section className="login-sign-up-container">
-        <NavLink to={"/login"} className="btn-login">
-          Log in
-        </NavLink>
-
-        <NavLink to={"/subscribe"} className="little-cta">
-          Sign up
-        </NavLink>
+        {auth ? (
+          <button
+            type="button"
+            className="btn-logout"
+            onClick={handleLogoutBtnClick}
+          >
+            {/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate ver /logout-success*/}
+            Log out
+          </button>
+        ) : (
+          <NavLink to={"/login"} className="btn-login">
+            Log in
+          </NavLink>
+        )}
+        {!auth && (
+          <NavLink to={"/subscribe"} className="little-cta">
+            Sign up
+          </NavLink>
+        )}
       </section>
     </header>
   );
