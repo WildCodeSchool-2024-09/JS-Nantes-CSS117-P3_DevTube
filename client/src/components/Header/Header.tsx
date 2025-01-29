@@ -8,7 +8,7 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { auth } = useAuth();
+  const { auth, setAuth } = useAuth();
   const navigate = useNavigate();
 
   function toggleMenu() {
@@ -20,10 +20,8 @@ export default function Header() {
   }
 
   function handleLogoutBtnClick() {
-    alert(
-      '/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate ver /logout-success*/',
-    );
-
+    localStorage.removeItem("token");
+    setAuth(false);
     navigate("/logout-success");
   }
 

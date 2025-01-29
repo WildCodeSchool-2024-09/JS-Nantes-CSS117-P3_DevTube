@@ -1,0 +1,8 @@
+.logout-page {
+  height: calc(100vh - 70px - 213px);
+  & h1,
+  p {
+    text-align: center;
+    padding-top: 100px;
+  }
+}
