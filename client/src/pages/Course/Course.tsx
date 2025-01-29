@@ -122,7 +122,7 @@ export default function Course() {
                 <img
                   className="figure-course-logo"
                   src={theme && el.imgLight ? el.imgLight : el.img}
-                  alt=""
+                  alt="logo icon"
                 />
                 <section className="figure-description-wrapper">
                   <article className="figure-description-article">
@@ -141,7 +141,7 @@ export default function Course() {
                           ? "button-see-course-for-light-theme.png"
                           : "button-see-course.png"
                       }
-                      alt=""
+                      alt="button to see videos of this categrory"
                     />
                   </button>
                 </section>
@@ -187,43 +187,10 @@ export default function Course() {
             {listFrontEndCourses.map((el) => {
               return (
                 <figure key={el.id} className="course-figure-background">
-                  <img className="figure-course-logo" src={el.img} alt="" />
-                  <section className="figure-description-wrapper">
-                    <article className="figure-description-article">
-                      <h3>{el.title}</h3>
-                      <p>{el.description}</p>
-                    </article>
-                    <button
-                      type="button"
-                      className="figure-course-navigation-button"
-                      aria-label="Navigate to the course."
-                    >
-                      <img
-                        className="figure-course-navigation"
-                        src={
-                          theme
-                            ? "button-see-course-for-light-theme.png"
-                            : "button-see-course.png"
-                        }
-                        alt=""
-                      />
-                    </button>
-                  </section>
-                </figure>
-              );
-            })}
-          </section>
-
-          {/* Back-end section */}
-          <section className="section-back-end">
-            <h2>Back-end</h2>
-            {listBackEndCourses.map((el) => {
-              return (
-                <figure key={el.id} className="course-figure-background">
                   <img
                     className="figure-course-logo"
-                    src={theme && el.imgLight ? el.imgLight : el.img}
-                    alt=""
+                    src={el.img}
+                    alt="logo icon"
                   />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">
@@ -242,7 +209,44 @@ export default function Course() {
                             ? "button-see-course-for-light-theme.png"
                             : "button-see-course.png"
                         }
-                        alt=""
+                        alt="button to see videos of this category"
+                      />
+                    </button>
+                  </section>
+                </figure>
+              );
+            })}
+          </section>
+
+          {/* Back-end section */}
+          <section className="section-back-end">
+            <h2>Back-end</h2>
+            {listBackEndCourses.map((el) => {
+              return (
+                <figure key={el.id} className="course-figure-background">
+                  <img
+                    className="figure-course-logo"
+                    src={theme && el.imgLight ? el.imgLight : el.img}
+                    alt="logo icon"
+                  />
+                  <section className="figure-description-wrapper">
+                    <article className="figure-description-article">
+                      <h3>{el.title}</h3>
+                      <p>{el.description}</p>
+                    </article>
+                    <button
+                      type="button"
+                      className="figure-course-navigation-button"
+                      aria-label="Navigate to the course."
+                    >
+                      <img
+                        className="figure-course-navigation"
+                        src={
+                          theme
+                            ? "button-see-course-for-light-theme.png"
+                            : "button-see-course.png"
+                        }
+                        alt="button to see th videos of this category"
                       />
                     </button>
                   </section>
