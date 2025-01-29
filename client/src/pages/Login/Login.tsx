@@ -1,10 +1,12 @@
 import "../../styles/Login.css";
+import useAuth from "../../utils/useAuth";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const { auth, setAuth } = useAuth();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -28,11 +30,13 @@ export default function Login() {
 
       if (token) {
         notifySuccess("You are logged !");
-
         localStorage.setItem("token", token);
+        setAuth(true);
       }
     } catch (err) {
       notifyError("You are log out !");
+      setAuth(false);
+      // console.log({ auth });
     }
   };
 
