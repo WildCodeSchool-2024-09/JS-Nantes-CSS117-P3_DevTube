@@ -124,7 +124,7 @@ button {
 
 .standard-button {
   background: var(--primary-color);
-  color: var(text-color);
+  color: var(--text-color);
   border: solid 2px var(--accent-color-1);
   border-radius: 8px;
   color: var(--text-color);

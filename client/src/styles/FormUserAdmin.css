@@ -1,6 +1,12 @@
 .form-admin-container {
   display: grid;
 }
+.form-admin-container .standard-button {
+  width: fit-content;
+  height: auto;
+  padding: .5rem;
+  margin: 1rem auto 0;
+}
 .form-admin-wrapper {
   display: grid;
   align-items: center;

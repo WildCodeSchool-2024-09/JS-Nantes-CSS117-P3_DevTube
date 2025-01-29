@@ -20,6 +20,7 @@ router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
 router.delete("/api/users/:id", userActions.remove);
 router.post("/api/users/login", authActions.login);
+router.get("/api/users/email/:email", userActions.userByEmail);
 
 import categoryActions from "./modules/category/categoryActions";
 // Route video
