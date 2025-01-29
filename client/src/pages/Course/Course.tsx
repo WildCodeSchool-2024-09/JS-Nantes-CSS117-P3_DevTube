@@ -177,7 +177,7 @@ export default function Course() {
                 <img
                   className="figure-course-logo"
                   src={theme && el.imgLight ? el.imgLight : el.img}
-                  alt=""
+                  alt="logo icon"
                 />
                 <section className="figure-description-wrapper">
                   <article className="figure-description-article">
@@ -293,8 +293,8 @@ export default function Course() {
                 <figure key={el.id} className="course-figure-background">
                   <img
                     className="figure-course-logo"
-                    src={theme && el.imgLight ? el.imgLight : el.img}
-                    alt=""
+                    src={el.img}
+                    alt="logo icon"
                   />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">

@@ -1,0 +1,93 @@
+.form-admin-container {
+  display: grid;
+}
+.form-admin-wrapper {
+  display: grid;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  height: fit-content;
+  padding: .8rem;
+  margin: 0 auto 5rem;
+  gap: 2rem;
+  font-size: var(--font-normal);
+  border: 2px solid var(--accent-color-1);
+}
+.h1-admin {
+  margin: 2rem 0 3rem;
+  text-align: center;
+}
+.form-admin input,
+.search-admin,
+.form-admin select {
+  height: 40px;
+}
+.search-admin {
+  padding: 0 1rem 0 1rem;
+  border-radius: 40px;
+}
+.form-admin fieldset {
+  display: grid;
+  border: none;
+}
+.form-admin fieldset legend {
+  font-size: var(--font-medium);
+  margin: 0 0 1.125rem;
+}
+.form-admin fieldset label {
+  margin: 1rem 0 .8rem;
+}
+.form-admin fieldset label:first-of-type {
+  margin: 0 0 .8rem;
+}
+.form-admin textarea {
+  height: 100px;
+  padding: .5rem;
+  resize: vertical;
+}
+.section-img-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 250px;
+  padding: 1rem;
+  margin: 0 auto;
+  background-color: var(--tertiary-color);
+}
+.section-img-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+.admin-btn-wrapper {
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  padding: 0 0 1rem;
+}
+.admin-label-wrapper {
+  display: flex;
+  align-items: center;
+}
+.admin-check-box {
+  width: 20px;
+  height: 20px;
+  margin: 0 0 0 1rem;
+}
+@media screen and (min-width: 1400px) {
+  .form-admin-container {
+    display: grid;
+    grid-template-areas:
+      "title title"
+      "col1 col2";
+  }
+  .form-admin-wrapper h1 {
+    grid-area: title;
+  }
+  .form-admin-wrapper .form-admin:first-of-type {
+    grid-area: col1;
+  }
+  .form-admin-wrapper .form-admin:nth-of-type(+2) {
+    grid-area: col2;
+  }
+}

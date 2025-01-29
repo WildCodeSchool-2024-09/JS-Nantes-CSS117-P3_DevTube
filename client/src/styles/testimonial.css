@@ -102,7 +102,6 @@
     font-size: 15px;
     margin: 0%;
     padding: 0%;
-    /* color: var(--text-color); */
   }
   .testimonial-container {
     margin-top: 10%;
@@ -142,7 +141,6 @@
 
   .level {
     font-size: 16px;
-    /* color: var(--text-color); */
   }
   .testimonial-description {
     margin-top: 20px;

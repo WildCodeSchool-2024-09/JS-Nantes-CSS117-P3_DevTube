@@ -28,7 +28,7 @@ router.post(
       res.status(400).send({ message: "Erreur : aucun fichier reçu" });
       return;
     }
-    const imageProfileURL = `assets/images/userprofil/${req.file.filename}`;
+    const imageProfileURL = `/assets/images/userprofil/${req.file.filename}`;
     res.status(200).json({ imageProfileURL });
   },
 );
@@ -44,7 +44,7 @@ import categoryActions from "./modules/category/categoryActions";
 // Route video
 import videoActions from "./modules/video/videoActions";
 
-// router.use(authActions.verifyToken);
+router.use(authActions.verifyToken);
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);

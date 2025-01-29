@@ -47,7 +47,7 @@ export default function () {
       const videosNewInData = datas.slice(0, 9);
       setVideosNewIn(videosNewInData);
     } catch (err) {
-      notifyError("You are log out !");
+      notifyError("Sorry, something is wrong !");
     }
   }
 

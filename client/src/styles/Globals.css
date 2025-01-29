@@ -29,6 +29,8 @@
   /*FONT*/
   --font-small: 12px;
   --font-normal: 16px;
+  --font-medium: 20px;
+  --font-large: 24px;
   /*BODY*/
   --body-font-family: "Inria Sans", sans-serif;
   --body-font-size: 12px;
