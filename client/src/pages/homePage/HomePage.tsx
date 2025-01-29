@@ -4,6 +4,7 @@ import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import "../../styles/HomePage.css";
 import { useEffect, useState } from "react";
 import type { Video } from "../../types/video";
+import useToast from "../../utils/useToastify";
 
 export default function () {
   const { t } = useTranslation();
@@ -11,6 +12,7 @@ export default function () {
   const [videoHeroSlider, setvideoHeroSlider] = useState<Video[]>();
   const [videosPopular, setVideosPopular] = useState<Video[]>();
   const [videosNewIn, setVideosNewIn] = useState<Video[]>();
+  const { notifyError } = useToast();
 
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
@@ -20,7 +22,7 @@ export default function () {
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");
 
-    if (url) {
+    try {
       const request = await fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`,
@@ -41,6 +43,8 @@ export default function () {
       //FILTER BY NEW IN - THE LAST REGISTER
       const videosNewInData = datas.slice(0, 9);
       setVideosNewIn(videosNewInData);
+    } catch (err) {
+      notifyError("Sorry, something is wrong !");
     }
   }
 
