@@ -1,5 +1,6 @@
 import "./../../styles/VideoCard.css";
 import type { VideoCardProps } from "../../types/videocard";
+import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
 function VideoCard({
@@ -13,6 +14,7 @@ function VideoCard({
   // TODO :favorites gestion with heart empty or orange heart
 
   const { theme } = useTheme();
+  const { auth } = useAuth();
 
   return (
     <>
@@ -44,7 +46,7 @@ function VideoCard({
             />
           </section>
         )}
-        {isFreemium === 1 && !isLarge && (
+        {!auth && isFreemium === 1 && !isLarge && (
           <div className="background-cadenas">
             <img
               className="cadenas"
