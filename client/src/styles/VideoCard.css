@@ -8,8 +8,7 @@
 .background-cadenas {
   width: 300px;
   height: 236px;
-  background: var(--tertiary-color);
-  opacity: 50%;
+  background: color-mix(in srgb, var(--tertiary-color) 70%, transparent);
   display: flex;
   justify-content: center;
   align-items: center;

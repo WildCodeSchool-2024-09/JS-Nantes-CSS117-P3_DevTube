@@ -1,5 +1,6 @@
 import "./../../styles/VideoCard.css";
 import type { VideoCardProps } from "../../types/videocard";
+import useTheme from "../../utils/useTheme";
 
 function VideoCard({
   isFreemium,
@@ -10,6 +11,8 @@ function VideoCard({
   displayCardInfo = true,
 }: VideoCardProps) {
   // TODO :favorites gestion with heart empty or orange heart
+
+  const { theme } = useTheme();
 
   return (
     <>
@@ -44,8 +47,12 @@ function VideoCard({
         {isFreemium === 1 && !isLarge && (
           <div className="background-cadenas">
             <img
-              className="/public/cadenas"
-              src="/public/cadenas-dark.png"
+              className="cadenas"
+              src={
+                theme
+                  ? "/public/cadenas-light-theme.png"
+                  : "/public/cadenas-dark.png"
+              }
               alt="cadenas"
             />
           </div>

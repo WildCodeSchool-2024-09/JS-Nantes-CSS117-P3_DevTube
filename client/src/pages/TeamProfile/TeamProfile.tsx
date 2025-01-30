@@ -1,6 +1,8 @@
+import useTheme from "../../utils/useTheme";
 import "./../../styles/teamProfile.css";
 
 export default function TeamProfile() {
+  const { theme } = useTheme();
   return (
     <main>
       <header className="top-title">
@@ -35,8 +37,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
@@ -68,8 +78,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
@@ -100,8 +118,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
@@ -132,8 +158,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
@@ -164,8 +198,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
@@ -196,8 +238,16 @@ export default function TeamProfile() {
             <article className="team-profile-icon">
               <h3>titre</h3>
               <div>
-                <img src="github-icon.png" alt="github-icon" />
-                <img src="linkedin-1121.png" alt="linkedin-icon" />
+                <img
+                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
+                  alt="github-icon"
+                />
+                <img
+                  src={
+                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
+                  }
+                  alt="linkedin-icon"
+                />
               </div>
             </article>
 
