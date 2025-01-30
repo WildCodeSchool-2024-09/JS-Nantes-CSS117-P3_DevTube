@@ -44,6 +44,9 @@ import categoryActions from "./modules/category/categoryActions";
 // Route video
 import videoActions from "./modules/video/videoActions";
 
+// Open route to verify tokens validity from the front end
+router.get("/api/verify-token", authActions.checkIsValidToken);
+
 router.get("/api/videos", videoActions.browse);
 router.use(authActions.verifyToken);
 
