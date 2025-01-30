@@ -15,13 +15,17 @@ export default function FormUserAdmin() {
 
   // Empties the user form fields if the search bar is empty.
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") setSelectedUser(undefined);
+    if (e.target.value === "") {
+      setSelectedUser(undefined);
+      setWaitEmail("");
+      return;
+    }
     setWaitEmail(e.target.value);
   };
 
   // Update setSelectedUser
   const handleSearchClick = async () => {
-    if (waitEmail === "") {
+    if (!waitEmail) {
       setSelectedUser(undefined);
       formRef.current?.reset();
       notifyError("Please fill in the field above.");
@@ -39,17 +43,13 @@ export default function FormUserAdmin() {
         throw new Error("The user has not been found.");
       }
 
-      const users = await response.json();
+      const user = await response.json();
 
-      const profilImgIsUndefined = users.profil_img.split("/");
-
-      if (
-        profilImgIsUndefined[profilImgIsUndefined.length - 1] === "undefined"
-      ) {
-        users.profil_img = "/assets/images/userprofil/avatar/user_profile.png";
+      if (!user.profil_img) {
+        user.profil_img = "/assets/images/userprofil/avatar/user_profile.png";
       }
 
-      setSelectedUser(users);
+      setSelectedUser(user);
     } catch (err) {
       notifyError((err as Error).message);
     }

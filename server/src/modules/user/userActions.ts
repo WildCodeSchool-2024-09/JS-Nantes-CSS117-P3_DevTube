@@ -138,7 +138,7 @@ const userByEmail: RequestHandler = async (req, res, next) => {
   try {
     const user = await userRepository.getUserByEmail(email);
 
-    if (user === null || user === undefined) {
+    if (!user) {
       res.sendStatus(404);
       return;
     }

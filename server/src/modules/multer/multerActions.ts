@@ -26,8 +26,9 @@ const upload = multer({
 });
 
 const single: RequestHandler = async (req, res, next) => {
-  const imageProfileURL = `assets/images/userprofil/${req.file?.filename}`;
-  console.info(imageProfileURL);
+  const imageProfileURL = !req.file?.filename
+    ? null
+    : `assets/images/userprofil/${req.file?.filename}`;
   res.status(200).json({ imageProfileURL });
 };
 
