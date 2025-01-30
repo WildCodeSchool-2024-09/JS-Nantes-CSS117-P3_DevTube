@@ -75,6 +75,12 @@ export const router = createBrowserRouter([
                 error: 403,
               };
             }
+
+            if (response.status) {
+              return {
+                error: response.status,
+              };
+            }
           } catch (error) {
             console.error("Error fetching video: ", error);
             return null;
