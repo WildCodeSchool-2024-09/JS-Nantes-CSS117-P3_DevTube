@@ -45,12 +45,12 @@ import categoryActions from "./modules/category/categoryActions";
 import videoActions from "./modules/video/videoActions";
 
 // Open route to verify tokens validity from the front end
+router.get("/api/videos", videoActions.browse);
+router.get("/api/videos/:id", videoActions.read);
 router.get("/api/verify-token", authActions.checkIsValidToken);
 
-router.get("/api/videos", videoActions.browse);
 router.use(authActions.verifyToken);
 
-router.get("/api/videos/:id", videoActions.read);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 router.delete("/api/videos/:id", videoActions.remove);
