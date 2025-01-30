@@ -29,7 +29,6 @@ import videoActions from "./modules/video/videoActions";
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
 router.get("/api/category/:id", categoryActions.read);
-//vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);
