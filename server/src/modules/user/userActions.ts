@@ -132,4 +132,23 @@ const checkIfUser: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit, checkIfUser };
+const userByEmail: RequestHandler = async (req, res, next) => {
+  const { email } = req.params;
+
+  try {
+    const user = await userRepository.getUserByEmail(email);
+
+    if (!user) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.status(200).json(user);
+    return;
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+    return;
+  }
+};
+
+export default { browse, read, add, remove, edit, checkIfUser, userByEmail };

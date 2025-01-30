@@ -1,3 +1,4 @@
+import { useCallback } from "react";
 import { toast } from "react-toastify";
 
 /*
@@ -8,8 +9,8 @@ const { notifySuccess, notifyError } = useToast();
 */
 
 const useToast = () => {
-  const notifySuccess = (msg: string) => toast.success(msg);
-  const notifyError = (msg: string) => toast.error(msg);
+  const notifySuccess = useCallback((msg: string) => toast.success(msg), []);
+  const notifyError = useCallback((msg: string) => toast.error(msg), []);
   return { notifySuccess, notifyError };
 };
 export default useToast;
