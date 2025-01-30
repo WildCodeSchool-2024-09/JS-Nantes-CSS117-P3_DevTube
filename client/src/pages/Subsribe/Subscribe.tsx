@@ -68,7 +68,7 @@ export default function Subscribe() {
       data.profil_img = imageProfileURL;
 
       if (data.confirm_password !== data.password) {
-        throw new Error("Passwords doesn't identical.");
+        throw new Error("Passwords do not match.");
       }
 
       const response = await fetch(
