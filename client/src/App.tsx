@@ -8,28 +8,28 @@ import useTheme from "./utils/useTheme";
 import { Bounce, ToastContainer } from "react-toastify";
 
 function App() {
-	const { theme } = useTheme();
-	return (
-		<>
-			<Header />
-			<main className={`${theme ? "light" : "dark"}`}>
-				<Outlet />
-			</main>
-			<Footer />
-			<ToastContainer
-				role="alert"
-				aria-live="assertive"
-				position="top-center"
-				autoClose={3000}
-				hideProgressBar={false}
-				closeOnClick={false}
-				pauseOnHover={true}
-				draggable={true}
-				theme="colored"
-				transition={Bounce}
-			/>
-		</>
-	);
+  const { theme } = useTheme();
+  return (
+    <>
+      <Header />
+      <main className={`${theme ? "light" : "dark"}`}>
+        <Outlet />
+      </main>
+      <Footer />
+      <ToastContainer
+        role="alert"
+        aria-live="assertive"
+        position="top-center"
+        autoClose={3000}
+        hideProgressBar={false}
+        closeOnClick={false}
+        pauseOnHover={true}
+        draggable={true}
+        theme="colored"
+        transition={Bounce}
+      />
+    </>
+  );
 }
 
 export default App;

@@ -8,8 +8,8 @@ const { notifySuccess, notifyError } = useToast();
 */
 
 const useToast = () => {
-	const notifySuccess = (msg: string) => toast.success(msg);
-	const notifyError = (msg: string) => toast.error(msg);
-	return { notifySuccess, notifyError };
+  const notifySuccess = (msg: string) => toast.success(msg);
+  const notifyError = (msg: string) => toast.error(msg);
+  return { notifySuccess, notifyError };
 };
 export default useToast;
