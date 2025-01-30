@@ -15,7 +15,7 @@ export default function FormUserAdmin() {
 
   // Empties the user form fields if the search bar is empty.
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === "") {
+    if (!e.target.value) {
       setSelectedUser(undefined);
       setWaitEmail("");
       return;
