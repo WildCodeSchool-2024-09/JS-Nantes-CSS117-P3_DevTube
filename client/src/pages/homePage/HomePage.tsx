@@ -10,7 +10,6 @@ import useToast from "../../utils/useToastify";
 
 export default function () {
   const { t } = useTranslation();
-  // const [infoVideos, setInfoVideos] = useState();
   const outletContext = useOutletContext<OutletContextProps>();
   const [videoHeroSlider, setvideoHeroSlider] = useState<Video[]>();
   const [videosPopular, setVideosPopular] = useState<Video[]>();
