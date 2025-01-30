@@ -1,50 +1,58 @@
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import type { User } from "../../../../server/src/modules/user/user.d";
 import "../../styles/FormUserAdmin.css";
 import { useSetFocus } from "../../utils/useSetFocus";
+import useToast from "../../utils/useToastify";
 
 export default function FormUserAdmin() {
   const focusInSearch = useSetFocus<HTMLInputElement>();
+  const { notifyError } = useToast();
 
   /*TODO Refactoring en cours*/
-  const [dataUser, setDataUser] = useState<User[]>();
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
+  const [waitEmail, setWaitEmail] = useState("");
+  const formRef = useRef<HTMLFormElement | null>(null);
 
-  // Fetch users when the search field is filled.
-  useEffect(() => {
-    const getAllUsers = async () => {
-      try {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users`,
-          {
-            method: "GET",
-          },
-        );
-        const users = await response.json();
-        setDataUser(users);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    getAllUsers();
-    if (!selectedUser) return;
-  }, [selectedUser]);
+  // Empties the user form fields if the search bar is empty.
+  const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.value) {
+      setSelectedUser(undefined);
+      setWaitEmail("");
+      return;
+    }
+    setWaitEmail(e.target.value);
+  };
 
   // Update setSelectedUser
-  const handleSearchOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const input = e.currentTarget.value.toLowerCase();
-    const findUserByEmail = dataUser?.find((user) =>
-      user.email.includes(input),
-    );
-
-    if (input === "") {
+  const handleSearchClick = async () => {
+    if (!waitEmail) {
       setSelectedUser(undefined);
+      formRef.current?.reset();
+      notifyError("Please fill in the field above.");
       return;
     }
 
-    if (input.length < 3) return;
+    try {
+      const input = waitEmail.toLowerCase();
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users/email/${input}`,
+        { method: "GET" },
+      );
 
-    setSelectedUser(findUserByEmail);
+      if (!response.ok) {
+        throw new Error("The user has not been found.");
+      }
+
+      const user = await response.json();
+
+      if (!user.profil_img) {
+        user.profil_img = "/assets/images/userprofil/avatar/user_profile.png";
+      }
+
+      setSelectedUser(user);
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
   };
 
   // Updates the `is_admin` property of the selected user
@@ -73,7 +81,7 @@ export default function FormUserAdmin() {
 
   return (
     <>
-      <form className="form-admin-wrapper form-admin">
+      <form ref={formRef} className="form-admin-wrapper form-admin">
         <fieldset>
           <legend>User manager</legend>
 
@@ -85,10 +93,17 @@ export default function FormUserAdmin() {
             id="search-user-by-email"
             name="search-user-by-email"
             placeholder="Type the user's email."
-            onChange={handleSearchOnChange}
+            onChange={handleOnChange}
           />
+          <button
+            type="button"
+            id="search-user-by-email"
+            className="standard-button"
+            onClick={handleSearchClick}
+          >
+            Click to search for the user
+          </button>
         </fieldset>
-
         <fieldset>
           <legend>Main information about user</legend>
 
@@ -153,7 +168,7 @@ export default function FormUserAdmin() {
           <input
             type="text"
             name="publication-date"
-            defaultValue={(convertRegistrationDate as string) || ""}
+            defaultValue={convertRegistrationDate as string}
             aria-labelledby="publication-date"
             required
           />
@@ -161,7 +176,11 @@ export default function FormUserAdmin() {
 
         <section className="section-img-wrapper">
           <img
-            src={`${import.meta.env.VITE_API_URL}/${selectedUser?.profil_img}`}
+            src={
+              selectedUser?.profil_img
+                ? `${import.meta.env.VITE_API_URL}/${selectedUser.profil_img}`
+                : `${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user_profile.png`
+            }
             alt="The user's profil avatar"
           />
         </section>
