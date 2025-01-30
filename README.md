@@ -1,3 +1,6 @@
+<img style="margin: 0 auto;" src="https://github.com/WildCodeSchool-2024-09/JS-Nantes-CSS117-P3_DevTube/blob/update-readme/client/public/github-header-devtube.png" alt="Bannière de bienvenue sur mon profil GitHub, affichant un message de bienvenue et des éléments graphiques.">
+
+
 # DevTube
 Projet collaboratif mobile first -> plateforme d'apprentissage de vidéos d'apprentissage du développement web
 
