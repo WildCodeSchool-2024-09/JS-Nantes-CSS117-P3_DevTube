@@ -1,3 +1,45 @@
+# DevTube
+Projet collaboratif mobile first -> plateforme d'apprentissage de vidéos d'apprentissage du développement web
+
+#### Stack: 
+
+REACT/TYPESCRIPT/HTML/CSS/JS
+
+#### La team: 
+
+Fabrice Atlan
+         
+Ibrahim Yahiaya Adam
+                  
+Emilie De Duyver https://github.com/EmiLy-Ly-san
+
+## Aperçu - Maquette Figma
+ 
+![home](https://github.com/user-attachments/assets/ad7cf03f-2942-4265-8db5-719777be4c87)
+![Team Profil_ Dark theme](https://github.com/user-attachments/assets/1d4675c1-2dc8-4867-b394-6443b43486c7)
+![VideoPayer](https://github.com/user-attachments/assets/9f1b8b4f-b341-4e7c-b9fb-de530073368b)
+![Freemium](https://github.com/user-attachments/assets/85c1079b-87d7-4a9b-81ed-c0795ac69e8e)
+
+
+![home-light](https://github.com/user-attachments/assets/dc687d93-2767-485e-a981-7af769d0380e)
+![Profil](https://github.com/user-attachments/assets/d6738fa6-52cb-4b54-afba-1603af32f5f2)
+![Témoignages](https://github.com/user-attachments/assets/04d1bc7c-693c-4c59-a23a-2d357a1ae471)
+![Profil](https://github.com/user-attachments/assets/f5103280-1ca7-4a18-b6e0-1b7d5bf39849)
+
+
+![Profil _ Mobile](https://github.com/user-attachments/assets/994b4b78-04fc-4b76-a7ff-7872953d1022) ![VideoUser-MobileVersion](https://github.com/user-attachments/assets/43371ee0-57e1-4971-aeca-429733b5a928)
+
+![Course _ Mobile light theme](https://github.com/user-attachments/assets/4736c9f4-cdb3-4669-9728-8f2a5be70b58) ![About_ Mobile light theme](https://github.com/user-attachments/assets/91dc7416-7e6b-4695-98e1-bbcb0301f46d) 
+
+
+
+![Home _ Mobile light theme](https://github.com/user-attachments/assets/95c88b29-35cc-41a2-8c46-cae2bff2c1e8)
+
+
+
+
+
+
 # JS-Nantes-CSS117-P3_DevTube
 
 Ce projet est un monorepo JS, suivant l'architecture React-Express-MySQL telle qu'enseignée à la Wild Code School (v7.1.7) :
