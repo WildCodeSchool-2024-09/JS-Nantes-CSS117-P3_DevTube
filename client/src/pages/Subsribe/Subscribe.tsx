@@ -45,11 +45,13 @@ export default function Subscribe() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formDataImage = new FormData();
-
-    if (file) formDataImage.append("profile-image", file);
-
     try {
+      const formDataImage = new FormData();
+
+      if (file) {
+        formDataImage.append("profile-image", file);
+      }
+
       const responseImage = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/file`,
         {
@@ -57,10 +59,6 @@ export default function Subscribe() {
           body: formDataImage,
         },
       );
-
-      if (!responseImage.ok) {
-        throw new Error("Upload error !");
-      }
 
       const { imageProfileURL } = await responseImage.json();
 
@@ -70,26 +68,24 @@ export default function Subscribe() {
       data.profil_img = imageProfileURL;
 
       if (data.confirm_password !== data.password) {
+        throw new Error("Passwords do not match.");
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users`,
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
+
+      if (response.ok) {
         resetAllFields();
-
-        notifyError("Passwords doesn't identical.");
-      } else {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users`,
-          {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(data),
-          },
-        );
-
-        if (response.ok) {
-          resetAllFields();
-          notifySuccess(`Welcome in devTube ${data.firstname}`);
-        }
+        notifySuccess(`Welcome in devTube ${data.firstname}`);
       }
     } catch (error) {
-      notifyError("Please complete the mandatory fields (*).");
+      notifyError((error as Error).message);
     }
   };
 
