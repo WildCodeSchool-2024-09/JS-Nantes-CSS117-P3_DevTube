@@ -66,16 +66,18 @@ const add: RequestHandler = async (req, res, next) => {
 // REMOVE operation
 const remove: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
+    const userEmail = req.query.email;
 
-    const userDeleted = await userRepository.remove(userId);
+    if (typeof userEmail !== "string") {
+      throw new Error("Invalid email format.");
+    }
+
+    const userDeleted = await userRepository.remove(userEmail);
 
     if (userDeleted) {
       res.status(200).send("The user has been removed !");
-    } else {
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
