@@ -51,6 +51,55 @@
   opacity: 0.5;
 }
 
+.rounds-decoration {
+  display: flex;
+  flex-direction: row;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+  width: 100vh;
+  margin: auto;
+}
+
+.little-round-1 {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: solid 2px var(--accent-color-1);
+}
+
+.little-round-2 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 3px var(--accent-color-2);
+}
+
+.big-round {
+  width: 31px;
+  height: 31px;
+  border-radius: 50%;
+  border: solid 4px var(--accent-color-1);
+}
+
+.little-round-3 {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 3px var(--accent-color-1);
+}
+
+.little-round-4 {
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: solid 2px var(--accent-color-1);
+}
+
+.filled-circle {
+  background: var(--accent-color-1);
+}
+
 @media (min-width: 769px) {
   .carousel-wrapper {
     padding: 2rem;

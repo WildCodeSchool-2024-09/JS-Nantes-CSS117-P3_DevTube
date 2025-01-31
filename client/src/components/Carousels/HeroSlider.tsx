@@ -109,6 +109,15 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
           />
         </button>
       </div>
+      <section className="rounds-decoration">
+        <figure
+          className={`little-round-1 ${currentIndex === 0 && "filled-circle"}`}
+        />
+        <figure className="little-round-2" />
+        <figure className="big-round" />
+        <figure className="little-round-3" />
+        <figure className="little-round-4" />
+      </section>
     </>
   );
 };
