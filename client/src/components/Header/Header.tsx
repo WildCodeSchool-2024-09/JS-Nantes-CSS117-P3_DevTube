@@ -7,6 +7,8 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
+  const token = localStorage.getItem("token"); // TODO => Adapter lors de l'authentification globale
+  const [isLogged] = useState(false); // TODO => Adapter lors de l'authentification globale
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -15,6 +17,11 @@ export default function Header() {
   function handleClick() {
     setOpenSearchBar(!openSearchBar);
   }
+
+  // useEffect(() => {
+  //   // TODO => Adapter lors de l'authentification globale
+  //   // setIsLogged(!isLogged);
+  // }, [isLogged]);
 
   return (
     <header className={`header-container ${theme ? "light" : "dark"}`}>
@@ -64,9 +71,18 @@ export default function Header() {
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/login"} onClick={toggleMenu}>
-                Login
-              </NavLink>
+              {!token && isLogged ? (
+                <NavLink to={"/profil-user"} onClick={toggleMenu}>
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
+                    alt=""
+                  />
+                </NavLink>
+              ) : (
+                <NavLink to={"/login"} onClick={toggleMenu}>
+                  Login
+                </NavLink>
+              )}
             </li>
             <li>
               <NavLink to={"/subscribe"} onClick={toggleMenu}>
@@ -109,9 +125,19 @@ export default function Header() {
       </button>
 
       <section className="login-sign-up-container">
-        <NavLink to={"/login"} className="btn-login">
-          Log in
-        </NavLink>
+        {!token ? (
+          <NavLink to={"/login"} className="btn-login">
+            Login
+          </NavLink>
+        ) : (
+          <NavLink to={"/profil-user"} className="btn-login">
+            <img
+              src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
+              alt=""
+              className="user-profile-logo"
+            />
+          </NavLink>
+        )}
 
         <NavLink to={"/subscribe"} className="little-cta">
           Sign up

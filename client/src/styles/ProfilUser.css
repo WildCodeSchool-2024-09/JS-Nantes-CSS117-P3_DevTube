@@ -1,6 +1,16 @@
 .section-my-account-container {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  padding: 3rem 0;
+
+  & h1 {
+    text-align: center;
+    margin: 0 0 3rem;
+  }
 }
 .fieldset-container {
   width: 100%;

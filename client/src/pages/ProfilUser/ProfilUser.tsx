@@ -1,52 +1,58 @@
-import "../../styles/ProfilUser.css";
+// import "../../styles/Subscribe.css";
+import { useRef } from "react";
+import UserAccountModal from "../../components/UserAccountModal/UserAccountModal";
 
-export default function ProfilUser() {
+export default function Subscribe() {
+  const refModal = useRef<HTMLDialogElement>(null);
+
+  const openModal = () => {
+    refModal.current?.showModal();
+  };
+
   return (
     <section className="section-my-account-container">
-      <h1>My account</h1>
+      <section className="">
+        <h1>My account</h1>
 
-      {/* User informations */}
-      <fieldset className="fieldset-container">
-        <legend>My informations</legend>
+        <label htmlFor="firstname">First name</label>
+        <input type="text" name="firstname" id="firstname" value={"Fabrice"} />
 
-        <form>
-          <input
-            type="text"
-            name="firstname"
-            aria-labelledby="firstname"
-            placeholder="Emily De Duyver"
-            required
-          />
+        <label htmlFor="lastname">Last name</label>
+        <input type="text" name="lastname" id="lastname" value={"Atlan"} />
 
-          <p>I am student and I wish becoming front-end developper.</p>
-          <p>Beginner</p>
+        <label htmlFor="email">Email</label>
+        <input type="email" name="email" id="email" value={"email@gmail.com"} />
 
-          <input
-            type="text"
-            name="firstname"
-            aria-labelledby="firstname"
-            placeholder="emilie.deduyver@gmail.com"
-            required
-          />
+        <label htmlFor="github_url">GitHub URL</label>
+        <input
+          type="text"
+          name="github_url"
+          id="github_url"
+          value={"github@gmail.com"}
+        />
 
-          <p>Freemium member since on 12/12/24</p>
+        <label htmlFor="linkedin_url">Linkedin URL</label>
+        <input
+          type="text"
+          name="linkedin_url"
+          id="linkedin_url"
+          value={"linkedin@gmail.com"}
+        />
 
-          <button type="submit" className="standard-button">
-            Update
-          </button>
-        </form>
-      </fieldset>
+        <label htmlFor="profil-image">Profile image</label>
 
-      {/* Progression section */}
-      <section className="section-progression-container">
-        <h2>My progression</h2>
-        <section className="section-progression-bar">
-          <p className="progress-bar">Progress bar</p>
-          <button type="button" className="little-cta">
-            Continue
-          </button>
-        </section>
+        <img
+          id="profil-image"
+          aria-labelledby="linkedin_url"
+          src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/fabrice-atlan.png`}
+          alt="User's photo."
+        />
+
+        <button type="button" className="standard-button" onClick={openModal}>
+          Open modal
+        </button>
       </section>
+      <UserAccountModal ref={refModal} />
     </section>
   );
 }
