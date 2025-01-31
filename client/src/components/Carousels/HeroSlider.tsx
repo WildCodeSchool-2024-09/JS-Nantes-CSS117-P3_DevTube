@@ -27,6 +27,13 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
     }
   };
 
+  const displaySpecificSlide = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    const indexButton = event.currentTarget.dataset.index;
+    setCurrentIndex(Number(indexButton));
+  };
+
   const trackWidthPercent = 100 * videos.length; //100% * le nombre de videos = largeur de la track en pourcent
   const slideWidthPercent = 100 / videos.length; //1 unite parmis toutes les videos = 100% de la track divise par le nombre de video
 
@@ -110,20 +117,45 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
         </button>
       </div>
       <section className="rounds-decoration">
-        <figure
+        <button
+          type="button"
           className={`little-round-1 ${currentIndex === 0 && "filled-circle-dark"}`}
+          data-index="0"
+          onClick={(event) => {
+            displaySpecificSlide(event);
+          }}
         />
-        <figure
+        <button
+          type="button"
           className={`little-round-2 ${currentIndex === 1 && "filled-circle-dark"}`}
+          data-index="1"
+          onClick={(event) => {
+            displaySpecificSlide(event);
+          }}
         />
-        <figure
+        <button
+          type="button"
           className={`big-round ${currentIndex === 2 && "filled-circle-gradient"}`}
+          data-index="2"
+          onClick={(event) => {
+            displaySpecificSlide(event);
+          }}
         />
-        <figure
+        <button
+          type="button"
           className={`little-round-3 ${currentIndex === 3 && "filled-circle-light"}`}
+          data-index="3"
+          onClick={(event) => {
+            displaySpecificSlide(event);
+          }}
         />
-        <figure
+        <button
+          type="button"
           className={`little-round-4 ${currentIndex === 4 && "filled-circle-light"}`}
+          data-index="4"
+          onClick={(event) => {
+            displaySpecificSlide(event);
+          }}
         />
       </section>
     </>
