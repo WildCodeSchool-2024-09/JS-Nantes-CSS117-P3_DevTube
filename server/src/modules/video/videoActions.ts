@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 
+import authActions from "../../utils/authentification/authActions";
 // Import access to data
 import videoRepository from "./videoRepository";
 
@@ -25,7 +26,15 @@ const read: RequestHandler = async (req, res, next) => {
     const video = await videoRepository.read(videoId);
 
     const isFreemium = video.is_freemium === 1;
-    const isUserAuthenticated = true; // temporary false or true variable
+    let isUserAuthenticated = false;
+
+    const authorization = req.get("Authorization");
+
+    if (authorization) {
+      const token = authorization.replace("Bearer ", "");
+
+      isUserAuthenticated = authActions.getIsTokenValid(token);
+    }
 
     // If the video is not found, respond with HTTP 404 (Not Found)
     // Otherwise, respond with the video in JSON format

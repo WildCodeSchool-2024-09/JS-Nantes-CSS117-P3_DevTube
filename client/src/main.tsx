@@ -3,6 +3,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider } from "react-router-dom";
 
+import AuthProvider from "./contexts/AuhtProvider.tsx";
 /* ************************************************************************* */
 import ThemeProvider from "./contexts/ThemeProvider.tsx";
 import { router } from "./router.tsx";
@@ -32,7 +33,9 @@ if (rootElement == null) {
 createRoot(rootElement).render(
   <StrictMode>
     <ThemeProvider>
-      <RouterProvider router={router} />
+      <AuthProvider>
+        <RouterProvider router={router} />
+      </AuthProvider>
     </ThemeProvider>
   </StrictMode>,
 );
