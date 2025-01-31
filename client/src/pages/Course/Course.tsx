@@ -40,7 +40,7 @@ const lstCourse: Course[] = [
       "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving.",
     img: "logo-algo-basics.png",
     type: "Bases",
-    coming_soon: 0,
+    coming_soon: 1,
   },
   {
     id: 4,
