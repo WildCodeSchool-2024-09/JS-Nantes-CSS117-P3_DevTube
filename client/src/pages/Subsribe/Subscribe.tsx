@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
+import { useNavigate } from "react-router-dom";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Subscribe() {
   const focusInFirstname = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const navigate = useNavigate();
 
   // Reset all fields of the form
   const resetAllFields = () => {
@@ -83,6 +85,7 @@ export default function Subscribe() {
       if (response.ok) {
         resetAllFields();
         notifySuccess(`Welcome in devTube ${data.firstname}`);
+        navigate("/");
       }
     } catch (error) {
       notifyError((error as Error).message);
