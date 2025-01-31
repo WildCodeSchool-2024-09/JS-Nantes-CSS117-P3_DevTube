@@ -39,22 +39,39 @@ export default function Header() {
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <NavLink to={"/TeamProfil"}>About</NavLink>
+              <NavLink to={"/"} onClick={toggleMenu}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/course"}>Course</NavLink>
+              <NavLink to={"/TeamProfil"} onClick={toggleMenu}>
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/freemium"}>Freemium</NavLink>
+              <NavLink to={"/course"} onClick={toggleMenu}>
+                Course
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/testimonials"}>Testimonials</NavLink>
+              <NavLink to={"/freemium"} onClick={toggleMenu}>
+                Freemium
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/login"}>Login</NavLink>
+              <NavLink to={"/testimonials"} onClick={toggleMenu}>
+                Testimonials
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/subscribe"}>Sign up</NavLink>
+              <NavLink to={"/login"} onClick={toggleMenu}>
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/subscribe"} onClick={toggleMenu}>
+                Sign up
+              </NavLink>
             </li>
 
             <li>
