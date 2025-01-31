@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
@@ -5,6 +6,7 @@ import useToast from "../../utils/useToastify";
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -30,6 +32,7 @@ export default function Login() {
         notifySuccess("You are logged !");
 
         localStorage.setItem("token", token);
+        navigate("/");
       }
     } catch (err) {
       notifyError("You are log out !");
