@@ -119,8 +119,8 @@ export default function Course() {
         const videoToFind = videosByCategory.find((video) => {
           return video.is_freemium === 0;
         });
-        console.log({ videoToFind });
-        navigate(`/video/${videoToFind.id}`);
+
+        navigate(`/video/${videoToFind?.id}`);
       }
     }
   }, [idOfTheCategoryLanguage, videosByCategory, navigate]);
@@ -130,7 +130,6 @@ export default function Course() {
   ) => {
     if (event.currentTarget.dataset.id) {
       const idTofind = Number.parseInt(`${event.currentTarget.dataset.id}`);
-      console.log({ idTofind });
       if (idTofind) {
         setIdOfTheCategoryLanguage(idTofind);
       }
