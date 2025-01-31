@@ -18,7 +18,7 @@ router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
-router.delete("/api/users/:id", userActions.remove);
+router.delete("/api/users/", userActions.remove);
 router.post("/api/users/login", authActions.login);
 router.get("/api/users/email/:email", userActions.userByEmail);
 
