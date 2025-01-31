@@ -29,7 +29,7 @@
   height: 50px;
   width: 111px;
   border-radius: 8px;
-  color: #e6dbe3;
+  color: var(--primary-color);
   font-size: 11px;
   font-weight: bold;
 }
@@ -124,7 +124,6 @@
     font-size: 15px;
     margin: 0%;
     padding: 0%;
-    color: #e6dbe3;
   }
   .testimonial-container {
     margin-top: 10%;
@@ -134,7 +133,7 @@
     gap: 30px;
   }
   .testimonial-header {
-    border-bottom: #fc666a solid 5px;
+    border-bottom: var(--accent-color-1) solid 5px;
   }
   .testimonial-card img {
     border-radius: 50%;
@@ -156,7 +155,7 @@
     width: 500px;
   }
   .formation {
-    color: #fc666a;
+    color: var(--accent-color-1);
     font-size: 16px;
     font-weight: 900;
     margin-right: 5px;
@@ -164,7 +163,6 @@
 
   .level {
     font-size: 16px;
-    color: #e6dbe3;
   }
   .testimonial-description {
     margin-top: 20px;

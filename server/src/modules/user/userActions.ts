@@ -66,16 +66,18 @@ const add: RequestHandler = async (req, res, next) => {
 // REMOVE operation
 const remove: RequestHandler = async (req, res, next) => {
   try {
-    const userId = Number(req.params.id);
+    const userEmail = req.query.email;
 
-    const userDeleted = await userRepository.remove(userId);
+    if (typeof userEmail !== "string") {
+      throw new Error("Invalid email format.");
+    }
+
+    const userDeleted = await userRepository.remove(userEmail);
 
     if (userDeleted) {
       res.status(200).send("The user has been removed !");
-    } else {
     }
   } catch (err) {
-    // Pass any errors to the error-handling middleware
     next(err);
   }
 };
@@ -132,4 +134,23 @@ const checkIfUser: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit, checkIfUser };
+const userByEmail: RequestHandler = async (req, res, next) => {
+  const { email } = req.params;
+
+  try {
+    const user = await userRepository.getUserByEmail(email);
+
+    if (!user) {
+      res.sendStatus(404);
+      return;
+    }
+
+    res.status(200).json(user);
+    return;
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+    return;
+  }
+};
+
+export default { browse, read, add, remove, edit, checkIfUser, userByEmail };

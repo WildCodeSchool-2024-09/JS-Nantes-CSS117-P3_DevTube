@@ -155,10 +155,6 @@
     left: calc(100vw - 210px);
   }
 
-  .btn-login {
-    color: white;
-  }
-
   .login-sign-up-container {
     display: flex;
     align-items: center;

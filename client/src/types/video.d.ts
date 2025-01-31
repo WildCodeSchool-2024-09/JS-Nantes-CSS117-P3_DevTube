@@ -6,7 +6,7 @@ export interface Video {
   duration: number;
   description: string;
   category_id: number;
-  is_freemium: boolean;
+  is_freemium: number;
   added_date: string;
   is_heroSlide: number;
   is_popular: number;

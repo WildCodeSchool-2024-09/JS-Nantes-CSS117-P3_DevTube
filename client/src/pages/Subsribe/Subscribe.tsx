@@ -1,11 +1,13 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
+import { useNavigate } from "react-router-dom";
+import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
-//import { Bounce, ToastContainer, toast } from "react-toastify";
-
 export default function Subscribe() {
+  const focusInFirstname = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const navigate = useNavigate();
 
   // Reset all fields of the form
   const resetAllFields = () => {
@@ -14,9 +16,6 @@ export default function Subscribe() {
     setImageSrc("");
   };
 
-  // Set the focus on firstname input
-  const getFocus = useRef<HTMLInputElement | null>(null);
-
   // Get the form data
   const formRef = useRef<HTMLFormElement | null>(null);
 
@@ -24,10 +23,6 @@ export default function Subscribe() {
 
   // useState for drag the selected image
   const [imgSrc, setImageSrc] = useState<string>();
-
-  useEffect(() => {
-    getFocus.current?.focus();
-  }, []);
 
   const handleDragOver = (e: React.DragEvent<HTMLScriptElement>) => {
     e.preventDefault();
@@ -52,11 +47,13 @@ export default function Subscribe() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formDataImage = new FormData();
-
-    if (file) formDataImage.append("profile-image", file);
-
     try {
+      const formDataImage = new FormData();
+
+      if (file) {
+        formDataImage.append("profile-image", file);
+      }
+
       const responseImage = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/file`,
         {
@@ -64,10 +61,6 @@ export default function Subscribe() {
           body: formDataImage,
         },
       );
-
-      if (!responseImage.ok) {
-        throw new Error("Upload error !");
-      }
 
       const { imageProfileURL } = await responseImage.json();
 
@@ -77,26 +70,25 @@ export default function Subscribe() {
       data.profil_img = imageProfileURL;
 
       if (data.confirm_password !== data.password) {
+        throw new Error("Passwords do not match.");
+      }
+
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users`,
+        {
+          method: "POST",
+          headers: { "Content-type": "application/json" },
+          body: JSON.stringify(data),
+        },
+      );
+
+      if (response.ok) {
         resetAllFields();
-
-        notifyError("Passwords doesn't identical.");
-      } else {
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users`,
-          {
-            method: "POST",
-            headers: { "Content-type": "application/json" },
-            body: JSON.stringify(data),
-          },
-        );
-
-        if (response.ok) {
-          resetAllFields();
-          notifySuccess(`Welcome in devTube ${data.firstname}`);
-        }
+        notifySuccess(`Welcome in devTube ${data.firstname}`);
+        navigate("/");
       }
     } catch (error) {
-      notifyError("Please complete the mandatory fields (*).");
+      notifyError((error as Error).message);
     }
   };
 
@@ -112,7 +104,7 @@ export default function Subscribe() {
           type="text"
           name="firstname"
           id="firstname"
-          ref={getFocus}
+          ref={focusInFirstname}
           aria-labelledby="firstname"
           placeholder="Enter your first name."
           required

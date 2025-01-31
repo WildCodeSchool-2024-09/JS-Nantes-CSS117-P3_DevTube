@@ -21,7 +21,7 @@ export default function Header() {
       <section className="devTube-logo-title">
         <img
           className="header-logo-devTube"
-          src="logo-devTube.png"
+          src="/public/logo-devTube.png"
           alt="Le logo de devTube se compose de deux accolades entourant un symbole lecture."
         />
         <Link to={"/"}>
@@ -32,29 +32,46 @@ export default function Header() {
         <button type="button" aria-label="Burger button." onClick={toggleMenu}>
           <img
             className="btn-burger-menu"
-            src="burger-menu.png"
+            src="/public/burger-menu.png"
             alt="menu icon"
           />
         </button>
         <nav className={`header-nav-container ${isOpen ? "show" : ""}`}>
           <ul>
             <li>
-              <NavLink to={"/TeamProfil"}>About</NavLink>
+              <NavLink to={"/"} onClick={toggleMenu}>
+                Home
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/course"}>Course</NavLink>
+              <NavLink to={"/TeamProfil"} onClick={toggleMenu}>
+                About
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/freemium"}>Freemium</NavLink>
+              <NavLink to={"/course"} onClick={toggleMenu}>
+                Course
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/testimonials"}>Testimonials</NavLink>
+              <NavLink to={"/freemium"} onClick={toggleMenu}>
+                Freemium
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/login"}>Login</NavLink>
+              <NavLink to={"/testimonials"} onClick={toggleMenu}>
+                Testimonials
+              </NavLink>
             </li>
             <li>
-              <NavLink to={"/subscribe"}>Sign up</NavLink>
+              <NavLink to={"/login"} onClick={toggleMenu}>
+                Login
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={"/subscribe"} onClick={toggleMenu}>
+                Sign up
+              </NavLink>
             </li>
 
             <li>
@@ -75,7 +92,7 @@ export default function Header() {
         aria-label="Search"
         placeholder={`${openSearchBar ? "Search..." : ""}`}
         style={{
-          backgroundImage: `url(${theme ? "search-icon-for-light-theme.png" : "search-bar.png"})`,
+          backgroundImage: `url(${theme ? "/public/search-icon-for-light-theme.png" : "/public/search-bar.png"})`,
         }}
       />
 
@@ -86,7 +103,7 @@ export default function Header() {
       >
         <img
           className="icon-switch-theme"
-          src={theme ? "dark_mode.png" : "light_mode.png"}
+          src={theme ? "/public/dark_mode.png" : "/public/light_mode.png"}
           alt="switch theme icon"
         />
       </button>

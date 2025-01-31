@@ -2,6 +2,25 @@
   width: 300px;
   box-shadow: 0 2px 6px var(--shadow-color);
   border-radius: 8px;
+  position: relative;
+}
+
+.background-cadenas {
+  width: 300px;
+  height: 236px;
+  background: color-mix(in srgb, var(--tertiary-color) 70%, transparent);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 8px;
+}
+
+.cadenas {
+  width: 30px;
+  height: 43px;
 }
 
 .video-item {
