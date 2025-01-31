@@ -18,7 +18,7 @@ router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
 router.post("/api/users", authActions.hashPassword, userActions.add);
 router.put("/api/users/:id", userActions.edit);
-router.delete("/api/users/:id", userActions.remove);
+router.delete("/api/users/", userActions.remove);
 router.post("/api/users/login", authActions.login);
 router.get("/api/users/email/:email", userActions.userByEmail);
 
@@ -36,9 +36,6 @@ router.use(authActions.verifyToken);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 router.delete("/api/videos/:id", videoActions.remove);
-
-router.get("/api/category/:id", categoryActions.read);
-//vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 
 /* ************************************************************************* */
 

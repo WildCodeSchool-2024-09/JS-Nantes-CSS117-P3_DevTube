@@ -6,7 +6,7 @@ import useToast from "../../utils/useToastify";
 
 export default function FormUserAdmin() {
   const focusInSearch = useSetFocus<HTMLInputElement>();
-  const { notifyError } = useToast();
+  const { notifySuccess, notifyError } = useToast();
 
   /*TODO Refactoring en cours*/
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
@@ -72,11 +72,30 @@ export default function FormUserAdmin() {
   const convertRegistrationDate: Date | string = selectedUser?.register_date
     ? new Date(selectedUser?.register_date).toLocaleDateString("fr-FR")
     : "";
+
   const handleUpdateUser = () => {
     // TODO Update user feature
   };
-  const handleDeleteUser = () => {
-    // TODO delete user feature
+
+  const handleDeleteUser = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/users?email=${waitEmail}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("An unknown error occurred.");
+      }
+
+      setSelectedUser(undefined);
+      formRef.current?.reset();
+      notifySuccess(`The user ${waitEmail} has been removed.`);
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
   };
 
   return (
