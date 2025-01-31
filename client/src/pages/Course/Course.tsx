@@ -116,7 +116,11 @@ export default function Course() {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idOfTheCategoryLanguage}`;
       recoverInfoVideos(urlForVideos);
       if (videosByCategory) {
-        navigate(`/video/${videosByCategory[0].id}`);
+        const videoToFind = videosByCategory.find((video) => {
+          return video.is_freemium === 0;
+        });
+        console.log({ videoToFind });
+        navigate(`/video/${videoToFind.id}`);
       }
     }
   }, [idOfTheCategoryLanguage, videosByCategory, navigate]);
@@ -126,6 +130,7 @@ export default function Course() {
   ) => {
     if (event.currentTarget.dataset.id) {
       const idTofind = Number.parseInt(`${event.currentTarget.dataset.id}`);
+      console.log({ idTofind });
       if (idTofind) {
         setIdOfTheCategoryLanguage(idTofind);
       }
