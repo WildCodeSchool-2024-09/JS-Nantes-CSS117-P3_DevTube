@@ -72,32 +72,43 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: solid 3px var(--accent-color-2);
+  border: solid 3px var(--accent-color-1);
 }
 
 .big-round {
   width: 31px;
   height: 31px;
+  border: solid 4px transparent;
+  background: linear-gradient(var(--primary-color), var(--primary-color))
+    padding-box, linear-gradient(var(--accent-color-2), var(--accent-color-1))
+    border-box;
   border-radius: 50%;
-  border: solid 4px var(--accent-color-1);
 }
 
 .little-round-3 {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  border: solid 3px var(--accent-color-1);
+  border: solid 3px var(--accent-color-2);
 }
 
 .little-round-4 {
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  border: solid 2px var(--accent-color-1);
+  border: solid 2px var(--accent-color-2);
 }
 
-.filled-circle {
+.filled-circle-dark {
   background: var(--accent-color-1);
+}
+
+.filled-circle-gradient {
+  background: radial-gradient(var(--accent-color-2), var(--accent-color-1));
+}
+
+.filled-circle-light {
+  background: var(--accent-color-2);
 }
 
 @media (min-width: 769px) {

@@ -111,12 +111,20 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
       </div>
       <section className="rounds-decoration">
         <figure
-          className={`little-round-1 ${currentIndex === 0 && "filled-circle"}`}
+          className={`little-round-1 ${currentIndex === 0 && "filled-circle-dark"}`}
         />
-        <figure className="little-round-2" />
-        <figure className="big-round" />
-        <figure className="little-round-3" />
-        <figure className="little-round-4" />
+        <figure
+          className={`little-round-2 ${currentIndex === 1 && "filled-circle-dark"}`}
+        />
+        <figure
+          className={`big-round ${currentIndex === 2 && "filled-circle-gradient"}`}
+        />
+        <figure
+          className={`little-round-3 ${currentIndex === 3 && "filled-circle-light"}`}
+        />
+        <figure
+          className={`little-round-4 ${currentIndex === 4 && "filled-circle-light"}`}
+        />
       </section>
     </>
   );
