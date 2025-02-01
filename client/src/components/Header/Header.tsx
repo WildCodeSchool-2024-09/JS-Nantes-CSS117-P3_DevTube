@@ -1,14 +1,16 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
 import { useState } from "react";
+import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
-  const token = localStorage.getItem("token"); // TODO => Adapter lors de l'authentification globale
-  const [isLogged] = useState(false); // TODO => Adapter lors de l'authentification globale
+
+  const { auth, setAuth } = useAuth();
+  const navigate = useNavigate();
 
   function toggleMenu() {
     setIsOpen(!isOpen);
@@ -18,10 +20,11 @@ export default function Header() {
     setOpenSearchBar(!openSearchBar);
   }
 
-  // useEffect(() => {
-  //   // TODO => Adapter lors de l'authentification globale
-  //   // setIsLogged(!isLogged);
-  // }, [isLogged]);
+  function handleLogoutBtnClick() {
+    localStorage.removeItem("token");
+    setAuth(false);
+    navigate("/logout-success");
+  }
 
   return (
     <header className={`header-container ${theme ? "light" : "dark"}`}>
@@ -71,23 +74,49 @@ export default function Header() {
               </NavLink>
             </li>
             <li>
-              {!token && isLogged ? (
-                <NavLink to={"/profil-user"} onClick={toggleMenu}>
-                  <img
-                    src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
-                    alt=""
-                  />
-                </NavLink>
+              {auth ? (
+                <button
+                  type="button"
+                  className="btn-logout"
+                  onClick={() => {
+                    handleLogoutBtnClick();
+                    toggleMenu();
+                  }}
+                >
+                  Log out
+                </button>
               ) : (
-                <NavLink to={"/login"} onClick={toggleMenu}>
-                  Login
+                <NavLink
+                  to={"/login"}
+                  className="btn-login"
+                  onClick={toggleMenu}
+                >
+                  Log in
                 </NavLink>
               )}
             </li>
             <li>
-              <NavLink to={"/subscribe"} onClick={toggleMenu}>
-                Sign up
-              </NavLink>
+              {!auth ? (
+                <NavLink
+                  to={"/subscribe"}
+                  className="little-cta"
+                  onClick={toggleMenu}
+                >
+                  Sign up
+                </NavLink>
+              ) : (
+                <NavLink
+                  to={"/profil-user"}
+                  className="btn-login"
+                  onClick={toggleMenu}
+                >
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
+                    alt=""
+                    className="user-profile-logo"
+                  />
+                </NavLink>
+              )}
             </li>
 
             <li>
@@ -125,9 +154,22 @@ export default function Header() {
       </button>
 
       <section className="login-sign-up-container">
-        {!token ? (
+        {auth ? (
+          <button
+            type="button"
+            className="btn-logout"
+            onClick={handleLogoutBtnClick}
+          >
+            Log out
+          </button>
+        ) : (
           <NavLink to={"/login"} className="btn-login">
-            Login
+            Log in
+          </NavLink>
+        )}
+        {!auth ? (
+          <NavLink to={"/subscribe"} className="little-cta">
+            Sign up
           </NavLink>
         ) : (
           <NavLink to={"/profil-user"} className="btn-login">
@@ -138,10 +180,6 @@ export default function Header() {
             />
           </NavLink>
         )}
-
-        <NavLink to={"/subscribe"} className="little-cta">
-          Sign up
-        </NavLink>
       </section>
     </header>
   );
