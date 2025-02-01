@@ -91,7 +91,15 @@ export default function FormUserAdmin() {
         throw new Error("Your file could not be downloaded.");
       }
 
-      // window.location.href = `${import.meta.env.VITE_API_URL}/api/download/users`;
+      const blob = await getAllUsers.blob();
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "users.csv";
+      link.dispatchEvent(new MouseEvent("click"));
+
+      URL.revokeObjectURL(url);
 
       notifySuccess("The file has been downloaded.");
     } catch (err) {
