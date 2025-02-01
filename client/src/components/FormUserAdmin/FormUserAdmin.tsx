@@ -91,7 +91,7 @@ export default function FormUserAdmin() {
         throw new Error("Your file could not be downloaded.");
       }
 
-      window.location.href = `${import.meta.env.VITE_API_URL}/api/download/users`;
+      // window.location.href = `${import.meta.env.VITE_API_URL}/api/download/users`;
 
       notifySuccess("The file has been downloaded.");
     } catch (err) {

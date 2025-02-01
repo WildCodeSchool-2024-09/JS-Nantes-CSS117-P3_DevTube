@@ -98,9 +98,6 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       throw new Error("A secret key must be provided");
     }
 
-    const a = jwt.verify(token, secretKey);
-    console.warn(a);
-
     next();
   } catch (err) {
     console.error(err);
