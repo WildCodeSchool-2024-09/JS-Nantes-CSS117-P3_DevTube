@@ -46,6 +46,12 @@ export default function VideoPlayer() {
           <h1>Error 403 - you do not have access to this content</h1>
         </div>
       )}
+
+      {error && error !== 403 && (
+        <div>
+          <h1>Error {error} - there was a problem accessing this content</h1>
+        </div>
+      )}
       {/* IF ONE VIDEO RECEIVED, RETURN =>  */}
       {id && (
         <>
