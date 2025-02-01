@@ -56,7 +56,7 @@ VALUES
 
 INSERT INTO testimonial (user_id, text_testimonial)
 VALUES
-(1, "les visiteurs et nuire à l’expérience utilisateur, ce qui rend essentiel le suivi régulier de ce critère grâce à un test de vitesse pour vos pages web.");
+(3, "les visiteurs et nuire à l’expérience utilisateur, ce qui rend essentiel le suivi régulier de ce critère grâce à un test de vitesse pour vos pages web.");
 
 INSERT INTO category (name)
 VALUES
