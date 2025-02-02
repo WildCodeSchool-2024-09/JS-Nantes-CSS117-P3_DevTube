@@ -1,8 +1,32 @@
 import { useState } from "react";
 import "../../styles/FormVideoManager.css";
+// import type { Video } from "../../types/video";
 
 export default function FormVideoAdmin() {
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
+  // const [videos, setVideos] = useState<Video[]>();
+
+  //  useEffect(() => {
+  //       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idOfTheCategoryLanguage}`;
+  //       recoverInfoVideos(urlForVideos);
+  //       }
+  //     }
+  //   }, [category]);
+
+  // const sortCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
+  //   const inputValue = event.target.value;
+  //   if (inputValue) {
+  //     const newCategories = videos.filter((video) => {
+  //       const categoriesToFind = category.name.includes(
+  //         inputValue.toLowerCase(),
+  //       );
+  //       return categoriesToFind;
+  //     });
+  //     setCategory(newCategories);
+  //   } else {
+  //     setCategory(Categories);
+  //   }
+  // };
 
   return (
     <div className="video-manager-wrapper">
@@ -19,15 +43,33 @@ export default function FormVideoAdmin() {
         </button>
 
         <fieldset className={isSearchBarOpen ? "" : "hidden"}>
-          <label htmlFor="search-user-by-email">Search a video by name</label>
+          {/* <label htmlFor="search-user-by-email">
+            Search a video by category
+          </label>
           <input
             className="search-admin"
             type="search"
-            id="search-user-by-email"
-            name="search-user-by-email"
-            placeholder="Type the title of the video."
-            // onChange={handleSearchOnChange}
-          />
+            id="search-video-by-category"
+            name="search-video-by-category"
+            placeholder="Type the category language of the video."
+            onChange={(event) => sortCategory(event)}
+          /> */}
+          <label htmlFor="category-select">Choose a pet:</label>
+
+          <select name="categories" id="category-select">
+            <option value="">
+              --Please choose a category language of videos--
+            </option>
+            <option value="1">HTML</option>
+            <option value="2">CSS</option>
+            <option value="3">Algo</option>
+            <option value="4">Javascript</option>
+            <option value="5">Node.js</option>
+            <option value="6">REACT</option>
+            <option value="7">github</option>
+            <option value="8">SQL</option>
+            <option value="9">EXPRESS</option>
+          </select>
         </fieldset>
 
         {/* <fieldset>
