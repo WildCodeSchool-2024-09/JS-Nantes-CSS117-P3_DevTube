@@ -1,10 +1,24 @@
-export default function FormVideoAdmin() {
-  return (
-    <>
-      <form className="form-admin-wrapper form-admin">
-        <fieldset>
-          <legend>Video manager</legend>
+import { useState } from "react";
+import "../../styles/FormVideoManager.css";
 
+export default function FormVideoAdmin() {
+  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
+
+  return (
+    <div className="video-manager-wrapper">
+      <form className="form-admin-wrapper ">
+        <h2>Video manager</h2>
+        <button
+          type="button"
+          onClick={() => setSearchBarOpen(!isSearchBarOpen)}
+          className="btntTtest standard-button"
+        >
+          {isSearchBarOpen
+            ? "Hide search bar"
+            : "I want to update or delete a video"}
+        </button>
+
+        <fieldset className={isSearchBarOpen ? "" : "hidden"}>
           <label htmlFor="search-user-by-email">Search a video by name</label>
           <input
             className="search-admin"
@@ -16,7 +30,7 @@ export default function FormVideoAdmin() {
           />
         </fieldset>
 
-        <fieldset>
+        {/* <fieldset>
           <legend>Main information video</legend>
           <label htmlFor="title">Title</label>
           <input
@@ -110,7 +124,7 @@ export default function FormVideoAdmin() {
           />
         </fieldset> */}
 
-        <section className="admin-btn-wrapper">
+        {/* <section className="admin-btn-wrapper">
           <button
             type="button"
             // onClick={handleUpdateUser}
@@ -132,8 +146,8 @@ export default function FormVideoAdmin() {
           >
             Delete
           </button>
-        </section>
+        </section> */}
       </form>
-    </>
+    </div>
   );
 }
