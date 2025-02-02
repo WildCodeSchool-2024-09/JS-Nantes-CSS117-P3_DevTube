@@ -1,32 +1,34 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../styles/FormVideoManager.css";
-// import type { Video } from "../../types/video";
+import type { Video } from "../../types/video";
+import useToast from "../../utils/useToastify";
 
 export default function FormVideoAdmin() {
+  const { notifyError } = useToast();
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
-  // const [videos, setVideos] = useState<Video[]>();
+  const [idCategory, setIdCategory] = useState<number>();
+  const [videosByCategory, setVideosByCategory] = useState<Video[]>();
 
-  //  useEffect(() => {
-  //       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idOfTheCategoryLanguage}`;
-  //       recoverInfoVideos(urlForVideos);
-  //       }
-  //     }
-  //   }, [category]);
+  useEffect(() => {
+    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
+    recoverInfoVideos(urlForVideos);
+  }, [idCategory]);
 
-  // const sortCategory = (event: React.ChangeEvent<HTMLInputElement>) => {
-  //   const inputValue = event.target.value;
-  //   if (inputValue) {
-  //     const newCategories = videos.filter((video) => {
-  //       const categoriesToFind = category.name.includes(
-  //         inputValue.toLowerCase(),
-  //       );
-  //       return categoriesToFind;
-  //     });
-  //     setCategory(newCategories);
-  //   } else {
-  //     setCategory(Categories);
-  //   }
-  // };
+  async function recoverInfoVideos(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setVideosByCategory(datas);
+    } catch (err) {
+      notifyError("You are log out !");
+    }
+  }
 
   return (
     <div className="video-manager-wrapper">
@@ -43,20 +45,14 @@ export default function FormVideoAdmin() {
         </button>
 
         <fieldset className={isSearchBarOpen ? "" : "hidden"}>
-          {/* <label htmlFor="search-user-by-email">
-            Search a video by category
+          <label htmlFor="category-select">
+            Choose a category language of videos:
           </label>
-          <input
-            className="search-admin"
-            type="search"
-            id="search-video-by-category"
-            name="search-video-by-category"
-            placeholder="Type the category language of the video."
-            onChange={(event) => sortCategory(event)}
-          /> */}
-          <label htmlFor="category-select">Choose a pet:</label>
-
-          <select name="categories" id="category-select">
+          <select
+            name="categories"
+            id="category-select"
+            onChange={(event) => setIdCategory(Number(event.target.value))}
+          >
             <option value="">
               --Please choose a category language of videos--
             </option>
