@@ -9,6 +9,7 @@ export default function FormVideoAdmin() {
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
+  // const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
@@ -68,16 +69,24 @@ export default function FormVideoAdmin() {
             <option value="9">EXPRESS</option>
           </select>
         </fieldset>
-        {videosByCategory?.map((video) => (
-          <VideoCard
-            key={video.id}
-            title={video.name}
-            thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
-            isFreemium={video.is_freemium}
-            duration={video.duration}
-          />
-        ))}
-
+        <section className={isSearchBarOpen ? "" : "hidden"}>
+          {videosByCategory?.map((video) => (
+            <button
+              key={video.id}
+              type="button"
+              data-id={video.id}
+              onClick={() => setSearchBarOpen(!isSearchBarOpen)}
+            >
+              <VideoCard
+                key={video.id}
+                title={video.name}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
+                isFreemium={video.is_freemium}
+                duration={video.duration}
+              />
+            </button>
+          ))}
+        </section>
         {/* <fieldset>
           <legend>Main information video</legend>
           <label htmlFor="title">Title</label>
