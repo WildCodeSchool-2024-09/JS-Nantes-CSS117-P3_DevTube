@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../../styles/FormVideoManager.css";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
+import VideoCard from "../VideoCard/VideoCard";
 
 export default function FormVideoAdmin() {
   const { notifyError } = useToast();
@@ -67,6 +68,15 @@ export default function FormVideoAdmin() {
             <option value="9">EXPRESS</option>
           </select>
         </fieldset>
+        {videosByCategory?.map((video) => (
+          <VideoCard
+            key={video.id}
+            title={video.name}
+            thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
+            isFreemium={video.is_freemium}
+            duration={video.duration}
+          />
+        ))}
 
         {/* <fieldset>
           <legend>Main information video</legend>
