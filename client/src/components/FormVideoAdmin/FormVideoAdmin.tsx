@@ -12,8 +12,10 @@ export default function FormVideoAdmin() {
   // const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
-    recoverInfoVideos(urlForVideos);
+    if (idCategory) {
+      const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
+      recoverInfoVideos(urlForVideos);
+    }
   }, [idCategory]);
 
   async function recoverInfoVideos(url: string) {
