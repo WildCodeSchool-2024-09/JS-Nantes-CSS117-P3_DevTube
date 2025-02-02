@@ -199,21 +199,22 @@ export default function FormVideoAdmin() {
             </p>
             <input type="file" id="video-file" accept="video/*, .mp4" />
           </section>
+
+          <button
+            type="button"
+            // onClick={handleUpdateUser}
+            className="btntTtest standard-button"
+          >
+            Update
+          </button>
+          <button
+            type="button"
+            // onClick={handleDeleteUser}
+            className="btntTtest standard-button"
+          >
+            Delete
+          </button>
         </section>
-        <button
-          type="button"
-          // onClick={handleUpdateUser}
-          className="btntTtest standard-button"
-        >
-          Update
-        </button>
-        <button
-          type="button"
-          // onClick={handleDeleteUser}
-          className="btntTtest standard-button"
-        >
-          Delete
-        </button>
         {/* 
         <fieldset>
           <label id="subscription-date" htmlFor="subscription-date">
