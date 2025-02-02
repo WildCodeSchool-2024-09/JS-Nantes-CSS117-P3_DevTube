@@ -9,7 +9,9 @@ export default function FormVideoAdmin() {
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
-  // const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
+  const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
+  const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false);
+  const [videoToUpdate, setVideoToUpdate] = useState<Video>();
 
   useEffect(() => {
     if (idCategory) {
@@ -34,6 +36,27 @@ export default function FormVideoAdmin() {
     }
   }
 
+  const handleClickCategory = (id: number) => {
+    setVideosSectionOpen(!isVideosSectionOpen);
+    setIdCategory(id);
+  };
+
+  const handleClickVideo = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    const idToFind = event.currentTarget.dataset.id;
+
+    if (idToFind) {
+      const videoToFind = videosByCategory?.find((video) => {
+        return String(video.id) === idToFind;
+      });
+      setVideoToUpdate(videoToFind);
+      console.warn({ videoToUpdate });
+    }
+
+    setInfoVideoOpen(!isInfoVideoOpen);
+  };
+
   return (
     <div className="video-manager-wrapper">
       <form className="form-admin-wrapper ">
@@ -55,7 +78,9 @@ export default function FormVideoAdmin() {
           <select
             name="categories"
             id="category-select"
-            onChange={(event) => setIdCategory(Number(event.target.value))}
+            onChange={(event) =>
+              handleClickCategory(Number(event.target.value))
+            }
           >
             <option value="">
               --Please choose a category language of videos--
@@ -71,13 +96,13 @@ export default function FormVideoAdmin() {
             <option value="9">EXPRESS</option>
           </select>
         </fieldset>
-        <section className={isSearchBarOpen ? "" : "hidden"}>
+        <section className={isVideosSectionOpen ? "" : "hidden"}>
           {videosByCategory?.map((video) => (
             <button
               key={video.id}
               type="button"
               data-id={video.id}
-              onClick={() => setSearchBarOpen(!isSearchBarOpen)}
+              onClick={(event) => handleClickVideo(event)}
             >
               <VideoCard
                 key={video.id}
