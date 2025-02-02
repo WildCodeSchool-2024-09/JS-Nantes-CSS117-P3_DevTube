@@ -5,7 +5,7 @@ import useToast from "../../utils/useToastify";
 import VideoCard from "../VideoCard/VideoCard";
 
 export default function FormVideoAdmin() {
-  const { notifyError } = useToast();
+  const { notifyError, notifySuccess } = useToast();
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
@@ -55,6 +55,24 @@ export default function FormVideoAdmin() {
     }
     setVideosSectionOpen(!isVideosSectionOpen);
     setInfoVideoOpen(!isInfoVideoOpen);
+  };
+
+  const handleDeleteVideo = async () => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/videos/${videoToUpdate?.id}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("An unknown error occurred.");
+      }
+      notifySuccess(`The video ${videoToUpdate?.name} has been removed.`);
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
   };
 
   return (
@@ -209,7 +227,7 @@ export default function FormVideoAdmin() {
           </button>
           <button
             type="button"
-            // onClick={handleDeleteUser}
+            onClick={handleDeleteVideo}
             className="btntTtest standard-button"
           >
             Delete

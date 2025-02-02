@@ -33,11 +33,11 @@ router.get("/api/verify-token", authActions.checkIsValidToken);
 router.get("/api/category/:id", categoryActions.read);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 
+router.delete("/api/videos/:id", videoActions.remove);
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
-router.delete("/api/videos/:id", videoActions.remove);
 
 /* ************************************************************************* */
 
