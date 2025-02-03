@@ -88,5 +88,5 @@ DELETE http://localhost:3310/api/videos/3
 
 ###
 
-GET http://localhost:3310/api/category/1
+GET http://localhost:3310/api/category/6
 
