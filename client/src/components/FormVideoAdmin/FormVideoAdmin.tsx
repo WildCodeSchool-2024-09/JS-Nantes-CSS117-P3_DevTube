@@ -1,61 +1,16 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "../../styles/FormVideoManager.css";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
-import VideoCard from "../VideoCard/VideoCard";
+import SearchVideoByCategory from "./SearchVideoByCategory";
+import VideosSectionByCategory from "./VideosSectionByCategory";
 
 export default function FormVideoAdmin() {
   const { notifyError, notifySuccess } = useToast();
-  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
-  const [idCategory, setIdCategory] = useState<number>();
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
   const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
   const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false);
   const [videoToUpdate, setVideoToUpdate] = useState<Video>();
-
-  useEffect(() => {
-    if (idCategory) {
-      const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
-      recoverInfoVideos(urlForVideos);
-    }
-  }, [idCategory]);
-
-  async function recoverInfoVideos(url: string) {
-    const token = localStorage.getItem("token");
-
-    try {
-      const request = await fetch(url, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      const datas = await request.json();
-      setVideosByCategory(datas);
-    } catch (err) {
-      notifyError("You are log out !");
-    }
-  }
-
-  const handleClickCategory = (id: number) => {
-    setVideosSectionOpen(!isVideosSectionOpen);
-    setIdCategory(id);
-  };
-
-  const handleClickVideo = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    const idToFind = event.currentTarget.dataset.id;
-
-    if (idToFind) {
-      const videoToFind = videosByCategory?.find((video) => {
-        return String(video.id) === idToFind;
-      });
-      setVideoToUpdate(videoToFind);
-      console.warn({ videoToUpdate });
-    }
-    setVideosSectionOpen(!isVideosSectionOpen);
-    setInfoVideoOpen(!isInfoVideoOpen);
-  };
 
   const handleUpdateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -120,63 +75,23 @@ export default function FormVideoAdmin() {
 
   return (
     <section className="video-manager-wrapper">
-      <form className="form-admin-wrapper">
-        <h2>Video manager</h2>
-        <button
-          type="button"
-          onClick={() => setSearchBarOpen(!isSearchBarOpen)}
-          className="btntTtest standard-button"
-        >
-          {isSearchBarOpen
-            ? "Hide search bar"
-            : "I want to update or delete a video"}
-        </button>
-
-        <fieldset className={isSearchBarOpen ? "" : "hidden"}>
-          <label htmlFor="category_id">
-            Choose a category language of videos:
-          </label>
-          <select
-            name="category_id"
-            id="category_id"
-            onChange={(event) =>
-              handleClickCategory(Number(event.target.value))
-            }
-          >
-            <option value="">
-              --Please choose a category language of videos--
-            </option>
-            <option value="1">HTML</option>
-            <option value="2">CSS</option>
-            <option value="3">Algo</option>
-            <option value="4">Javascript</option>
-            <option value="5">Node.js</option>
-            <option value="6">REACT</option>
-            <option value="7">github</option>
-            <option value="8">SQL</option>
-            <option value="9">EXPRESS</option>
-          </select>
-        </fieldset>
-      </form>
+      <h2>Video manager</h2>
+      <SearchVideoByCategory
+        isVideosSectionOpen={isVideosSectionOpen}
+        setVideosSectionOpen={setVideosSectionOpen}
+        setVideosByCategory={setVideosByCategory}
+        isInfoVideoOpen={isInfoVideoOpen}
+        setInfoVideoOpen={setInfoVideoOpen}
+      />
       <form onSubmit={handleUpdateVideo}>
-        <section className={isVideosSectionOpen ? "" : "hidden"}>
-          {videosByCategory?.map((video) => (
-            <button
-              key={video.id}
-              type="button"
-              data-id={video.id}
-              onClick={(event) => handleClickVideo(event)}
-            >
-              <VideoCard
-                key={video.id}
-                title={video.name}
-                thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
-                isFreemium={video.is_freemium}
-                duration={video.duration}
-              />
-            </button>
-          ))}
-        </section>
+        <VideosSectionByCategory
+          isVideosSectionOpen={isVideosSectionOpen}
+          videosByCategory={videosByCategory}
+          setVideoToUpdate={setVideoToUpdate}
+          setVideosSectionOpen={setVideosSectionOpen}
+          setInfoVideoOpen={setInfoVideoOpen}
+          isInfoVideoOpen={isInfoVideoOpen}
+        />
         <section className={isInfoVideoOpen ? "" : "hidden"}>
           <fieldset>
             <legend>Main information video</legend>
@@ -213,7 +128,6 @@ export default function FormVideoAdmin() {
               defaultValue={videoToUpdate?.description}
               name="description"
               maxLength={255}
-              // placeholder="Enter your description here..."
               aria-labelledby="description"
               required
             />
