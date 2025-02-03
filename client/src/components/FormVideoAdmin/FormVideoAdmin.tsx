@@ -2,6 +2,8 @@ import { useState } from "react";
 import "../../styles/FormVideoManager.css";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
+import FilesVideo from "./FilesVideo";
+import InfoVideoToUpdate from "./InfoVideoToUpdate";
 import SearchVideoByCategory from "./SearchVideoByCategory";
 import VideosSectionByCategory from "./VideosSectionByCategory";
 
@@ -20,7 +22,7 @@ export default function FormVideoAdmin() {
     // const previewImage = data.preview_image
     //   ? data.preview_image
     //   : videoToUpdate?.preview_image;
-    console.info(data);
+    // console.info(data);
     const newVideo = {
       ...data,
       preview_image: data.preview_image
@@ -92,120 +94,12 @@ export default function FormVideoAdmin() {
           setInfoVideoOpen={setInfoVideoOpen}
           isInfoVideoOpen={isInfoVideoOpen}
         />
-        <section className={isInfoVideoOpen ? "" : "hidden"}>
-          <fieldset>
-            <legend>Main information video</legend>
-            <label htmlFor="name">Title</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              defaultValue={videoToUpdate?.name}
-              required
-            />
-            <label id="added_date" htmlFor="added_date">
-              Publication date
-            </label>
-            <input
-              type="text"
-              name="added_date"
-              defaultValue={videoToUpdate?.added_date}
-              required
-            />
-            <label id="duration" htmlFor="duration">
-              Duration
-            </label>
-            <input
-              type="text"
-              name="duration"
-              defaultValue={videoToUpdate?.duration}
-              required
-            />
-            <label id="description" htmlFor="description">
-              Description
-            </label>
-            <textarea
-              defaultValue={videoToUpdate?.description}
-              name="description"
-              maxLength={255}
-              aria-labelledby="description"
-              required
-            />
-            <label htmlFor="is_heroSlide" className="heroSlide-label-wrapper">
-              Add in hero slider
-              <input
-                type="checkbox"
-                defaultChecked={videoToUpdate?.is_heroSlide === 1}
-                id="is_heroSlide"
-                name="is_heroSlide"
-                className="admin-check-box"
-              />
-            </label>
-            <label htmlFor="is_freemium" className="is_freemium-label-wrapper">
-              Freemium Video
-              <input
-                type="checkbox"
-                defaultChecked={videoToUpdate?.is_freemium === 1}
-                id="is_freemium"
-                name="is_freemium"
-                className="admin-check-box"
-              />
-            </label>
-            <label htmlFor="is_popular" className="s_popular-label-wrapper">
-              Add in popular carousel
-              <input
-                type="checkbox"
-                defaultChecked={videoToUpdate?.is_popular === 1}
-                id="is_popular"
-                name="is_popular"
-                className="admin-check-box"
-              />
-            </label>
-            <label id="category-title" htmlFor="category-title">
-              Title of the catergory
-            </label>
-            <input
-              defaultValue={videoToUpdate?.category_id}
-              type="text"
-              name="category-id"
-              readOnly
-              aria-labelledby="category-id"
-              required
-            />
-            {/* <label id="newcategory" htmlFor="newcategory">
-              Select a new catergory
-            </label>{" "}
-            <select name="" id="">
-              <option value="">Front-end</option>
-              <option value="">Back-end</option>
-              <option value="">Bases</option>
-            </select> */}
-          </fieldset>
-          <section>
-            <img
-              src={`${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`}
-              alt="The preview of the video."
-            />
-            <label htmlFor="preview_image">Current preview image</label>
-            <input
-              type="file"
-              id="preview_image"
-              name="preview_image"
-              accept="image/png, image/jpeg"
-            />
-          </section>
-
-          <section>
-            <label htmlFor="thumbnail">
-              Current file video : <span>{`${videoToUpdate?.thumbnail}`}</span>
-            </label>
-            <input
-              type="file"
-              id="thumbnail"
-              name="thumbnail"
-              accept="video/*, .mp4"
-            />
-          </section>
+        <InfoVideoToUpdate
+          isInfoVideoOpen={isInfoVideoOpen}
+          videoToUpdate={videoToUpdate}
+        />
+        <FilesVideo videoToUpdate={videoToUpdate} />
+        <section>
           <button type="submit" className="btntTtest standard-button">
             Update
           </button>
@@ -217,6 +111,7 @@ export default function FormVideoAdmin() {
             Delete
           </button>
         </section>
+
         {/* 
         <fieldset>
           <label id="subscription-date" htmlFor="subscription-date">
