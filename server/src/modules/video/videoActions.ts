@@ -111,6 +111,7 @@ const edit: RequestHandler = async (req, res, next) => {
       duration,
       thumbnail,
       preview_image,
+      preview_image_path,
       description,
       category_id,
       is_freemium,
@@ -118,12 +119,15 @@ const edit: RequestHandler = async (req, res, next) => {
       is_heroSlide,
       is_popular,
     } = req.body;
+    //TODO  upload video file with multer in assets folder
+    //Pass file to multer but file path to database
+
     const updateVideo = await videoRepository.update(
       id,
       name,
       duration,
       thumbnail,
-      preview_image,
+      preview_image_path,
       description,
       category_id,
       is_freemium,

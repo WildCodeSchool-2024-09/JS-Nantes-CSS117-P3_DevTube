@@ -23,16 +23,35 @@ export default function FormVideoAdmin() {
     //   ? data.preview_image
     //   : videoToUpdate?.preview_image;
     // console.info(data);
+    let currentPreviewImage = null;
+    if (videoToUpdate?.preview_image) {
+      const currentPreviewImageFileName = videoToUpdate?.preview_image.split(
+        "/",
+      )[videoToUpdate?.preview_image.split("/").length - 1] as string;
+      const currentPreviewImageAsAFile = await fetch(
+        `${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`,
+      ).then(async (response) => {
+        // const contentType = response.headers.get("content-type"); TODO VERIFY if content-type is needed
+        const blob = await response.blob();
+
+        const file = new File([blob], currentPreviewImageFileName);
+        return file;
+      });
+      currentPreviewImage = currentPreviewImageAsAFile;
+    }
+
+    const preview_image_path = `/assets/images/videoPreviewImages/${(data.preview_image as File)?.name || (currentPreviewImage as File).name}`;
+
     const newVideo = {
       ...data,
+      preview_image_path,
       preview_image: data.preview_image
         ? data.preview_image
-        : videoToUpdate?.preview_image,
+        : currentPreviewImage,
       is_heroSlide: data.is_heroSlide ? 1 : 0,
       is_freemium: data.is_freemium ? 1 : 0,
       is_popular: data.is_popular ? 1 : 0,
     };
-    // console.log({ newVideo });
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
