@@ -19,39 +19,42 @@ export default function FormVideoAdmin() {
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    // const previewImage = data.preview_image
-    //   ? data.preview_image
-    //   : videoToUpdate?.preview_image;
-    // console.info(data);
-    let currentPreviewImage = null;
-    if (videoToUpdate?.preview_image) {
+
+    let previewImageToUpload: File | string = "";
+
+    if (data.preview_image instanceof File) {
+      // Nouvelle image sélectionnée
+      previewImageToUpload = data.preview_image;
+    } else if (videoToUpdate?.preview_image && !data.preview_image) {
+      // On créé un File a partir du chemin de l'image :
+      // (on la charge avec fetch puis on prend le blob qui est retourné pour le transformer en File)
       const currentPreviewImageFileName = videoToUpdate?.preview_image.split(
         "/",
       )[videoToUpdate?.preview_image.split("/").length - 1] as string;
+
       const currentPreviewImageAsAFile = await fetch(
         `${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`,
       ).then(async (response) => {
-        // const contentType = response.headers.get("content-type"); TODO VERIFY if content-type is needed
         const blob = await response.blob();
 
         const file = new File([blob], currentPreviewImageFileName);
         return file;
       });
-      currentPreviewImage = currentPreviewImageAsAFile;
+
+      // Image existante conservée
+      previewImageToUpload = currentPreviewImageAsAFile; // Envoyer le chemin existant
     }
 
-    const preview_image_path = `/assets/images/videoPreviewImages/${(data.preview_image as File)?.name || (currentPreviewImage as File).name}`;
+    // On utilise formData.set pour remplacer la valeur
+    formData.set("preview_image", previewImageToUpload);
+    formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
+    formData.set("is_freemium", data.is_freemium ? "1" : "0");
+    formData.set("is_popular", data.is_popular ? "1" : "0");
 
-    const newVideo = {
-      ...data,
-      preview_image_path,
-      preview_image: data.preview_image
-        ? data.preview_image
-        : currentPreviewImage,
-      is_heroSlide: data.is_heroSlide ? 1 : 0,
-      is_freemium: data.is_freemium ? 1 : 0,
-      is_popular: data.is_popular ? 1 : 0,
-    };
+    // TODO: Add 'thumbnail' in formData
+    // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
+    // It should be a File, so you'll probably have to fetch it as for preview8image if videoToUpdate?.thumbnail is a path
+
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
@@ -59,10 +62,9 @@ export default function FormVideoAdmin() {
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(newVideo),
+          body: formData,
         },
       );
       if (!response.ok) {

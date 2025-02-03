@@ -103,15 +103,31 @@ const remove: RequestHandler = async (req, res, next) => {
 };
 
 //UPDATE
+
 const edit: RequestHandler = async (req, res, next) => {
+  let preview_image_path = "";
+  let thumbnail_path = "";
+  if (req.files) {
+    const {
+      preview_image,
+      thumbnail,
+    }: {
+      preview_image: Express.Multer.File[];
+      thumbnail: Express.Multer.File[];
+    } = req.files as Record<
+      "preview_image" | "thumbnail",
+      Express.Multer.File[]
+    >;
+    // console.log("Files uploaded:", req.files); // Chemin après l'upload
+
+    preview_image_path = `/assets/images/videoPreviewImages/${preview_image?.[0]?.filename}`;
+    thumbnail_path = `/assets/images/videoPreviewImages/${thumbnail?.[0]?.filename}`;
+  }
   try {
     const { id } = req.params;
     const {
       name,
       duration,
-      thumbnail,
-      preview_image,
-      preview_image_path,
       description,
       category_id,
       is_freemium,
@@ -119,14 +135,13 @@ const edit: RequestHandler = async (req, res, next) => {
       is_heroSlide,
       is_popular,
     } = req.body;
-    //TODO  upload video file with multer in assets folder
-    //Pass file to multer but file path to database
+    //TODO  FIX BUG thumbnail undefined
 
     const updateVideo = await videoRepository.update(
       id,
       name,
       duration,
-      thumbnail,
+      thumbnail_path,
       preview_image_path,
       description,
       category_id,
