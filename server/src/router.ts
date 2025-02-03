@@ -36,6 +36,7 @@ router.get("/api/category/:id", categoryActions.read);
 router.delete("/api/videos/:id", videoActions.remove);
 router.use(authActions.verifyToken);
 
+router.get("/api/download/users", userActions.getUserCsvFile);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 
