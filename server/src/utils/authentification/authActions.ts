@@ -91,7 +91,6 @@ const verifyToken: RequestHandler = async (req, res, next) => {
 
       throw new Error("Bearer must be provided");
     }
-
     // Vérification de la secretKey
     const secretKey = process.env.APP_SECRET;
 
@@ -99,10 +98,9 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       throw new Error("A secret key must be provided");
     }
 
-    jwt.verify(token, secretKey);
-
     next();
   } catch (err) {
+    console.error(err);
     res.status(400).send(err);
   }
 };
