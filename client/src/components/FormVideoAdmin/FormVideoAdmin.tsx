@@ -111,44 +111,6 @@ export default function FormVideoAdmin() {
             Delete
           </button>
         </section>
-
-        {/* 
-        <fieldset>
-          <label id="subscription-date" htmlFor="subscription-date">
-            Subscription date
-          </label>
-          <input
-            type="text"
-            name="publication-date"
-            defaultValue="" //{(convertRegistrationDate as string) || ""}
-            aria-labelledby="publication-date"
-            required
-          />
-        </fieldset> */}
-
-        {/* <section className="admin-btn-wrapper">
-          <button
-            type="button"
-            // onClick={handleUpdateUser}
-            className="btntTtest standard-button"
-          >
-            New
-          </button>
-          <button
-            type="button"
-            // onClick={handleUpdateUser}
-            className="btntTtest standard-button"
-          >
-            Update
-          </button>
-          <button
-            type="button"
-            // onClick={handleDeleteUser}
-            className="btntTtest standard-button"
-          >
-            Delete
-          </button>
-        </section> */}
       </form>
     </section>
   );
