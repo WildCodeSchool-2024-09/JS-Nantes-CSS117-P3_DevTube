@@ -1,5 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import useAuth from "../../utils/useAuth";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
@@ -9,6 +11,12 @@ export default function Login() {
   const { notifySuccess, notifyError } = useToast();
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+
+  const authContext = useContext(AuthContext);
+  if (!authContext) {
+    throw new Error("Invalid auth !");
+  }
+  const { login } = authContext;
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,13 +37,14 @@ export default function Login() {
         },
       );
 
-      const { token } = await response.json();
+      const { token, user } = await response.json();
 
       if (token) {
         notifySuccess("You are logged !");
         setAuth(true);
+        login(token, user);
 
-        localStorage.setItem("token", token);
+        // localStorage.setItem("token", token);
         navigate("/");
       }
     } catch (err) {

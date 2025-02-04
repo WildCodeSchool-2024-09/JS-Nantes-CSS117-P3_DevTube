@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
@@ -9,7 +10,9 @@ export default function Header() {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
 
-  const { auth, setAuth } = useAuth();
+  const authContext = useContext(AuthContext);
+
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   function toggleMenu() {
@@ -21,8 +24,9 @@ export default function Header() {
   }
 
   function handleLogoutBtnClick() {
-    localStorage.removeItem("token");
-    setAuth(false);
+    if (!authContext) return;
+    const { logout } = authContext;
+    logout();
     navigate("/logout-success");
   }
 

@@ -48,7 +48,17 @@ const login: RequestHandler = async (req, res, next) => {
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
-    res.status(202).json({ token, user: user.email });
+    res.status(202).json({
+      token,
+      user: {
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        github_url: user.github_url,
+        linkedin_url: user.linkedin_url,
+        profil_img: user.profil_img,
+      },
+    });
   } else {
     res.sendStatus(422);
   }
