@@ -43,7 +43,7 @@ CREATE TABLE favorite (
 INSERT INTO user (firstname, lastname, email, password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
   ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$SVpXMEx3UjJ3UmhZZEhwMg$Gfc7g89RStUbXDw5Ij7g+w", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
-  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$UHlac3p3aTNRMk9xTURZNw$EurvbDDmdQQsskU5HEejjA", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$V25JdmFFRXBnc1Z6N1hTTg$FQHiIbPvbahwchYL9wSr8g", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
   ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$XludgNxFUX2Xh/wtwJampP981YUfrmXND1RZlBylnpE", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
 INSERT INTO category (name)
