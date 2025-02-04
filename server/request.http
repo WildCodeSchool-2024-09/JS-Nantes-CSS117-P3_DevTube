@@ -46,6 +46,9 @@ DELETE http://localhost:3310/api/users/3
 GET http://localhost:3310/api/videos
 
 ###
+GET http://localhost:3310/api/testimonial
+
+###
 
 GET http://localhost:3310/api/videos/5
 
@@ -65,6 +68,17 @@ content-type: application/json
   "is_heroSlide": true,
   "is_popular": true
 }
+
+###
+POST http://localhost:3310/api/testimonial HTTP/1.1
+content-type: application/json
+
+{
+  "user_id":1,
+  "text_testimonial":"Pour commencer ton périple, et avant de coder, tu dois comprendre ce qu'est JavaScript, et comment il fonctionne."
+}
+
+
 
 ###
 
