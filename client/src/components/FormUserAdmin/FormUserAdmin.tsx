@@ -73,8 +73,38 @@ export default function FormUserAdmin() {
     ? new Date(selectedUser?.register_date).toLocaleDateString("fr-FR")
     : "";
 
-  const handleUpdateUser = () => {
-    // TODO Update user feature
+  const downloadAllUsers = async () => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const getAllUsers = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/download/users`,
+        {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (!getAllUsers.ok) {
+        throw new Error("Your file could not be downloaded.");
+      }
+
+      const blob = await getAllUsers.blob();
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "users.csv";
+      link.dispatchEvent(new MouseEvent("click"));
+
+      URL.revokeObjectURL(url);
+
+      notifySuccess("The file has been downloaded.");
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
   };
 
   const handleDeleteUser = async () => {
@@ -207,10 +237,10 @@ export default function FormUserAdmin() {
         <section className="admin-btn-wrapper">
           <button
             type="button"
-            onClick={handleUpdateUser}
+            onClick={downloadAllUsers}
             className="btntTtest standard-button"
           >
-            Update
+            Download users as a csv file
           </button>
           <button
             type="button"

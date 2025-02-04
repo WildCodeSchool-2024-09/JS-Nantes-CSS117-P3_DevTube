@@ -91,7 +91,7 @@ VALUES
   ("Favorites 💙 2", "6", "/assets/videos/14-react-fav-2.mp4", "/assets/images/videoPreviewImages/14-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, false, "2025-01-23", true, false),
   ("Favorites 💜 3", "15", "/assets/videos/15-react-fav-3.mp4", "/assets/images/videoPreviewImages/15-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, false, "2025-01-23", true, false),
   ("Favorites 💚 4", "14", "/assets/videos/16-react-fav-4.mp4", "/assets/images/videoPreviewImages/16-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),
-  ("BDD trainy", "10", "/assets/videos/train-bdd.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi aux bases de données avec Nicolas 🐨!", 8, true, "2025-01-23", false, false),
+  ("BDD trainy", "10", "/assets/videos/train-bdd.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi aux bases de données avec Nicolas 🐨!", 8, false, "2025-01-23", false, false),
   ("Express trainy 1", "8", "/assets/videos/train-express-1.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("Express trainy 2", "8", "/assets/videos/train-express-2.mp4", "/assets/images/videoPreviewImages/2-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("Express trainy 3", "2", "/assets/videos/train-express-3.mp4", "/assets/images/videoPreviewImages/3-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false)

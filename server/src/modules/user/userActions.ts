@@ -1,5 +1,6 @@
 import type { RequestHandler } from "express";
 
+import { downloadCsvUser } from "../../utils/downloadCSVUser";
 // Import access to data
 import type { User } from "./user";
 import userRepository from "./userRepository";
@@ -153,4 +154,23 @@ const userByEmail: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit, checkIfUser, userByEmail };
+const getUserCsvFile: RequestHandler = async (req, res, next) => {
+  try {
+    const users = await userRepository.readAll();
+    downloadCsvUser(res, users as User[], "users.csv");
+    return;
+  } catch (err) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+};
+
+export default {
+  browse,
+  read,
+  add,
+  remove,
+  edit,
+  checkIfUser,
+  userByEmail,
+  getUserCsvFile,
+};

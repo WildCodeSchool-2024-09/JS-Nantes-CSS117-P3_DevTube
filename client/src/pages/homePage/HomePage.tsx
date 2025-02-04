@@ -59,6 +59,7 @@ export default function () {
           <h1 className="home-page-title">{`${t("title-homePage")} ${user?.firstname}`}</h1>
           {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
         </section>
+
         <section>
           <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
           {videosPopular && <MiniVideoCarousel videos={videosPopular} />}
