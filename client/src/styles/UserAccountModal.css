@@ -1,6 +1,25 @@
 .user-account-modale-container {
+  position: relative;
+  top: 10rem;
   width: auto;
   min-width: 320px;
   max-width: 600px;
-  height: 350px;
+  height: fit-content;
+  margin: 0 auto;
+  padding: 1rem;
+  border: 2px solid var(--accent-color-1);
+  color: inherit;
+  background-color: var(--secondary-color);
+}
+.user-account-modale-container::backdrop {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.user-account-modale-container > .form-account-modale-container label {
+  display: block;
+  margin: 0 0 .5rem;
+}
+.user-account-modale-container
+  > .form-account-modale-container
+  label:not(:first-of-type) {
+  margin-top: 1.125rem;
 }

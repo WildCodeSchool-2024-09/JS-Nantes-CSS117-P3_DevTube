@@ -16,9 +16,15 @@ export default function AuthProvider({ children }: Children) {
         headers: {
           Authorization: `Bearer ${currentToken}`,
         },
-      }).then((response) => {
-        setAuth(response.ok); // return a boolean true or false 200
-      });
+      })
+        .then((response) => {
+          console.warn(response.ok);
+          setAuth(response.ok); // return a boolean true or false 200
+          return response.json();
+        })
+        .then((user) => {
+          setUser(user);
+        });
     }
   }, []);
 
