@@ -12,6 +12,8 @@ import TeamProfile from "./pages/TeamProfile/TeamProfile";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
 import Testimonials from "./pages/testimonial/Testimonial";
+import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
+import FormVideoAdmin from "./components/FormVideoAdmin/FormVideoAdmin";
 
 export const router = createBrowserRouter([
   {
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+      },
+      {
+        path: "/admin-user-manager",
+        element: <FormUserAdmin />,
+      },
+      {
+        path: "/admin-video-manager",
+        element: <FormVideoAdmin />,
       },
       {
         path: "/",
