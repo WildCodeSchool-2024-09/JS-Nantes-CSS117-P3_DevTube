@@ -135,7 +135,6 @@ const edit: RequestHandler = async (req, res, next) => {
       is_heroSlide,
       is_popular,
     } = req.body;
-    //TODO  FIX BUG thumbnail undefined
 
     const updateVideo = await videoRepository.update(
       id,
