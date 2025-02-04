@@ -40,7 +40,7 @@ const lstCourse: Course[] = [
       "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving.",
     img: "logo-algo-basics.png",
     type: "Bases",
-    coming_soon: 0,
+    coming_soon: 1,
   },
   {
     id: 4,
@@ -116,7 +116,11 @@ export default function Course() {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idOfTheCategoryLanguage}`;
       recoverInfoVideos(urlForVideos);
       if (videosByCategory) {
-        navigate(`/video/${videosByCategory[0].id}`);
+        const videoToFind = videosByCategory.find((video) => {
+          return video.is_freemium === 0;
+        });
+
+        navigate(`/video/${videoToFind?.id}`);
       }
     }
   }, [idOfTheCategoryLanguage, videosByCategory, navigate]);
