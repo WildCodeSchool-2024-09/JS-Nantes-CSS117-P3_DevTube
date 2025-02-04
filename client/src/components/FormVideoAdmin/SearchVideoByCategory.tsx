@@ -53,15 +53,14 @@ export default function SearchVideoByCategory({
   };
 
   return (
-    <form className="form-admin-wrapper">
+    <form>
+      {/* className="form-admin-wrapper" */}
       <button
         type="button"
         onClick={() => setSearchBarOpen(!isSearchBarOpen)}
-        className="btntTtest standard-button"
+        className="admin-link"
       >
-        {isSearchBarOpen
-          ? "Hide search bar"
-          : "I want to update or delete a video"}
+        {isSearchBarOpen ? "Return" : "Update or Delete"}
       </button>
 
       <fieldset className={isSearchBarOpen ? "" : "hidden"}>

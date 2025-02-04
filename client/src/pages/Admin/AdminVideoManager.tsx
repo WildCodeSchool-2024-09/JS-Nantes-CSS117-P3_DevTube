@@ -1,5 +1,9 @@
 import FormVideoAdmin from "../../components/FormVideoAdmin/FormVideoAdmin";
 
 export default function AdminVideoManager() {
-  return <FormVideoAdmin />;
+  return (
+    <section className="video-manager-page">
+      <FormVideoAdmin />
+    </section>
+  );
 }

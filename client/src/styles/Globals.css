@@ -82,6 +82,7 @@ header {
 main {
   background-color: var(--primary-color);
   color: var(--text-color);
+  min-height: calc(100vh - 70px - 213px);
 }
 
 h1 {

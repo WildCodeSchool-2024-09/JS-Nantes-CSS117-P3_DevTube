@@ -113,7 +113,7 @@ export default function FormVideoAdmin() {
 
   return (
     <section className="video-manager-wrapper">
-      <h2>Video manager</h2>
+      <h2 className="title-video-manager">Video manager</h2>
       <SearchVideoByCategory
         isVideosSectionOpen={isVideosSectionOpen}
         setVideosSectionOpen={setVideosSectionOpen}
