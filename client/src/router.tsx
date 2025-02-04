@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
+import FormVideoAdmin from "./components/FormVideoAdmin/FormVideoAdmin";
 import About from "./pages/About/About";
 import Admin from "./pages/Admin/Admin";
 import Course from "./pages/Course/Course";
@@ -12,8 +14,6 @@ import TeamProfile from "./pages/TeamProfile/TeamProfile";
 import VideoPlayer from "./pages/VideoPlayer/VideoPlayer";
 import HomePage from "./pages/homePage/HomePage";
 import Testimonials from "./pages/testimonial/Testimonial";
-import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
-import FormVideoAdmin from "./components/FormVideoAdmin/FormVideoAdmin";
 
 export const router = createBrowserRouter([
   {
