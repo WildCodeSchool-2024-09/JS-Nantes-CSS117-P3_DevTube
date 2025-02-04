@@ -1,16 +1,14 @@
 import type { Video } from "../../types/video";
 
 interface InfoVideoToUpdateProps {
-  isInfoVideoOpen: boolean;
   videoToUpdate: Video | undefined;
 }
 
 export default function InfoVideoToUpdate({
-  isInfoVideoOpen,
   videoToUpdate,
 }: InfoVideoToUpdateProps) {
   return (
-    <section className={isInfoVideoOpen ? "" : "hidden"}>
+    <section>
       <fieldset>
         <legend>Main information video</legend>
         <label htmlFor="name">Title</label>

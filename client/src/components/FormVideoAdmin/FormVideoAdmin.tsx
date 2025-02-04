@@ -44,12 +44,17 @@ export default function FormVideoAdmin() {
       // Image existante conservée
       previewImageToUpload = currentPreviewImageAsAFile; // Envoyer le chemin existant
     }
+    //TODO FIX BUG IMAGE UNDEFINED IN THE FORMdata
 
     // On utilise formData.set pour remplacer la valeur
     formData.set("preview_image", previewImageToUpload);
     formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
     formData.set("is_freemium", data.is_freemium ? "1" : "0");
     formData.set("is_popular", data.is_popular ? "1" : "0");
+    formData.set(
+      "thumbnail",
+      videoToUpdate?.thumbnail ? videoToUpdate?.thumbnail : data.thumbnail,
+    );
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
@@ -122,23 +127,22 @@ export default function FormVideoAdmin() {
           setInfoVideoOpen={setInfoVideoOpen}
           isInfoVideoOpen={isInfoVideoOpen}
         />
-        <InfoVideoToUpdate
-          isInfoVideoOpen={isInfoVideoOpen}
-          videoToUpdate={videoToUpdate}
-        />
-        <FilesVideo videoToUpdate={videoToUpdate} />
-        <section>
-          <button type="submit" className="btntTtest standard-button">
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={handleDeleteVideo}
-            className="btntTtest standard-button"
-          >
-            Delete
-          </button>
-        </section>
+        <div className={isInfoVideoOpen ? "" : "hidden"}>
+          <InfoVideoToUpdate videoToUpdate={videoToUpdate} />
+          <FilesVideo videoToUpdate={videoToUpdate} />
+          <section>
+            <button type="submit" className="btntTtest standard-button">
+              Update
+            </button>
+            <button
+              type="button"
+              onClick={handleDeleteVideo}
+              className="btntTtest standard-button"
+            >
+              Delete
+            </button>
+          </section>
+        </div>
       </form>
     </section>
   );

@@ -5,7 +5,7 @@ interface FilesVideoProps {
 }
 export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
   return (
-    <>
+    <div>
       <section>
         <img
           src={`${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`}
@@ -30,6 +30,6 @@ export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
           accept="video/*, .mp4"
         />
       </section>
-    </>
+    </div>
   );
 }
