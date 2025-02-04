@@ -11,12 +11,19 @@
   height: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   padding: 40px;
 }
 
 .videos-list {
+  width: 100%;
+  margin: auto;
   margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .main-info-video-wrapper {
