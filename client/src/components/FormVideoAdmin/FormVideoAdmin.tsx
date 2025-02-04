@@ -40,6 +40,7 @@ export default function FormVideoAdmin() {
         const file = new File([blob], currentPreviewImageFileName);
         return file;
       });
+      // console.log({ file });
 
       // Image existante conservée
       previewImageToUpload = currentPreviewImageAsAFile; // Envoyer le chemin existant
@@ -55,12 +56,14 @@ export default function FormVideoAdmin() {
       "thumbnail",
       videoToUpdate?.thumbnail ? videoToUpdate?.thumbnail : data.thumbnail,
     );
+    // console.log({ data });
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
     // It should be a File, so you'll probably have to fetch it as for preview8image if videoToUpdate?.thumbnail is a path
 
     try {
+      // console.log({ data });
       const token = localStorage.getItem("token");
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/videos/${videoToUpdate?.id}`,
