@@ -30,8 +30,11 @@ import videoActions from "./modules/video/videoActions";
 
 const storage = multer.diskStorage({
   // storage demandé comme nom de variable par multer, il attend cenom là
+  // TODO: un storage différent si ilage ou video grâce au fait que l'on peut paser une fonction a "destination"
+  // exemple:  https://github.com/expressjs/multer/blob/master/doc/README-fr.md#diskstorage
   destination: path.join(
     __dirname,
+    "..",
     "public",
     "assets",
     "images",
@@ -54,18 +57,17 @@ router.get("/api/category/:id", categoryActions.read);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 
 router.delete("/api/videos/:id", videoActions.remove);
-router.use(authActions.verifyToken);
+// router.use(authActions.verifyToken);
 
 router.get("/api/download/users", userActions.getUserCsvFile);
 router.post("/api/videos", videoActions.add);
 router.put(
   "/api/videos/:id",
-  // TODO: upload fields
   upload.fields([
     { name: "preview_image", maxCount: 1 },
     { name: "thumbnail", maxCount: 1 },
   ]),
-  // upload.single("preview_image"),
+
   videoActions.edit,
 );
 
