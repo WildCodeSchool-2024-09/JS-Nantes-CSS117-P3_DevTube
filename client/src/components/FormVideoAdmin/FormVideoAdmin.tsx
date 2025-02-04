@@ -133,7 +133,7 @@ export default function FormVideoAdmin() {
         <div className={isInfoVideoOpen ? "" : "hidden"}>
           <InfoVideoToUpdate videoToUpdate={videoToUpdate} />
           <FilesVideo videoToUpdate={videoToUpdate} />
-          <section>
+          <section className="form-buttons-wrapper">
             <button type="submit" className="btntTtest standard-button">
               Update
             </button>
@@ -143,6 +143,13 @@ export default function FormVideoAdmin() {
               className="btntTtest standard-button"
             >
               Delete
+            </button>
+            <button
+              type="button"
+              // onClick={handleDeleteVideo}
+              className="btntTtest standard-button"
+            >
+              Return
             </button>
           </section>
         </div>

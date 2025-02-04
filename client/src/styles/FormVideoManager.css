@@ -4,6 +4,7 @@
 
 .video-manager-wrapper {
   border: 2px solid var(--accent-color-1);
+  border-radius: 8px;
   width: 90%;
   margin: auto;
   margin-top: 40px;
@@ -19,7 +20,10 @@
 }
 
 .main-info-video-wrapper {
-  padding: 16px;
+  /* width: 90%; */
+  margin-top: 40px;
+  border-radius: 8px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -33,6 +37,9 @@
 .preview-image {
   width: 300px;
   margin: auto;
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 40px;
 }
 
 .form-admin-container .standard-button {
@@ -40,6 +47,24 @@
   height: auto;
   padding: .5rem;
   margin: 1rem auto 0;
+}
+
+.preview-image-choice,
+.file-video-choice {
+  margin-bottom: 40px;
+}
+
+.file-video-choice label {
+  color: var(--accent-color-1);
+}
+
+.file-video-choice label span {
+  color: var(--text-color);
+}
+
+.form-buttons-wrapper {
+  display: flex;
+  gap: 8px;
 }
 
 .h1-admin {

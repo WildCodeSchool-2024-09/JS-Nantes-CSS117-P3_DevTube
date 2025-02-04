@@ -6,7 +6,7 @@ interface FilesVideoProps {
 export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
   return (
     <div>
-      <section>
+      <section className="preview-image-choice">
         <img
           className="preview-image"
           src={`${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`}
@@ -20,7 +20,7 @@ export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
           accept="image/png, image/jpeg"
         />
       </section>
-      <section>
+      <section className="file-video-choice">
         <label htmlFor="thumbnail">
           Current file video : <span>{`${videoToUpdate?.thumbnail}`}</span>
         </label>
