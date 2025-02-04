@@ -1,0 +1,31 @@
+.admin-page {
+  height: calc(100vh - 70px - 213px);
+}
+
+.title-admin {
+  text-align: center;
+  padding-top: 40px;
+}
+
+.button-admin-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  padding: 50px;
+}
+
+.admin-link {
+  font-size: 16px;
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  width: 160px;
+  height: 40px;
+  border-radius: 8px;
+  color: white;
+  transition: all 100ms ease-in;
+  text-align: center;
+  line-height: 40px;
+}
