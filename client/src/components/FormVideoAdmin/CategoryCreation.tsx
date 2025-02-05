@@ -1,3 +1,5 @@
+import useToast from "../../utils/useToastify";
+
 interface CategoryCreationProps {
   isCategoryCreationSectionOpen: boolean;
   setIsCategoryCreationSectionOpen: (value: boolean) => void;
@@ -7,34 +9,37 @@ export default function CategoryCreation({
   isCategoryCreationSectionOpen,
   setIsCategoryCreationSectionOpen,
 }: CategoryCreationProps) {
-  // const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  //   e.preventDefault();
-  //   const formData = new FormData(e.target as HTMLFormElement);
-  //   const data = Object.fromEntries(formData.entries());
-  //   console.warn(data);
-  //   try {
-  //     // console.log({ data });
-  //     const token = localStorage.getItem("token");
-  //     const response = await fetch(
-  //       `${import.meta.env.VITE_API_URL}/api/videos/${videoToUpdate?.id}`,
-  //       {
-  //         method: "POST",
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //         body: formData,
-  //       },
-  //     );
-  //     if (!response.ok) {
-  //       throw new Error("An unknown error occurred.");
-  //     }
-  //     notifySuccess(`The video ${videoToUpdate?.name} has been updated.`);
-  //     setVideosSectionOpen(!isVideosSectionOpen);
-  //     setInfoVideoOpen(!isInfoVideoOpen);
-  //   } catch (err) {
-  //     notifyError((err as Error).message);
-  //   }
-  // };
+  const { notifyError, notifySuccess } = useToast();
+
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = new FormData(e.target as HTMLFormElement);
+    const data = Object.fromEntries(formData.entries());
+    console.warn(data);
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/categories`,
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        },
+      );
+      if (!response.ok) {
+        throw new Error("An unknown error occurred.");
+      }
+      notifySuccess(`The catgory ${data?.name} has been updated.`);
+      // setVideosSectionOpen(!isVideosSectionOpen);
+      // setInfoVideoOpen(!isInfoVideoOpen);
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
+  };
 
   const returnClick = () => {
     setIsCategoryCreationSectionOpen(!isCategoryCreationSectionOpen);
@@ -55,13 +60,12 @@ export default function CategoryCreation({
       )}
       {isCategoryCreationSectionOpen && (
         <section>
-          <form>
-            {/* onSubmit={handleSubmit} */}
-            <label htmlFor="new_category">Title</label>
+          <form onSubmit={handleSubmit}>
+            <label htmlFor="name">Title</label>
             <input
               type="text"
-              id="new_category"
-              name="new_category"
+              id="name"
+              name="name"
               placeholder="Write a new videos category name"
               required
             />
