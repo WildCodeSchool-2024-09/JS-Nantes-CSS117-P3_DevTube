@@ -1,9 +1,4 @@
-import type { Video } from "../../types/video";
-
-interface InfoVideoToUpdateProps {
-  isInfoVideoOpen: boolean;
-  videoToUpdate: Video | undefined;
-}
+import type { InfoVideoToUpdateProps } from "../../types/InfoVideoToUpdateProps";
 
 export default function InfoVideoToUpdate({
   isInfoVideoOpen,

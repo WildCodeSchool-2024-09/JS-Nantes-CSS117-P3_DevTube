@@ -1,8 +1,5 @@
-import type { Video } from "../../types/video";
+import type { FilesVideoProps } from "../../types/FilesVideoProps";
 
-interface FilesVideoProps {
-  videoToUpdate: Video | undefined;
-}
 export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
   return (
     <>
