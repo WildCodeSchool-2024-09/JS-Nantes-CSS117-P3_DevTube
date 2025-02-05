@@ -51,7 +51,6 @@ export default function FormVideoAdmin() {
         return String(video.id) === idToFind;
       });
       setVideoToUpdate(videoToFind);
-      console.warn({ videoToUpdate });
     }
     setVideosSectionOpen(!isVideosSectionOpen);
     setInfoVideoOpen(!isInfoVideoOpen);
@@ -62,10 +61,6 @@ export default function FormVideoAdmin() {
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    // const previewImage = data.preview_image
-    //   ? data.preview_image
-    //   : videoToUpdate?.preview_image;
-    console.info(data);
     const newVideo = {
       ...data,
       preview_image: data.preview_image
@@ -75,7 +70,7 @@ export default function FormVideoAdmin() {
       is_freemium: data.is_freemium ? 1 : 0,
       is_popular: data.is_popular ? 1 : 0,
     };
-    // console.log({ newVideo });
+
     try {
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/videos/${videoToUpdate?.id}`,
@@ -213,7 +208,6 @@ export default function FormVideoAdmin() {
               defaultValue={videoToUpdate?.description}
               name="description"
               maxLength={255}
-              // placeholder="Enter your description here..."
               aria-labelledby="description"
               required
             />
@@ -258,14 +252,6 @@ export default function FormVideoAdmin() {
               aria-labelledby="category-id"
               required
             />
-            {/* <label id="newcategory" htmlFor="newcategory">
-              Select a new catergory
-            </label>{" "}
-            <select name="" id="">
-              <option value="">Front-end</option>
-              <option value="">Back-end</option>
-              <option value="">Bases</option>
-            </select> */}
           </fieldset>
           <section>
             <img
@@ -303,43 +289,6 @@ export default function FormVideoAdmin() {
             Delete
           </button>
         </section>
-        {/* 
-        <fieldset>
-          <label id="subscription-date" htmlFor="subscription-date">
-            Subscription date
-          </label>
-          <input
-            type="text"
-            name="publication-date"
-            defaultValue="" //{(convertRegistrationDate as string) || ""}
-            aria-labelledby="publication-date"
-            required
-          />
-        </fieldset> */}
-
-        {/* <section className="admin-btn-wrapper">
-          <button
-            type="button"
-            // onClick={handleUpdateUser}
-            className="btntTtest standard-button"
-          >
-            New
-          </button>
-          <button
-            type="button"
-            // onClick={handleUpdateUser}
-            className="btntTtest standard-button"
-          >
-            Update
-          </button>
-          <button
-            type="button"
-            // onClick={handleDeleteUser}
-            className="btntTtest standard-button"
-          >
-            Delete
-          </button>
-        </section> */}
       </form>
     </section>
   );
