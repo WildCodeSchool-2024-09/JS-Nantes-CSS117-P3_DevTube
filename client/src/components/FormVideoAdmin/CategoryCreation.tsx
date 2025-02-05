@@ -14,8 +14,30 @@ export default function CategoryCreation({
     console.warn(data);
   };
 
-  const returnClick = () => {
+  const returnClick = async () => {
     setIsCategoryCreationSectionOpen(!isCategoryCreationSectionOpen);
+    // try {
+    //   // console.log({ data });
+    //   const token = localStorage.getItem("token");
+    //   const response = await fetch(
+    //     `${import.meta.env.VITE_API_URL}/api/videos/${videoToUpdate?.id}`,
+    //     {
+    //       method: "POST",
+    //       headers: {
+    //         Authorization: `Bearer ${token}`,
+    //       },
+    //       body: formData,
+    //     },
+    //   );
+    //   if (!response.ok) {
+    //     throw new Error("An unknown error occurred.");
+    //   }
+    //   notifySuccess(`The video ${videoToUpdate?.name} has been updated.`);
+    //   setVideosSectionOpen(!isVideosSectionOpen);
+    //   setInfoVideoOpen(!isInfoVideoOpen);
+    // } catch (err) {
+    //   notifyError((err as Error).message);
+    // }
   };
 
   return (
@@ -28,7 +50,7 @@ export default function CategoryCreation({
             setIsCategoryCreationSectionOpen(!isCategoryCreationSectionOpen)
           }
         >
-          Create a video
+          Create a category
         </button>
       )}
       {isCategoryCreationSectionOpen && (
@@ -42,7 +64,9 @@ export default function CategoryCreation({
               placeholder="Write a new videos category name"
               required
             />
-            <button type="submit">Add</button>
+            <button type="submit" className="big-cta">
+              Add
+            </button>
           </form>
           <button
             type="button"
