@@ -9,19 +9,9 @@ import authActions from "./utils/authentification/authActions";
 const router = express.Router();
 
 router.post(
-	"/api/users/file/",
-	upload.single("profile-image"),
-	(req: Request, res: Response) => {
-		if (!req.file) {
-			res.status(400).send({ message: "Erreur : aucun fichier reçu" });
-			return;
-		}
-		const imageProfileURL = `/assets/images/userprofil/${req.file.filename}`;
-		res.status(200).json({ imageProfileURL });
-	},
-	"/api/users/file",
-	multerActions.upload.single("profile-image"),
-	multerActions.single,
+  "/api/users/file",
+  multerActions.upload.single("profile-image"),
+  multerActions.single,
 );
 
 router.get("/api/users", userActions.browse);
@@ -36,15 +26,10 @@ import categoryActions from "./modules/category/categoryActions";
 // Route video
 import videoActions from "./modules/video/videoActions";
 
-import testimonialsAction from "./modules/Testimonials/testimonialsAction";
-router.post("/api/testimonial", testimonialsAction.add);
-router.get("/api/testimonial", testimonialsAction.browse);
-
-router.use(authActions.verifyToken);
-
+// Open route to verify tokens validity from the front end
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
-router.get("/api/category/:id", categoryActions.read);
+
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);
