@@ -60,6 +60,7 @@ content-type: application/json
   "thumbnail": "/assets/videos/Quest-Welcomonboard(part1).mp4",
   "descrition": "Quelle belle video !",
   "category_id": 3,
+  "preview_image":"popo",
   "is_freemium": false,
   "added_date": "2025-11-01",
   "is_heroSlide": true,
@@ -88,5 +89,16 @@ DELETE http://localhost:3310/api/videos/3
 
 ###
 
+GET http://localhost:3310/api/categories
+
+###
+
 GET http://localhost:3310/api/category/6
+
+###
+
+POST http://localhost:3310/api/categories HTTP/1.1
+content-type: application/json
+
+{"name": "pupu"}
 
