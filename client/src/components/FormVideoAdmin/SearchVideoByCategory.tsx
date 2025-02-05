@@ -16,6 +16,7 @@ export default function SearchVideoByCategory({
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
   const [idCategory, setIdCategory] = useState<number>();
+  const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
     if (idCategory) {
@@ -23,6 +24,11 @@ export default function SearchVideoByCategory({
       recoverInfoVideos(urlForVideos);
     }
   }, [idCategory]);
+
+  useEffect(() => {
+    const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;
+    recoverCategories(urlForCategories);
+  }, []);
 
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");
@@ -35,6 +41,22 @@ export default function SearchVideoByCategory({
       });
       const datas = await request.json();
       setVideosByCategory(datas);
+    } catch (err) {
+      notifyError("You are log out !");
+    }
+  }
+
+  async function recoverCategories(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setCategories(datas);
     } catch (err) {
       notifyError("You are log out !");
     }
@@ -76,15 +98,13 @@ export default function SearchVideoByCategory({
           <option value="">
             --Please choose a category language of videos--
           </option>
-          <option value="1">HTML</option>
-          <option value="2">CSS</option>
-          <option value="3">Algo</option>
-          <option value="4">Javascript</option>
-          <option value="5">Node.js</option>
-          <option value="6">REACT</option>
-          <option value="7">github</option>
-          <option value="8">SQL</option>
-          <option value="9">EXPRESS</option>
+          {categories.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
         </select>
       </fieldset>
     </form>
