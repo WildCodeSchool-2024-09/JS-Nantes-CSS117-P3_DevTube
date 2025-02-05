@@ -19,10 +19,6 @@ export default function FormVideoAdmin() {
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    // const previewImage = data.preview_image
-    //   ? data.preview_image
-    //   : videoToUpdate?.preview_image;
-    // console.info(data);
     const newVideo = {
       ...data,
       preview_image: data.preview_image
@@ -32,7 +28,7 @@ export default function FormVideoAdmin() {
       is_freemium: data.is_freemium ? 1 : 0,
       is_popular: data.is_popular ? 1 : 0,
     };
-    // console.log({ newVideo });
+
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
