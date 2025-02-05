@@ -10,12 +10,16 @@ import VideosSectionByCategory from "./VideosSectionByCategory";
 
 export default function FormVideoAdmin() {
   const { notifyError, notifySuccess } = useToast();
+  //UPDATE OR DELETE A VIDEO CHOICE
+  const [isUpdateChoiceOpen, setisUpdateChoiceOpen] = useState<boolean>(false);
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
   const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
   const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false);
   const [videoToUpdate, setVideoToUpdate] = useState<Video>();
-  const [isUpdateChoiceOpen, setisUpdateChoiceOpen] = useState<boolean>(false);
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
+  //VIDEO CATEGORY CREATION CHOICE
+  const [isCategoryCreationSectionOpen, setIsCategoryCreationSectionOpen] =
+    useState<boolean>(false);
 
   const handleUpdateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -135,6 +139,7 @@ export default function FormVideoAdmin() {
         setisUpdateChoiceOpen={setisUpdateChoiceOpen}
         isSearchBarOpen={isSearchBarOpen}
         setSearchBarOpen={setSearchBarOpen}
+        isCategoryCreationSectionOpen={isCategoryCreationSectionOpen}
       />
       <form onSubmit={handleUpdateVideo}>
         <VideosSectionByCategory
@@ -171,7 +176,10 @@ export default function FormVideoAdmin() {
       </form>
       {/* CREATE A NEW VIDEOS CATEGORY SESSION */}
       <section>
-        <CategoryCreation />
+        <CategoryCreation
+          isCategoryCreationSectionOpen={isCategoryCreationSectionOpen}
+          setIsCategoryCreationSectionOpen={setIsCategoryCreationSectionOpen}
+        />
       </section>
     </section>
   );

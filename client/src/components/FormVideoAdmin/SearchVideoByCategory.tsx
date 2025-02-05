@@ -12,6 +12,7 @@ interface SearchVideoByCategoryProps {
   setisUpdateChoiceOpen: (value: boolean) => void;
   setSearchBarOpen: (value: boolean) => void;
   isSearchBarOpen: boolean;
+  isCategoryCreationSectionOpen: boolean;
 }
 
 export default function SearchVideoByCategory({
@@ -24,6 +25,7 @@ export default function SearchVideoByCategory({
   setisUpdateChoiceOpen,
   setSearchBarOpen,
   isSearchBarOpen,
+  isCategoryCreationSectionOpen,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
   const [idCategory, setIdCategory] = useState<number>();
@@ -65,8 +67,7 @@ export default function SearchVideoByCategory({
 
   return (
     <form>
-      {/* className="form-admin-wrapper" */}
-      {!isUpdateChoiceOpen && (
+      {!isUpdateChoiceOpen && !isCategoryCreationSectionOpen && (
         <button
           type="button"
           onClick={updateChoiceClick}
