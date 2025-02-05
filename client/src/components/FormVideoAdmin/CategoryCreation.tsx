@@ -70,7 +70,7 @@ export default function CategoryCreation({
               required
             />
             <button type="submit" className="big-cta">
-              Add
+              Add a category
             </button>
           </form>
           <button
