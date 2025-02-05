@@ -48,11 +48,13 @@ const upload = multer({ storage: storage });
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
-// Open route to verify tokens validity from the front end
-router.get("/api/verify-token", authActions.checkIsValidToken);
+router.get("/api/categories", categoryActions.browse);
 router.get("/api/category/:id", categoryActions.read);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
+// Open route to verify tokens validity from the front end
+router.get("/api/verify-token", authActions.checkIsValidToken);
 
+router.post("/api/categories", categoryActions.add);
 router.delete("/api/videos/:id", videoActions.remove);
 router.get("/api/download/users", userActions.getUserCsvFile);
 router.use(authActions.verifyToken);
