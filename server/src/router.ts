@@ -8,9 +8,7 @@ import authActions from "./utils/authentification/authActions";
 
 const router = express.Router();
 
-// je mets cette liens en commentaire pour pouvoir fair push no obli pas descomenter
-
-/*router.post(
+router.post(
 	"/api/users/file/",
 	upload.single("profile-image"),
 	(req: Request, res: Response) => {
@@ -24,7 +22,7 @@ const router = express.Router();
 	"/api/users/file",
 	multerActions.upload.single("profile-image"),
 	multerActions.single,
-);*/
+);
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);
