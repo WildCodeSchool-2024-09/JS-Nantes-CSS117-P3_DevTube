@@ -1,14 +1,6 @@
-import type { Video } from "../../types/video";
+import type { VideosSectionByCategoryProps } from "../../types/VideosSectionByCategoryProps";
 import VideoCard from "../VideoCard/VideoCard";
 
-interface VideosSectionByCategoryProps {
-  isVideosSectionOpen: boolean;
-  videosByCategory: Video[] | undefined;
-  setVideoToUpdate: (object: Video | undefined) => void;
-  setVideosSectionOpen: (value: boolean) => void;
-  setInfoVideoOpen: (value: boolean) => void;
-  isInfoVideoOpen: boolean;
-}
 export default function VideosSectionByCategory({
   isVideosSectionOpen,
   videosByCategory,

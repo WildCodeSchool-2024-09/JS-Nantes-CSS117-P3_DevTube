@@ -1,8 +1,4 @@
-import type { Video } from "../../types/video";
-
-interface InfoVideoToUpdateProps {
-  videoToUpdate: Video | undefined;
-}
+import type { InfoVideoToUpdateProps } from "../../types/InfoVideoToUpdateProps";
 
 export default function InfoVideoToUpdate({
   videoToUpdate,
