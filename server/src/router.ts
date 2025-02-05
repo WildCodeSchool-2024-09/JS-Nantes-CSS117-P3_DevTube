@@ -30,6 +30,11 @@ router.get("/api/videos/:id", videoActions.read);
 router.get("/api/verify-token", authActions.checkIsValidToken);
 router.get("/api/category/:id", categoryActions.read);
 router.get("/api/download/users", userActions.getUserCsvFile);
+
+import testimonialsAction from "./modules/Testimonials/testimonialsAction";
+router.post("/api/testimonial", testimonialsAction.add);
+router.get("/api/testimonial", testimonialsAction.browse);
+
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);
