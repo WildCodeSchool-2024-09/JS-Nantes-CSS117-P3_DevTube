@@ -6,6 +6,7 @@ import FilesVideo from "./FilesVideo";
 import InfoVideoToUpdate from "./InfoVideoToUpdate";
 import SearchVideoByCategory from "./SearchVideoByCategory";
 import VideosSectionByCategory from "./VideosSectionByCategory";
+import { isButtonElement } from "react-router-dom/dist/dom";
 
 export default function FormVideoAdmin() {
   const { notifyError, notifySuccess } = useToast();
@@ -13,6 +14,8 @@ export default function FormVideoAdmin() {
   const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
   const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false);
   const [videoToUpdate, setVideoToUpdate] = useState<Video>();
+  const [isUpdateChoiceOpen, setisUpdateChoiceOpen] = useState<boolean>(false);
+  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
 
   const handleUpdateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -111,6 +114,13 @@ export default function FormVideoAdmin() {
     }
   };
 
+  const returnClick = () => {
+    setSearchBarOpen(!isSearchBarOpen);
+    setVideosSectionOpen(false);
+    setisUpdateChoiceOpen(!isUpdateChoiceOpen);
+    setInfoVideoOpen(!isInfoVideoOpen);
+  };
+
   return (
     <section className="video-manager-wrapper">
       <h2 className="title-video-manager">Video manager</h2>
@@ -120,7 +130,16 @@ export default function FormVideoAdmin() {
         setVideosByCategory={setVideosByCategory}
         isInfoVideoOpen={isInfoVideoOpen}
         setInfoVideoOpen={setInfoVideoOpen}
+        isUpdateChoiceOpen={isUpdateChoiceOpen}
+        setisUpdateChoiceOpen={setisUpdateChoiceOpen}
+        isSearchBarOpen={isSearchBarOpen}
+        setSearchBarOpen={setSearchBarOpen}
       />
+      {/* {isVideosSectionOpen && (
+        <button type="button" className="standard-button" onClick={returnClick}>
+          Return
+        </button>
+      )} */}
       <form onSubmit={handleUpdateVideo}>
         <VideosSectionByCategory
           isVideosSectionOpen={isVideosSectionOpen}
@@ -146,8 +165,8 @@ export default function FormVideoAdmin() {
             </button>
             <button
               type="button"
-              // onClick={handleDeleteVideo}
-              className="btntTtest standard-button"
+              className="standard-button"
+              onClick={returnClick}
             >
               Return
             </button>

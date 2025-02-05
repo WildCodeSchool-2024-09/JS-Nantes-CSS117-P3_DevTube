@@ -8,6 +8,10 @@ interface SearchVideoByCategoryProps {
   setVideosSectionOpen: (value: boolean) => void;
   isInfoVideoOpen: boolean;
   setInfoVideoOpen: (value: boolean) => void;
+  isUpdateChoiceOpen: boolean;
+  setisUpdateChoiceOpen: (value: boolean) => void;
+  setSearchBarOpen: (value: boolean) => void;
+  isSearchBarOpen: boolean;
 }
 
 export default function SearchVideoByCategory({
@@ -16,9 +20,12 @@ export default function SearchVideoByCategory({
   setVideosByCategory,
   isInfoVideoOpen,
   setInfoVideoOpen,
+  isUpdateChoiceOpen,
+  setisUpdateChoiceOpen,
+  setSearchBarOpen,
+  isSearchBarOpen,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
-  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
 
   useEffect(() => {
@@ -44,10 +51,14 @@ export default function SearchVideoByCategory({
     }
   }
 
+  const updateChoiceClick = () => {
+    setSearchBarOpen(!isSearchBarOpen);
+    setisUpdateChoiceOpen(!isUpdateChoiceOpen);
+    setVideosSectionOpen(!isVideosSectionOpen);
+  };
+
   const handleClickCategory = (id: number) => {
-    isVideosSectionOpen
-      ? setVideosSectionOpen(false)
-      : setVideosSectionOpen(true);
+    setVideosSectionOpen(!isVideosSectionOpen);
     setIdCategory(id);
     isInfoVideoOpen && setInfoVideoOpen(!isInfoVideoOpen);
   };
@@ -55,13 +66,15 @@ export default function SearchVideoByCategory({
   return (
     <form>
       {/* className="form-admin-wrapper" */}
-      <button
-        type="button"
-        onClick={() => setSearchBarOpen(!isSearchBarOpen)}
-        className="admin-link"
-      >
-        {isSearchBarOpen ? "Return" : "Update or Delete"}
-      </button>
+      {!isUpdateChoiceOpen && (
+        <button
+          type="button"
+          onClick={updateChoiceClick}
+          className="admin-link"
+        >
+          "Update or Delete"
+        </button>
+      )}
 
       <fieldset className={isSearchBarOpen ? "" : "hidden"}>
         <label htmlFor="category_id">
