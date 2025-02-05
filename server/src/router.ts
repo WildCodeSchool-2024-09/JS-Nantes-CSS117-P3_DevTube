@@ -33,12 +33,13 @@ router.get("/api/category/:id", categoryActions.read);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 router.get("/api/download/users", userActions.getUserCsvFile);
 
+router.delete("/api/videos/:id", videoActions.remove);
+router.get("/api/download/users", userActions.getUserCsvFile);
 router.use(authActions.verifyToken);
 
 router.delete("/api/users/", userActions.remove);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
-router.delete("/api/videos/:id", videoActions.remove);
 
 /* ************************************************************************* */
 
