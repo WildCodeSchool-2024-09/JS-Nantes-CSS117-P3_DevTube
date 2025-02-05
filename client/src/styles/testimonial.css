@@ -1,3 +1,24 @@
+.form-testimonial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.info-personnel {
+  width: 500px;
+  height: 50px;
+  margin: 5px 0 10px 0;
+  border-radius: 5px;
+}
+.comment-user {
+  width: 500px;
+  height: 200px;
+  margin: 5px 0 10px 0;
+  border-radius: 5px;
+}
+.form-testimonial label {
+  display: block;
+}
+
 .add-testimonial-btn {
   background: linear-gradient(to right, #fc8f70, #fd5868);
   outline: none;
