@@ -43,8 +43,6 @@ export default function Login() {
         notifySuccess("You are logged !");
         setAuth(true);
         login(token, user);
-
-        // localStorage.setItem("token", token);
         navigate("/");
       }
     } catch (err) {

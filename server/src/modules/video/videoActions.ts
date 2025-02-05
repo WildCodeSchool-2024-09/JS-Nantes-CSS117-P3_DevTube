@@ -9,7 +9,6 @@ const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all videos
     const videos = await videoRepository.readAll();
-
     // Respond with the videos in JSON format
     res.json(videos);
   } catch (err) {

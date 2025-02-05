@@ -11,6 +11,7 @@ export default function AuthProvider({ children }: Children) {
 
   useEffect(() => {
     const currentToken = localStorage.getItem("token");
+
     if (currentToken) {
       fetch(`${import.meta.env.VITE_API_URL}/api/verify-token`, {
         headers: {
@@ -18,7 +19,6 @@ export default function AuthProvider({ children }: Children) {
         },
       })
         .then((response) => {
-          console.warn(response.ok);
           setAuth(response.ok); // return a boolean true or false 200
           return response.json();
         })
@@ -36,6 +36,7 @@ export default function AuthProvider({ children }: Children) {
 
   const logout = () => {
     setAuth(false);
+    setUser(null);
     localStorage.removeItem("token");
   };
 
