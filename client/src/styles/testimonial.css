@@ -6,8 +6,7 @@
 .info-personnel {
   width: 500px;
   height: 50px;
-  margin-bottom: 10px;
-  margin-top: 5px;
+  margin: 5px 0 10px 0;
   border-radius: 5px;
 }
 .comment-user {

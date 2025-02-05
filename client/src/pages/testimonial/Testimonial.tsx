@@ -7,17 +7,9 @@ export default function Testimonials() {
   const { notifySuccess, notifyError } = useToast();
   const [showModal, setShowModal] = useState(false);
   const [testimonialText, setTestimonialText] = useState("");
-  const [user] = useState({ id: 1, is: "user_1" });
+  const user = { id: 1, is: "user_1" };
   const [testimonials, setTestimonials] = useState<testimonialText[]>([]);
 
-  interface testimonialText {
-    email: string;
-    text_testimonial: string;
-    firstname: string;
-    lastname: string;
-    level: number;
-    profil_img: string;
-  }
   const handleAddTestimonialClick = () => {
     setShowModal(!showModal);
   };
@@ -75,8 +67,7 @@ export default function Testimonials() {
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/api/testimonial`)
       .then((response) => response.json())
-      .then((data) => setTestimonials(data))
-      .then((data) => console.warn(data));
+      .then((data) => setTestimonials(data));
   }, []);
 
   return (
