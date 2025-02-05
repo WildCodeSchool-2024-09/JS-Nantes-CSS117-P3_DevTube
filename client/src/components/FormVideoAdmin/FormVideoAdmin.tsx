@@ -2,11 +2,11 @@ import { useState } from "react";
 import "../../styles/FormVideoManager.css";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
+import CategoryCreation from "./CategoryCreation";
 import FilesVideo from "./FilesVideo";
 import InfoVideoToUpdate from "./InfoVideoToUpdate";
 import SearchVideoByCategory from "./SearchVideoByCategory";
 import VideosSectionByCategory from "./VideosSectionByCategory";
-import CategoryCreation from "./CategoryCreation";
 
 export default function FormVideoAdmin() {
   const { notifyError, notifySuccess } = useToast();
