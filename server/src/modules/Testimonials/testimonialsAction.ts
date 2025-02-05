@@ -5,7 +5,7 @@ const add: RequestHandler = async (req, res, next) => {
   try {
     const userId: number = req.body.user_id;
     const newTestimonial = {
-      user_id: userId, // Assurez-vous que l'ID de l'utilisateur est bien envoyé
+      user_id: userId,
       text_testimonial: req.body.text_testimonial,
     };
 
@@ -21,12 +21,12 @@ const browse: RequestHandler = async (req, res, next) => {
     const testimonialy = await TestimonialsRepository.readAll();
 
     if (!testimonialy || testimonialy.length === 0) {
-      res.sendStatus(404); // No testimonials found
+      res.sendStatus(404);
     } else {
-      res.json(testimonialy); // Return testimonials
+      res.json(testimonialy);
     }
   } catch (err) {
-    next(err); // Pass any error to the next middleware
+    next(err);
   }
 };
 

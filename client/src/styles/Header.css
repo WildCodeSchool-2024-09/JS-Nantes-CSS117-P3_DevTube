@@ -113,6 +113,11 @@
   display: none;
 }
 
+.btn-logout {
+  color: var(--text-color);
+  padding: 10px;
+}
+
 @media screen and (min-width: 990px) {
   .section-nav-container {
     display: flex;

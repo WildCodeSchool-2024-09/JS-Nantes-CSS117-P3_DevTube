@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
+import useAuth from "../../utils/useAuth";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -15,6 +17,7 @@ export default function Login() {
     const data = Object.fromEntries(formData.entries());
 
     try {
+      // Ask for a token when I log in
       const response = await fetch(
         `${import.meta.env.VITE_API_URL}/api/users/login`,
         {
@@ -30,6 +33,7 @@ export default function Login() {
 
       if (token) {
         notifySuccess("You are logged !");
+        setAuth(true);
 
         localStorage.setItem("token", token);
         navigate("/");

@@ -54,7 +54,26 @@ const login: RequestHandler = async (req, res, next) => {
   }
 };
 
-// Vérification du token
+// Helper to validate a token -> Fabrice tu peux l'utiliser plus bas ;-)
+const getIsTokenValid = (token: string) => {
+  try {
+    const secretKey = process.env.APP_SECRET;
+
+    if (!secretKey) {
+      throw new Error("A secret key must be provided");
+    }
+    const verifiedToken = jwt.verify(token, secretKey);
+
+    if (verifiedToken) {
+      return true;
+    }
+    return false;
+  } catch (err) {
+    return false;
+  }
+};
+
+// Vérification du token => middleware
 const verifyToken: RequestHandler = async (req, res, next) => {
   try {
     const authorization = req.get("Authorization");
@@ -72,7 +91,6 @@ const verifyToken: RequestHandler = async (req, res, next) => {
 
       throw new Error("Bearer must be provided");
     }
-
     // Vérification de la secretKey
     const secretKey = process.env.APP_SECRET;
 
@@ -80,11 +98,46 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       throw new Error("A secret key must be provided");
     }
 
-    jwt.verify(token, secretKey);
-
     next();
+  } catch (err) {
+    console.error(err);
+    res.status(400).send(err);
+  }
+};
+
+// Verify token validity => not middleware : route for validate token at app first load
+// TODO : factorize common code in authActions
+const checkIsValidToken: RequestHandler = async (req, res, next) => {
+  try {
+    const authorization = req.get("Authorization");
+
+    if (!authorization) {
+      // Récupération du header Authorization de la requête
+      throw new Error("Authorization header must be provided");
+    }
+
+    // Vérification si le mot Bearer est présent dans la requête
+    const [type, token] = authorization.split(" ");
+
+    if (type !== "Bearer") {
+      // Spliter authorization
+
+      throw new Error("Bearer must be provided");
+    }
+
+    const isTokenValid = getIsTokenValid(token);
+
+    if (isTokenValid) {
+      res.status(200).send("Token verified");
+    }
   } catch (err) {
     res.status(400).send(err);
   }
 };
-export default { hashPassword, login, verifyToken };
+export default {
+  hashPassword,
+  login,
+  verifyToken,
+  checkIsValidToken,
+  getIsTokenValid,
+};

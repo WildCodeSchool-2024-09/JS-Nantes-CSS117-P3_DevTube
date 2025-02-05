@@ -50,7 +50,7 @@ CREATE TABLE favorite (
 
 INSERT INTO user (firstname, lastname, email, password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
-  ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$qDb/HRPl3P9XHHMguFOQhhLLEcIfUCkjEBsxe27q2kI", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
+  ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$SVpXMEx3UjJ3UmhZZEhwMg$Gfc7g89RStUbXDw5Ij7g+w", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
   ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$YJpDsIpx9qrGHnMCO/o0QLXiVrFR5HxffhLL3eRz8W0", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
   ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$XludgNxFUX2Xh/wtwJampP981YUfrmXND1RZlBylnpE", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
@@ -103,7 +103,7 @@ VALUES
   ("Favorites 💙 2", "6", "/assets/videos/14-react-fav-2.mp4", "/assets/images/videoPreviewImages/14-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, false, "2025-01-23", true, false),
   ("Favorites 💜 3", "15", "/assets/videos/15-react-fav-3.mp4", "/assets/images/videoPreviewImages/15-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, false, "2025-01-23", true, false),
   ("Favorites 💚 4", "14", "/assets/videos/16-react-fav-4.mp4", "/assets/images/videoPreviewImages/16-react.png", "Rend la gestion des favoris plus facile grâce à React avec Nicolas 🐨!", 6, true, "2025-01-23", false, false),
-  ("BDD trainy", "10", "/assets/videos/train-bdd.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi aux bases de données avec Nicolas 🐨!", 8, true, "2025-01-23", false, false),
+  ("BDD trainy", "10", "/assets/videos/train-bdd.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi aux bases de données avec Nicolas 🐨!", 8, false, "2025-01-23", false, false),
   ("Express trainy 1", "8", "/assets/videos/train-express-1.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("Express trainy 2", "8", "/assets/videos/train-express-2.mp4", "/assets/images/videoPreviewImages/2-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("Express trainy 3", "2", "/assets/videos/train-express-3.mp4", "/assets/images/videoPreviewImages/3-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false)

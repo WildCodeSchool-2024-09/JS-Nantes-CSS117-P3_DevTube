@@ -1,22 +1,95 @@
+import { useEffect, useState } from "react";
+import "../../styles/FormVideoManager.css";
+import type { Video } from "../../types/video";
+import useToast from "../../utils/useToastify";
+import VideoCard from "../VideoCard/VideoCard";
+
 export default function FormVideoAdmin() {
+  const { notifyError } = useToast();
+  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
+  const [idCategory, setIdCategory] = useState<number>();
+  const [videosByCategory, setVideosByCategory] = useState<Video[]>();
+  // const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (idCategory) {
+      const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
+      recoverInfoVideos(urlForVideos);
+    }
+  }, [idCategory]);
+
+  async function recoverInfoVideos(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setVideosByCategory(datas);
+    } catch (err) {
+      notifyError("You are log out !");
+    }
+  }
+
   return (
-    <>
-      <form className="form-admin-wrapper form-admin">
-        <fieldset>
-          <legend>Video manager</legend>
+    <div className="video-manager-wrapper">
+      <form className="form-admin-wrapper ">
+        <h2>Video manager</h2>
+        <button
+          type="button"
+          onClick={() => setSearchBarOpen(!isSearchBarOpen)}
+          className="btntTtest standard-button"
+        >
+          {isSearchBarOpen
+            ? "Hide search bar"
+            : "I want to update or delete a video"}
+        </button>
 
-          <label htmlFor="search-user-by-email">Search a video by name</label>
-          <input
-            className="search-admin"
-            type="search"
-            id="search-user-by-email"
-            name="search-user-by-email"
-            placeholder="Type the title of the video."
-            // onChange={handleSearchOnChange}
-          />
+        <fieldset className={isSearchBarOpen ? "" : "hidden"}>
+          <label htmlFor="category-select">
+            Choose a category language of videos:
+          </label>
+          <select
+            name="categories"
+            id="category-select"
+            onChange={(event) => setIdCategory(Number(event.target.value))}
+          >
+            <option value="">
+              --Please choose a category language of videos--
+            </option>
+            <option value="1">HTML</option>
+            <option value="2">CSS</option>
+            <option value="3">Algo</option>
+            <option value="4">Javascript</option>
+            <option value="5">Node.js</option>
+            <option value="6">REACT</option>
+            <option value="7">github</option>
+            <option value="8">SQL</option>
+            <option value="9">EXPRESS</option>
+          </select>
         </fieldset>
-
-        <fieldset>
+        <section className={isSearchBarOpen ? "" : "hidden"}>
+          {videosByCategory?.map((video) => (
+            <button
+              key={video.id}
+              type="button"
+              data-id={video.id}
+              onClick={() => setSearchBarOpen(!isSearchBarOpen)}
+            >
+              <VideoCard
+                key={video.id}
+                title={video.name}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
+                isFreemium={video.is_freemium}
+                duration={video.duration}
+              />
+            </button>
+          ))}
+        </section>
+        {/* <fieldset>
           <legend>Main information video</legend>
           <label htmlFor="title">Title</label>
           <input
@@ -110,7 +183,7 @@ export default function FormVideoAdmin() {
           />
         </fieldset> */}
 
-        <section className="admin-btn-wrapper">
+        {/* <section className="admin-btn-wrapper">
           <button
             type="button"
             // onClick={handleUpdateUser}
@@ -132,8 +205,8 @@ export default function FormVideoAdmin() {
           >
             Delete
           </button>
-        </section>
+        </section> */}
       </form>
-    </>
+    </div>
   );
 }
