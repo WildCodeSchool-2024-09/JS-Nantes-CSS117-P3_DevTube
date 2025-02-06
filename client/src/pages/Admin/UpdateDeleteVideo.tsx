@@ -1,5 +1,7 @@
 // import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
 
+// import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
+
 export default function UpdateDeleteVideo() {
   return (
     <>
@@ -7,8 +9,7 @@ export default function UpdateDeleteVideo() {
         <h2 className="title-video-manager">
           Video manager - Update or Delete a video
         </h2>
-        {/* <SearchVideoByCategory 
-        /> */}
+        {/* <SearchVideoByCategory /> */}
       </section>
     </>
   );

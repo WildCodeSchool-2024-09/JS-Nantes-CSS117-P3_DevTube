@@ -34,19 +34,22 @@ export const router = createBrowserRouter([
       {
         path: "/admin-video-manager",
         element: <AdminVideoManager />,
+        children: [
+          {
+            path: "update-delete-video",
+            element: <UpdateDeleteVideo />,
+          },
+          {
+            path: "add-video",
+            element: <AddVideo />,
+          },
+          {
+            path: "create-category",
+            element: <CreateCategory />,
+          },
+        ],
       },
-      {
-        path: "/update-delete-video",
-        element: <UpdateDeleteVideo />,
-      },
-      {
-        path: "/add-video",
-        element: <AddVideo />,
-      },
-      {
-        path: "/create-category",
-        element: <CreateCategory />,
-      },
+
       {
         path: "/",
         element: <HomePage />,

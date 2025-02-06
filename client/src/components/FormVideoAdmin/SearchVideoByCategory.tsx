@@ -6,19 +6,20 @@ export default function SearchVideoByCategory({
   isVideosSectionOpen,
   setVideosSectionOpen,
   setVideosByCategory,
-  isInfoVideoOpen,
-  setInfoVideoOpen,
+  // isInfoVideoOpen,
+  // setInfoVideoOpen,
   isUpdateChoiceOpen,
   setisUpdateChoiceOpen,
   setSearchBarOpen,
   isSearchBarOpen,
-  isCategoryCreationSectionOpen,
+  // isCategoryCreationSectionOpen,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
   const [idCategory, setIdCategory] = useState<number>();
   const [categories, setCategories] = useState<Category[]>([]);
 
   useEffect(() => {
+    // console.log(idCategory);
     if (idCategory) {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
       recoverInfoVideos(urlForVideos);
@@ -69,24 +70,12 @@ export default function SearchVideoByCategory({
   };
 
   const handleClickCategory = (id: number) => {
-    setVideosSectionOpen(!isVideosSectionOpen);
     setIdCategory(id);
-    isInfoVideoOpen && setInfoVideoOpen(!isInfoVideoOpen);
   };
 
   return (
     <form>
-      {!isUpdateChoiceOpen && !isCategoryCreationSectionOpen && (
-        <button
-          type="button"
-          onClick={updateChoiceClick}
-          className="admin-link"
-        >
-          "Update or Delete"
-        </button>
-      )}
-
-      <fieldset className={isSearchBarOpen ? "" : "hidden"}>
+      <fieldset>
         <label htmlFor="category_id">
           Choose a category language of videos:
         </label>
@@ -99,6 +88,8 @@ export default function SearchVideoByCategory({
             --Please choose a category language of videos--
           </option>
           {categories.map((category) => {
+            // console.log({ categories });
+            // console.log(category.id);
             return (
               <option key={category.id} value={category.id}>
                 {category.name}
