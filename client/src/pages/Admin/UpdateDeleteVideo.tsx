@@ -3,9 +3,38 @@ import FilesVideo from "../../components/FormVideoAdmin/FilesVideo";
 import InfoVideoToUpdate from "../../components/FormVideoAdmin/InfoVideoToUpdate";
 import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
 import type { OutletContextVideoManagerProps } from "../../types/outletContextVideoManager";
+import useToast from "../../utils/useToastify";
 
 export default function UpdateDeleteVideo() {
   const outletContext = useOutletContext<OutletContextVideoManagerProps>();
+  const { notifyError, notifySuccess } = useToast();
+
+  const handleDeleteVideo = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/videos/${outletContext.videoToUpdate?.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+        },
+      );
+
+      if (!response.ok) {
+        throw new Error("An unknown error occurred.");
+      }
+      notifySuccess(
+        `The video ${outletContext.videoToUpdate?.name} has been removed.`,
+      );
+      outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
+      outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
+    } catch (err) {
+      notifyError((err as Error).message);
+    }
+  };
 
   return (
     <>
@@ -23,7 +52,7 @@ export default function UpdateDeleteVideo() {
             </button>
             <button
               type="button"
-              // onClick={handleDeleteVideo}
+              onClick={handleDeleteVideo}
               className="btntTtest standard-button"
             >
               Delete
