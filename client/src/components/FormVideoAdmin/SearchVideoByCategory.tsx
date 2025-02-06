@@ -8,6 +8,7 @@ interface SearchVideoByCategoryProps {
   setVideosSectionOpen: (value: boolean) => void;
   isInfoVideoOpen: boolean;
   setInfoVideoOpen: (value: boolean) => void;
+  shouldRefetch?: boolean;
 }
 
 export default function SearchVideoByCategory({
@@ -16,17 +17,18 @@ export default function SearchVideoByCategory({
   setVideosByCategory,
   isInfoVideoOpen,
   setInfoVideoOpen,
+  shouldRefetch,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
 
   useEffect(() => {
-    if (idCategory) {
+    if (idCategory || shouldRefetch) {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
       recoverInfoVideos(urlForVideos);
     }
-  }, [idCategory]);
+  }, [idCategory, shouldRefetch]);
 
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");

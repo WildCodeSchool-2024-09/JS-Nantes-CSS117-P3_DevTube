@@ -1,11 +1,14 @@
-import type { InfoVideoToUpdateProps } from "../../types/InfoVideoToUpdateProps";
+import type { Video } from "../../types/video";
+
+interface InfoVideoToUpdateProps {
+  videoToUpdate: Video | undefined;
+}
 
 export default function InfoVideoToUpdate({
-  isInfoVideoOpen,
   videoToUpdate,
 }: InfoVideoToUpdateProps) {
   return (
-    <section className={isInfoVideoOpen ? "" : "hidden"}>
+    <section>
       <fieldset>
         <legend>Main information video</legend>
         <label htmlFor="name">Title</label>
@@ -64,7 +67,7 @@ export default function InfoVideoToUpdate({
             className="admin-check-box"
           />
         </label>
-        <label htmlFor="is_popular" className="s_popular-label-wrapper">
+        <label htmlFor="is_popular" className="is_popular-label-wrapper">
           Add in popular carousel
           <input
             type="checkbox"
@@ -74,15 +77,15 @@ export default function InfoVideoToUpdate({
             className="admin-check-box"
           />
         </label>
-        <label id="category-title" htmlFor="category-title">
+        <label id="category-title" htmlFor="category_id">
           Title of the catergory
         </label>
         <input
           defaultValue={videoToUpdate?.category_id}
           type="text"
-          name="category-id"
+          name="category_id"
+          id="category_id"
           readOnly
-          aria-labelledby="category-id"
           required
         />
       </fieldset>

@@ -17,17 +17,85 @@ export default function FormVideoAdmin() {
   const handleUpdateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
+    // formData = Ce qu'il y a dans le formulaire au moment de la soumision ce celui-ci
     const formData = new FormData(e.target as HTMLFormElement);
+    // on récupère la formData qu'on transforme en Objet "data" pour pouvoir lire ses propriétés
     const data = Object.fromEntries(formData.entries());
-    const newVideo = {
-      ...data,
-      preview_image: data.preview_image
-        ? data.preview_image
-        : videoToUpdate?.preview_image,
-      is_heroSlide: data.is_heroSlide ? 1 : 0,
-      is_freemium: data.is_freemium ? 1 : 0,
-      is_popular: data.is_popular ? 1 : 0,
-    };
+
+    // On définit une varibale previewImageToUpload pour l'instant vide
+    // celle-ci sera "remplie" avec le résultat de l'opération suivante
+    // qui consite à:
+    // Si aucune image est présente dans le formulaire, on vient créer un fichier "File" à partir de l'image
+    // par défaut
+    // sinon on laisse l'image uploadée
+    let previewImageToUpload: File | string = "";
+    let thumbnailImageToUpload: File | string = "";
+
+    if (
+      data.preview_image instanceof File &&
+      data?.preview_image?.name &&
+      data?.preview_image?.size > 0
+    ) {
+      // Nouvelle image sélectionnée
+      previewImageToUpload = data.preview_image;
+    } else if (videoToUpdate?.preview_image) {
+      // On créé un File a partir du chemin de l'image :
+      // (on la charge avec fetch puis on prend le blob qui est retourné pour le transformer en File)
+      const currentPreviewImageFileName = videoToUpdate?.preview_image.split(
+        "/",
+      )[videoToUpdate?.preview_image.split("/").length - 1] as string;
+
+      const currentPreviewImageAsAFile = await fetch(
+        `${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`,
+      ).then(async (response) => {
+        const blob = await response.blob();
+
+        const file = new File([blob], currentPreviewImageFileName);
+        return file;
+      });
+
+      // Image existante conservée
+      previewImageToUpload = currentPreviewImageAsAFile;
+    }
+
+    if (
+      data.thumbnail instanceof File &&
+      data?.thumbnail?.name &&
+      data?.thumbnail?.size > 0
+    ) {
+      // Nouvelle image sélectionnée
+      thumbnailImageToUpload = data.thumbnail;
+    } else if (videoToUpdate?.thumbnail) {
+      // On créé un File a partir du chemin de l'image :
+      // (on la charge avec fetch puis on prend le blob qui est retourné pour le transformer en File)
+      const currentPreviewImageFileName = videoToUpdate?.preview_image.split(
+        "/",
+      )[videoToUpdate?.thumbnail.split("/").length - 1] as string;
+
+      const currentPreviewImageAsAFile = await fetch(
+        `${import.meta.env.VITE_API_URL}${videoToUpdate?.thumbnail}`,
+      ).then(async (response) => {
+        const blob = await response.blob();
+
+        const file = new File([blob], currentPreviewImageFileName);
+        return file;
+      });
+
+      // On conserve l'image existante convertie en fichier
+      thumbnailImageToUpload = currentPreviewImageAsAFile;
+    }
+
+    // On utilise formData.set pour remplacer la valeur
+    formData.set("preview_image", previewImageToUpload);
+    formData.set("thumbnail", thumbnailImageToUpload);
+    formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
+    formData.set("is_freemium", data.is_freemium ? "1" : "0");
+    formData.set("is_popular", data.is_popular ? "1" : "0");
+    // transformation de la date ISO en date YYYY-MM-DD
+    formData.set(
+      "added_date",
+      new Date(data.added_date as string).toISOString().substring(0, 10),
+    );
 
     try {
       const token = localStorage.getItem("token");
@@ -36,10 +104,9 @@ export default function FormVideoAdmin() {
         {
           method: "PUT",
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(newVideo),
+          body: formData,
         },
       );
       if (!response.ok) {
@@ -87,6 +154,7 @@ export default function FormVideoAdmin() {
         setVideosByCategory={setVideosByCategory}
         isInfoVideoOpen={isInfoVideoOpen}
         setInfoVideoOpen={setInfoVideoOpen}
+        shouldRefetch={isInfoVideoOpen}
       />
       <form onSubmit={handleUpdateVideo}>
         <VideosSectionByCategory
@@ -97,23 +165,22 @@ export default function FormVideoAdmin() {
           setInfoVideoOpen={setInfoVideoOpen}
           isInfoVideoOpen={isInfoVideoOpen}
         />
-        <InfoVideoToUpdate
-          isInfoVideoOpen={isInfoVideoOpen}
-          videoToUpdate={videoToUpdate}
-        />
-        <FilesVideo videoToUpdate={videoToUpdate} />
-        <section>
-          <button type="submit" className="btntTtest standard-button">
-            Update
-          </button>
-          <button
-            type="button"
-            onClick={handleDeleteVideo}
-            className="btntTtest standard-button"
-          >
-            Delete
-          </button>
-        </section>
+        <div className={isInfoVideoOpen ? "" : "hidden"}>
+          <InfoVideoToUpdate videoToUpdate={videoToUpdate} />
+          <FilesVideo videoToUpdate={videoToUpdate} />
+          <section>
+            <button type="submit" className="btntTtest standard-button">
+              Update
+            </button>
+            <button
+              type="button"
+              onClick={handleDeleteVideo}
+              className="btntTtest standard-button"
+            >
+              Delete
+            </button>
+          </section>
+        </div>
       </form>
     </section>
   );

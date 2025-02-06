@@ -8,7 +8,7 @@ class CategoryRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific video by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select id, name, duration, description, category_id, preview_image, is_freemium, added_date, is_heroSlide, is_popular from video where category_id = ?",
+      "select id, name, duration, thumbnail, description, category_id, preview_image, is_freemium, added_date, is_heroSlide, is_popular from video where category_id = ?",
       [id],
     );
 
