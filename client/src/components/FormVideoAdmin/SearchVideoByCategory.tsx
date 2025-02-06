@@ -115,22 +115,26 @@ export default function SearchVideoByCategory() {
         </fieldset>
       </form>
       <section className={outletContext.isVideosSectionOpen ? "" : "hidden"}>
-        {videosByCategory?.map((video) => (
-          <button
-            key={video.id}
-            type="button"
-            data-id={video.id}
-            onClick={(event) => handleClickVideo(event)}
-          >
-            <VideoCard
+        {videosByCategory?.length ? (
+          videosByCategory?.map((video) => (
+            <button
               key={video.id}
-              title={video.name}
-              thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
-              isFreemium={video.is_freemium}
-              duration={video.duration}
-            />
-          </button>
-        ))}
+              type="button"
+              data-id={video.id}
+              onClick={(event) => handleClickVideo(event)}
+            >
+              <VideoCard
+                key={video.id}
+                title={video.name}
+                thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
+                isFreemium={video.is_freemium}
+                duration={video.duration}
+              />
+            </button>
+          ))
+        ) : (
+          <p>No videos in this category yet</p>
+        )}
       </section>
     </>
   );
