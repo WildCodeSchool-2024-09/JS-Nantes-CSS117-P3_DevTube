@@ -1,6 +1,9 @@
+import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import type { Video } from "../../types/video";
 
 export default function AdminVideoManager() {
+  const [videoToUpdate, setVideoToUpdate] = useState<Video>();
   return (
     <section className="video-manager-page">
       <NavLink to={"./update-delete-video"} className="admin-link">
@@ -13,7 +16,7 @@ export default function AdminVideoManager() {
         Create a category
       </NavLink>
 
-      <Outlet />
+      <Outlet context={{ videoToUpdate, setVideoToUpdate }} />
     </section>
   );
 }
