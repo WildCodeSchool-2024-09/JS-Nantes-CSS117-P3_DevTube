@@ -56,12 +56,6 @@ export default function SearchVideoByCategory() {
     }
   }
 
-  // const updateChoiceClick = () => {
-  //   setSearchBarOpen(!isSearchBarOpen);
-  //   setisUpdateChoiceOpen(!isUpdateChoiceOpen);
-  //   setVideosSectionOpen(!isVideosSectionOpen);
-  // };
-
   const handleClickCategory = (id: number) => {
     setIdCategory(id);
     if (!outletContext.isVideosSectionOpen) {

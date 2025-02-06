@@ -1,4 +1,5 @@
 import type { Video } from "./video";
-interface InfoVideoToUpdateProps {
+
+interface FilesVideoProps {
   videoToUpdate: Video | undefined;
 }
