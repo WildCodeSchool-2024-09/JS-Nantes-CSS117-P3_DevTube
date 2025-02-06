@@ -1,9 +1,13 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import type { Video } from "../../types/video";
+import "../../styles/FormVideoManager.css";
 
 export default function AdminVideoManager() {
   const [videoToUpdate, setVideoToUpdate] = useState<Video>();
+  const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false); //Information of a video form
+  const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false); // dysplay or not all videos of the category choiced by the select
+
   return (
     <section className="video-manager-page">
       <NavLink to={"./update-delete-video"} className="admin-link">
@@ -16,7 +20,16 @@ export default function AdminVideoManager() {
         Create a category
       </NavLink>
 
-      <Outlet context={{ videoToUpdate, setVideoToUpdate }} />
+      <Outlet
+        context={{
+          videoToUpdate,
+          setVideoToUpdate,
+          isInfoVideoOpen,
+          setInfoVideoOpen,
+          isVideosSectionOpen,
+          setVideosSectionOpen,
+        }}
+      />
     </section>
   );
 }

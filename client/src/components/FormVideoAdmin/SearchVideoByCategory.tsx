@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import useToast from "../../utils/useToastify";
-import type { Video } from "../../types/video";
-import VideoCard from "../VideoCard/VideoCard";
 import { useOutletContext } from "react-router-dom";
 import type { OutletContextVideoManagerProps } from "../../types/outletContextVideoManager";
+import type { Video } from "../../types/video";
+import useToast from "../../utils/useToastify";
+import VideoCard from "../VideoCard/VideoCard";
 
 export default function SearchVideoByCategory() {
   const { notifyError } = useToast();
@@ -64,6 +64,7 @@ export default function SearchVideoByCategory() {
 
   const handleClickCategory = (id: number) => {
     setIdCategory(id);
+    outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
   };
 
   const handleClickVideo = (
@@ -76,6 +77,8 @@ export default function SearchVideoByCategory() {
         return String(video.id) === idToFind;
       });
       outletContext.setVideoToUpdate(videoToFind);
+      outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
+      outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
     }
   };
 
@@ -106,7 +109,7 @@ export default function SearchVideoByCategory() {
           </select>
         </fieldset>
       </form>
-      <section>
+      <section className={outletContext.isVideosSectionOpen ? "" : "hidden"}>
         {videosByCategory?.map((video) => (
           <button
             key={video.id}
