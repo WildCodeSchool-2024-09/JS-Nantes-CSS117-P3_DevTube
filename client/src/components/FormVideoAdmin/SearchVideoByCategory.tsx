@@ -12,16 +12,17 @@ export default function SearchVideoByCategory({
   setisUpdateChoiceOpen,
   setSearchBarOpen,
   isSearchBarOpen,
+  shouldRefetch,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
   const [idCategory, setIdCategory] = useState<number>();
 
   useEffect(() => {
-    if (idCategory) {
+    if (idCategory || shouldRefetch) {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
       recoverInfoVideos(urlForVideos);
     }
-  }, [idCategory]);
+  }, [idCategory, shouldRefetch]);
 
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");
