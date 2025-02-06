@@ -7,19 +7,17 @@ export default function Admin() {
   return (
     <div className="admin-page">
       <h1 className="title-admin">Administration</h1>
-      <section className="button-admin-wrapper">
-        {!!match && (
-          <>
-            <NavLink className="admin-link" to={"./user-manager"}>
-              User manager
-            </NavLink>
-            <NavLink className="admin-link" to={"./video-manager"}>
-              Video manager
-            </NavLink>
-          </>
-        )}
-        <Outlet />
-      </section>
+      {!!match && (
+        <section className="button-admin-wrapper">
+          <NavLink className="admin-link" to={"./user-manager"}>
+            User manager
+          </NavLink>
+          <NavLink className="admin-link" to={"./video-manager"}>
+            Video manager
+          </NavLink>
+        </section>
+      )}
+      <Outlet />
     </div>
   );
 }

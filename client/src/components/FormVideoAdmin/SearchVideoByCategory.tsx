@@ -64,7 +64,12 @@ export default function SearchVideoByCategory() {
 
   const handleClickCategory = (id: number) => {
     setIdCategory(id);
-    outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
+    if (!outletContext.isVideosSectionOpen) {
+      outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
+    }
+    if (outletContext.isInfoVideoOpen) {
+      outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
+    }
   };
 
   const handleClickVideo = (
