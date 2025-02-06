@@ -10,4 +10,5 @@ export interface SearchVideoByCategoryProps {
   setisUpdateChoiceOpen: (value: boolean) => void;
   setSearchBarOpen: (value: boolean) => void;
   isSearchBarOpen: boolean;
+  shouldRefetch: boolean;
 }
