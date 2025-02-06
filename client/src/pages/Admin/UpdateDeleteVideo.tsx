@@ -1,8 +1,8 @@
-import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
 import { useOutletContext } from "react-router-dom";
-import type { OutletContextVideoManagerProps } from "../../types/outletContextVideoManager";
-import InfoVideoToUpdate from "../../components/FormVideoAdmin/InfoVideoToUpdate";
 import FilesVideo from "../../components/FormVideoAdmin/FilesVideo";
+import InfoVideoToUpdate from "../../components/FormVideoAdmin/InfoVideoToUpdate";
+import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
+import type { OutletContextVideoManagerProps } from "../../types/outletContextVideoManager";
 
 export default function UpdateDeleteVideo() {
   const outletContext = useOutletContext<OutletContextVideoManagerProps>();
