@@ -71,6 +71,4 @@ router.put(
   videoActions.edit,
 );
 
-/* ************************************************************************* */
-
 export default router;
