@@ -1,9 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
-import FormVideoAdmin from "./components/FormVideoAdmin/FormVideoAdmin";
 import About from "./pages/About/About";
+import AddVideo from "./pages/Admin/AddVideo";
 import Admin from "./pages/Admin/Admin";
+import AdminVideoManager from "./pages/Admin/AdminVideoManager";
+import CreateCategory from "./pages/Admin/CreateCategory";
+import UpdateDeleteVideo from "./pages/Admin/UpdateDeleteVideo";
 import Course from "./pages/Course/Course";
 import Freemium from "./pages/Freemium/Freemium";
 import Login from "./pages/Login/Login";
@@ -30,7 +33,19 @@ export const router = createBrowserRouter([
       },
       {
         path: "/admin-video-manager",
-        element: <FormVideoAdmin />,
+        element: <AdminVideoManager />,
+      },
+      {
+        path: "/update-delete-video",
+        element: <UpdateDeleteVideo />,
+      },
+      {
+        path: "/add-video",
+        element: <AddVideo />,
+      },
+      {
+        path: "/create-category",
+        element: <CreateCategory />,
       },
       {
         path: "/",
