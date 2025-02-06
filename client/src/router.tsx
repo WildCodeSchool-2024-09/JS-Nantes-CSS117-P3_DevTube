@@ -26,30 +26,31 @@ export const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
-      },
-      {
-        path: "/admin-user-manager",
-        element: <FormUserAdmin />,
-      },
-      {
-        path: "/admin-video-manager",
-        element: <AdminVideoManager />,
         children: [
           {
-            path: "update-delete-video",
-            element: <UpdateDeleteVideo />,
+            path: "user-manager",
+            element: <FormUserAdmin />,
           },
           {
-            path: "add-video",
-            element: <AddVideo />,
-          },
-          {
-            path: "create-category",
-            element: <CreateCategory />,
+            path: "video-manager",
+            element: <AdminVideoManager />,
+            children: [
+              {
+                path: "update-delete-video",
+                element: <UpdateDeleteVideo />,
+              },
+              {
+                path: "add-video",
+                element: <AddVideo />,
+              },
+              {
+                path: "create-category",
+                element: <CreateCategory />,
+              },
+            ],
           },
         ],
       },
-
       {
         path: "/",
         element: <HomePage />,
