@@ -94,14 +94,6 @@ export default function InfoVideoToUpdate({
           readOnly
           required
         />
-        {/* <label id="newcategory" htmlFor="newcategory">
-      Select a new catergory
-    </label>{" "}
-    <select name="" id="">
-      <option value="">Front-end</option>
-      <option value="">Back-end</option>
-      <option value="">Bases</option>
-    </select> */}
       </fieldset>
     </section>
   );

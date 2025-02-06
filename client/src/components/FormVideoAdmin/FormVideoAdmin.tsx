@@ -103,7 +103,6 @@ export default function FormVideoAdmin() {
       "added_date",
       new Date(data.added_date as string).toISOString().substring(0, 10),
     );
-    // console.log({ data });
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
