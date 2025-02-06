@@ -3,15 +3,15 @@ import type { SearchVideoByCategoryProps } from "../../types/SearchVideoByCatego
 import useToast from "../../utils/useToastify";
 
 export default function SearchVideoByCategory({
-  isVideosSectionOpen,
-  setVideosSectionOpen,
+  // isVideosSectionOpen,
+  // setVideosSectionOpen,
   setVideosByCategory,
   // isInfoVideoOpen,
   // setInfoVideoOpen,
-  isUpdateChoiceOpen,
-  setisUpdateChoiceOpen,
-  setSearchBarOpen,
-  isSearchBarOpen,
+  // isUpdateChoiceOpen,
+  // setisUpdateChoiceOpen,
+  // setSearchBarOpen,
+  // isSearchBarOpen,
   // isCategoryCreationSectionOpen,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
@@ -63,11 +63,11 @@ export default function SearchVideoByCategory({
     }
   }
 
-  const updateChoiceClick = () => {
-    setSearchBarOpen(!isSearchBarOpen);
-    setisUpdateChoiceOpen(!isUpdateChoiceOpen);
-    setVideosSectionOpen(!isVideosSectionOpen);
-  };
+  // const updateChoiceClick = () => {
+  //   setSearchBarOpen(!isSearchBarOpen);
+  //   setisUpdateChoiceOpen(!isUpdateChoiceOpen);
+  //   setVideosSectionOpen(!isVideosSectionOpen);
+  // };
 
   const handleClickCategory = (id: number) => {
     setIdCategory(id);

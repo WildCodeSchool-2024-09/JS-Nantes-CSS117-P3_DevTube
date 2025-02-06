@@ -5,7 +5,6 @@ import categoryRepository from "./categoryRepository";
 
 //Read all categories
 const browse: RequestHandler = async (req, res, next) => {
-  console.warn("hello");
   try {
     // Fetch all categories
     const categories = await categoryRepository.readAll();
