@@ -1,4 +1,4 @@
-import { useOutletContext } from "react-router-dom";
+import { NavLink, useOutletContext } from "react-router-dom";
 import FilesVideo from "../../components/FormVideoAdmin/FilesVideo";
 import InfoVideoToUpdate from "../../components/FormVideoAdmin/InfoVideoToUpdate";
 import SearchVideoByCategory from "../../components/FormVideoAdmin/SearchVideoByCategory";
@@ -28,13 +28,9 @@ export default function UpdateDeleteVideo() {
             >
               Delete
             </button>
-            <button
-              type="button"
-              className="standard-button"
-              // onClick={returnClick}
-            >
+            <NavLink to="/admin/video-manager" className="standard-button">
               Return
-            </button>
+            </NavLink>
           </section>
         </div>
       </section>
