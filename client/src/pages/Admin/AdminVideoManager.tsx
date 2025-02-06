@@ -21,6 +21,9 @@ export default function AdminVideoManager() {
       <NavLink to={"./create-category"} className="admin-link">
         Create a category
       </NavLink>
+      <NavLink to={"/admin"} className="admin-link">
+        Admin menu
+      </NavLink>
 
       <Outlet
         context={{
