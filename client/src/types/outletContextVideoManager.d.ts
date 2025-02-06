@@ -7,4 +7,6 @@ interface OutletContextVideoManagerProps {
   setInfoVideoOpen: (value) => void;
   isVideosSectionOpen: boolean;
   setVideosSectionOpen: (value) => void;
+  needToRefetch: boolean;
+  setNeedToRefetch: (value) => void;
 }

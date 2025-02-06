@@ -13,11 +13,11 @@ export default function SearchVideoByCategory() {
   const outletContext = useOutletContext<OutletContextVideoManagerProps>();
 
   useEffect(() => {
-    if (idCategory) {
+    if (idCategory || outletContext.needToRefetch) {
       const urlForVideos = `${import.meta.env.VITE_API_URL}/api/category/${idCategory}`;
       recoverInfoVideos(urlForVideos);
     }
-  }, [idCategory]);
+  }, [idCategory, outletContext.needToRefetch]);
 
   useEffect(() => {
     const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;

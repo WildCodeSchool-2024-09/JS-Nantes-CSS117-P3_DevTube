@@ -31,6 +31,7 @@ export default function UpdateDeleteVideo() {
       );
       outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
       outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
+      outletContext.setNeedToRefetch(!outletContext.needToRefetch);
     } catch (err) {
       notifyError((err as Error).message);
     }
