@@ -40,3 +40,8 @@
     padding: 1rem;
   }
 }
+.section-my-account-container .standard-button {
+  width: fit-content;
+  margin: 2rem 0 0;
+  padding: 0 .8rem 0;
+}

@@ -23,3 +23,17 @@
   label:not(:first-of-type) {
   margin-top: 1.125rem;
 }
+.close-arrow {
+  --width: 40px;
+  width: var(--width);
+  height: var(--width);
+  font-size: 2rem;
+  margin: 0 0 1rem;
+  color: var(--accent-color-1);
+  border: 2px solid var(--accent-color-1);
+  border-radius: 8px;
+  transition: transform .1s ease-in-out;
+}
+.close-arrow:hover {
+  transform: scale(120%, 120%);
+}

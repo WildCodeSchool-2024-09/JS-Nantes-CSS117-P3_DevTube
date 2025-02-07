@@ -1,15 +1,25 @@
 import "../../styles/ProfilUser.css";
-import { useContext, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
+import type { User } from "../../../../server/src/modules/user/user";
 import UserAccountModal from "../../components/UserAccountModal/UserAccountModal";
 import { AuthContext } from "../../contexts/AuhtProvider";
 
-export default function Subscribe() {
-  const refModal = useRef<HTMLDialogElement>(null);
-
+export default function ProfilUser() {
   const { user } = useContext(AuthContext) ?? {};
+  const [userData, setUserData] = useState<User>(user as User);
+
+  useEffect(() => {
+    setUserData(userData);
+  }, [userData]);
+
+  const refModal = useRef<HTMLDialogElement>(null);
 
   const openModal = () => {
     refModal.current?.showModal();
+  };
+
+  const HandleUpdateUser = (updateUser: User) => {
+    setUserData(updateUser);
   };
 
   return (
@@ -22,7 +32,9 @@ export default function Subscribe() {
           type="text"
           name="firstname"
           id="firstname"
-          value={user?.firstname}
+          key={userData?.firstname}
+          defaultValue={userData?.firstname}
+          readOnly
         />
 
         <label htmlFor="lastname">Last name</label>
@@ -30,18 +42,29 @@ export default function Subscribe() {
           type="text"
           name="lastname"
           id="lastname"
-          value={user?.lastname}
+          key={userData?.lastname}
+          defaultValue={userData?.lastname}
+          readOnly
         />
 
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" id="email" value={user?.email} />
+        <input
+          type="email"
+          name="email"
+          id="email"
+          key={userData?.email}
+          defaultValue={userData?.email}
+          readOnly
+        />
 
         <label htmlFor="github_url">GitHub URL</label>
         <input
           type="text"
           name="github_url"
           id="github_url"
-          value={user?.github_url}
+          key={userData?.github_url}
+          defaultValue={userData?.github_url}
+          readOnly
         />
 
         <label htmlFor="linkedin_url">Linkedin URL</label>
@@ -49,7 +72,9 @@ export default function Subscribe() {
           type="text"
           name="linkedin_url"
           id="linkedin_url"
-          value={user?.linkedin_url}
+          key={userData?.linkedin_url}
+          defaultValue={userData?.linkedin_url}
+          readOnly
         />
 
         <label htmlFor="profil-image">Profile image</label>
@@ -57,16 +82,21 @@ export default function Subscribe() {
           <img
             id="profil-image"
             aria-labelledby="linkedin_url"
-            src={`${import.meta.env.VITE_API_URL}/${user?.profil_img}`}
+            key={userData.profil_img}
+            src={`${import.meta.env.VITE_API_URL}/${userData?.profil_img}`}
             alt="User's photo."
           />
         </section>
 
         <button type="button" className="standard-button" onClick={openModal}>
-          Open modal
+          Click for update your profil
         </button>
       </section>
-      <UserAccountModal ref={refModal} />
+      <UserAccountModal
+        ref={refModal}
+        userData={userData}
+        onSubmit={HandleUpdateUser}
+      />
     </section>
   );
 }

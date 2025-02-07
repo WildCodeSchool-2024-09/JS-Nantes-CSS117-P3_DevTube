@@ -55,6 +55,7 @@ const login: RequestHandler = async (req, res, next) => {
     res.status(202).json({
       token,
       user: {
+        id: user.id,
         firstname: user.firstname,
         lastname: user.lastname,
         email: user.email,

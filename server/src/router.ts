@@ -35,9 +35,9 @@ router.get("/api/download/users", userActions.getUserCsvFile);
 
 router.delete("/api/videos/:id", videoActions.remove);
 router.get("/api/download/users", userActions.getUserCsvFile);
+router.delete("/api/users/", userActions.remove);
 router.use(authActions.verifyToken);
 
-router.delete("/api/users/", userActions.remove);
 router.post("/api/videos", videoActions.add);
 router.put("/api/videos/:id", videoActions.edit);
 
