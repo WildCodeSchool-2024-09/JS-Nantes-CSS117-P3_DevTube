@@ -9,7 +9,7 @@ export default function InfoVideoToUpdate({
 }: InfoVideoToUpdateProps) {
   return (
     <section>
-      <fieldset>
+      <fieldset className="main-info-video-wrapper">
         <legend>Main information video</legend>
         <label htmlFor="name">Title</label>
         <input
@@ -43,20 +43,26 @@ export default function InfoVideoToUpdate({
         <textarea
           defaultValue={videoToUpdate?.description}
           name="description"
+          style={{
+            width: 300,
+            height: 200,
+          }}
           maxLength={255}
           aria-labelledby="description"
           required
         />
-        <label htmlFor="is_heroSlide" className="heroSlide-label-wrapper">
-          Add in hero slider
-          <input
-            type="checkbox"
-            defaultChecked={videoToUpdate?.is_heroSlide === 1}
-            id="is_heroSlide"
-            name="is_heroSlide"
-            className="admin-check-box"
-          />
-        </label>
+        <div className="hero-slider-choice">
+          <label htmlFor="is_heroSlide" className="heroSlide-label-wrapper">
+            Add in hero slider
+            <input
+              type="checkbox"
+              defaultChecked={videoToUpdate?.is_heroSlide === 1}
+              id="is_heroSlide"
+              name="is_heroSlide"
+              className="admin-check-box"
+            />
+          </label>
+        </div>
         <label htmlFor="is_freemium" className="is_freemium-label-wrapper">
           Freemium Video
           <input

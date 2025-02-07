@@ -8,6 +8,11 @@ interface SearchVideoByCategoryProps {
   setVideosSectionOpen: (value: boolean) => void;
   isInfoVideoOpen: boolean;
   setInfoVideoOpen: (value: boolean) => void;
+  isUpdateChoiceOpen: boolean;
+  setisUpdateChoiceOpen: (value: boolean) => void;
+  setSearchBarOpen: (value: boolean) => void;
+  isSearchBarOpen: boolean;
+  isCategoryCreationSectionOpen: boolean;
   shouldRefetch?: boolean;
 }
 
@@ -17,10 +22,14 @@ export default function SearchVideoByCategory({
   setVideosByCategory,
   isInfoVideoOpen,
   setInfoVideoOpen,
+  isUpdateChoiceOpen,
+  setisUpdateChoiceOpen,
+  setSearchBarOpen,
+  isSearchBarOpen,
+  isCategoryCreationSectionOpen,
   shouldRefetch,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
-  const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
   const [idCategory, setIdCategory] = useState<number>();
 
   useEffect(() => {
@@ -46,25 +55,29 @@ export default function SearchVideoByCategory({
     }
   }
 
+  const updateChoiceClick = () => {
+    setSearchBarOpen(!isSearchBarOpen);
+    setisUpdateChoiceOpen(!isUpdateChoiceOpen);
+    setVideosSectionOpen(!isVideosSectionOpen);
+  };
+
   const handleClickCategory = (id: number) => {
-    isVideosSectionOpen
-      ? setVideosSectionOpen(false)
-      : setVideosSectionOpen(true);
+    setVideosSectionOpen(!isVideosSectionOpen);
     setIdCategory(id);
     isInfoVideoOpen && setInfoVideoOpen(!isInfoVideoOpen);
   };
 
   return (
-    <form className="form-admin-wrapper">
-      <button
-        type="button"
-        onClick={() => setSearchBarOpen(!isSearchBarOpen)}
-        className="btntTtest standard-button"
-      >
-        {isSearchBarOpen
-          ? "Hide search bar"
-          : "I want to update or delete a video"}
-      </button>
+    <form>
+      {!isUpdateChoiceOpen && !isCategoryCreationSectionOpen && (
+        <button
+          type="button"
+          onClick={updateChoiceClick}
+          className="admin-link"
+        >
+          "Update or Delete"
+        </button>
+      )}
 
       <fieldset className={isSearchBarOpen ? "" : "hidden"}>
         <label htmlFor="category_id">

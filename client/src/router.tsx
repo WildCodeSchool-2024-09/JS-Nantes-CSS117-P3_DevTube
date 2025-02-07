@@ -1,5 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
+import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
+import FormVideoAdmin from "./components/FormVideoAdmin/FormVideoAdmin";
 import About from "./pages/About/About";
 import Admin from "./pages/Admin/Admin";
 import Course from "./pages/Course/Course";
@@ -21,6 +23,14 @@ export const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+      },
+      {
+        path: "/admin-user-manager",
+        element: <FormUserAdmin />,
+      },
+      {
+        path: "/admin-video-manager",
+        element: <FormVideoAdmin />,
       },
       {
         path: "/",

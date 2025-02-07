@@ -32,7 +32,7 @@ export default function VideosSectionByCategory({
     setInfoVideoOpen(!isInfoVideoOpen);
   };
   return (
-    <section className={isVideosSectionOpen ? "" : "hidden"}>
+    <section className={`videos-list ${isVideosSectionOpen ? "" : "hidden"}`}>
       {videosByCategory?.map((video) => (
         <button
           key={video.id}
