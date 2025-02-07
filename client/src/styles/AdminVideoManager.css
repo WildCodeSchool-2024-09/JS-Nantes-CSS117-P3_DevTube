@@ -1,37 +1,33 @@
-.admin-page {
-  min-height: calc(100vh - 70px - 213px);
-}
-
-.title-admin {
-  text-align: center;
-  padding-top: 30px;
-}
-
-.button-admin-wrapper {
+.video-manager-page {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  gap: 50px;
-  padding: 50px;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.admin-link {
+.link-wrapper {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.return-menu-admin {
+  background: var(--primary-color);
+  border: solid 2px var(--accent-color-1);
   font-size: 16px;
-  background: linear-gradient(
-    to left,
-    var(--accent-color-2),
-    var(--accent-color-1)
-  );
   width: 160px;
   height: 40px;
   border-radius: 8px;
-  color: white;
+  color: var(--text-color);
   transition: all 100ms ease-in;
   text-align: center;
   line-height: 40px;
   margin-bottom: 40px;
 }
 
-.admin-link:hover {
+.return-menu-admin:hover {
   background: linear-gradient(
     to left,
     var(--accent-color-2),

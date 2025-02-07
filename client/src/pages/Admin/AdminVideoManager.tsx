@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { NavLink, Outlet } from "react-router-dom";
 import type { Video } from "../../types/video";
+import "../../styles/AdminVideoManager.css";
 import "../../styles/FormVideoManager.css";
 
 export default function AdminVideoManager() {
@@ -10,20 +11,24 @@ export default function AdminVideoManager() {
   const [needToRefetch, setNeedToRefetch] = useState<boolean>(false);
 
   return (
-    <section className="video-manager-page">
-      <NavLink to={"./update-delete-video"} className="admin-link">
-        "Update or Delete"
-      </NavLink>
-      <NavLink to={"./add-video"} className="admin-link">
-        Add a video
-      </NavLink>
-      <NavLink to={"./create-category"} className="admin-link">
-        Create a category
-      </NavLink>
-      <NavLink to={"/admin"} className="admin-link">
-        Admin menu
-      </NavLink>
-
+    <>
+      <section className="video-manager-page">
+        <h2 className="title-video-manager">Video manager</h2>
+        <div className="link-wrapper">
+          <NavLink to={"./update-delete-video"} className="admin-link">
+            "Update or Delete"
+          </NavLink>
+          <NavLink to={"./add-video"} className="admin-link">
+            Add a video
+          </NavLink>
+          <NavLink to={"./create-category"} className="admin-link">
+            Create a category
+          </NavLink>
+          <NavLink to={"/admin"} className="admin-link, return-menu-admin">
+            Admin menu
+          </NavLink>
+        </div>
+      </section>
       <Outlet
         context={{
           videoToUpdate,
@@ -36,6 +41,6 @@ export default function AdminVideoManager() {
           setNeedToRefetch,
         }}
       />
-    </section>
+    </>
   );
 }
