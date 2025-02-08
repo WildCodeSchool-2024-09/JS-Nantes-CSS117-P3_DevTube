@@ -129,6 +129,8 @@ const checkIsValidToken: RequestHandler = async (req, res, next) => {
 
     if (isTokenValid) {
       res.status(200).send("Token verified");
+    } else {
+      res.status(401).send("Invalid Token");
     }
   } catch (err) {
     res.status(400).send(err);
