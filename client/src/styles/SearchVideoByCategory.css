@@ -1,4 +1,10 @@
 .videos-section {
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+.label-category {
+  padding: 16px;
 }
