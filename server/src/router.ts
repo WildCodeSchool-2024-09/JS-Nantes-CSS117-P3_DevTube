@@ -24,6 +24,7 @@ router.post("/api/users/login", authActions.login);
 router.get("/api/users/email/:email", userActions.userByEmail);
 
 import multer from "multer";
+import type { FileFilterCallback } from "multer";
 import categoryActions from "./modules/category/categoryActions";
 import videoActions from "./modules/video/videoActions";
 
@@ -31,14 +32,24 @@ const storage = multer.diskStorage({
   // storage demandé comme nom de variable par multer, il attend cenom là
   // TODO: un storage différent si ilage ou video grâce au fait que l'on peut paser une fonction a "destination"
   // exemple:  https://github.com/expressjs/multer/blob/master/doc/README-fr.md#diskstorage
-  destination: path.join(
-    __dirname,
-    "..",
-    "public",
-    "assets",
-    "images",
-    "videoPreviewImages",
-  ),
+
+  destination: (req, file, cb) => {
+    if (file.mimetype.includes("image")) {
+      cb(
+        null,
+        path.join(
+          __dirname,
+          "..",
+          "public",
+          "assets",
+          "images",
+          "videoPreviewImages",
+        ),
+      );
+    } else if (file.mimetype.includes("video")) {
+      cb(null, path.join(__dirname, "..", "public", "assets", "videos"));
+    }
+  },
   filename: (req, file, callback) => {
     // console.log({ file });
     // callback est parfois ecrit cb
@@ -46,7 +57,22 @@ const storage = multer.diskStorage({
   },
 });
 
-const upload = multer({ storage: storage });
+const fileFilter = (
+  req: Express.Request,
+  file: Express.Multer.File,
+  cb: FileFilterCallback,
+) => {
+  if (file.fieldname === "preview_image") {
+    file.mimetype.includes("image") ? cb(null, true) : cb(null, false);
+  } else if (file.fieldname === "thumbnail") {
+    file.mimetype.includes("video") ? cb(null, true) : cb(null, false);
+  }
+};
+
+const upload = multer({ storage: storage, fileFilter }).fields([
+  { name: "preview_image", maxCount: 1 },
+  { name: "thumbnail", maxCount: 1 },
+]);
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
@@ -67,13 +93,6 @@ router.get("/api/testimonial", testimonialsAction.browse);
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);
-router.put(
-  "/api/videos/:id",
-  upload.fields([
-    { name: "preview_image", maxCount: 1 },
-    { name: "thumbnail", maxCount: 1 },
-  ]),
-  videoActions.edit,
-);
+router.put("/api/videos/:id", upload, videoActions.edit);
 
 export default router;

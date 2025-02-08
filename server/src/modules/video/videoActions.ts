@@ -121,7 +121,7 @@ const edit: RequestHandler = async (req, res, next) => {
     // console.log("Files uploaded:", req.files); // Chemin après l'upload
 
     preview_image_path = `/assets/images/videoPreviewImages/${preview_image?.[0]?.filename}`;
-    thumbnail_path = `/assets/images/videoPreviewImages/${thumbnail?.[0]?.filename}`;
+    thumbnail_path = `/assets/videos/${thumbnail?.[0]?.filename}`;
   }
   try {
     const { id } = req.params;

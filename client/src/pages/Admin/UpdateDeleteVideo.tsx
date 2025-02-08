@@ -49,12 +49,8 @@ export default function UpdateDeleteVideo() {
     formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
     formData.set("is_freemium", data.is_freemium ? "1" : "0");
     formData.set("is_popular", data.is_popular ? "1" : "0");
-    formData.set(
-      "thumbnail",
-      outletContext.videoToUpdate?.thumbnail
-        ? outletContext.videoToUpdate?.thumbnail
-        : data.thumbnail,
-    );
+    formData.set("thumbnail", data.thumbnail);
+    formData.set("added_date", (data.added_date as string)?.substring(0, 10));
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
