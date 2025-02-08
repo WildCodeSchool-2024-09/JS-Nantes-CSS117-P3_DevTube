@@ -107,7 +107,8 @@ const remove: RequestHandler = async (req, res, next) => {
 const edit: RequestHandler = async (req, res, next) => {
   let preview_image_path = "";
   let thumbnail_path = "";
-  if (req.files) {
+
+  if (req.files && Object.keys(req.files)?.length > 0) {
     const {
       preview_image,
       thumbnail,
@@ -123,6 +124,7 @@ const edit: RequestHandler = async (req, res, next) => {
     preview_image_path = `/assets/images/videoPreviewImages/${preview_image?.[0]?.filename}`;
     thumbnail_path = `/assets/videos/${thumbnail?.[0]?.filename}`;
   }
+
   try {
     const { id } = req.params;
     const {
