@@ -12,6 +12,7 @@ export default function SearchVideoByCategory({
   setisUpdateChoiceOpen,
   setSearchBarOpen,
   isSearchBarOpen,
+  isCategoryCreationSectionOpen,
   shouldRefetch,
 }: SearchVideoByCategoryProps) {
   const { notifyError } = useToast();
@@ -54,8 +55,7 @@ export default function SearchVideoByCategory({
 
   return (
     <form>
-      {/* className="form-admin-wrapper" */}
-      {!isUpdateChoiceOpen && (
+      {!isUpdateChoiceOpen && !isCategoryCreationSectionOpen && (
         <button
           type="button"
           onClick={updateChoiceClick}

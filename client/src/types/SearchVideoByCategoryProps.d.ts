@@ -11,4 +11,5 @@ export interface SearchVideoByCategoryProps {
   setSearchBarOpen: (value: boolean) => void;
   isSearchBarOpen: boolean;
   shouldRefetch: boolean;
+  isCategoryCreationSectionOpen: boolean;
 }

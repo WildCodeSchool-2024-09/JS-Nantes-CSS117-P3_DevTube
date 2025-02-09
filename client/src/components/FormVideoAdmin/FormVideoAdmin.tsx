@@ -2,6 +2,7 @@ import { useState } from "react";
 import "../../styles/FormVideoManager.css";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
+import CategoryCreation from "./CategoryCreation";
 import FilesVideo from "./FilesVideo";
 import InfoVideoToUpdate from "./InfoVideoToUpdate";
 import SearchVideoByCategory from "./SearchVideoByCategory";
@@ -9,12 +10,16 @@ import VideosSectionByCategory from "./VideosSectionByCategory";
 
 export default function FormVideoAdmin() {
   const { notifyError, notifySuccess } = useToast();
+  //UPDATE OR DELETE A VIDEO CHOICE
+  const [isUpdateChoiceOpen, setisUpdateChoiceOpen] = useState<boolean>(false);
   const [videosByCategory, setVideosByCategory] = useState<Video[]>();
   const [isInfoVideoOpen, setInfoVideoOpen] = useState<boolean>(false);
   const [isVideosSectionOpen, setVideosSectionOpen] = useState<boolean>(false);
   const [videoToUpdate, setVideoToUpdate] = useState<Video>();
-  const [isUpdateChoiceOpen, setisUpdateChoiceOpen] = useState<boolean>(false);
   const [isSearchBarOpen, setSearchBarOpen] = useState<boolean>(false);
+  //VIDEO CATEGORY CREATION CHOICE
+  const [isCategoryCreationSectionOpen, setIsCategoryCreationSectionOpen] =
+    useState<boolean>(false);
 
   const handleUpdateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -104,6 +109,10 @@ export default function FormVideoAdmin() {
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
     // It should be a File, so you'll probably have to fetch it as for preview8image if videoToUpdate?.thumbnail is a path
 
+    // TODO: Add 'thumbnail' in formData
+    // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
+    // It should be a File, so you'll probably have to fetch it as for preview8image if videoToUpdate?.thumbnail is a path
+
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
@@ -162,6 +171,7 @@ export default function FormVideoAdmin() {
   return (
     <section className="video-manager-wrapper">
       <h2 className="title-video-manager">Video manager</h2>
+      {/* UPDATE OR DELETE SESSION */}
       <SearchVideoByCategory
         isVideosSectionOpen={isVideosSectionOpen}
         setVideosSectionOpen={setVideosSectionOpen}
@@ -173,12 +183,8 @@ export default function FormVideoAdmin() {
         isSearchBarOpen={isSearchBarOpen}
         setSearchBarOpen={setSearchBarOpen}
         shouldRefetch={isInfoVideoOpen}
+        isCategoryCreationSectionOpen={isCategoryCreationSectionOpen}
       />
-      {/* {isVideosSectionOpen && (
-        <button type="button" className="standard-button" onClick={returnClick}>
-          Return
-        </button>
-      )} */}
       <form onSubmit={handleUpdateVideo}>
         <VideosSectionByCategory
           isVideosSectionOpen={isVideosSectionOpen}
@@ -215,6 +221,13 @@ export default function FormVideoAdmin() {
           </section>
         </div>
       </form>
+      {/* CREATE A NEW VIDEOS CATEGORY SESSION */}
+      <section>
+        <CategoryCreation
+          isCategoryCreationSectionOpen={isCategoryCreationSectionOpen}
+          setIsCategoryCreationSectionOpen={setIsCategoryCreationSectionOpen}
+        />
+      </section>
     </section>
   );
 }
