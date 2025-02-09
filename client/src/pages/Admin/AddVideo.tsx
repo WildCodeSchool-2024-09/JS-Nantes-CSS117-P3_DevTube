@@ -7,26 +7,26 @@ export default function AddVideo() {
   const { notifyError, notifySuccess } = useToast();
   const [categories, setCategories] = useState<Category[]>([]);
 
-   useEffect(() => {
-      const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;
-      recoverCategories(urlForCategories);
-    }, []);
+  useEffect(() => {
+    const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;
+    recoverCategories(urlForCategories);
+  }, []);
 
-    async function recoverCategories(url: string) {
-      const token = localStorage.getItem("token");
-  
-      try {
-        const request = await fetch(url, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        const datas = await request.json();
-        setCategories(datas);
-      } catch (err) {
-        notifyError("You are log out !");
-      }
+  async function recoverCategories(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setCategories(datas);
+    } catch (err) {
+      notifyError("You are log out !");
     }
+  }
 
   const handleCreateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -48,7 +48,6 @@ export default function AddVideo() {
     formData.set("is_popular", data.is_popular ? "1" : "0");
     formData.set("thumbnail", data.thumbnail);
     formData.set("added_date", (data.added_date as string)?.substring(0, 10));
-
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
@@ -74,7 +73,6 @@ export default function AddVideo() {
       notifyError((err as Error).message);
     }
   };
-
 
   return (
     <form onSubmit={handleCreateVideo} className="add-video-form">
@@ -136,23 +134,20 @@ export default function AddVideo() {
           Title of the catergory
         </label>
         <label htmlFor="category_id" className="label-category">
-            Choose a category language of videos
-          </label>
-          <select
-            name="category_id"
-            id="category_id"
-          >
-            <option value="">
-              --Please choose a category language of videos--
-            </option>
-            {categories.map((category) => {
-              return (
-                <option key={category.id} value={category.id}>
-                  {category.name}
-                </option>
-              );
-            })}
-          </select>
+          Choose a category language of videos
+        </label>
+        <select name="category_id" id="category_id">
+          <option value="">
+            --Please choose a category language of videos--
+          </option>
+          {categories.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+        </select>
       </fieldset>
       <section className="preview-image-choice">
         <label htmlFor="preview_image">Choose a preview image</label>
