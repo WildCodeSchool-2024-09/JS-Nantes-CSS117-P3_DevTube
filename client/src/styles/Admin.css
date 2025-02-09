@@ -40,3 +40,13 @@
   color: black;
   font-weight: bold;
 }
+
+.active {
+  color: black;
+  font-weight: bold;
+}
+
+.return-menu-admin.active {
+  color: white;
+  font-weight: bold;
+}

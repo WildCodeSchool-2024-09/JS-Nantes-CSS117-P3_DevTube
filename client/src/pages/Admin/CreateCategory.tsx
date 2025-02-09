@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useToast from "../../utils/useToastify";
+import "../../styles/CreateCategory.css";
 
 export default function CreateCategory() {
   const { notifyError, notifySuccess } = useToast();
@@ -33,10 +34,11 @@ export default function CreateCategory() {
   };
 
   return (
-    <section>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Title</label>
+    <section className="create-category-page">
+      <form onSubmit={handleSubmit} className="create-category-form">
+        {/* <label htmlFor="name">Title</label> */}
         <input
+          className="category-input"
           type="text"
           id="name"
           name="name"
@@ -49,7 +51,7 @@ export default function CreateCategory() {
       </form>
       <NavLink
         type="button"
-        className="standard-button"
+        className="standard-button return-from-category-form"
         to={"/admin/video-manager"}
       >
         Return

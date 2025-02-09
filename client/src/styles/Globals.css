@@ -118,6 +118,10 @@ a {
   color: var(--textColor);
 }
 
+.active {
+  color: var(--accent-color-1);
+}
+
 button {
   background: none;
   border: none;

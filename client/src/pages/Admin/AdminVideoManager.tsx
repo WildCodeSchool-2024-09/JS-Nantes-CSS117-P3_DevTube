@@ -16,7 +16,7 @@ export default function AdminVideoManager() {
         <h2 className="title-video-manager">Video manager</h2>
         <div className="link-wrapper">
           <NavLink to={"./update-delete-video"} className="admin-link">
-            "Update or Delete"
+            Update or Delete
           </NavLink>
           <NavLink to={"./add-video"} className="admin-link">
             Add a video
