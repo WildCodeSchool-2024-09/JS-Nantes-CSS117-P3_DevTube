@@ -92,7 +92,7 @@ router.get("/api/testimonial", testimonialsAction.browse);
 
 router.use(authActions.verifyToken);
 
-router.post("/api/videos", videoActions.add);
+router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);
 
 export default router;
