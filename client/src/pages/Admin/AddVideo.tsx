@@ -142,7 +142,7 @@ export default function AddVideo() {
         </button>
         <NavLink
           to="/admin/video-manager"
-          className="standard-button return-button-from-add-video"
+          className="standard-button return-button"
         >
           Return
         </NavLink>

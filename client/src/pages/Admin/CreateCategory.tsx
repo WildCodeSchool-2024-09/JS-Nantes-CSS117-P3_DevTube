@@ -51,7 +51,7 @@ export default function CreateCategory() {
       </form>
       <NavLink
         type="button"
-        className="standard-button return-from-category-form"
+        className="standard-button return-button return-from-category-form"
         to={"/admin/video-manager"}
       >
         Return

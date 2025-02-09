@@ -139,7 +139,7 @@ export default function UpdateDeleteVideo() {
             </button>
             <NavLink
               to="/admin/video-manager"
-              className="standard-button"
+              className="standard-button return-button"
               onClick={closeSection}
             >
               Return

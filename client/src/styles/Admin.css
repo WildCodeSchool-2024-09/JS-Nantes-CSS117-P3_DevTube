@@ -46,6 +46,14 @@
   font-weight: bold;
 }
 
+.return-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
 .return-menu-admin.active {
   color: white;
   font-weight: bold;
