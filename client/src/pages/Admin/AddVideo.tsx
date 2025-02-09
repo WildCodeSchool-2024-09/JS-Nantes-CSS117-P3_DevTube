@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useToast from "../../utils/useToastify";
+import "../../styles/AddVideoForm.css";
 
 export default function AddVideo() {
   const { notifyError, notifySuccess } = useToast();
@@ -51,7 +52,7 @@ export default function AddVideo() {
   };
 
   return (
-    <form onSubmit={handleCreateVideo}>
+    <form onSubmit={handleCreateVideo} className="add-video-form">
       <fieldset className="main-info-video-wrapper">
         <legend>Main information video</legend>
         <label htmlFor="name">Name</label>
@@ -136,10 +137,13 @@ export default function AddVideo() {
         />
       </section>
       <section className="form-buttons-wrapper">
-        <button type="submit" className="btntTtest standard-button">
+        <button type="submit" className="standard-button">
           Add
         </button>
-        <NavLink to="/admin/video-manager" className="standard-button">
+        <NavLink
+          to="/admin/video-manager"
+          className="standard-button return-button-from-add-video"
+        >
           Return
         </NavLink>
       </section>

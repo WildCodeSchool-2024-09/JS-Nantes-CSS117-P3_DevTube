@@ -127,13 +127,13 @@ export default function UpdateDeleteVideo() {
           <InfoVideoToUpdate videoToUpdate={outletContext.videoToUpdate} />
           <FilesVideo videoToUpdate={outletContext.videoToUpdate} />
           <section className="form-buttons-wrapper">
-            <button type="submit" className="btntTtest standard-button">
+            <button type="submit" className="standard-button">
               Update
             </button>
             <button
               type="button"
               onClick={handleDeleteVideo}
-              className="btntTtest standard-button"
+              className="standard-button"
             >
               Delete
             </button>
