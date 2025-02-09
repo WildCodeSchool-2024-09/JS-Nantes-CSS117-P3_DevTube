@@ -156,19 +156,19 @@ const edit: RequestHandler = async (req, res, next) => {
       is_popular,
     } = req.body;
 
-    const updateVideo = await videoRepository.update(
+    const updateVideo = await videoRepository.update({
       id,
       name,
       duration,
-      thumbnail_path,
-      preview_image_path,
+      thumbnail: thumbnail_path,
+      preview_image: preview_image_path,
       description,
       category_id,
       is_freemium,
       added_date,
       is_heroSlide,
       is_popular,
-    );
+    });
     if (updateVideo) {
       res.status(200).end("Félicitation");
     } else {
