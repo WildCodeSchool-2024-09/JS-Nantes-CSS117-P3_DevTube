@@ -1,16 +1,38 @@
 import { NavLink } from "react-router-dom";
 import useToast from "../../utils/useToastify";
 import "../../styles/AddVideoForm.css";
+import { useEffect, useState } from "react";
 
 export default function AddVideo() {
   const { notifyError, notifySuccess } = useToast();
+  const [categories, setCategories] = useState<Category[]>([]);
+
+   useEffect(() => {
+      const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;
+      recoverCategories(urlForCategories);
+    }, []);
+
+    async function recoverCategories(url: string) {
+      const token = localStorage.getItem("token");
+  
+      try {
+        const request = await fetch(url, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+        const datas = await request.json();
+        setCategories(datas);
+      } catch (err) {
+        notifyError("You are log out !");
+      }
+    }
 
   const handleCreateVideo = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    // console.log({ data });
 
     let previewImageToUpload: File | string = "";
 
@@ -25,6 +47,8 @@ export default function AddVideo() {
     formData.set("is_freemium", data.is_freemium ? "1" : "0");
     formData.set("is_popular", data.is_popular ? "1" : "0");
     formData.set("thumbnail", data.thumbnail);
+    formData.set("added_date", (data.added_date as string)?.substring(0, 10));
+
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
@@ -33,7 +57,7 @@ export default function AddVideo() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/videos`,
+        `${import.meta.env.VITE_API_URL}/api/videos/`,
         {
           method: "POST",
           headers: {
@@ -50,6 +74,7 @@ export default function AddVideo() {
       notifyError((err as Error).message);
     }
   };
+
 
   return (
     <form onSubmit={handleCreateVideo} className="add-video-form">
@@ -110,13 +135,24 @@ export default function AddVideo() {
         <label id="category-title" htmlFor="category_id">
           Title of the catergory
         </label>
-        <input
-          type="text"
-          name="category_id"
-          id="category_id"
-          readOnly
-          required
-        />
+        <label htmlFor="category_id" className="label-category">
+            Choose a category language of videos
+          </label>
+          <select
+            name="category_id"
+            id="category_id"
+          >
+            <option value="">
+              --Please choose a category language of videos--
+            </option>
+            {categories.map((category) => {
+              return (
+                <option key={category.id} value={category.id}>
+                  {category.name}
+                </option>
+              );
+            })}
+          </select>
       </fieldset>
       <section className="preview-image-choice">
         <label htmlFor="preview_image">Choose a preview image</label>
