@@ -94,6 +94,7 @@ const HeroSlider: React.FC<HeroSliderProps> = ({ videos }) => {
                   displayCardInfo={false}
                   isFreemium={video.is_freemium}
                   duration={video.duration}
+                  id={video.id}
                 />
               </Link>
             ))}

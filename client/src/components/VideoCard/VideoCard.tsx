@@ -7,6 +7,7 @@ function VideoCard({
   isFreemium,
   title,
   duration,
+  id,
   thumbnailUrl,
   isLarge,
   displayCardInfo = true,
@@ -40,7 +41,7 @@ function VideoCard({
               </div>
             </div>
             {auth && (
-              <button className="fav-button" type="button">
+              <button className="fav-button" type="button" data-id={id}>
                 <img
                   className="heart-icon"
                   src="/orange-heart.png"
