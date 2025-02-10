@@ -51,7 +51,6 @@ const storage = multer.diskStorage({
     }
   },
   filename: (req, file, callback) => {
-    // console.log({ file });
     // callback est parfois ecrit cb
     callback(null, `${Date.now()}-${file.originalname}`); // GENERER un nom aleatoire avec la date en millisecondes + lenom du fichier connu par maulter
   },

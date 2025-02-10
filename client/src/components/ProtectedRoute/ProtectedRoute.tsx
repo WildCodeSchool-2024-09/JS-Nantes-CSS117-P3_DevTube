@@ -16,8 +16,6 @@ export default function ProtectedRoute({ children }: Children) {
 
   const auth = useContext(AuthContext);
 
-  console.warn("C'est quoi auth ??", auth);
-
   const navigate = useNavigate();
 
   if (!auth?.auth) return null;
