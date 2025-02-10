@@ -72,11 +72,13 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            <li>
-              <NavLink to={"admin/"} onClick={toggleMenu}>
-                Admin
-              </NavLink>
-            </li>
+            {auth && (
+              <li>
+                <NavLink to={"admin/"} onClick={toggleMenu}>
+                  Admin
+                </NavLink>
+              </li>
+            )}
             <li>
               <NavLink to={"/login"} onClick={toggleMenu}>
                 Login
@@ -129,7 +131,6 @@ export default function Header() {
             className="btn-logout"
             onClick={handleLogoutBtnClick}
           >
-            {/* TODO: faire une page d"aterrisage pour dire Vous etes bien deconnecte merci bonsoir + onclick -> efface le token et navigate vers /logout-success*/}
             Log out
           </button>
         ) : (
