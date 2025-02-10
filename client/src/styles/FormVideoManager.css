@@ -27,7 +27,6 @@
 }
 
 .main-info-video-wrapper {
-  /* width: 90%; */
   margin-top: 40px;
   border-radius: 8px;
   padding: 8px;
@@ -35,11 +34,6 @@
   flex-direction: column;
   gap: 16px;
 }
-
-/* .hero-slider-choice {
-  display: flex;
-  align-content: center;
-} */
 
 .preview-image {
   width: 300px;
