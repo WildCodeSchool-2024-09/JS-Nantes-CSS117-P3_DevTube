@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import About from "./pages/About/About";
 import AddVideo from "./pages/Admin/AddVideo";
 import Admin from "./pages/Admin/Admin";
@@ -25,7 +26,11 @@ export const router = createBrowserRouter([
     children: [
       {
         path: "admin/",
-        element: <Admin />,
+        element: (
+          <ProtectedRoute>
+            <Admin />
+          </ProtectedRoute>
+        ),
         children: [
           {
             path: "user-manager",
