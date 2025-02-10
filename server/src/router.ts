@@ -30,7 +30,7 @@ import videoActions from "./modules/video/videoActions";
 
 const storage = multer.diskStorage({
   // storage demandé comme nom de variable par multer, il attend cenom là
-  // TODO: un storage différent si ilage ou video grâce au fait que l'on peut paser une fonction a "destination"
+  // un storage différent pour image ou video grâce au fait que l'on peut paser une fonction a "destination"
   // exemple:  https://github.com/expressjs/multer/blob/master/doc/README-fr.md#diskstorage
 
   destination: (req, file, cb) => {
