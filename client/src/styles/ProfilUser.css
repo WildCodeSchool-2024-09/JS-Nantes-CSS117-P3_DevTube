@@ -28,6 +28,9 @@
   height: 35px;
 }
 .profil-image-wrapper {
+  position: relative;
+  display: flex;
+  justify-content: center;
   text-align: center;
   width: auto;
   height: 350px;
@@ -35,9 +38,10 @@
   background-color: var(--tertiary-color);
 
   & img {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
     padding: 1rem;
+    object-fit: contain;
   }
 }
 .section-my-account-container .standard-button {

@@ -90,17 +90,21 @@ const UserAccountModal = forwardRef<
       );
 
       if (response.ok) {
-        notifySuccess("You profile is update.");
+        notifySuccess("Your profile is update.");
       }
 
       data.id = userData.id;
-      console.warn(data.id);
 
       onSubmit(data);
       closeModal();
     } catch (err) {
       notifyError((err as Error).message);
     }
+  };
+
+  const handleClick = () => {
+    userData.profil_img = "";
+    setImageSrc("");
   };
 
   return (
@@ -159,9 +163,20 @@ const UserAccountModal = forwardRef<
           <img
             id="profil-image"
             aria-labelledby="linkedin_url"
-            src={`${imgSrc || `${import.meta.env.VITE_API_URL}/${userData?.profil_img}`}`}
+            src={
+              imgSrc ||
+              (userData?.profil_img
+                ? `${import.meta.env.VITE_API_URL}/${userData?.profil_img}`
+                : `${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user_profile.png`)
+            }
             alt="User's photo."
           />
+          <button type="button" className="trash-button" onClick={handleClick}>
+            <img
+              src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/trash.png`}
+              alt="To trash your profil"
+            />
+          </button>
         </section>
 
         <button type="submit" className="standard-button">

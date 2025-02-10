@@ -9,8 +9,21 @@ export default function ProfilUser() {
   const [userData, setUserData] = useState<User>(user as User);
 
   useEffect(() => {
-    setUserData(userData);
-  }, [userData]);
+    if (!user?.id) return;
+
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/users/${user.id}`,
+        );
+        const data = await response.json();
+        setUserData(data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    fetchData();
+  }, [user]);
 
   const refModal = useRef<HTMLDialogElement>(null);
 
@@ -83,8 +96,8 @@ export default function ProfilUser() {
             id="profil-image"
             aria-labelledby="linkedin_url"
             key={userData.profil_img}
-            src={`${import.meta.env.VITE_API_URL}/${userData?.profil_img}`}
             alt="User's photo."
+            src={`${userData?.profil_img ? `${import.meta.env.VITE_API_URL}/${userData?.profil_img}` : `${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user_profile.png`}`}
           />
         </section>
 
