@@ -20,9 +20,7 @@ class CategoryRepository {
   //All categories read
   async readAll() {
     // Execute the SQL SELECT query to retrieve all categories from the "category" table
-    const [rows] = await databaseClient.query<Rows>(
-      "select name from category",
-    );
+    const [rows] = await databaseClient.query<Rows>("select * from category");
 
     // Return the array of videos
     return rows as Category[];
