@@ -25,6 +25,7 @@ router.get("/api/users/email/:email", userActions.userByEmail);
 
 import multer from "multer";
 import categoryActions from "./modules/category/categoryActions";
+// Route video
 import videoActions from "./modules/video/videoActions";
 
 const storage = multer.diskStorage({
