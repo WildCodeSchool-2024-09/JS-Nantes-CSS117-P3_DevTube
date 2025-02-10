@@ -85,7 +85,6 @@ const remove: RequestHandler = async (req, res, next) => {
 
 //UPDATE
 const edit: RequestHandler = async (req, res, next) => {
-  console.warn(req.params.id);
   try {
     const { id } = req.params;
     const { firstname, lastname, email, github_url, linkedin_url, profil_img } =

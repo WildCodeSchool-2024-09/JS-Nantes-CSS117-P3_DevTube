@@ -2,17 +2,16 @@ import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuhtProvider";
-import useAuth from "../../utils/useAuth";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
 
   const authContext = useContext(AuthContext);
+
   if (!authContext) {
     throw new Error("Invalid auth !");
   }
@@ -37,16 +36,19 @@ export default function Login() {
         },
       );
 
+      if (!response.ok) {
+        throw new Error("You are not logged");
+      }
+
       const { token, user } = await response.json();
 
       if (token) {
         notifySuccess("You are logged !");
-        setAuth(true);
         login(token, user);
         navigate("/");
       }
     } catch (err) {
-      notifyError("You are log out !");
+      notifyError((err as Error).message);
     }
   };
 

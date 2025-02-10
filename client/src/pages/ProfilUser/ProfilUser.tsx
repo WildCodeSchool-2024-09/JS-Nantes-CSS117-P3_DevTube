@@ -9,12 +9,10 @@ export default function ProfilUser() {
   const [userData, setUserData] = useState<User>(user as User);
 
   useEffect(() => {
-    if (!user?.id) return;
-
     const fetchData = async () => {
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/users/${user.id}`,
+          `${import.meta.env.VITE_API_URL}/api/users/${user?.id}`,
         );
         const data = await response.json();
         setUserData(data);
@@ -34,7 +32,6 @@ export default function ProfilUser() {
   const HandleUpdateUser = (updateUser: User) => {
     setUserData(updateUser);
   };
-
   return (
     <section className="section-my-account-container">
       <section>
