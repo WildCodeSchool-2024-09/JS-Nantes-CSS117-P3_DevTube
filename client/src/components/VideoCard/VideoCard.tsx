@@ -39,11 +39,13 @@ function VideoCard({
                 <p className="time">{duration} min</p>
               </div>
             </div>
-            <img
-              className="heart-icon"
-              src="/orange-heart.png"
-              alt="heart icon"
-            />
+            {auth && (
+              <img
+                className="heart-icon"
+                src="/orange-heart.png"
+                alt="heart icon"
+              />
+            )}
           </section>
         )}
         {!auth && isFreemium === 1 && !isLarge && (
