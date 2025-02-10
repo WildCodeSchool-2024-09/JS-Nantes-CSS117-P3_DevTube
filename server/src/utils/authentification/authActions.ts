@@ -128,14 +128,16 @@ const checkIsValidToken: RequestHandler = async (req, res, next) => {
     const isTokenValid = getIsTokenValid(token);
 
     if (isTokenValid) {
-      res.status(200).send("Token verified");
+      const decodedToken = jwt.decode(token);
+      res.status(200).send(decodedToken);
     } else {
-      res.status(401).send("Invalid Token");
+      throw new Error("JWT invalid");
     }
   } catch (err) {
     res.status(400).send(err);
   }
 };
+
 export default {
   hashPassword,
   login,
