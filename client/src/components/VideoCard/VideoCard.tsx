@@ -40,11 +40,13 @@ function VideoCard({
               </div>
             </div>
             {auth && (
-              <img
-                className="heart-icon"
-                src="/orange-heart.png"
-                alt="heart icon"
-              />
+              <button className="fav-button" type="button">
+                <img
+                  className="heart-icon"
+                  src="/orange-heart.png"
+                  alt="heart icon"
+                />
+              </button>
             )}
           </section>
         )}
