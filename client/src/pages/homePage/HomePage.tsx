@@ -2,8 +2,9 @@ import { useTranslation } from "react-i18next";
 import HeroSlider from "../../components/Carousels/HeroSlider";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import "../../styles/HomePage.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useOutletContext } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import type { OutletContextProps } from "../../types/outletContext";
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
@@ -15,6 +16,7 @@ export default function () {
   const [videosPopular, setVideosPopular] = useState<Video[]>();
   const [videosNewIn, setVideosNewIn] = useState<Video[]>();
   const { notifyError } = useToast();
+  const { user } = useContext(AuthContext) ?? {};
 
   useEffect(() => {
     const urlForVideos = `${import.meta.env.VITE_API_URL}/api/videos`;
@@ -54,7 +56,7 @@ export default function () {
     outletContext.infoVideos?.length && (
       <div className="home-page">
         <section>
-          <h1 className="home-page-title">{t("title-homePage")}</h1>
+          <h1 className="home-page-title">{`${t("title-homePage")} ${user?.firstname ? user.firstname : ""}`}</h1>
           {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
         </section>
 

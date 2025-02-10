@@ -48,30 +48,16 @@ class UserRepository {
   // Update operation
   async update(
     id: string,
+    firstname: string,
+    lastname: string,
     email: string,
     github_url: string,
     linkedin_url: string,
-    firstname: string,
-    lastname: string,
-    level: number,
-    register_date: string,
     profil_img: string,
-    is_admin: boolean,
   ) {
     const [row] = await databaseClient.query<Result>(
-      "UPDATE user SET email = ?, github_url = ?, linkedin_url = ?, firstname = ?, lastname = ?, level = ?, register_date = ?, profil_img = ?, is_admin = ? WHERE id = ?",
-      [
-        email,
-        github_url,
-        linkedin_url,
-        firstname,
-        lastname,
-        level,
-        register_date,
-        profil_img,
-        is_admin,
-        id,
-      ],
+      "UPDATE user SET firstname = ?, lastname = ?, email = ?, github_url = ?, linkedin_url = ?, profil_img = ? WHERE id = ?",
+      [firstname, lastname, email, github_url, linkedin_url, profil_img, id],
     );
     return row.affectedRows;
   }
