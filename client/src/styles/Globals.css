@@ -118,7 +118,7 @@ a {
   color: var(--textColor);
 }
 
-.active {
+a.active {
   color: var(--accent-color-1);
 }
 
