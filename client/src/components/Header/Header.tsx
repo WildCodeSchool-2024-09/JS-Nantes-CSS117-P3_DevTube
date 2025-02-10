@@ -73,6 +73,11 @@ export default function Header() {
               </NavLink>
             </li>
             <li>
+              <NavLink to={"admin/"} onClick={toggleMenu}>
+                Admin
+              </NavLink>
+            </li>
+            <li>
               <NavLink to={"/login"} onClick={toggleMenu}>
                 Login
               </NavLink>

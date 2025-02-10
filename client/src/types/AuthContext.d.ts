@@ -1,4 +1,4 @@
 export type AuthProps = {
-  auth: boolean;
+  auth: boolean | null;
   setAuth: (value: boolean) => void;
 };
