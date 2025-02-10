@@ -9,7 +9,14 @@ CREATE TABLE user (
   level INT NOT NULL DEFAULT 0,
   register_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   profil_img VARCHAR(200),
-  is_admin  TINYINT DEFAULT 0 NOT NULL
+  is_admin TINYINT DEFAULT 0 NOT NULL
+);
+
+CREATE TABLE testimonial (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  user_id INT NOT NULL,
+  text_testimonial VARCHAR(255),
+  FOREIGN KEY (user_id) REFERENCES user(id)
 );
 
 CREATE TABLE category (
@@ -32,6 +39,7 @@ CREATE TABLE video (
   FOREIGN KEY (category_id) REFERENCES category(id) 
 );
 
+
 CREATE TABLE favorite (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   user_id INT NOT NULL,
@@ -45,6 +53,10 @@ VALUES
   ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$SVpXMEx3UjJ3UmhZZEhwMg$Gfc7g89RStUbXDw5Ij7g+w", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
   ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$V25JdmFFRXBnc1Z6N1hTTg$FQHiIbPvbahwchYL9wSr8g", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
   ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$XludgNxFUX2Xh/wtwJampP981YUfrmXND1RZlBylnpE", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
+
+INSERT INTO testimonial (user_id, text_testimonial)
+VALUES
+(3, "les visiteurs et nuire à l’expérience utilisateur, ce qui rend essentiel le suivi régulier de ce critère grâce à un test de vitesse pour vos pages web.");
 
 INSERT INTO category (name)
 VALUES

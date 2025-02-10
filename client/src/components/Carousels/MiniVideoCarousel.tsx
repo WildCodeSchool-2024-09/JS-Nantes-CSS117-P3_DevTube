@@ -1,14 +1,10 @@
 import { useState } from "react";
 import "./../../styles/MiniVideoCarousel.css";
 import { Link } from "react-router-dom";
-import type { Video } from "../../types/video";
+import type { MiniVideoCarouselProps } from "../../types/MiniVideoCarouselProps";
 import useTheme from "../../utils/useTheme";
 import VideoCard from "../VideoCard/VideoCard";
 import SkeletonCard from "./SkeletonCard";
-
-interface MiniVideoCarouselProps {
-  videos: Video[];
-}
 
 const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
   const [currentIndex, setCurrentIndex] = useState<number>(0);

@@ -1,24 +1,73 @@
-.form-admin-container {
-  display: grid;
+.title-video-manager {
+  margin-bottom: 40px;
 }
+
+.video-manager-wrapper {
+  border: 2px solid var(--accent-color-1);
+  border-radius: 8px;
+  width: 90%;
+  margin: auto;
+  margin-top: 40px;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+
+.videos-list {
+  width: 100%;
+  margin: auto;
+  margin-top: 40px;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.main-info-video-wrapper {
+  margin-top: 40px;
+  border-radius: 8px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.preview-image {
+  width: 300px;
+  margin: auto;
+  display: block;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
 .form-admin-container .standard-button {
   width: fit-content;
   height: auto;
   padding: .5rem;
   margin: 1rem auto 0;
 }
-.form-admin-wrapper {
-  display: grid;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  height: fit-content;
-  padding: .8rem;
-  margin: 0 auto 5rem;
-  gap: 2rem;
-  font-size: var(--font-normal);
-  border: 2px solid var(--accent-color-1);
+
+.preview-image-choice,
+.file-video-choice {
+  margin-bottom: 40px;
 }
+
+.file-video-choice label {
+  color: var(--accent-color-1);
+}
+
+.file-video-choice label span {
+  color: var(--text-color);
+}
+
+.form-buttons-wrapper {
+  display: flex;
+  gap: 8px;
+}
+
 .h1-admin {
   margin: 2rem 0 3rem;
   text-align: center;
