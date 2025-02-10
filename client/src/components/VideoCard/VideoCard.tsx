@@ -39,11 +39,15 @@ function VideoCard({
                 <p className="time">{duration} min</p>
               </div>
             </div>
-            <img
-              className="heart-icon"
-              src="/orange-heart.png"
-              alt="heart icon"
-            />
+            {auth && (
+              <button className="fav-button" type="button">
+                <img
+                  className="heart-icon"
+                  src="/orange-heart.png"
+                  alt="heart icon"
+                />
+              </button>
+            )}
           </section>
         )}
         {!auth && isFreemium === 1 && !isLarge && (
