@@ -103,6 +103,11 @@ export default function FormVideoAdmin() {
       "added_date",
       new Date(data.added_date as string).toISOString().substring(0, 10),
     );
+    // console.log({ data });
+
+    // TODO: Add 'thumbnail' in formData
+    // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
+    // It should be a File, so you'll probably have to fetch it as for preview8image if videoToUpdate?.thumbnail is a path
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
@@ -177,6 +182,7 @@ export default function FormVideoAdmin() {
         setisUpdateChoiceOpen={setisUpdateChoiceOpen}
         isSearchBarOpen={isSearchBarOpen}
         setSearchBarOpen={setSearchBarOpen}
+        shouldRefetch={isInfoVideoOpen}
         isCategoryCreationSectionOpen={isCategoryCreationSectionOpen}
       />
       <form onSubmit={handleUpdateVideo}>
@@ -189,7 +195,10 @@ export default function FormVideoAdmin() {
           isInfoVideoOpen={isInfoVideoOpen}
         />
         <div className={isInfoVideoOpen ? "" : "hidden"}>
-          <InfoVideoToUpdate videoToUpdate={videoToUpdate} />
+          <InfoVideoToUpdate
+            videoToUpdate={videoToUpdate}
+            isInfoVideoOpen={isInfoVideoOpen}
+          />
           <FilesVideo videoToUpdate={videoToUpdate} />
           <section className="form-buttons-wrapper">
             <button type="submit" className="btntTtest standard-button">

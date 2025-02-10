@@ -60,6 +60,11 @@ router.get("/api/verify-token", authActions.checkIsValidToken);
 router.post("/api/categories", categoryActions.add);
 router.delete("/api/videos/:id", videoActions.remove);
 router.get("/api/download/users", userActions.getUserCsvFile);
+
+import testimonialsAction from "./modules/Testimonials/testimonialsAction";
+router.post("/api/testimonial", testimonialsAction.add);
+router.get("/api/testimonial", testimonialsAction.browse);
+
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);

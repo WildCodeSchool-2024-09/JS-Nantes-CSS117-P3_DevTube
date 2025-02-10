@@ -1,20 +1,6 @@
 import { useEffect, useState } from "react";
-import type { Video } from "../../types/video";
+import type { SearchVideoByCategoryProps } from "../../types/SearchVideoByCategoryProps";
 import useToast from "../../utils/useToastify";
-
-interface SearchVideoByCategoryProps {
-  isVideosSectionOpen: boolean;
-  setVideosByCategory: (data: Video[]) => void;
-  setVideosSectionOpen: (value: boolean) => void;
-  isInfoVideoOpen: boolean;
-  setInfoVideoOpen: (value: boolean) => void;
-  isUpdateChoiceOpen: boolean;
-  setisUpdateChoiceOpen: (value: boolean) => void;
-  setSearchBarOpen: (value: boolean) => void;
-  isSearchBarOpen: boolean;
-  isCategoryCreationSectionOpen: boolean;
-  shouldRefetch?: boolean;
-}
 
 export default function SearchVideoByCategory({
   isVideosSectionOpen,
