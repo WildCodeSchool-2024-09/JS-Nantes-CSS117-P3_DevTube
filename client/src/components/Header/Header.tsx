@@ -77,6 +77,14 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
+            {/* TODO add isAdmin? to protect admin page in front */}
+            {auth && (
+              <li>
+                <NavLink to={"admin/"} onClick={toggleMenu}>
+                  Admin
+                </NavLink>
+              </li>
+            )}
             <li>
               {auth ? (
                 <button
@@ -122,7 +130,6 @@ export default function Header() {
                 </NavLink>
               )}
             </li>
-
             <li>
               <input
                 type="text"
