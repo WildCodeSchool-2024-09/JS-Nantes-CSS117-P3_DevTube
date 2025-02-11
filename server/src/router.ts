@@ -86,6 +86,7 @@ router.delete("/api/videos/:id", videoActions.remove);
 router.get("/api/download/users", userActions.getUserCsvFile);
 
 import testimonialsAction from "./modules/Testimonials/testimonialsAction";
+import favoriteActions from "./modules/favorite/favoriteActions";
 router.post("/api/testimonial", testimonialsAction.add);
 router.get("/api/testimonial", testimonialsAction.browse);
 
@@ -93,7 +94,11 @@ router.use(authActions.verifyToken);
 
 router.get("/api/favorites-user/:id-user");
 //get all favorites of one user
-router.post("/api/favorites-user/add-favorite/:id-video/user/:user-id");
+
+router.post(
+  "/api/favorites-user/add-favorite/:id-video/user/:user-id",
+  favoriteActions.add,
+);
 //add a new favorite to one user
 
 router.delete("api/favorites-user/delete-favorite/:video-is:user/:user-id");
