@@ -91,6 +91,14 @@ router.get("/api/testimonial", testimonialsAction.browse);
 
 router.use(authActions.verifyToken);
 
+router.get("/api/favorites-user/:id-user");
+//get all favorites of one user
+router.post("/api/favorites-user/add-favorite/:id-video/user/:user-id");
+//add a new favorite to one user
+
+router.delete("api/favorites-user/delete-favorite/:video-is:user/:user-id");
+//delete one favorite from user favorites
+
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);
 
