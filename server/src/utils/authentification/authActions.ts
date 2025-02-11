@@ -62,6 +62,7 @@ const login: RequestHandler = async (req, res, next) => {
         github_url: user.github_url,
         linkedin_url: user.linkedin_url,
         profil_img: user.profil_img,
+        is_admin: user.is_admin,
       },
     });
   } else {

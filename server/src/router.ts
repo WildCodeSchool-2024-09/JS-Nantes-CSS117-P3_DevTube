@@ -66,6 +66,7 @@ import testimonialsAction from "./modules/Testimonials/testimonialsAction";
 router.post("/api/testimonial", testimonialsAction.add);
 router.get("/api/testimonial", testimonialsAction.browse);
 
+router.get("/api/course", videoActions.browseCourse);
 router.use(authActions.verifyToken);
 
 router.post("/api/videos", videoActions.add);

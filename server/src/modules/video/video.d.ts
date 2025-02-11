@@ -10,3 +10,8 @@ export type Video = {
   is_heroSlide: 0 | 1;
   is_popular: 0 | 1;
 };
+
+export type Course = {
+  title: string;
+  description: string;
+};

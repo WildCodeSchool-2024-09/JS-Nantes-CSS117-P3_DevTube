@@ -1,5 +1,6 @@
 import "../../styles/ProfilUser.css";
 import { useContext, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { User } from "../../../../server/src/modules/user/user";
 import UserAccountModal from "../../components/UserAccountModal/UserAccountModal";
 import { AuthContext } from "../../contexts/AuhtProvider";
@@ -7,6 +8,7 @@ import { AuthContext } from "../../contexts/AuhtProvider";
 export default function ProfilUser() {
   const { user } = useContext(AuthContext) ?? {};
   const [userData, setUserData] = useState<User>(user as User);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,9 +37,9 @@ export default function ProfilUser() {
   return (
     <section className="section-my-account-container">
       <section>
-        <h1>My account</h1>
+        <h1>{`${t("title-myAccount")}`}</h1>
 
-        <label htmlFor="firstname">First name</label>
+        <label htmlFor="firstname">{`${t("firstname-myAccount")}`}</label>
         <input
           type="text"
           name="firstname"
@@ -47,7 +49,7 @@ export default function ProfilUser() {
           readOnly
         />
 
-        <label htmlFor="lastname">Last name</label>
+        <label htmlFor="lastname">{`${t("lastname-myAccount")}`}</label>
         <input
           type="text"
           name="lastname"
@@ -57,7 +59,7 @@ export default function ProfilUser() {
           readOnly
         />
 
-        <label htmlFor="email">Email</label>
+        <label htmlFor="email">{`${t("email-myAccount")}`}</label>
         <input
           type="email"
           name="email"
@@ -67,7 +69,7 @@ export default function ProfilUser() {
           readOnly
         />
 
-        <label htmlFor="github_url">GitHub URL</label>
+        <label htmlFor="github_url">{`${t("gitHub-myAccount")}`}</label>
         <input
           type="text"
           name="github_url"
@@ -77,7 +79,7 @@ export default function ProfilUser() {
           readOnly
         />
 
-        <label htmlFor="linkedin_url">Linkedin URL</label>
+        <label htmlFor="linkedin_url">{`${t("linkeDin-myAccount")}`}</label>
         <input
           type="text"
           name="linkedin_url"
@@ -87,7 +89,7 @@ export default function ProfilUser() {
           readOnly
         />
 
-        <label htmlFor="profil-image">Profile image</label>
+        <label htmlFor="profil-image">{`${t("profilImage-myAccount")}`}</label>
         <section className="profil-image-wrapper">
           <img
             id="profil-image"
@@ -99,7 +101,7 @@ export default function ProfilUser() {
         </section>
 
         <button type="button" className="standard-button" onClick={openModal}>
-          Click for update your profil
+          {`${t("update-myAccount")}`}
         </button>
       </section>
       <UserAccountModal
