@@ -90,7 +90,7 @@ import favoriteActions from "./modules/favorite/favoriteActions";
 router.post("/api/testimonial", testimonialsAction.add);
 router.get("/api/testimonial", testimonialsAction.browse);
 
-router.get("/api/favorites-user/:id-user, favoriteActions.browse");
+router.get("/api/favorites-user/:id", favoriteActions.read);
 //get all favorites of one user
 
 router.post(

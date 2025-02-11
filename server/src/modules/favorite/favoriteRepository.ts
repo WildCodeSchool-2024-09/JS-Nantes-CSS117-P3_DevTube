@@ -8,7 +8,7 @@ class CategoryRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific video by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from favorite where user = ?",
+      "select * from favorite where user_id = ?",
       [id],
     );
 

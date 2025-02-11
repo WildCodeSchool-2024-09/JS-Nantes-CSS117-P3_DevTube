@@ -4,7 +4,7 @@ import favoriteRepository from "./favoriteRepository";
 // Read operation by id
 const read: RequestHandler = async (req, res, next) => {
   try {
-    // Fetch a specific category based on the provided ID
+    // Fetch a specific favorite based on the provided ID user
     const userId = Number(req.params.id);
     const favorites = await favoriteRepository.read(userId);
 
