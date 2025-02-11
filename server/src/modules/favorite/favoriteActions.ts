@@ -41,4 +41,20 @@ const add: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { add, read };
+// REMOVE operation
+const remove: RequestHandler = async (req, res, next) => {
+  try {
+    const favorite = {
+      user_id: req.body.user_id,
+      video_id: req.body.video_id,
+    };
+
+    const favoriteToRemove = await favoriteRepository.remove(favorite);
+    res.status(201).json({ favoriteToRemove });
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
+export default { add, read, remove };

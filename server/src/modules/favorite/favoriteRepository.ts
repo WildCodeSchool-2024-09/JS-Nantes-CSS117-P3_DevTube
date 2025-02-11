@@ -26,6 +26,15 @@ class CategoryRepository {
     // Return the ID of the newly inserted category
     return result.insertId;
   }
+
+  // Delete operation
+  async remove(favorite: Favorite) {
+    const [rows] = await databaseClient.query<Rows>(
+      "DELETE FROM favorite where video_id = ? AND user_id = ?",
+      [favorite.video_id, favorite.user_id],
+    );
+    return rows[0] as Favorite;
+  }
 }
 
 export default new CategoryRepository();
