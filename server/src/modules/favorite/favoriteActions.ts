@@ -45,8 +45,8 @@ const add: RequestHandler = async (req, res, next) => {
 const remove: RequestHandler = async (req, res, next) => {
   try {
     const favorite = {
-      user_id: req.body.user_id,
       video_id: req.body.video_id,
+      user_id: req.body.user_id,
     };
 
     const favoriteToRemove = await favoriteRepository.remove(favorite);
@@ -56,5 +56,14 @@ const remove: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+
+//GET : api/resources/:id
+// req.params
+
+// POST : api/resource
+// body : {
+// videoId: 2,
+// fav: 23,
+// }
 
 export default { add, read, remove };
