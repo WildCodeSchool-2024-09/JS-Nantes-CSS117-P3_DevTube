@@ -90,19 +90,18 @@ import favoriteActions from "./modules/favorite/favoriteActions";
 router.post("/api/testimonial", testimonialsAction.add);
 router.get("/api/testimonial", testimonialsAction.browse);
 
-router.use(authActions.verifyToken);
-
-router.get("/api/favorites-user/:id-user");
+router.get("/api/favorites-user/:id-user, favoriteActions.browse");
 //get all favorites of one user
 
 router.post(
-  "/api/favorites-user/add-favorite/:id-video/user/:user-id",
+  "/api/favorites-user/add-favorite/:video_id/user/:user_id",
   favoriteActions.add,
 );
 //add a new favorite to one user
 
-router.delete("api/favorites-user/delete-favorite/:video-is:user/:user-id");
+router.delete("api/favorites-user/delete-favorite/:video-id/:user/:user-id");
 //delete one favorite from user favorites
+router.use(authActions.verifyToken);
 
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);
