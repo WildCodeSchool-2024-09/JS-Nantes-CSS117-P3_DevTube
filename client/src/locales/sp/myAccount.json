@@ -1,0 +1,10 @@
+{
+  "title-myAccount": "Mi cuenta",
+  "firstname-myAccount": "Nombre",
+  "lastname-myAccount": "Apellido",
+  "email-myAccount": "Correo electrónico",
+  "gitHub-myAccount": "URL de GitHub",
+  "linkeDin-myAccount": "URL de LinkedIn",
+  "profilImage-myAccount": "Imagen de perfil",
+  "update-myAccount": "Haga clic para actualizar su perfil"
+}

@@ -11,6 +11,7 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
 
   const authContext = useContext(AuthContext);
+  const { admin } = useContext(AuthContext) || { admin: false };
 
   const { auth } = useAuth();
   const navigate = useNavigate();
@@ -77,14 +78,7 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            {/* TODO add isAdmin? to protect admin page in front */}
-            {auth && (
-              <li>
-                <NavLink to={"admin/"} onClick={toggleMenu}>
-                  Admin
-                </NavLink>
-              </li>
-            )}
+            <li>{admin ? <NavLink to={"admin"}>admin</NavLink> : ""}</li>
             <li>
               {auth ? (
                 <button
