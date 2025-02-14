@@ -7,6 +7,7 @@ export const AuthContext = createContext<AuthProps | null>(null);
 
 export default function AuthProvider({ children }: Children) {
   const [auth, setAuth] = useState(false);
+  const [admin, setAdmin] = useState(false);
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
@@ -36,17 +37,21 @@ export default function AuthProvider({ children }: Children) {
   const login = (token: string, user: User) => {
     setAuth(true);
     setUser(user);
+    if (user.is_admin) setAdmin(true);
     localStorage.setItem("token", token);
   };
 
   const logout = () => {
     setAuth(false);
     setUser(null);
+    setAdmin(false);
     localStorage.removeItem("token");
   };
 
   return (
-    <AuthContext.Provider value={{ auth, setAuth, login, logout, user }}>
+    <AuthContext.Provider
+      value={{ auth, setAuth, login, logout, user, admin, setAdmin }}
+    >
       {children}
     </AuthContext.Provider>
   );
