@@ -74,7 +74,7 @@ export default function Subscribe() {
       }
 
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users`,
+        `${import.meta.env.VITE_API_URL}/api/users/`,
         {
           method: "POST",
           headers: { "Content-type": "application/json" },

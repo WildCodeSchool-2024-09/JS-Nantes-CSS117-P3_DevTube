@@ -1,14 +1,21 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
-import useAuth from "../../utils/useAuth";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function Login() {
   const focusInUsername = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
-  const { setAuth } = useAuth();
   const navigate = useNavigate();
+
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error("Invalid auth !");
+  }
+  const { login } = authContext;
 
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,17 +36,19 @@ export default function Login() {
         },
       );
 
-      const { token } = await response.json();
+      if (!response.ok) {
+        throw new Error("You are not logged");
+      }
+
+      const { token, user } = await response.json();
 
       if (token) {
         notifySuccess("You are logged !");
-        setAuth(true);
-
-        localStorage.setItem("token", token);
+        login(token, user);
         navigate("/");
       }
     } catch (err) {
-      notifyError("You are log out !");
+      notifyError((err as Error).message);
     }
   };
 

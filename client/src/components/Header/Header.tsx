@@ -1,6 +1,7 @@
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
@@ -8,7 +9,11 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const { theme, setTheme } = useTheme();
-  const { auth, setAuth } = useAuth();
+
+  const authContext = useContext(AuthContext);
+  const { admin } = useContext(AuthContext) || { admin: false };
+
+  const { auth } = useAuth();
   const navigate = useNavigate();
 
   function toggleMenu() {
@@ -20,8 +25,9 @@ export default function Header() {
   }
 
   function handleLogoutBtnClick() {
-    localStorage.removeItem("token");
-    setAuth(false);
+    if (!authContext) return;
+    const { logout } = authContext;
+    logout();
     navigate("/logout-success");
   }
 
@@ -72,22 +78,51 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            {auth && (
-              <li>
-                <NavLink to={"admin/"} onClick={toggleMenu}>
-                  Admin
-                </NavLink>
-              </li>
-            )}
+            <li>{admin ? <NavLink to={"admin"}>admin</NavLink> : ""}</li>
             <li>
-              <NavLink to={"/login"} onClick={toggleMenu}>
-                Login
-              </NavLink>
+              {auth ? (
+                <button
+                  type="button"
+                  className="btn-logout"
+                  onClick={() => {
+                    handleLogoutBtnClick();
+                    toggleMenu();
+                  }}
+                >
+                  Log out
+                </button>
+              ) : (
+                <NavLink
+                  to={"/login"}
+                  className="btn-login"
+                  onClick={toggleMenu}
+                >
+                  Log in
+                </NavLink>
+              )}
             </li>
             <li>
-              <NavLink to={"/subscribe"} onClick={toggleMenu}>
-                Sign up
-              </NavLink>
+              {!auth ? (
+                <NavLink
+                  to={"/subscribe"}
+                  className="little-cta"
+                  onClick={toggleMenu}
+                >
+                  Sign up
+                </NavLink>
+              ) : (
+                <NavLink
+                  to={"/profil-user"}
+                  className="btn-login"
+                  onClick={toggleMenu}
+                >
+                  <img
+                    src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
+                    alt=""
+                    className="user-profile-logo"
+                  />
+                </NavLink>
+              )}
             </li>
 
             <li>
@@ -138,9 +173,17 @@ export default function Header() {
             Log in
           </NavLink>
         )}
-        {!auth && (
+        {!auth ? (
           <NavLink to={"/subscribe"} className="little-cta">
             Sign up
+          </NavLink>
+        ) : (
+          <NavLink to={"/profil-user"} className="btn-login">
+            <img
+              src={`${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user-profile-ircle.png`}
+              alt=""
+              className="user-profile-logo"
+            />
           </NavLink>
         )}
       </section>
