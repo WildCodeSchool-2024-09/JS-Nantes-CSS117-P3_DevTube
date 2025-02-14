@@ -1,4 +1,5 @@
 import type { RequestHandler } from "express";
+import type { Favorite } from "./Favorite";
 import favoriteRepository from "./favoriteRepository";
 
 // Read operation by id
@@ -25,11 +26,10 @@ const read: RequestHandler = async (req, res, next) => {
 const add: RequestHandler = async (req, res, next) => {
   try {
     // Extract the favorite data from the request body
-    const newFavorite = {
+    const newFavorite: Favorite = {
       user_id: req.body.user_id,
       video_id: req.body.video_id,
     };
-
     // Create the favorite
     const insertId = await favoriteRepository.create(newFavorite);
 

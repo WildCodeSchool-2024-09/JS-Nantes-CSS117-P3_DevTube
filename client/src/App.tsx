@@ -14,10 +14,14 @@ function App() {
   const [favUser, setFavUser] = useState();
   const { user } = useAuth();
 
+  const userId = user?.id;
+
   useEffect(() => {
-    const urlForFavoritesUser = `${import.meta.env.VITE_API_URL}/api/favorites-user/${user?.id}`;
-    recoverFavoritesUser(urlForFavoritesUser);
-  }, [user?.id]);
+    if (user) {
+      const urlForFavoritesUser = `${import.meta.env.VITE_API_URL}/api/favorites-user/${userId}`;
+      recoverFavoritesUser(urlForFavoritesUser);
+    }
+  }, [user, userId]);
 
   async function recoverFavoritesUser(url: string) {
     const token = localStorage.getItem("token");
@@ -30,18 +34,18 @@ function App() {
       });
       const datas = await request.json();
       setFavUser(datas);
-      // console.log({ datas });
     } catch (err) {
       console.error(err);
     }
   }
-  // console.log({ favUser });
 
   return (
     <>
       <Header />
       <main className={theme ? "light" : "dark"}>
-        <Outlet context={{ infoVideos, setInfoVideos, favUser, setFavUser }} />
+        <Outlet
+          context={{ infoVideos, setInfoVideos, favUser, setFavUser, userId }}
+        />
       </main>
       <Footer />
       <ToastContainer

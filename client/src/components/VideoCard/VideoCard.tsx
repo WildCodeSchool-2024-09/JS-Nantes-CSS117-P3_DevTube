@@ -1,9 +1,10 @@
 import "./../../styles/VideoCard.css";
 import { useState } from "react";
+import { useOutletContext } from "react-router-dom";
+import type { OutletContextProps } from "../../types/outletContext";
 import type { VideoCardProps } from "../../types/videocard";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
-import useToast from "../../utils/useToastify";
 
 function VideoCard({
   isFreemium,
@@ -16,43 +17,43 @@ function VideoCard({
 }: VideoCardProps) {
   // TODO :favorites gestion with heart empty or orange heart
 
-  const { notifyError } = useToast();
   const { theme } = useTheme();
   const { auth } = useAuth();
-  const { user } = useAuth();
+  const outletContext = useOutletContext<OutletContextProps>();
+
   const [isFavIcon, setIsFavIcon] = useState(false);
 
-  const handleClickFav = (
+  const handleClickFav = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     setIsFavIcon(!isFavIcon);
-    console.warn({ event });
-    // const idVideoToFind = event.currentTarget.dataset.idVideo;
-    // try {
-    //   const token = localStorage.getItem("token");
-    //   const response = await fetch(
-    //     `${import.meta.env.VITE_API_URL}/api/videos/${outletContext.videoToUpdate?.id}`,
-    //     {
-    //       method: "DELETE",
-    //       headers: {
-    //         "Content-Type": "application/json",
-    //         Authorization: `Bearer ${token}`,
-    //       },
-    //     },
-    //   );
 
-    //   if (!response.ok) {
-    //     throw new Error("An unknown error occurred.");
-    //   }
-    //   notifySuccess(
-    //     `The video ${outletContext.videoToUpdate?.name} has been removed.`,
-    //   );
-    //   outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
-    //   outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
-    //   outletContext.setNeedToRefetch(() => !outletContext.needToRefetch);
-    // } catch (err) {
-    //   notifyError((err as Error).message);
-    // }
+    const idVideoToFind = event.currentTarget.dataset.idvideo;
+    const idUserToFind = event.currentTarget.dataset.iduser;
+    const favToAdd = {
+      user_id: idUserToFind,
+      video_id: idVideoToFind,
+    };
+
+    try {
+      const token = localStorage.getItem("token");
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
+        {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(favToAdd),
+        },
+      );
+      if (!response.ok) {
+        throw new Error("An unknown error occurred.");
+      }
+    } catch (err) {
+      console.warn(err);
+    }
   };
 
   return (
@@ -82,8 +83,8 @@ function VideoCard({
               <button
                 className="fav-button"
                 type="button"
-                data-idVideo={id}
-                data-idUser={user?.id}
+                data-idvideo={id}
+                data-iduser={outletContext.userId}
                 onClick={(event) => handleClickFav(event)}
               >
                 <img

@@ -74,7 +74,7 @@ const upload = multer({ storage: storage, fileFilter }).fields([
 ]);
 
 router.get("/api/videos", videoActions.browse);
-router.use(authActions.verifyToken);
+// router.use(authActions.verifyToken);
 router.get("/api/videos/:id", videoActions.read);
 router.get("/api/categories", categoryActions.browse);
 router.get("/api/category/:id", categoryActions.read);
@@ -96,7 +96,6 @@ router.get("/api/testimonial", testimonialsAction.browse);
 router.post("/api/favorites-user/favorite", favoriteActions.add);
 //add a new favorite to one user
 router.get("/api/course", videoActions.browseCourse);
-router.use(authActions.verifyToken);
 
 router.delete("/api/favorites-user/favorite", favoriteActions.remove);
 
