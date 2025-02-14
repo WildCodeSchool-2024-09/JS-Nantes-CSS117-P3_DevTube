@@ -1,7 +1,7 @@
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
-import type { Video } from "./video";
+import type { Course, Video } from "./video";
 
 class VideoRepository {
   // Create operation
@@ -116,6 +116,14 @@ class VideoRepository {
       [id],
     );
     return rows[0] as Video;
+  }
+
+  // Read all course
+  async readAllCourse() {
+    const [rows] = await databaseClient.query<Rows>("SELECT * FROM course");
+
+    // Return the array of videos
+    return rows as Course[];
   }
 }
 

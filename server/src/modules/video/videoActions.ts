@@ -9,7 +9,6 @@ const browse: RequestHandler = async (req, res, next) => {
   try {
     // Fetch all videos
     const videos = await videoRepository.readAll();
-
     // Respond with the videos in JSON format
     res.json(videos);
   } catch (err) {
@@ -179,4 +178,16 @@ const edit: RequestHandler = async (req, res, next) => {
   }
 };
 
-export default { browse, read, add, remove, edit };
+const browseCourse: RequestHandler = async (req, res, next) => {
+  try {
+    const course = await videoRepository.readAllCourse();
+
+    if (!course) throw new Error("Course fetch not available.");
+
+    res.json(course);
+  } catch (err) {
+    next((err as Error).message);
+  }
+};
+
+export default { browse, read, add, remove, edit, browseCourse };

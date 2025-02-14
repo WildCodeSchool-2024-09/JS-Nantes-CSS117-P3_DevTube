@@ -21,7 +21,7 @@ CREATE TABLE testimonial (
 
 CREATE TABLE category (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name VARCHAR(45) NOT NULL
+  name VARCHAR(45) NOT NULL UNIQUE
 );
 
 CREATE TABLE video (
@@ -39,7 +39,6 @@ CREATE TABLE video (
   FOREIGN KEY (category_id) REFERENCES category(id) 
 );
 
-
 CREATE TABLE favorite (
   id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
   user_id INT NOT NULL,
@@ -48,10 +47,22 @@ CREATE TABLE favorite (
   FOREIGN KEY (video_id) REFERENCES video(id)
 );
 
+CREATE TABLE course (
+  id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+  key_course VARCHAR(45) NOT NULL,
+  title VARCHAR(50) NOT NULL,
+  description VARCHAR(250) NOT NULL,
+  image VARCHAR(250) NOT NULL,
+  imgLight VARCHAR(250) NOT NULL,
+  coming_soon TINYINT DEFAULT 0 NOT NULL,
+  type VARCHAR(500) NOT NULL,
+  FOREIGN KEY (key_course) REFERENCES category(name)
+);
+
 INSERT INTO user (firstname, lastname, email, password, github_url, linkedin_url, level, register_date, profil_img, is_admin)
 VALUES
   ("Emilie", "De Duyver", "emilie.deduyver@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$SVpXMEx3UjJ3UmhZZEhwMg$Gfc7g89RStUbXDw5Ij7g+w", "https://github.com/EmiLy-Ly-san", "https://www.linkedin.com/in/emilie-de-duyver/", 1, "2025/01/10", "/assets/images/userprofil/profil-emilie.jpg", true),
-  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$YJpDsIpx9qrGHnMCO/o0QLXiVrFR5HxffhLL3eRz8W0", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
+  ("Fabrice", "Atlan", "fabrice.atlan.56@gmail.com", "$argon2id$v=19$m=16,t=2,p=1$V25JdmFFRXBnc1Z6N1hTTg$FQHiIbPvbahwchYL9wSr8g", "https://github.com/FabriceAtlan", "https://www.linkedin.com/in/atlanfabrice/", 1, "2025/01/10", "/assets/images/userprofil/fabrice-atlan.png", true),
   ("Ibrahim", "Yahiaya Adam", "iadam606@yahoo.fr", "$argon2id$v=19$m=19,t=2,p=1$ODJCS2VQZlg2U016b1dtUw$XludgNxFUX2Xh/wtwJampP981YUfrmXND1RZlBylnpE", "https://github.com/IbraAD44", "https://www.linkedin.com/in/ibrahim-adam-47b748261/", 1, "2025/01/10", "/assets/images/userprofil/ibrahim-yahiaya-adam.jpg", true);
 
 INSERT INTO testimonial (user_id, text_testimonial)
@@ -106,4 +117,15 @@ VALUES
   ("BDD trainy", "10", "/assets/videos/train-bdd.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi aux bases de données avec Nicolas 🐨!", 8, false, "2025-01-23", false, false),
   ("Express trainy 1", "8", "/assets/videos/train-express-1.mp4", "/assets/images/videoPreviewImages/1-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
   ("Express trainy 2", "8", "/assets/videos/train-express-2.mp4", "/assets/images/videoPreviewImages/2-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false),
-  ("Express trainy 3", "2", "/assets/videos/train-express-3.mp4", "/assets/images/videoPreviewImages/3-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false)
+  ("Express trainy 3", "2", "/assets/videos/train-express-3.mp4", "/assets/images/videoPreviewImages/3-train-express.png", "Entraîne toi au framework Express avec Nicolas 🐨!", 9, true, "2025-01-23", false, false);
+
+  INSERT INTO course (title, key_course, description, image, imgLight, coming_soon, type) VALUES
+  ("Learn HTML", "html", "HTML (HyperText Markup Language) is the standard language for creating web pages and web applications. It structures content using elements such as headings, paragraphs, links, and multimedia.", "logo-html.png", "",  0, "Bases"),
+  ("Discover le CSS", "css", "CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation of web pages. It defines the layout, colors, fonts, and overall visual appearance of HTML elements.", "logo-css.png", "", 0, "Bases"),
+  ("Algo basics", "algo", "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving.", "logo-algo-basics.png", "", 1, "Bases"),
+  ("Know everything about JavaScript", "javascript", "JavaScript is a versatile programming language used to create dynamic and interactive web content. It enables developers to manipulate HTML, handle events, and build complex web applications.", "logo-javascript.png","",  1, "Front-end"),
+  ("Know everything about Node.js", "node.js", "Node.js is a runtime environment that allows JavaScript to run on the server side. It is designed for building scalable, high-performance applications using non-blocking, event-driven architecture.", "logo-node.png", "", 1, "Back-end"),
+  ("Welcome to REACT", "react", "React is a popular JavaScript library for building user interfaces. It enables developers to create reusable components and manage dynamic data efficiently with a virtual DOM", "logo-react.png","", 0, "Front-end"),
+  ("Master the GitHub workflow", "github", "The GitHub workflow involves using Git for version control, collaborating through branches, and managing changes with pull requests. It streamlines teamwork, code review, and deployment in software development.", "logo-github.png", "", 1, "Front-end"),
+  ("The wondefull world of MySQL", "sql", "MySQL is a widely used open-source relational database management system. It allows developers to store, manage, and retrieve data efficiently using structured queries with SQL.", "logo-sql.png","", 0, "Back-end"),
+  ("Server rating with  Express", "express", "Express is a fast and minimalist web framework for Node.js. It simplifies server creation by providing robust tools for handling routes, middleware, and HTTP requests.", "logo-express.png", "express-icon-for-light-theme.png", 0, "Back-end");

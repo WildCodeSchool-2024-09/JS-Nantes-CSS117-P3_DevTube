@@ -1,9 +1,5 @@
+import type { CategoryCreationProps } from "../../types/CategoryCreationProps";
 import useToast from "../../utils/useToastify";
-
-interface CategoryCreationProps {
-  isCategoryCreationSectionOpen: boolean;
-  setIsCategoryCreationSectionOpen: (value: boolean) => void;
-}
 
 export default function CategoryCreation({
   isCategoryCreationSectionOpen,
@@ -15,7 +11,6 @@ export default function CategoryCreation({
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data);
 
     try {
       const token = localStorage.getItem("token");
@@ -34,8 +29,6 @@ export default function CategoryCreation({
         throw new Error("An unknown error occurred.");
       }
       notifySuccess(`The catgory ${data?.name} has been updated.`);
-      // setVideosSectionOpen(!isVideosSectionOpen);
-      // setInfoVideoOpen(!isInfoVideoOpen);
     } catch (err) {
       notifyError((err as Error).message);
     }

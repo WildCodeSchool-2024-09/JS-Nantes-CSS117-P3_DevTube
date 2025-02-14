@@ -1,5 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "../../styles/Freemium.css";
+import { Link } from "react-router-dom";
 import bigStarFreenium from "/big-star-freenium.png";
 import starWhite from "/star-white-icon.png";
 
@@ -30,7 +31,7 @@ export default function Freemium() {
             <p className="card-block card-block-4">{t("bonus-3")}</p>
             <div className="card-block-button">
               <button type="button" className="big-cta">
-                sign up
+                <Link to={"/subscribe"}>sign up</Link>
                 <span>
                   <img className="white-star-icon" src={starWhite} alt="" />
                 </span>

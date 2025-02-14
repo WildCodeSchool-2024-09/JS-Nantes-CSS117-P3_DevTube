@@ -113,12 +113,23 @@
   display: none;
 }
 
+.user-profile-logo {
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
+
 .btn-logout {
   color: var(--text-color);
   padding: 10px;
 }
-
-@media screen and (min-width: 990px) {
+.header-nav-container .little-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+@media screen and (min-width: 1118px) {
   .section-nav-container {
     display: flex;
   }
@@ -162,6 +173,7 @@
 
   .login-sign-up-container {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: auto;
     gap: 1rem;
@@ -196,7 +208,6 @@
     background-position: 95%;
     padding: 0 1rem;
   }
-
   .login-sign-up-container .little-cta {
     text-align: center;
     padding: .5rem;

@@ -1,0 +1,10 @@
+{
+  "title-course": "Learn Web developement",
+  "description-course": "Master the fundamentals of web development and learn how to create modern, fully functional websites step by step.",
+  "courses": {
+    "html": {
+      "title": "Learn HTML",
+      "description": "HTML (HyperText Markup Language) is the standard language for creating web pages and web applications. It structures content using elements such as headings, paragraphs, links, and multimedia."
+    }
+  }
+}
