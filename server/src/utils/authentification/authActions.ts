@@ -163,16 +163,10 @@ const checkIsValidToken: RequestHandler = async (req, res, next) => {
     const isTokenValid = getIsTokenValid(token);
 
     if (isTokenValid) {
-<<<<<<< HEAD
-      res.status(200).send("Token verified");
-    } else {
-      res.status(401).send("Invalid Token");
-=======
       const decodedToken = jwt.decode(token);
       res.status(200).send(decodedToken);
     } else {
       throw new Error("JWT invalid");
->>>>>>> e5329d6446d290ffae04405bc226bf65764dbb1d
     }
   } catch (err) {
     res.status(400).send(err);
