@@ -47,7 +47,27 @@ function VideoCard({
             body: JSON.stringify(favItem),
           },
         );
-        setIsFavIcon(!isFavIcon);
+
+        if (!response.ok) {
+          throw new Error("An unknown error occurred.");
+        }
+      } catch (err) {
+        console.warn(err);
+      }
+    } else {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
+          {
+            method: "DELETE",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(favItem),
+          },
+        );
         if (!response.ok) {
           throw new Error("An unknown error occurred.");
         }
@@ -55,6 +75,7 @@ function VideoCard({
         console.warn(err);
       }
     }
+    setIsFavIcon(!isFavIcon);
   };
 
   return (
