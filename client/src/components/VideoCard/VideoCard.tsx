@@ -26,33 +26,34 @@ function VideoCard({
   const handleClickFav = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setIsFavIcon(!isFavIcon);
-
     const idVideoToFind = event.currentTarget.dataset.idvideo;
     const idUserToFind = event.currentTarget.dataset.iduser;
-    const favToAdd = {
+    const favItem = {
       user_id: idUserToFind,
       video_id: idVideoToFind,
     };
 
-    try {
-      const token = localStorage.getItem("token");
-      const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
-        {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            Authorization: `Bearer ${token}`,
+    if (!isFavIcon) {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
+          {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+              Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify(favItem),
           },
-          body: JSON.stringify(favToAdd),
-        },
-      );
-      if (!response.ok) {
-        throw new Error("An unknown error occurred.");
+        );
+        setIsFavIcon(!isFavIcon);
+        if (!response.ok) {
+          throw new Error("An unknown error occurred.");
+        }
+      } catch (err) {
+        console.warn(err);
       }
-    } catch (err) {
-      console.warn(err);
     }
   };
 
