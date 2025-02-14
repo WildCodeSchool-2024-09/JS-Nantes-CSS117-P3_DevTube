@@ -25,6 +25,7 @@ const hashPassword: RequestHandler = async (req, res, next) => {
 };
 
 const login: RequestHandler = async (req, res, next) => {
+  // Mettre un try catch
   const { email, password } = req.body;
 
   const user = await userRepository.getUserByEmail(email);
@@ -33,6 +34,7 @@ const login: RequestHandler = async (req, res, next) => {
     res.sendStatus(404);
     return;
   }
+
   const isVerified = await verify(user.password as string, password);
 
   if (isVerified) {
@@ -41,14 +43,28 @@ const login: RequestHandler = async (req, res, next) => {
     if (!secretKey) {
       throw new Error("Clé secret invalide.");
     }
+
     const payload = {
       id: user.id,
       email: user.email,
+      firstname: user.firstname,
     };
 
     const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
 
-    res.status(202).json({ token, user: user.email });
+    res.status(202).json({
+      token,
+      user: {
+        id: user.id,
+        firstname: user.firstname,
+        lastname: user.lastname,
+        email: user.email,
+        github_url: user.github_url,
+        linkedin_url: user.linkedin_url,
+        profil_img: user.profil_img,
+        is_admin: user.is_admin,
+      },
+    });
   } else {
     res.sendStatus(422);
   }
@@ -98,6 +114,25 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       throw new Error("A secret key must be provided");
     }
 
+    // const isTokenValid = getIsTokenValid(token);
+
+    const payload = jwt.verify(token, secretKey) as {
+      id: number;
+      email: string;
+    };
+
+    const id = payload.id;
+
+    const user = await userRepository.read(id);
+
+    req.body.userFromBack = user;
+
+    if (payload) {
+      next();
+    } else {
+      throw new Error("JWT invalid");
+    }
+
     next();
   } catch (err) {
     console.error(err);
@@ -128,9 +163,10 @@ const checkIsValidToken: RequestHandler = async (req, res, next) => {
     const isTokenValid = getIsTokenValid(token);
 
     if (isTokenValid) {
-      res.status(200).send("Token verified");
+      const decodedToken = jwt.decode(token);
+      res.status(200).send(decodedToken);
     } else {
-      res.status(401).send("Invalid Token");
+      throw new Error("JWT invalid");
     }
   } catch (err) {
     res.status(400).send(err);

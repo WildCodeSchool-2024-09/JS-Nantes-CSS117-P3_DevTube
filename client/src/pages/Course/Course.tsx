@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import "../../styles/Course.css";
 import { useEffect, useState } from "react";
+import { useTranslation } from "react-i18next";
 import type { Video } from "../../types/video";
 import useTheme from "../../utils/useTheme";
 import useToast from "../../utils/useToastify";
@@ -8,99 +9,17 @@ import useToast from "../../utils/useToastify";
 type Course = {
   id: number;
   title: string;
+  key_course: string;
   description: string;
-  img: string;
+  image: string;
   imgLight?: string;
   type: string;
   coming_soon: 0 | 1;
 };
-const lstCourse: Course[] = [
-  {
-    id: 1,
-    title: "Learn HTML",
-    description:
-      "HTML (HyperText Markup Language) is the standard language for creating web pages and web applications. It structures content using elements such as headings, paragraphs, links, and multimedia.",
-    img: "logo-html.png",
-    type: "Bases",
-    coming_soon: 0,
-  },
-  {
-    id: 2,
-    title: "Discover  le CSS",
-    description:
-      "CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation of web pages. It defines the layout, colors, fonts, and overall visual appearance of HTML elements.",
-    img: "logo-css.png",
-    type: "Bases",
-    coming_soon: 0,
-  },
-  {
-    id: 3,
-    title: "Algo basics",
-    description:
-      "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving.",
-    img: "logo-algo-basics.png",
-    type: "Bases",
-    coming_soon: 1,
-  },
-  {
-    id: 4,
-    title: "Know everything about JavaScript",
-    description:
-      "JavaScript is a versatile programming language used to create dynamic and interactive web content. It enables developers to manipulate HTML, handle events, and build complex web applications.",
-    img: "logo-javascript.png",
-    type: "Front-end",
-    coming_soon: 1,
-  },
-  {
-    id: 5,
-    title: "Know everything about Node.js",
-    description:
-      "Node.js is a runtime environment that allows JavaScript to run on the server side. It is designed for building scalable, high-performance applications using non-blocking, event-driven architecture.",
-    img: "logo-node.png",
-    type: "Back-end",
-    coming_soon: 1,
-  },
-  {
-    id: 6,
-    title: "Welcome to REACT",
-    description:
-      "React is a popular JavaScript library for building user interfaces. It enables developers to create reusable components and manage dynamic data efficiently with a virtual DOM.",
-    img: "logo-react.png",
-    type: "Front-end",
-    coming_soon: 0,
-  },
-  {
-    id: 7,
-    title: "Master the GitHub workflow",
-    description:
-      "The GitHub workflow involves using Git for version control, collaborating through branches, and managing changes with pull requests. It streamlines teamwork, code review, and deployment in software development.",
-    img: "logo-github.png",
-    type: "Front-end",
-    coming_soon: 1,
-  },
-  {
-    id: 8,
-    title: "The wondefull world of MySQL",
-    description:
-      "MySQL is a widely used open-source relational database management system. It allows developers to store, manage, and retrieve data efficiently using structured queries with SQL.",
-    img: "logo-sql.png",
-    type: "Back-end",
-    coming_soon: 0,
-  },
-  {
-    id: 9,
-    title: "Server rating with  Express",
-    description:
-      "Express is a fast and minimalist web framework for Node.js. It simplifies server creation by providing robust tools for handling routes, middleware, and HTTP requests.",
-    img: "logo-express.png",
-    imgLight: "express-icon-for-light-theme.png",
-    type: "Back-end",
-    coming_soon: 0,
-  },
-];
 export default function Course() {
+  const [course, setCourse] = useState<Course[]>([]);
   const getCourseByType = (type: string) =>
-    lstCourse.filter((el) => el.type === type);
+    course.filter((el) => el.type === type);
   const listBasesCourses = getCourseByType("Bases");
   const listFrontEndCourses = getCourseByType("Front-end");
   const listBackEndCourses = getCourseByType("Back-end");
@@ -110,6 +29,36 @@ export default function Course() {
     useState<number>();
   const { notifyError } = useToast();
   const navigate = useNavigate();
+  const { t } = useTranslation();
+
+  /*
+  TODO Après le merge, faire la traduction de toutes les données.
+  La page course.json doit être un tableau d'objet complexe
+  const { i18n } = useTranslation();
+  */
+
+  useEffect(() => {
+    try {
+      const token = localStorage.getItem("token");
+
+      const fetchCourse = async () => {
+        const response = await fetch(
+          `${import.meta.env.VITE_API_URL}/api/course`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          },
+        );
+        const data = await response.json();
+        setCourse(data);
+      };
+
+      fetchCourse();
+    } catch (err) {
+      console.error((err as Error).message);
+    }
+  }, []);
 
   useEffect(() => {
     if (idOfTheCategoryLanguage) {
@@ -155,11 +104,8 @@ export default function Course() {
     <>
       <section className="section-course-container">
         <article className="article-course-title">
-          <h1>Learn Web developement</h1>
-          <p>
-            Master the fundamentals of web development and learn how to create
-            modern, fully functional websites step by step.
-          </p>
+          <h1>{`${t("title-course")}`}</h1>
+          <p>{`${t("description-course")}`}</p>
         </article>
         {/* Vertical line */}
         <img
@@ -180,7 +126,7 @@ export default function Course() {
               <figure key={el.id} className="course-figure-background">
                 <img
                   className="figure-course-logo"
-                  src={theme && el.imgLight ? el.imgLight : el.img}
+                  src={theme && el.imgLight ? el.imgLight : el.image}
                   alt="logo icon"
                 />
                 <section className="figure-description-wrapper">
@@ -254,7 +200,11 @@ export default function Course() {
             {listFrontEndCourses.map((el) => {
               return (
                 <figure key={el.id} className="course-figure-background">
-                  <img className="figure-course-logo" src={el.img} alt="" />
+                  <img
+                    className="figure-course-logo"
+                    src={theme && el.imgLight ? el.imgLight : el.image}
+                    alt=""
+                  />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">
                       <h3>{el.title}</h3>
@@ -297,7 +247,7 @@ export default function Course() {
                 <figure key={el.id} className="course-figure-background">
                   <img
                     className="figure-course-logo"
-                    src={el.img}
+                    src={theme && el.imgLight ? el.imgLight : el.image}
                     alt="logo icon"
                   />
                   <section className="figure-description-wrapper">

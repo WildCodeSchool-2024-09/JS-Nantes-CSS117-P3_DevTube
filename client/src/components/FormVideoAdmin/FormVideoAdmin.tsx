@@ -152,7 +152,10 @@ export default function FormVideoAdmin() {
           isInfoVideoOpen={isInfoVideoOpen}
         />
         <div className={isInfoVideoOpen ? "" : "hidden"}>
-          <InfoVideoToUpdate videoToUpdate={videoToUpdate} />
+          <InfoVideoToUpdate
+            videoToUpdate={videoToUpdate}
+            isInfoVideoOpen={isInfoVideoOpen}
+          />
           <FilesVideo videoToUpdate={videoToUpdate} />
           <section className="form-buttons-wrapper">
             <button type="submit" className="btntTtest standard-button">

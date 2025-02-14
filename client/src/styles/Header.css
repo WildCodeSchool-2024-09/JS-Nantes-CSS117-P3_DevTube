@@ -113,6 +113,12 @@
   display: none;
 }
 
+.user-profile-logo {
+  display: flex;
+  width: 30px;
+  height: 30px;
+}
+
 .btn-logout {
   color: var(--text-color);
   padding: 10px;
@@ -162,6 +168,7 @@
 
   .login-sign-up-container {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: auto;
     gap: 1rem;
@@ -196,7 +203,6 @@
     background-position: 95%;
     padding: 0 1rem;
   }
-
   .login-sign-up-container .little-cta {
     text-align: center;
     padding: .5rem;
