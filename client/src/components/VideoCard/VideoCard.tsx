@@ -3,6 +3,7 @@ import { useState } from "react";
 import type { VideoCardProps } from "../../types/videocard";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
+import useToast from "../../utils/useToastify";
 
 function VideoCard({
   isFreemium,
@@ -15,15 +16,16 @@ function VideoCard({
 }: VideoCardProps) {
   // TODO :favorites gestion with heart empty or orange heart
 
+  const { notifyError } = useToast();
   const { theme } = useTheme();
   const { auth } = useAuth();
   const { user } = useAuth();
-  const [isFav, setIsFav] = useState(false);
+  const [isFavIcon, setIsFavIcon] = useState(false);
 
   const handleClickFav = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
-    setIsFav(!isFav);
+    setIsFavIcon(!isFavIcon);
     console.warn({ event });
     // const idVideoToFind = event.currentTarget.dataset.idVideo;
     // try {
@@ -86,7 +88,7 @@ function VideoCard({
               >
                 <img
                   className="heart-icon"
-                  src={isFav ? "/orange-heart.png" : "/empty-heart.png"}
+                  src={isFavIcon ? "/orange-heart.png" : "/empty-heart.png"}
                   alt="heart icon"
                 />
               </button>
