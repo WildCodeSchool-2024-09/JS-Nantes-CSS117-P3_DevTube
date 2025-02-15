@@ -98,14 +98,13 @@ router.post("/api/favorites-user/favorite", favoriteActions.add);
 router.get("/api/course", videoActions.browseCourse);
 
 router.delete("/api/favorites-user/favorite", favoriteActions.remove);
-
-router.get("/api/favorites-user/:id", favoriteActions.read);
-//get all favorites of one user by user-id
 //delete one favorite from user favorites
 
-// SELECT *
-// FROM user
-// INNER JOIN video ON user.id = favorite.video_id
+router.get("/api/favorites-user/:id", favoriteActions.readList);
+//get all favorites of one user by user-id without datas videos => just a list of favorites
+
+router.get("/api/video-favorites/:id", favoriteActions.readVideos);
+//get all favorites and the datas of all the videos of one user by the user id passes in body
 
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);

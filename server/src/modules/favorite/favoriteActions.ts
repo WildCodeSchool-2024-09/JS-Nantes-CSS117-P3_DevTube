@@ -2,8 +2,26 @@ import type { RequestHandler } from "express";
 import type { Favorite } from "./Favorite";
 import favoriteRepository from "./favoriteRepository";
 
+const readVideos: RequestHandler = async (req, res, next) => {
+  try {
+    const userId = Number(req.params.id);
+    const videos = await favoriteRepository.readVideosFav(userId);
+
+    // If the category is not found, respond with HTTP 404 (Not Found)
+    // Otherwise, respond with the video in JSON format
+    if (videos == null) {
+      res.sendStatus(404);
+    } else {
+      res.json(videos);
+    }
+  } catch (err) {
+    // Pass any errors to the error-handling middleware
+    next(err);
+  }
+};
+
 // Read operation by id
-const read: RequestHandler = async (req, res, next) => {
+const readList: RequestHandler = async (req, res, next) => {
   try {
     // Fetch a specific favorite based on the provided ID user
     const userId = Number(req.params.id);
@@ -66,4 +84,4 @@ const remove: RequestHandler = async (req, res, next) => {
 // fav: 23,
 // }
 
-export default { add, read, remove };
+export default { add, readList, readVideos, remove };

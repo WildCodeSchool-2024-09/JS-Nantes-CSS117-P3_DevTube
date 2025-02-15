@@ -1,9 +1,26 @@
 import databaseClient from "../../../database/client";
 
 import type { Result, Rows } from "../../../database/client";
+import type { Video } from "../video/video";
 import type { Favorite } from "./Favorite";
 
 class CategoryRepository {
+  async readVideosFav(id: number) {
+    try {
+      const [rows] = await databaseClient.query<Rows>(
+        " SELECT v.* FROM favorite f INNER JOIN video v ON f.video_id = v.id WHERE f.user_id = ?",
+        [id],
+      );
+      return rows as Video[];
+    } catch (error) {
+      console.error(
+        "Erreur lors de la récupération des vidéos favorites :",
+        error,
+      );
+      throw new Error("Impossible de récupérer les vidéos favorites");
+    }
+  }
+
   // By id
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific video by its ID
