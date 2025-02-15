@@ -11,17 +11,19 @@ import useTheme from "./utils/useTheme";
 function App() {
   const { theme } = useTheme();
   const [infoVideos, setInfoVideos] = useState();
-  const [favUser, setFavUser] = useState();
-  const { user } = useAuth();
+  const [favUserList, setFavUserList] = useState(); //without videos datas, just a list
+  const [needToRefetchFavList, setNeedToRefetchFavList] =
+    useState<boolean>(false);
 
+  const { user } = useAuth();
   const userId = user?.id;
 
   useEffect(() => {
-    if (user) {
+    if (user || needToRefetchFavList) {
       const urlForFavoritesUser = `${import.meta.env.VITE_API_URL}/api/favorites-user/${userId}`;
       recoverFavoritesUser(urlForFavoritesUser);
     }
-  }, [user, userId]);
+  }, [user, userId, needToRefetchFavList]);
 
   async function recoverFavoritesUser(url: string) {
     const token = localStorage.getItem("token");
@@ -33,9 +35,11 @@ function App() {
         },
       });
       const datas = await request.json();
-      setFavUser(datas);
+      setFavUserList(datas);
     } catch (err) {
       console.error(err);
+    } finally {
+      setNeedToRefetchFavList(false);
     }
   }
 
@@ -44,7 +48,14 @@ function App() {
       <Header />
       <main className={theme ? "light" : "dark"}>
         <Outlet
-          context={{ infoVideos, setInfoVideos, favUser, setFavUser, userId }}
+          context={{
+            infoVideos,
+            setInfoVideos,
+            favUserList,
+            setFavUserList,
+            userId,
+            setNeedToRefetchFavList,
+          }}
         />
       </main>
       <Footer />

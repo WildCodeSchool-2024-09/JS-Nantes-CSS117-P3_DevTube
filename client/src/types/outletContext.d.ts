@@ -4,7 +4,9 @@ import type { Video } from "./video";
 interface OutletContextProps {
   infoVideos: Video[];
   setInfoVideos: (data: Video[]) => void;
-  favUser: Favorite;
-  setFavUser: (data: Favorite) => void;
+  favUserList: Favorite[];
+  setFavUserList: (data: Favorite[]) => void;
   userId: number;
+  needToRefetchFavList?: boolean;
+  setNeedToRefetchFavList: (value: boolean) => void;
 }
