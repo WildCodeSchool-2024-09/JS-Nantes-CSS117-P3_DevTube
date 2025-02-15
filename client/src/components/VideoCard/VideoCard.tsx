@@ -1,6 +1,7 @@
 import "./../../styles/VideoCard.css";
-import { useState } from "react";
+import { useContext } from "react";
 import { useOutletContext } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuhtProvider";
 import type { OutletContextProps } from "../../types/outletContext";
 import type { VideoCardProps } from "../../types/videocard";
 import useAuth from "../../utils/useAuth";
@@ -19,64 +20,13 @@ function VideoCard({
 
   const { theme } = useTheme();
   const { auth } = useAuth();
+  const { user } = useContext(AuthContext) ?? {};
   const outletContext = useOutletContext<OutletContextProps>();
-
-  const [isFavIcon, setIsFavIcon] = useState(false);
-
-  const handleClickFav = async (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => {
-    const idVideoToFind = event.currentTarget.dataset.idvideo;
-    const idUserToFind = event.currentTarget.dataset.iduser;
-    const favItem = {
-      user_id: idUserToFind,
-      video_id: idVideoToFind,
-    };
-
-    if (!isFavIcon) {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
-          {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(favItem),
-          },
-        );
-
-        if (!response.ok) {
-          throw new Error("An unknown error occurred.");
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-    } else {
-      try {
-        const token = localStorage.getItem("token");
-        const response = await fetch(
-          `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
-          {
-            method: "DELETE",
-            headers: {
-              "Content-type": "application/json",
-              Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify(favItem),
-          },
-        );
-        if (!response.ok) {
-          throw new Error("An unknown error occurred.");
-        }
-      } catch (err) {
-        console.warn(err);
-      }
-    }
-    setIsFavIcon(!isFavIcon);
-  };
+  const isVideoInUserFavorites =
+    user &&
+    outletContext.favUserList?.some((fav) => {
+      return fav.video_id === Number(id);
+    });
 
   return (
     <>
@@ -101,17 +51,15 @@ function VideoCard({
                 <p className="time">{duration} min</p>
               </div>
             </div>
-            {auth && (
-              <button
-                className="fav-button"
-                type="button"
-                data-idvideo={id}
-                data-iduser={outletContext.userId}
-                onClick={(event) => handleClickFav(event)}
-              >
+            {user && (
+              <button className="fav-button" type="button">
                 <img
                   className="heart-icon"
-                  src={isFavIcon ? "/orange-heart.png" : "/empty-heart.png"}
+                  src={
+                    isVideoInUserFavorites
+                      ? "/orange-heart.png"
+                      : "/empty-heart.png"
+                  }
                   alt="heart icon"
                 />
               </button>
