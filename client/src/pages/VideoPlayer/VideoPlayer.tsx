@@ -21,6 +21,61 @@ export default function VideoPlayer() {
     }
   }, [category_id]); // We fetch only if we have a category_id so if we have received a video and not an error
 
+  // const handleClickFav = async (
+  //   event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  // ) => {
+  //   const idVideoToFind = event.currentTarget.dataset.idvideo;
+  //   const idUserToFind = event.currentTarget.dataset.iduser;
+  //   const favItem = {
+  //     user_id: idUserToFind,
+  //     video_id: idVideoToFind,
+  //   };
+
+  //   if (!isFavIcon) {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       const response = await fetch(
+  //         `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
+  //         {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //           body: JSON.stringify(favItem),
+  //         },
+  //       );
+
+  //       if (!response.ok) {
+  //         throw new Error("An unknown error occurred.");
+  //       }
+  //     } catch (err) {
+  //       console.warn(err);
+  //     }
+  //   } else {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       const response = await fetch(
+  //         `${import.meta.env.VITE_API_URL}/api/favorites-user/favorite`,
+  //         {
+  //           method: "DELETE",
+  //           headers: {
+  //             "Content-type": "application/json",
+  //             Authorization: `Bearer ${token}`,
+  //           },
+  //           body: JSON.stringify(favItem),
+  //         },
+  //       );
+  //       if (!response.ok) {
+  //         throw new Error("An unknown error occurred.");
+  //       }
+  //     } catch (err) {
+  //       console.warn(err);
+  //     }
+  //   }
+  //   setIsFavIcon(!isFavIcon);
+  // };
+
   async function recoverInfoVideos(url: string) {
     const token = localStorage.getItem("token");
 
@@ -67,6 +122,11 @@ export default function VideoPlayer() {
                 type="video/mp4"
               />
             </video>
+          </section>
+          <section className="buttons-video-container">
+            <button type="button" className="big-cta">
+              Add in your favorites
+            </button>
           </section>
           <section className="category-video">
             <h2>{t("category-title")}</h2>
