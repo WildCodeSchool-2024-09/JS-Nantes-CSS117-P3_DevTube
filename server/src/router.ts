@@ -103,6 +103,10 @@ router.get("/api/favorites-user/:id", favoriteActions.read);
 //get all favorites of one user by user-id
 //delete one favorite from user favorites
 
+// SELECT *
+// FROM user
+// INNER JOIN video ON user.id = favorite.video_id
+
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);
 
