@@ -1,13 +1,13 @@
 import "../../styles/ProfilUser.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 import type { User } from "../../../../server/src/modules/user/user";
+import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import UserAccountModal from "../../components/UserAccountModal/UserAccountModal";
 import { AuthContext } from "../../contexts/AuhtProvider";
-import { useOutletContext } from "react-router-dom";
 import type { OutletContextProps } from "../../types/outletContext";
 import type { Video } from "../../types/video";
-import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 
 export default function ProfilUser() {
   const { user } = useContext(AuthContext) ?? {};
