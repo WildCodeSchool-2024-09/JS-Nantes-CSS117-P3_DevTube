@@ -41,7 +41,7 @@
   font-weight: bold;
 }
 
-.active {
+.admin-link.active {
   color: black;
   font-weight: bold;
 }
