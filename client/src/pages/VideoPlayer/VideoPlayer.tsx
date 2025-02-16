@@ -1,12 +1,7 @@
 import { useTranslation } from "react-i18next";
 import "../../styles/videoPlayer.css";
 import { useContext, useEffect, useState } from "react";
-import {
-  NavLink,
-  useLoaderData,
-  useNavigate,
-  useOutletContext,
-} from "react-router-dom";
+import { useLoaderData, useNavigate, useOutletContext } from "react-router-dom";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import { AuthContext } from "../../contexts/AuhtProvider";
 import type { OutletContextProps } from "../../types/outletContext";

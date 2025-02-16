@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuhtProvider";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
+import type { AuthProps } from "../../types/AuthContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
 
   const authContext = useContext(AuthContext);
-  const { admin } = useContext(AuthContext) || { admin: false };
+  const { admin } = useContext(AuthContext) as AuthProps;
 
   const { auth } = useAuth();
   const navigate = useNavigate();
@@ -78,7 +79,7 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            <li>{admin ? <NavLink to={"admin"}>admin</NavLink> : ""}</li>
+            <li>{admin ? <NavLink to={"admin"}>Admin</NavLink> : ""}</li>
             <li>
               {auth ? (
                 <button
@@ -108,7 +109,7 @@ export default function Header() {
                   className="little-cta"
                   onClick={toggleMenu}
                 >
-                  Sign up
+                  Subscribe
                 </NavLink>
               ) : (
                 <NavLink
