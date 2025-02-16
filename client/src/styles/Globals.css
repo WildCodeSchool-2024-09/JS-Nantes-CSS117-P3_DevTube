@@ -227,6 +227,11 @@ textarea:focus {
   border: 2px solid white;
 }
 
+.little-cta.active {
+  color: black;
+  font-weight: bold;
+}
+
 footer {
   color: var(--text-color);
   background: var(--secondary-color);
