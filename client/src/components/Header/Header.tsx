@@ -79,7 +79,15 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            <li>{admin ? <NavLink to={"admin"}>Admin</NavLink> : ""}</li>
+            <li>
+              {admin ? (
+                <NavLink to={"admin"} onClick={toggleMenu}>
+                  Admin
+                </NavLink>
+              ) : (
+                ""
+              )}
+            </li>
             <li>
               {auth ? (
                 <button
