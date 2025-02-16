@@ -74,32 +74,39 @@ const upload = multer({ storage: storage, fileFilter }).fields([
 ]);
 
 import testimonialsAction from "./modules/Testimonials/testimonialsAction";
+import favoriteActions from "./modules/favorite/favoriteActions";
+
+// Open route to verify tokens validity from the front end
+router.get("/api/verify-token", authActions.checkIsValidToken);
 
 router.get("/api/videos", videoActions.browse);
 router.get("/api/videos/:id", videoActions.read);
 router.get("/api/category/:id", categoryActions.read);
 router.get("/api/course", videoActions.browseCourse);
 router.get("/api/testimonial", testimonialsAction.browse);
-router.post("/api/favorites-user/favorite", favoriteActions.add);
+//get all favorites and the datas of all the videos of one user by the user id passes in body
+router.get("/api/categories", categoryActions.browse);
+
+//👮‍♀️ Authentication wall
+router.use(authActions.verifyToken);
+
 router.get("/api/favorites-user/:id", favoriteActions.readList);
 //get all favorites of one user by user-id without datas videos => just a list of favorites
 router.get("/api/video-favorites/:id", favoriteActions.readVideos);
-//get all favorites and the datas of all the videos of one user by the user id passes in body
-import favoriteActions from "./modules/favorite/favoriteActions";
+
 router.post("/api/testimonial", testimonialsAction.add);
-router.get("/api/categories", categoryActions.browse);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 router.get("/api/download/users", userActions.getUserCsvFile);
-// Open route to verify tokens validity from the front end
-router.get("/api/verify-token", authActions.checkIsValidToken);
 router.post("/api/categories", categoryActions.add);
 
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);
+
+router.post("/api/favorites-user/favorite", favoriteActions.add);
 router.delete("/api/favorites-user/favorite", favoriteActions.remove);
+
 router.delete("/api/videos/:id", videoActions.remove);
 router.delete("/api/users", userActions.remove);
-router.use(authActions.verifyToken);
 
 router.get("/api/download/users", userActions.getUserCsvFile);
 

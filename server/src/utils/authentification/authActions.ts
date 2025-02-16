@@ -121,19 +121,17 @@ const verifyToken: RequestHandler = async (req, res, next) => {
       email: string;
     };
 
-    const id = payload.id;
+    const id = payload?.id;
 
     const user = await userRepository.read(id);
 
     req.body.userFromBack = user;
 
-    if (payload) {
+    if (payload && user) {
       next();
     } else {
       throw new Error("JWT invalid");
     }
-
-    next();
   } catch (err) {
     console.error(err);
     res.status(400).send(err);
