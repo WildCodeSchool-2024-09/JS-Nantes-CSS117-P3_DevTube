@@ -175,9 +175,13 @@ export default function Header() {
           </NavLink>
         )}
         {!auth ? (
-          <NavLink to={"/subscribe"} className="little-cta">
-            Sign up
-          </NavLink>
+          <button
+            type="button"
+            className="little-cta"
+            onClick={() => navigate("/subscribe")}
+          >
+            Subscribe
+          </button>
         ) : (
           <NavLink to={"/profil-user"} className="btn-login">
             <img
