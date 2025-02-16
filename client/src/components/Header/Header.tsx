@@ -2,9 +2,9 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuhtProvider";
+import type { AuthProps } from "../../types/AuthContext";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
-import type { AuthProps } from "../../types/AuthContext";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
