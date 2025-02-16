@@ -9,6 +9,15 @@
   padding: 36px;
 }
 
+.cta-btn-wrapper {
+  width: 375px;
+  margin: auto;
+}
+
+.cta-btn-wrapper button {
+  margin: 10px;
+}
+
 .current-video {
   display: flex;
   flex-direction: column-reverse;

@@ -1,7 +1,12 @@
 import { useTranslation } from "react-i18next";
 import "../../styles/videoPlayer.css";
 import { useContext, useEffect, useState } from "react";
-import { useLoaderData, useOutletContext } from "react-router-dom";
+import {
+  NavLink,
+  useLoaderData,
+  useNavigate,
+  useOutletContext,
+} from "react-router-dom";
 import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import { AuthContext } from "../../contexts/AuhtProvider";
 import type { OutletContextProps } from "../../types/outletContext";
@@ -19,6 +24,7 @@ export default function VideoPlayer() {
   const [videos, setVideos] = useState<Video[]>();
   const { user } = useContext(AuthContext) ?? {};
   const outletContext = useOutletContext<OutletContextProps>();
+  const navigate = useNavigate();
 
   const isVideoInUserFavorites =
     user &&
@@ -114,7 +120,23 @@ export default function VideoPlayer() {
       {/* IF ERROR 403 RECEIVED, RETURN =>  */}
       {error && error === 403 && (
         <div>
-          <h1>Error 403 - you do not have access to this content</h1>
+          <h1>Hello ! You need an account to see this content !</h1>
+          <section className="cta-btn-wrapper">
+            <button
+              type="button"
+              className="big-cta"
+              onClick={() => navigate("/freemium")}
+            >
+              What is freemium ?
+            </button>
+            <button
+              type="button"
+              className="big-cta"
+              onClick={() => navigate("/subscribe")}
+            >
+              Subscribe
+            </button>
+          </section>
         </div>
       )}
 
