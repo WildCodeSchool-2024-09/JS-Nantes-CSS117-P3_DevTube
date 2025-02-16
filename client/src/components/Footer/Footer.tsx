@@ -14,7 +14,9 @@ export default function Footer() {
         <img
           className="social-icon"
           src={
-            theme ? "fb-icon-for-light-theme.png" : "fb-icon-for-dark-theme.png"
+            theme
+              ? "/public/fb-icon-for-light-theme.png"
+              : "/public/fb-icon-for-dark-theme.png"
           }
           alt="Facebook icon"
         />
@@ -22,15 +24,17 @@ export default function Footer() {
           className="social-icon"
           src={
             theme
-              ? "insta-icon-for-light-theme.png"
-              : "insta-icon-for-dark-theme.png"
+              ? "/public/insta-icon-for-light-theme.png"
+              : "/public/insta-icon-for-dark-theme.png"
           }
           alt="Insta icon"
         />
         <img
           className="social-icon"
           src={
-            theme ? "x-icon-for-light-theme.png" : "x-icon-for-dark-theme.png"
+            theme
+              ? "/public/x-icon-for-light-theme.png"
+              : "/public/x-icon-for-dark-theme.png"
           }
           alt="X icon"
         />
