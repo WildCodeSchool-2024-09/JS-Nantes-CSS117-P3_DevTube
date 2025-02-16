@@ -64,11 +64,11 @@ class UserRepository {
 
   // Delete operation
   async remove(email: string) {
-    const [rows] = await databaseClient.query<Result>(
+    const [rows] = await databaseClient.query<Rows>(
       "DELETE FROM user where email = ?",
       [email],
     );
-    return rows.affectedRows;
+    return rows[0] as User;
   }
 
   async getUserByEmail(email: string) {
