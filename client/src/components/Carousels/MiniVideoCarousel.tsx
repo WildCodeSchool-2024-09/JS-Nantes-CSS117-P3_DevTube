@@ -67,6 +67,9 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
               to={`/video/${video.id}`}
               key={video.id}
               className="carousel-slide"
+              onClick={() =>
+                window.scrollTo({ top: 0, left: 0, behavior: "smooth" })
+              }
             >
               <VideoCard
                 key={video.id}

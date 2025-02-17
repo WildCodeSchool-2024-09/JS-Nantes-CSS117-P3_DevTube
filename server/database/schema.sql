@@ -94,7 +94,7 @@ VALUES
   ("Responsive - Partie 3", "5", "/assets/videos/Workshop2-HTML&CSS-Responsive(part3).mp4", "/assets/images/videoPreviewImages/resp3.png", "Comprendre les media queries pour assurer un site responsive avec Nicolas 🐨!", 2, true, "2025-11-01", false, true),
   ("Discover Express", "6", "/assets/videos/0-express-port.mp4", "/assets/images/videoPreviewImages/0-express.png", "Initialise ton premier serveur Express avec Nicolas 🐨!", 9, false, "2025-01-23", true, false), 
   ("Discover React", "5", "/assets/videos/0-react-let-project.mp4", "/assets/images/videoPreviewImages/0-react.png", "Lance ton premier projet REACT avec Nicolas 🐨!", 6, false, "2025-01-23", false, false),
-  ("GET request", "7", "/assets/videos/1-express-get.mp4", "/assets/images/videoPreviewImages/1-express-get.png", "Fait ta première requête GET grâce à Express avec Nicolas 🐨!", 9, false, "2025-01-23", false, false),
+  ("GET request", "7", "/assets/videos/1-express-get.mp4", "/assets/images/videoPreviewImages/1-express.png", "Fait ta première requête GET grâce à Express avec Nicolas 🐨!", 9, false, "2025-01-23", false, false),
   ("Make a component", "13", "/assets/videos/1-react-component-1.mp4", "/assets/images/videoPreviewImages/1-react.png", "Crée ton premier composant React avec Nicolas 🐨!", 6, false, "2025-01-23", true, true),
   ("Database SQL", "7", "/assets/videos/2-express-bdd.mp4", "/assets/images/videoPreviewImages/2-express.png", "Crée ta première data SQL avec Nicolas 🐨!", 8, true, "2025-01-23", false, false),
   ("REACT router", "8", "/assets/videos/2-react-router.mp4", "/assets/images/videoPreviewImages/2-react.png", "Découvre React router avec Nicolas 🐨!", 6, false, "2025-01-23", false, false),

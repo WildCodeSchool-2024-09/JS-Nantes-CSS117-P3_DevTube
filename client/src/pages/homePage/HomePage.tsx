@@ -54,20 +54,25 @@ export default function () {
 
   return (
     outletContext.infoVideos?.length && (
-      <div className="home-page">
-        <section>
-          <h1 className="home-page-title">{`${t("title-homePage")} ${user?.firstname ? user.firstname : ""}`}</h1>
-          {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
-        </section>
-
-        <section>
-          <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
-          {videosPopular && <MiniVideoCarousel videos={videosPopular} />}
-        </section>
-        <section>
-          <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
-          {videosNewIn && <MiniVideoCarousel videos={videosNewIn} />}
-        </section>
+      <div className="home-page" id="top">
+        {videoHeroSlider && (
+          <section>
+            <h1 className="home-page-title">{`${t("title-homePage")} ${user?.firstname ? user.firstname : ""}`}</h1>
+            {videoHeroSlider && <HeroSlider videos={videoHeroSlider} />}
+          </section>
+        )}
+        {videosPopular && (
+          <section>
+            <h2 className="home-page-subtitle">{t("subtitle-popular")}</h2>
+            {<MiniVideoCarousel videos={videosPopular} />}
+          </section>
+        )}
+        {videosNewIn && (
+          <section>
+            <h2 className="home-page-subtitle">{t("subtitle-newIn")}</h2>
+            {videosNewIn && <MiniVideoCarousel videos={videosNewIn} />}
+          </section>
+        )}
       </div>
     )
   );

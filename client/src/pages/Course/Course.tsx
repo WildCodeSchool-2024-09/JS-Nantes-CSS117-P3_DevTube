@@ -70,6 +70,7 @@ export default function Course() {
         });
 
         navigate(`/video/${videoToFind?.id}`);
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
       }
     }
   }, [idOfTheCategoryLanguage, videosByCategory, navigate]);

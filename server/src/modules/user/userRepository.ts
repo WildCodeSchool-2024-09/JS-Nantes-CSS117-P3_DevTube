@@ -28,7 +28,7 @@ class UserRepository {
   async read(id: number) {
     // Execute the SQL SELECT query to retrieve a specific item by its ID
     const [rows] = await databaseClient.query<Rows>(
-      "select * from user where id = ?",
+      "select id, firstname, lastname, email, github_url, linkedin_url, level, register_date, profil_img, is_admin from user where id = ?",
       [id],
     );
 

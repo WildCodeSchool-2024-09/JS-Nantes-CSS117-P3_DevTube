@@ -6,6 +6,14 @@
   gap: 16px;
 }
 
+p.video-title {
+  color: var(--text-color);
+  font-size: 12px;
+  width: 150px;
+  padding-top: 10px;
+  text-align: start;
+}
+
 .label-category {
   padding: 16px;
 }

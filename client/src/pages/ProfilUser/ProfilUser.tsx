@@ -145,7 +145,7 @@ export default function ProfilUser() {
         />
       </section>
       {user && outletContext.favUserList && (
-        <section>
+        <section className="favorites-section">
           <h2>Your favorites</h2>
           {videosFavData && <MiniVideoCarousel videos={videosFavData} />}
         </section>

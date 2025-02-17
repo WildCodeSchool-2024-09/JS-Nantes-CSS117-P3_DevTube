@@ -37,7 +37,7 @@ export default function AuthProvider({ children }: Children) {
                 return response.json();
               })
               .then((fetchedUser) => {
-                setUser(fetchedUser); //  TODO DON'T CALL THE PASSWORD IN SQL REQUEST WARNING
+                setUser(fetchedUser);
               });
             // setUser(user);
           });
