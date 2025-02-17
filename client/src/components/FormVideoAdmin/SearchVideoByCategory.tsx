@@ -79,6 +79,7 @@ export default function SearchVideoByCategory() {
       outletContext.setVideoToUpdate(videoToFind);
       outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
       outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
+      window.scrollTo({ top: 6000, left: 0, behavior: "smooth" });
     }
   };
 
