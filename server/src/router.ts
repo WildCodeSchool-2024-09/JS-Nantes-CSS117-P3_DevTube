@@ -69,6 +69,7 @@ const upload = multer({ storage: storage, fileFilter }).fields([
 ]);
 
 router.get("/api/videos", videoActions.browse);
+// router.use(authActions.verifyToken);
 router.get("/api/videos/:id", videoActions.read);
 router.get("/api/categories", categoryActions.browse);
 router.get("/api/category/:id", categoryActions.read);
@@ -83,11 +84,23 @@ router.get("/api/download/users", userActions.getUserCsvFile);
 router.delete("/api/users/", userActions.remove);
 
 import testimonialsAction from "./modules/Testimonials/testimonialsAction";
+import favoriteActions from "./modules/favorite/favoriteActions";
 router.post("/api/testimonial", testimonialsAction.add);
 router.get("/api/testimonial", testimonialsAction.browse);
 
+router.post("/api/favorites-user/favorite", favoriteActions.add);
+//add a new favorite to one user
 router.get("/api/course", videoActions.browseCourse);
-router.use(authActions.verifyToken);
+
+router.delete("/api/favorites-user/favorite", favoriteActions.remove);
+
+router.get("/api/favorites-user/:id", favoriteActions.read);
+//get all favorites of one user by user-id
+//delete one favorite from user favorites
+
+// SELECT *
+// FROM user
+// INNER JOIN video ON user.id = favorite.video_id
 
 router.post("/api/videos", upload, videoActions.add);
 router.put("/api/videos/:id", upload, videoActions.edit);

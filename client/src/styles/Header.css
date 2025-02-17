@@ -8,6 +8,7 @@
   padding: .5rem;
   background-color: var(--secondary-color);
   box-shadow: 0 2px 6px var(--shadow-color);
+  width: 100vw;
 }
 
 .devTube-logo-title {
@@ -122,6 +123,12 @@
 .btn-logout {
   color: var(--text-color);
   padding: 10px;
+}
+.header-nav-container .little-cta {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 @media screen and (min-width: 1245px) {

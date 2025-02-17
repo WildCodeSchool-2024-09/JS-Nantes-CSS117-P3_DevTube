@@ -5,4 +5,5 @@ export interface VideoCardProps {
   thumbnailUrl: string;
   isLarge?: boolean;
   displayCardInfo?: boolean;
+  id: string;
 }

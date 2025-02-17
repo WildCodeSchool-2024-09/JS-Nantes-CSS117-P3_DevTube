@@ -26,7 +26,20 @@ export default function AuthProvider({ children }: Children) {
             return response.json();
           })
           .then((user) => {
-            setUser(user);
+            fetch(`${import.meta.env.VITE_API_URL}/api/users/${user.id}`, {
+              headers: {
+                Authorization: `Bearer ${currentToken}`,
+              },
+            })
+              .then((response) => {
+                if (!response.ok) throw new Error("Invalid token.");
+                setAuth(true); // return a boolean true or false 200
+                return response.json();
+              })
+              .then((fetchedUser) => {
+                setUser(fetchedUser); //  TODO DON'T CALL THE PASSWORD IN SQL REQUEST WARNING
+              });
+            // setUser(user);
           });
       }
     } catch (err) {

@@ -74,6 +74,7 @@ const MiniVideoCarousel: React.FC<MiniVideoCarouselProps> = ({ videos }) => {
                 thumbnailUrl={`${import.meta.env.VITE_API_URL}${video.preview_image}`}
                 isFreemium={video.is_freemium}
                 duration={video.duration}
+                id={video.id}
               />
             </Link>
           ))}

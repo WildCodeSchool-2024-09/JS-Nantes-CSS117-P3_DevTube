@@ -1,4 +1,8 @@
 import "./../../styles/VideoCard.css";
+import { useContext } from "react";
+import { useOutletContext } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuhtProvider";
+import type { OutletContextProps } from "../../types/outletContext";
 import type { VideoCardProps } from "../../types/videocard";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
@@ -7,6 +11,7 @@ function VideoCard({
   isFreemium,
   title,
   duration,
+  id,
   thumbnailUrl,
   isLarge,
   displayCardInfo = true,
@@ -15,6 +20,13 @@ function VideoCard({
 
   const { theme } = useTheme();
   const { auth } = useAuth();
+  const { user } = useContext(AuthContext) ?? {};
+  const outletContext = useOutletContext<OutletContextProps>();
+  const isVideoInUserFavorites =
+    user &&
+    outletContext.favUserList?.some((fav) => {
+      return fav.video_id === Number(id);
+    });
 
   return (
     <>
@@ -39,11 +51,15 @@ function VideoCard({
                 <p className="time">{duration} min</p>
               </div>
             </div>
-            {auth && (
+            {user && (
               <button className="fav-button" type="button">
                 <img
                   className="heart-icon"
-                  src="/orange-heart.png"
+                  src={
+                    isVideoInUserFavorites
+                      ? "/orange-heart.png"
+                      : "/empty-heart.png"
+                  }
                   alt="heart icon"
                 />
               </button>

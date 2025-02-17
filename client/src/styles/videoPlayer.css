@@ -29,6 +29,12 @@
   padding-top: 8px;
 }
 
+.buttons-video-container {
+  display: flex;
+  justify-content: center;
+  padding-top: 30px;
+}
+
 .category-video {
   padding: 100px 20px 20px 36px;
 }
@@ -60,6 +66,13 @@
 
   .current-video video {
     max-width: 1024px;
+  }
+
+  .buttons-video-container {
+    max-width: 1024px;
+    margin: auto;
+    justify-content: flex-end;
+    padding: 60px;
   }
 }
 

@@ -172,6 +172,7 @@ const checkIsValidToken: RequestHandler = async (req, res, next) => {
     res.status(400).send(err);
   }
 };
+
 export default {
   hashPassword,
   login,
