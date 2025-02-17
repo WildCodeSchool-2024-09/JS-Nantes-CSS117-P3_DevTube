@@ -115,7 +115,11 @@ h3 {
 
 a {
   text-decoration: none;
-  color: var(--textColor);
+  color: var(--text-color);
+}
+
+a.active {
+  color: var(--accent-color-1);
 }
 
 a.active {

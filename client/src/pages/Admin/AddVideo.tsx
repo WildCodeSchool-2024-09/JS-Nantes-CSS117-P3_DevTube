@@ -39,8 +39,6 @@ export default function AddVideo() {
     // Nouvelle image sélectionnée
     previewImageToUpload = data.preview_image;
 
-    //TODO FIX BUG IMAGE BAD PATH IN THE FILE SYSTEM WHEN IT IS REGISTERED
-
     // On utilise formData.set pour remplacer la valeur
     formData.set("preview_image", previewImageToUpload);
     formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
@@ -48,10 +46,6 @@ export default function AddVideo() {
     formData.set("is_popular", data.is_popular ? "1" : "0");
     formData.set("thumbnail", data.thumbnail);
     formData.set("added_date", (data.added_date as string)?.substring(0, 10));
-
-    // TODO: Add 'thumbnail' in formData
-    // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
-    // It should be a File, so i'll probably have to fetch it as for preview_image if videoToUpdate?.thumbnail is a path
 
     try {
       const token = localStorage.getItem("token");

@@ -131,8 +131,8 @@ export default function Course() {
                 />
                 <section className="figure-description-wrapper">
                   <article className="figure-description-article">
-                    <h3>{el.title}</h3>
-                    <p>{el.description}</p>
+                    <h3>{t(`courses.${el.id}.title`)}</h3>
+                    <p>{t(`courses.${el.id}.description`)}</p>
                   </article>
                   {el.coming_soon === 0 ? (
                     <button
@@ -207,8 +207,8 @@ export default function Course() {
                   />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">
-                      <h3>{el.title}</h3>
-                      <p>{el.description}</p>
+                      <h3>{t(`courses.${el.id}.title`)}</h3>
+                      <p>{t(`courses.${el.id}.description`)}</p>
                     </article>
                     {el.coming_soon === 0 ? (
                       <button
@@ -252,8 +252,8 @@ export default function Course() {
                   />
                   <section className="figure-description-wrapper">
                     <article className="figure-description-article">
-                      <h3>{el.title}</h3>
-                      <p>{el.description}</p>
+                      <h3>{t(`courses.${el.id}.title`)}</h3>
+                      <p>{t(`courses.${el.id}.description`)}</p>
                     </article>
                     {el.coming_soon === 0 ? (
                       <button
