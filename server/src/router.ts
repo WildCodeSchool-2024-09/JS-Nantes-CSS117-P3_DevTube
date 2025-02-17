@@ -76,7 +76,6 @@ router.put(
     { name: "preview_image", maxCount: 1 },
     { name: "thumbnail", maxCount: 1 },
   ]),
-
   videoActions.edit,
 );
 

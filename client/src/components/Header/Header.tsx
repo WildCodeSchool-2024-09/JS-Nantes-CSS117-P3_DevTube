@@ -124,7 +124,6 @@ export default function Header() {
                 </NavLink>
               )}
             </li>
-
             <li>
               <input
                 type="text"
