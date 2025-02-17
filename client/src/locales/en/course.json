@@ -2,9 +2,41 @@
   "title-course": "Learn Web developement",
   "description-course": "Master the fundamentals of web development and learn how to create modern, fully functional websites step by step.",
   "courses": {
-    "html": {
+    "1": {
       "title": "Learn HTML",
       "description": "HTML (HyperText Markup Language) is the standard language for creating web pages and web applications. It structures content using elements such as headings, paragraphs, links, and multimedia."
+    },
+    "2": {
+      "title": "Discover le CSS",
+      "description": "CSS (Cascading Style Sheets) is a stylesheet language used to control the presentation of web pages. It defines the layout, colors, fonts, and overall visual appearance of HTML elements."
+    },
+    "3": {
+      "title": "Algo basics",
+      "description": "The basics of algorithms involve step-by-step instructions to solve problems or perform tasks efficiently. They focus on concepts like loops, conditions, functions, and data structures for logical problem-solving."
+    },
+    "4": {
+      "title": "Know everything about JavaScript",
+      "description": "JavaScript is a versatile programming language used to create dynamic and interactive web content. It enables developers to manipulate HTML, handle events, and build complex web applications."
+    },
+    "5": {
+      "title": "Know everything about Node.js",
+      "description": "Node.js is a runtime environment that allows JavaScript to run on the server side. It is designed for building scalable, high-performance applications using non-blocking, event-driven architecture."
+    },
+    "6": {
+      "title": "Welcome to REACT",
+      "description": "React is a popular JavaScript library for building user interfaces. It enables developers to create reusable components and manage dynamic data efficiently with a virtual DOM"
+    },
+    "7": {
+      "title": "Master the GitHub workflow",
+      "description": "The GitHub workflow involves using Git for version control, collaborating through branches, and managing changes with pull requests. It streamlines teamwork, code review, and deployment in software development."
+    },
+    "8": {
+      "title": "The wondefull world of MySQL",
+      "description": "MySQL is a widely used open-source relational database management system. It allows developers to store, manage, and retrieve data efficiently using structured queries with SQL."
+    },
+    "9": {
+      "title": "Server rating with  Express",
+      "description": "Express is a fast and minimalist web framework for Node.js. It simplifies server creation by providing robust tools for handling routes, middleware, and HTTP requests."
     }
   }
 }
