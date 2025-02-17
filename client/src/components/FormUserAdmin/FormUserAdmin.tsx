@@ -156,8 +156,9 @@ export default function FormUserAdmin() {
             id="search-user-by-email"
             className="standard-button"
             onClick={handleSearchClick}
+            style={{ marginTop: "24px" }}
           >
-            Click to search for the user
+            Search
           </button>
         </fieldset>
         <fieldset>
@@ -247,7 +248,7 @@ export default function FormUserAdmin() {
             onClick={downloadAllUsers}
             className="standard-button"
           >
-            Download users as a csv file
+            Users csv file
           </button>
           <button
             type="button"

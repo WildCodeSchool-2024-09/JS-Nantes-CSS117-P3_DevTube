@@ -76,6 +76,7 @@
   padding: 10px;
   background: var(--tertiary-color);
   border-radius: 8px;
+  height: 70px;
 }
 
 .first-row-card-footer {

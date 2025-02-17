@@ -100,6 +100,7 @@
 .horizontal-line {
   position: absolute;
   display: none;
+  box-shadow: 0 0.5px 1.5px var(--shadow-color);
 }
 
 .vertical-line {
@@ -110,12 +111,14 @@
   width: 8px;
   height: 85%;
   z-index: 1;
+  box-shadow: 0 0.5px 1.5px var(--shadow-color);
 }
 
 .vertical-line-left,
 .vertical-line-right {
   position: absolute;
   display: none;
+  box-shadow: 0 0.5px 1.5px var(--shadow-color);
 }
 
 @media screen and (min-width: 950px) and (max-width: 989px) {
