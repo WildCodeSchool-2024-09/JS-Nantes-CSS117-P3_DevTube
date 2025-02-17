@@ -66,7 +66,7 @@ export default function Header() {
             </li>
             <li>
               <NavLink to={"/course"} onClick={toggleMenu}>
-                Course
+                Courses
               </NavLink>
             </li>
             <li>
