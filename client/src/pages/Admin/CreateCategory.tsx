@@ -9,7 +9,6 @@ export default function CreateCategory() {
     e.preventDefault();
     const formData = new FormData(e.target as HTMLFormElement);
     const data = Object.fromEntries(formData.entries());
-    console.warn(data);
 
     try {
       const token = localStorage.getItem("token");

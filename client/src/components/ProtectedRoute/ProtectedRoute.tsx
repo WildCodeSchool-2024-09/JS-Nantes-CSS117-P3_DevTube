@@ -1,15 +1,24 @@
-// import { useContext, useEffect, type ReactNode } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuhtProvider";
+import type { Children } from "../../types/themeContext";
 
-// export default function ProtectedRoute(children: ReactNode) {
+export default function ProtectedRoute({ children }: Children) {
+  useEffect(() => {
+    if (!auth?.auth) {
+      navigate("/");
+    } else {
+      setLoading(true);
+    }
+  }, []);
 
-//   useEffect((=> {
-//     if(!isLogged) {
-//     navigate("/");
-//     }
+  const [loading, setLoading] = useState(false);
 
-//     }),[]);
+  const auth = useContext(AuthContext);
 
-//     const {iLogged} = useContext(AuthContex);
-//     const navigate= useNavigate()
-//   return isLogged  && {children};
-// }
+  const navigate = useNavigate();
+
+  if (!auth?.auth) return null;
+
+  return auth.auth && loading && children;
+}

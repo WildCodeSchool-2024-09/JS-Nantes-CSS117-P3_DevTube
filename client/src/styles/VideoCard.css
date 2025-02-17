@@ -95,8 +95,11 @@
   height: 24px;
 }
 
-.heart-icon {
+.fav-button {
   align-self: flex-end;
+}
+
+.heart-icon {
   width: 33px;
   height: 33px;
 }
