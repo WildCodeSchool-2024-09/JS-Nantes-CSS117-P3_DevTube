@@ -54,7 +54,7 @@ export default function () {
 
   return (
     outletContext.infoVideos?.length && (
-      <div className="home-page">
+      <div className="home-page" id="top">
         {videoHeroSlider && (
           <section>
             <h1 className="home-page-title">{`${t("title-homePage")} ${user?.firstname ? user.firstname : ""}`}</h1>
