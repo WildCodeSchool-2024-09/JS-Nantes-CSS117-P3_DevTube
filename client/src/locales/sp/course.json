@@ -1,6 +1,42 @@
 {
-  "title-course": "Aprender desarrollo web",
-  "description-course": "Domina los fundamentos del desarrollo web y aprende a crear sitios web modernos y totalmente funcionales paso a paso.",
-  "title-html": "Aprende HTML",
-  "description-html": "HTML (HyperText Markup Language) es el lenguaje estándar para crear páginas web y aplicaciones web. Estructura el contenido utilizando elementos como encabezados, párrafos, enlaces y multimedia."
+  "title-course": "Aprende desarrollo web",
+  "description-course": "Domina los fundamentos del desarrollo web y aprende a crear sitios web modernos y totalmente funcionales, paso a paso.",
+  "courses": {
+    "1": {
+      "title": "Aprender HTML",
+      "description": "HTML (Lenguaje de Marcado de Hipertexto) es el lenguaje estándar para crear páginas web y aplicaciones web. Estructura el contenido utilizando elementos como títulos, párrafos, enlaces y multimedia."
+    },
+    "2": {
+      "title": "Descubrir CSS",
+      "description": "CSS (Hojas de Estilo en Cascada) es un lenguaje de hojas de estilo utilizado para controlar la presentación de páginas web. Define el diseño, los colores, las fuentes y la apariencia visual general de los elementos HTML."
+    },
+    "3": {
+      "title": "Los fundamentos de los algoritmos",
+      "description": "Los fundamentos de los algoritmos implican instrucciones paso a paso para resolver problemas o realizar tareas de manera eficiente. Se centran en conceptos como bucles, condiciones, funciones y estructuras de datos para resolver problemas de manera lógica."
+    },
+    "4": {
+      "title": "Saber todo sobre JavaScript",
+      "description": "JavaScript es un lenguaje de programación versátil utilizado para crear contenido web dinámico e interactivo. Permite a los desarrolladores manipular HTML, manejar eventos y construir aplicaciones web complejas."
+    },
+    "5": {
+      "title": "Saber todo sobre Node.js",
+      "description": "Node.js es un entorno de ejecución que permite que JavaScript se ejecute del lado del servidor. Está diseñado para construir aplicaciones escalables y de alto rendimiento utilizando una arquitectura no bloqueante y basada en eventos."
+    },
+    "6": {
+      "title": "Bienvenido a REACT",
+      "description": "React es una biblioteca JavaScript popular para construir interfaces de usuario. Permite a los desarrolladores crear componentes reutilizables y gestionar datos dinámicos de manera eficiente con un DOM virtual."
+    },
+    "7": {
+      "title": "Dominar el flujo de trabajo de GitHub",
+      "description": "El flujo de trabajo de GitHub implica el uso de Git para el control de versiones, la colaboración a través de ramas y la gestión de cambios con pull requests. Facilita el trabajo en equipo, la revisión de código y el despliegue en el desarrollo de software."
+    },
+    "8": {
+      "title": "El maravilloso mundo de MySQL",
+      "description": "MySQL es un sistema de gestión de bases de datos relacional de código abierto ampliamente utilizado. Permite a los desarrolladores almacenar, gestionar y recuperar datos de manera eficiente utilizando consultas estructuradas con SQL."
+    },
+    "9": {
+      "title": "Valoración de servidores con Express",
+      "description": "Express es un framework web rápido y minimalista para Node.js. Simplifica la creación de servidores proporcionando herramientas robustas para manejar rutas, middleware y solicitudes HTTP."
+    }
+  }
 }
