@@ -1,6 +1,42 @@
 {
   "title-course": "Apprendre le développement web",
-  "description-course": "Maîtriser les bases du développement web et apprendre à créer des sites web modernes et entièrement fonctionnels étape par étape.",
-  "title-html": "Apprendre HTML",
-  "description-html": "HTML (HyperText Markup Language) est le langage standard pour créer des pages web et des applications web. Il structure le contenu en utilisant des éléments tels que les titres, les paragraphes, les liens et le multimédia."
+  "description-course": "Maîtrisez les bases du développement web et apprenez à créer des sites web modernes et entièrement fonctionnels, étape par étape.",
+  "courses": {
+    "1": {
+      "title": "Apprendre le HTML",
+      "description": "Le HTML (HyperText Markup Language) est le langage standard pour créer des pages web et des applications web. Il structure le contenu à l'aide d'éléments tels que les titres, les paragraphes, les liens et les éléments multimédia."
+    },
+    "2": {
+      "title": "Découvrir le CSS",
+      "description": "Le CSS (Cascading Style Sheets) est un langage de feuille de style utilisé pour contrôler la présentation des pages web. Il définit la mise en page, les couleurs, les polices et l'apparence visuelle globale des éléments HTML."
+    },
+    "3": {
+      "title": "Les bases des algorithmes",
+      "description": "Les bases des algorithmes impliquent des instructions étape par étape pour résoudre des problèmes ou accomplir des tâches de manière efficace. Elles se concentrent sur des concepts tels que les boucles, les conditions, les fonctions et les structures de données pour une résolution logique des problèmes."
+    },
+    "4": {
+      "title": "Tout savoir sur JavaScript",
+      "description": "JavaScript est un langage de programmation polyvalent utilisé pour créer du contenu web dynamique et interactif. Il permet aux développeurs de manipuler le HTML, de gérer les événements et de créer des applications web complexes."
+    },
+    "5": {
+      "title": "Tout savoir sur Node.js",
+      "description": "Node.js est un environnement d'exécution qui permet à JavaScript de s'exécuter côté serveur. Il est conçu pour créer des applications évolutives et performantes en utilisant une architecture non-bloquante et basée sur des événements."
+    },
+    "6": {
+      "title": "Bienvenue sur REACT",
+      "description": "React est une bibliothèque JavaScript populaire pour la création d'interfaces utilisateur. Elle permet aux développeurs de créer des composants réutilisables et de gérer efficacement les données dynamiques avec un DOM virtuel."
+    },
+    "7": {
+      "title": "Maîtriser le flux de travail GitHub",
+      "description": "Le flux de travail GitHub implique l'utilisation de Git pour le contrôle de version, la collaboration via des branches, et la gestion des modifications avec des pull requests. Il simplifie le travail d'équipe, la révision du code et le déploiement dans le développement logiciel."
+    },
+    "8": {
+      "title": "Le merveilleux monde de MySQL",
+      "description": "MySQL est un système de gestion de bases de données relationnelles open-source largement utilisé. Il permet aux développeurs de stocker, gérer et récupérer des données de manière efficace en utilisant des requêtes structurées avec SQL."
+    },
+    "9": {
+      "title": "Évaluation de serveur avec Express",
+      "description": "Express est un framework web rapide et minimaliste pour Node.js. Il simplifie la création de serveurs en offrant des outils robustes pour gérer les routes, les middleware et les requêtes HTTP."
+    }
+  }
 }
