@@ -29,10 +29,6 @@ import categoryActions from "./modules/category/categoryActions";
 import videoActions from "./modules/video/videoActions";
 
 const storage = multer.diskStorage({
-  // storage demandé comme nom de variable par multer, il attend cenom là
-  // TODO: un storage différent si ilage ou video grâce au fait que l'on peut paser une fonction a "destination"
-  // exemple:  https://github.com/expressjs/multer/blob/master/doc/README-fr.md#diskstorage
-
   destination: (req, file, cb) => {
     if (file.mimetype.includes("image")) {
       cb(
@@ -51,9 +47,7 @@ const storage = multer.diskStorage({
     }
   },
   filename: (req, file, callback) => {
-    // console.log({ file });
-    // callback est parfois ecrit cb
-    callback(null, `${Date.now()}-${file.originalname}`); // GENERER un nom aleatoire avec la date en millisecondes + lenom du fichier connu par maulter
+    callback(null, `${Date.now()}-${file.originalname}`);
   },
 });
 
