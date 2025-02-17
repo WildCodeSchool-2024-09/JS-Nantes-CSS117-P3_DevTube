@@ -49,3 +49,8 @@
   margin: 2rem 0 0;
   padding: 0 .8rem 0;
 }
+
+.favorites-section h2 {
+  margin-left: 100px;
+  padding: 24px;
+}
