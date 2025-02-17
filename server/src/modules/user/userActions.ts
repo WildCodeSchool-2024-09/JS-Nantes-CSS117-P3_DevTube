@@ -67,7 +67,7 @@ const add: RequestHandler = async (req, res, next) => {
 // REMOVE operation
 const remove: RequestHandler = async (req, res, next) => {
   try {
-    const userEmail = req.query.email;
+    const userEmail = req.body.email;
 
     if (typeof userEmail !== "string") {
       throw new Error("Invalid email format.");

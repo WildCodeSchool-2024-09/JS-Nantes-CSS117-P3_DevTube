@@ -109,20 +109,27 @@ export default function FormUserAdmin() {
 
   const handleDeleteUser = async () => {
     try {
+      const token = localStorage.getItem("token");
+      const bodyEmail = { email: waitEmail };
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/api/users?email=${waitEmail}`,
+        `${import.meta.env.VITE_API_URL}/api/users`,
         {
           method: "DELETE",
+          headers: {
+            "Content-type": "application/json",
+            Authorization: `Bearer ${token}`,
+          },
+          body: JSON.stringify(bodyEmail),
         },
       );
 
-      if (!response.ok) {
+      if (response.ok) {
+        notifySuccess(`The user ${waitEmail} has been removed.`);
+        setSelectedUser(undefined);
+        formRef.current?.reset();
+      } else {
         throw new Error("An unknown error occurred.");
       }
-
-      setSelectedUser(undefined);
-      formRef.current?.reset();
-      notifySuccess(`The user ${waitEmail} has been removed.`);
     } catch (err) {
       notifyError((err as Error).message);
     }

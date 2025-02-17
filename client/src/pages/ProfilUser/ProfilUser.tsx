@@ -1,14 +1,21 @@
 import "../../styles/ProfilUser.css";
 import { useContext, useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useOutletContext } from "react-router-dom";
 import type { User } from "../../../../server/src/modules/user/user";
+import MiniVideoCarousel from "../../components/Carousels/MiniVideoCarousel";
 import UserAccountModal from "../../components/UserAccountModal/UserAccountModal";
 import { AuthContext } from "../../contexts/AuhtProvider";
+import type { OutletContextProps } from "../../types/outletContext";
+import type { Video } from "../../types/video";
 
 export default function ProfilUser() {
   const { user } = useContext(AuthContext) ?? {};
   const [userData, setUserData] = useState<User>(user as User);
   const { t } = useTranslation();
+
+  const outletContext = useOutletContext<OutletContextProps>();
+  const [videosFavData, setVideosFavData] = useState<Video[]>();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,8 +29,33 @@ export default function ProfilUser() {
         console.error(err);
       }
     };
-    fetchData();
+    if (user) {
+      fetchData();
+    }
   }, [user]);
+
+  useEffect(() => {
+    if (user) {
+      const urlForFindFavVideosData = `${import.meta.env.VITE_API_URL}/api/video-favorites/${user.id}`;
+      recoverVideosDataFavOfUser(urlForFindFavVideosData);
+    }
+  }, [user]);
+
+  async function recoverVideosDataFavOfUser(url: string) {
+    const token = localStorage.getItem("token");
+    try {
+      const request = await fetch(url, {
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const data = await request.json();
+      setVideosFavData(data);
+    } catch (err) {
+      console.error(err);
+    }
+  }
 
   const refModal = useRef<HTMLDialogElement>(null);
 
@@ -34,7 +66,7 @@ export default function ProfilUser() {
   const HandleUpdateUser = (updateUser: User) => {
     setUserData(updateUser);
   };
-  return (
+  return userData ? (
     <>
       <section className="section-my-account-container">
         <section>
@@ -112,9 +144,14 @@ export default function ProfilUser() {
           onSubmit={HandleUpdateUser}
         />
       </section>
-      <section>
-        <h2>Your favorites</h2>
-      </section>
+      {user && outletContext.favUserList && (
+        <section>
+          <h2>Your favorites</h2>
+          {videosFavData && <MiniVideoCarousel videos={videosFavData} />}
+        </section>
+      )}
     </>
+  ) : (
+    <p>Loading...</p>
   );
 }

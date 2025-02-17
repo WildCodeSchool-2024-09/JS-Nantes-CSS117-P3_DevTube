@@ -42,8 +42,10 @@ CREATE TABLE video (
 CREATE TABLE favorite (
   user_id INT NOT NULL,
   video_id INT NOT NULL,
-  FOREIGN KEY (user_id) REFERENCES user(id),
+  FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE,
   FOREIGN KEY (video_id) REFERENCES video(id)
+      ON DELETE CASCADE
 );
 
 CREATE TABLE course (
