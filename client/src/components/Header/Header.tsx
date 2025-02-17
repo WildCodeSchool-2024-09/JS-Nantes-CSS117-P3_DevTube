@@ -2,6 +2,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import "../../styles/Header.css";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../contexts/AuhtProvider";
+import type { AuthProps } from "../../types/AuthContext";
 import useAuth from "../../utils/useAuth";
 import useTheme from "../../utils/useTheme";
 
@@ -11,7 +12,7 @@ export default function Header() {
   const { theme, setTheme } = useTheme();
 
   const authContext = useContext(AuthContext);
-  const { admin } = useContext(AuthContext) || { admin: false };
+  const { admin } = useContext(AuthContext) as AuthProps;
 
   const { auth } = useAuth();
   const navigate = useNavigate();
@@ -78,7 +79,15 @@ export default function Header() {
                 Testimonials
               </NavLink>
             </li>
-            <li>{admin ? <NavLink to={"admin"}>admin</NavLink> : ""}</li>
+            <li>
+              {admin ? (
+                <NavLink to={"admin"} onClick={toggleMenu}>
+                  Admin
+                </NavLink>
+              ) : (
+                ""
+              )}
+            </li>
             <li>
               {auth ? (
                 <button
@@ -108,7 +117,7 @@ export default function Header() {
                   className="little-cta"
                   onClick={toggleMenu}
                 >
-                  Sign up
+                  Subscribe
                 </NavLink>
               ) : (
                 <NavLink
@@ -173,9 +182,13 @@ export default function Header() {
           </NavLink>
         )}
         {!auth ? (
-          <NavLink to={"/subscribe"} className="little-cta">
-            Sign up
-          </NavLink>
+          <button
+            type="button"
+            className="little-cta"
+            onClick={() => navigate("/subscribe")}
+          >
+            Subscribe
+          </button>
         ) : (
           <NavLink to={"/profil-user"} className="btn-login">
             <img

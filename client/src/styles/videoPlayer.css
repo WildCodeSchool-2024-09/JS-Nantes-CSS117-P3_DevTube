@@ -1,12 +1,19 @@
 .video-player-page {
-  width: 100vh;
   margin: auto;
-  width: 100vw;
 }
 
 .video-player-page h1 {
   text-align: center;
   padding: 36px;
+}
+
+.cta-btn-wrapper {
+  width: 375px;
+  margin: auto;
+}
+
+.cta-btn-wrapper button {
+  margin: 10px;
 }
 
 .current-video {

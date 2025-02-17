@@ -1,6 +1,6 @@
 .carousel-wrapper {
   position: relative;
-  padding-bottom: 70px;
+  padding-bottom: 30px;
 }
 
 .carousel-container {
@@ -54,31 +54,32 @@
 .rounds-decoration {
   display: flex;
   flex-direction: row;
-  gap: 6px;
+  gap: 4px;
   align-items: center;
   justify-content: center;
-  width: 100vh;
+  width: 300px;
   margin: auto;
+  padding-bottom: 30px;
 }
 
 .little-round-1 {
-  width: 17px;
-  height: 17px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: solid 1.5px var(--accent-color-1);
+}
+
+.little-round-2 {
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
   border: solid 2px var(--accent-color-1);
 }
 
-.little-round-2 {
+.big-round {
   width: 20px;
   height: 20px;
-  border-radius: 50%;
-  border: solid 3px var(--accent-color-1);
-}
-
-.big-round {
-  width: 31px;
-  height: 31px;
-  border: solid 4px transparent;
+  border: solid 3px transparent;
   background: linear-gradient(var(--primary-color), var(--primary-color))
     padding-box, linear-gradient(var(--accent-color-2), var(--accent-color-1))
     border-box;
@@ -86,17 +87,17 @@
 }
 
 .little-round-3 {
-  width: 20px;
-  height: 20px;
+  width: 16px;
+  height: 16px;
   border-radius: 50%;
-  border: solid 3px var(--accent-color-2);
+  border: solid 2px var(--accent-color-2);
 }
 
 .little-round-4 {
-  width: 17px;
-  height: 17px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: solid 2px var(--accent-color-2);
+  border: solid 1.5px var(--accent-color-2);
 }
 
 .filled-circle-dark {
@@ -138,5 +139,53 @@
   .carousel-slide {
     scroll-snap-align: initial;
     scroll-snap-stop: initial;
+  }
+
+  .rounds-decoration {
+    display: flex;
+    flex-direction: row;
+    gap: 6px;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    margin: auto;
+  }
+
+  .little-round-1 {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: solid 2px var(--accent-color-1);
+  }
+
+  .little-round-2 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid 3px var(--accent-color-1);
+  }
+
+  .big-round {
+    width: 31px;
+    height: 31px;
+    border: solid 4px transparent;
+    background: linear-gradient(var(--primary-color), var(--primary-color))
+      padding-box, linear-gradient(var(--accent-color-2), var(--accent-color-1))
+      border-box;
+    border-radius: 50%;
+  }
+
+  .little-round-3 {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: solid 3px var(--accent-color-2);
+  }
+
+  .little-round-4 {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+    border: solid 2px var(--accent-color-2);
   }
 }

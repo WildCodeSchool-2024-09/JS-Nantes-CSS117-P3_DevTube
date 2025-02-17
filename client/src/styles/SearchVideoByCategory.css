@@ -1,5 +1,6 @@
 .videos-section {
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   margin-top: 32px;
   gap: 16px;
