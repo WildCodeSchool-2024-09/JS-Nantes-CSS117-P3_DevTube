@@ -1,0 +1,18 @@
+.add-video-form {
+  margin: 30px;
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+}
+
+.preview-image-choice {
+  margin-top: 30px;
+}
+
+.return-button-from-add-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

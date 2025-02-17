@@ -1,0 +1,27 @@
+.create-category-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  gap: 10px;
+  max-width: 680px;
+}
+
+.create-category-form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: center;
+  padding-top: 50px;
+}
+
+.category-input {
+  height: 36px;
+  border-radius: 8px;
+  padding: 8px;
+  width: 88%;
+}
+
+.return-from-category-form {
+  margin: 40px;
+}

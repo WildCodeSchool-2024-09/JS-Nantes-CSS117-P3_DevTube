@@ -30,3 +30,31 @@
   line-height: 40px;
   margin-bottom: 40px;
 }
+
+.admin-link:hover {
+  background: linear-gradient(
+    to left,
+    var(--accent-color-2),
+    var(--accent-color-1)
+  );
+  color: black;
+  font-weight: bold;
+}
+
+.active {
+  color: black;
+  font-weight: bold;
+}
+
+.return-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+.return-menu-admin.active {
+  color: white;
+  font-weight: bold;
+}

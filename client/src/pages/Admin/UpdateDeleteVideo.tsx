@@ -49,12 +49,8 @@ export default function UpdateDeleteVideo() {
     formData.set("is_heroSlide", data.is_heroSlide ? "1" : "0");
     formData.set("is_freemium", data.is_freemium ? "1" : "0");
     formData.set("is_popular", data.is_popular ? "1" : "0");
-    formData.set(
-      "thumbnail",
-      outletContext.videoToUpdate?.thumbnail
-        ? outletContext.videoToUpdate?.thumbnail
-        : data.thumbnail,
-    );
+    formData.set("thumbnail", data.thumbnail);
+    formData.set("added_date", (data.added_date as string)?.substring(0, 10));
 
     // TODO: Add 'thumbnail' in formData
     // thumbnail should be data.thumbnail || videoToUpdate?.thumbnail
@@ -80,6 +76,7 @@ export default function UpdateDeleteVideo() {
       );
       outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
       outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
+      outletContext.setNeedToRefetch(() => !outletContext.needToRefetch);
     } catch (err) {
       notifyError((err as Error).message);
     }
@@ -107,7 +104,7 @@ export default function UpdateDeleteVideo() {
       );
       outletContext.setVideosSectionOpen(!outletContext.isVideosSectionOpen);
       outletContext.setInfoVideoOpen(!outletContext.isInfoVideoOpen);
-      outletContext.setNeedToRefetch(!outletContext.needToRefetch);
+      outletContext.setNeedToRefetch(() => !outletContext.needToRefetch);
     } catch (err) {
       notifyError((err as Error).message);
     }
@@ -121,9 +118,7 @@ export default function UpdateDeleteVideo() {
   return (
     <>
       <section className="video-manager-wrapper">
-        <h2 className="title-video-manager">
-          Video manager - Update or Delete a video
-        </h2>
+        <h2 className="title-video-manager">Update or Delete a video</h2>
         <SearchVideoByCategory />
         <form
           className={outletContext.isInfoVideoOpen ? "" : "hidden"}
@@ -132,19 +127,19 @@ export default function UpdateDeleteVideo() {
           <InfoVideoToUpdate videoToUpdate={outletContext.videoToUpdate} />
           <FilesVideo videoToUpdate={outletContext.videoToUpdate} />
           <section className="form-buttons-wrapper">
-            <button type="submit" className="btntTtest standard-button">
+            <button type="submit" className="standard-button">
               Update
             </button>
             <button
               type="button"
               onClick={handleDeleteVideo}
-              className="btntTtest standard-button"
+              className="standard-button"
             >
               Delete
             </button>
             <NavLink
               to="/admin/video-manager"
-              className="standard-button"
+              className="standard-button return-button"
               onClick={closeSection}
             >
               Return

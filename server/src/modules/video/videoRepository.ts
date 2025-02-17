@@ -51,35 +51,61 @@ class VideoRepository {
   }
 
   // Update operation
-  async update(
-    id: string,
-    name: string,
-    duration: number,
-    thumbnail: string,
-    preview_image: string,
-    description: string,
-    category_id: number,
-    is_freemium: boolean,
-    added_date: string,
-    is_heroSlide: true,
-    is_popular: true,
-  ) {
-    const [row] = await databaseClient.query<Result>(
-      "UPDATE video SET name = ?, duration = ?, thumbnail = ?, preview_image = ?, description = ?, category_id = ?, is_freemium = ?, added_date = ?, is_heroSlide = ?, is_popular = ? WHERE id = ?",
-      [
-        name,
-        duration,
-        thumbnail,
-        preview_image,
-        description,
-        category_id,
-        is_freemium,
-        added_date,
-        is_heroSlide,
-        is_popular,
-        id,
-      ],
-    );
+
+  async update(updateData: {
+    id: string;
+    name?: string;
+    duration?: number;
+    thumbnail?: string;
+    description?: string;
+    category_id?: number;
+    preview_image?: string;
+    is_freemium?: boolean;
+    added_date?: string;
+    is_heroSlide?: boolean;
+    is_popular?: boolean;
+  }) {
+    const modifiedUpdateData = {
+      name: updateData?.name ? updateData.name : null,
+      thumbnail: updateData?.thumbnail ? updateData.thumbnail : null,
+      description: updateData?.description ? updateData.description : null,
+      preview_image: updateData?.preview_image
+        ? updateData.preview_image
+        : null,
+      added_date: updateData?.added_date ? updateData.added_date : null,
+      category_id: updateData?.category_id
+        ? Number(updateData.category_id)
+        : null,
+      is_freemium: updateData?.is_freemium
+        ? Number(updateData.is_freemium)
+        : null,
+      is_heroSlide: updateData?.is_heroSlide
+        ? Number(updateData.is_heroSlide)
+        : null,
+      is_popular: updateData?.is_popular
+        ? Number(updateData?.is_popular)
+        : null,
+      duration: updateData?.duration ? Number(updateData.duration) : null,
+    };
+
+    const queryKeys = Object.keys(modifiedUpdateData);
+    const queryValues = Object.values(modifiedUpdateData);
+    if (queryKeys?.length <= 1) {
+      return false;
+    }
+    const query = `UPDATE video SET ${queryKeys
+
+      .filter(
+        (key) => !!modifiedUpdateData?.[key as keyof typeof modifiedUpdateData],
+      )
+      .map((key) => `${key} = ?`)
+      .join(", ")} WHERE id = ?`;
+    const values = [
+      ...queryValues.filter((value) => !!value),
+      Number(updateData.id),
+    ];
+
+    const [row] = await databaseClient.query<Result>(query, values);
     return row.affectedRows;
   }
 

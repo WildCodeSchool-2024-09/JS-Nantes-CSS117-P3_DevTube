@@ -238,14 +238,14 @@ export default function FormUserAdmin() {
           <button
             type="button"
             onClick={downloadAllUsers}
-            className="btntTtest standard-button"
+            className="standard-button"
           >
             Download users as a csv file
           </button>
           <button
             type="button"
             onClick={handleDeleteUser}
-            className="btntTtest standard-button"
+            className="standard-button"
           >
             Delete
           </button>

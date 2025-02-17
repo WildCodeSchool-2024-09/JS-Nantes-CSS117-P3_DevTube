@@ -63,12 +63,30 @@ const read: RequestHandler = async (req, res, next) => {
 // Add (Create) operation
 const add: RequestHandler = async (req, res, next) => {
   try {
+    let preview_image_path = "";
+    let thumbnail_path = "";
+
+    if (req.files && Object.keys(req.files)?.length > 0) {
+      const {
+        preview_image,
+        thumbnail,
+      }: {
+        preview_image: Express.Multer.File[];
+        thumbnail: Express.Multer.File[];
+      } = req.files as Record<
+        "preview_image" | "thumbnail",
+        Express.Multer.File[]
+      >;
+      preview_image_path = `/assets/images/videoPreviewImages/${preview_image?.[0]?.filename}`;
+      thumbnail_path = `/assets/videos/${thumbnail?.[0]?.filename}`;
+    }
+
     // Extract the video data from the request body
     const newVideo = {
       name: req.body.name,
       duration: req.body.duration,
-      thumbnail: req.body.thumbnail,
-      preview_image: req.body.preview_image,
+      thumbnail: thumbnail_path,
+      preview_image: preview_image_path,
       description: req.body.description,
       category_id: req.body.category_id,
       is_freemium: req.body.is_freemium,
@@ -106,7 +124,8 @@ const remove: RequestHandler = async (req, res, next) => {
 const edit: RequestHandler = async (req, res, next) => {
   let preview_image_path = "";
   let thumbnail_path = "";
-  if (req.files) {
+
+  if (req.files && Object.keys(req.files)?.length > 0) {
     const {
       preview_image,
       thumbnail,
@@ -120,8 +139,9 @@ const edit: RequestHandler = async (req, res, next) => {
     // console.log("Files uploaded:", req.files); // Chemin après l'upload
 
     preview_image_path = `/assets/images/videoPreviewImages/${preview_image?.[0]?.filename}`;
-    thumbnail_path = `/assets/images/videoPreviewImages/${thumbnail?.[0]?.filename}`;
+    thumbnail_path = `/assets/videos/${thumbnail?.[0]?.filename}`;
   }
+
   try {
     const { id } = req.params;
     const {
@@ -135,19 +155,19 @@ const edit: RequestHandler = async (req, res, next) => {
       is_popular,
     } = req.body;
 
-    const updateVideo = await videoRepository.update(
+    const updateVideo = await videoRepository.update({
       id,
       name,
       duration,
-      thumbnail_path,
-      preview_image_path,
+      thumbnail: thumbnail_path,
+      preview_image: preview_image_path,
       description,
       category_id,
       is_freemium,
       added_date,
       is_heroSlide,
       is_popular,
-    );
+    });
     if (updateVideo) {
       res.status(200).end("Félicitation");
     } else {

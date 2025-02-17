@@ -4,6 +4,7 @@ import type { OutletContextVideoManagerProps } from "../../types/outletContextVi
 import type { Video } from "../../types/video";
 import useToast from "../../utils/useToastify";
 import VideoCard from "../VideoCard/VideoCard";
+import "../../styles/SearchVideoByCategory.css";
 
 export default function SearchVideoByCategory() {
   const { notifyError } = useToast();
@@ -85,8 +86,8 @@ export default function SearchVideoByCategory() {
     <>
       <form>
         <fieldset>
-          <label htmlFor="category_id">
-            Choose a category language of videos:
+          <label htmlFor="category_id" className="label-category">
+            Choose a category language of videos
           </label>
           <select
             name="category_id"
@@ -108,7 +109,9 @@ export default function SearchVideoByCategory() {
           </select>
         </fieldset>
       </form>
-      <section className={outletContext.isVideosSectionOpen ? "" : "hidden"}>
+      <section
+        className={`videos-section ${outletContext.isVideosSectionOpen ? "" : "hidden"}`}
+      >
         {videosByCategory?.length ? (
           videosByCategory?.map((video) => (
             <button
