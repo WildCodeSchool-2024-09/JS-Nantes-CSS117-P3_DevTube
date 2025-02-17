@@ -131,7 +131,7 @@
   text-align: center;
 }
 
-@media screen and (min-width: 1118px) {
+@media screen and (min-width: 1245px) {
   .section-nav-container {
     display: flex;
   }
