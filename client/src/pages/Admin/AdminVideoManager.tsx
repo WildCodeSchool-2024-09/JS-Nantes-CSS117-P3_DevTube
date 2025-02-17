@@ -13,13 +13,15 @@ export default function AdminVideoManager() {
     <section className="video-manager-page">
       <NavLink to={"./update-delete-video"} className="admin-link">
         "Update or Delete"
-        {/* onClick={updateChoice} */}
       </NavLink>
       <NavLink to={"./add-video"} className="admin-link">
         Add a video
       </NavLink>
       <NavLink to={"./create-category"} className="admin-link">
         Create a category
+      </NavLink>
+      <NavLink to={"/admin"} className="admin-link">
+        Admin menu
       </NavLink>
 
       <Outlet

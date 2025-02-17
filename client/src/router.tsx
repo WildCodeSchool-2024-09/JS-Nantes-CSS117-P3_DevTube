@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
     element: <App />,
     children: [
       {
-        path: "/admin",
+        path: "admin/",
         element: <Admin />,
         children: [
           {
