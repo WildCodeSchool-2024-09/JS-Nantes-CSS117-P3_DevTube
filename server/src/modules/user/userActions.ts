@@ -75,7 +75,7 @@ const remove: RequestHandler = async (req, res, next) => {
 
     const userDeleted = await userRepository.remove(userEmail);
 
-    if (userDeleted) {
+    if (!userDeleted) {
       res.status(200).send("The user has been removed !");
     }
   } catch (err) {

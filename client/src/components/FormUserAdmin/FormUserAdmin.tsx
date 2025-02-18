@@ -122,11 +122,10 @@ export default function FormUserAdmin() {
           body: JSON.stringify(bodyEmail),
         },
       );
-
       if (response.ok) {
-        notifySuccess(`The user ${waitEmail} has been removed.`);
         setSelectedUser(undefined);
         formRef.current?.reset();
+        notifySuccess(`The user ${waitEmail} has been removed.`);
       } else {
         throw new Error("An unknown error occurred.");
       }
