@@ -1,12 +1,14 @@
 import { useRef, useState } from "react";
 import type { User } from "../../../../server/src/modules/user/user.d";
 import "../../styles/FormUserAdmin.css";
+import useAuth from "../../utils/useAuth";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
 
 export default function FormUserAdmin() {
   const focusInSearch = useSetFocus<HTMLInputElement>();
   const { notifySuccess, notifyError } = useToast();
+  const { user } = useAuth();
 
   /*TODO Refactoring en cours*/
   const [selectedUser, setSelectedUser] = useState<User | undefined>(undefined);
@@ -109,6 +111,9 @@ export default function FormUserAdmin() {
 
   const handleDeleteUser = async () => {
     try {
+      if (waitEmail === user?.email) {
+        throw new Error("You can't remove yourself");
+      }
       const token = localStorage.getItem("token");
       const bodyEmail = { email: waitEmail };
       const response = await fetch(
