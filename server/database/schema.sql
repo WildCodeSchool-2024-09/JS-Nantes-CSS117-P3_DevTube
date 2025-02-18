@@ -17,6 +17,7 @@ CREATE TABLE testimonial (
   user_id INT NOT NULL,
   text_testimonial VARCHAR(255),
   FOREIGN KEY (user_id) REFERENCES user(id)
+      ON DELETE CASCADE
 );
 
 CREATE TABLE category (
