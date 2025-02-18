@@ -1,6 +1,12 @@
 .team-info h3 {
   margin-right: 5px;
 }
+.all-of-the-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
 .top-paragraph {
   width: 50%;
@@ -23,18 +29,20 @@
   justify-content: center;
 }
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   align-items: center;
   object-fit: cover;
 }
 .back-of-img {
-  height: 179px;
-  width: 170px;
+  height: 181px;
+  width: 145px;
   display: flex;
+  background-color: var(--secondary-color);
   justify-content: center;
   align-items: center;
+  margin-right: 5px;
 }
 .team-info h3 {
   font-size: 16px;
@@ -51,7 +59,7 @@
 }
 .content {
   display: flex;
-  width: 550px;
+  width: 350px;
   height: 185px;
   padding: 2px;
   margin: 30px;
@@ -74,10 +82,10 @@
 }
 
 .profile-content p {
-  padding: 3px;
-  font-size: 15px;
+  font-size: 13px;
 }
 .team-cards {
+  padding: 0 10px;
   background-color: var(--secondary-color);
 }
 
@@ -88,6 +96,14 @@
     gap: 30px;
     justify-content: center;
   }
+  .content {
+    display: flex;
+    width: 450px;
+    height: 185px;
+    padding: 2px;
+    margin: 30px;
+  }
+
   .team-info h3 {
     margin-right: 5px;
   }

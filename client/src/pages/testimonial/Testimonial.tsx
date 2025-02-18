@@ -38,12 +38,15 @@ export default function Testimonials() {
     };
 
     try {
+      const token = localStorage.getItem("token");
+
       const res = await fetch(
         `${import.meta.env.VITE_API_URL}/api/testimonial`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(formData),
         },
@@ -92,13 +95,15 @@ export default function Testimonials() {
                 <label id="text" htmlFor="text">
                   Your comment
                 </label>
-                <textarea
-                  name="testimonial"
-                  className="comment-user"
-                  placeholder="Enter your testimonial"
-                  value={testimonialText}
-                  onChange={handleTextChange}
-                />
+                <div className="text-input">
+                  <textarea
+                    name="testimonial"
+                    className="comment-user"
+                    placeholder="Enter your testimonial"
+                    value={testimonialText}
+                    onChange={handleTextChange}
+                  />
+                </div>
                 <button
                   type="submit"
                   className="add-testimonial-btn"

@@ -95,7 +95,6 @@ const verifyToken: RequestHandler = async (req, res, next) => {
     const authorization = req.get("Authorization");
 
     if (!authorization) {
-      // Récupération du header Authorization de la requête
       throw new Error("Authorization header must be provided");
     }
 

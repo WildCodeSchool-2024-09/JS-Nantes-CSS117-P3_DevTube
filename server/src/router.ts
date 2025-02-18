@@ -14,6 +14,8 @@ router.post(
   multerActions.upload.single("profile-image"),
   multerActions.single,
 );
+import TeamProfileAction from "./modules/TeamProfile/TeamProfileAction";
+router.get("/api/teamProfil", TeamProfileAction.browse);
 
 router.get("/api/users", userActions.browse);
 router.get("/api/users/:id", userActions.read);

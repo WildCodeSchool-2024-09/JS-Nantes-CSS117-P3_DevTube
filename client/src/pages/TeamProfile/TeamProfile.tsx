@@ -1,8 +1,20 @@
+import type { UserAdminI } from "../../types/TeamProfile";
 import useTheme from "../../utils/useTheme";
 import "./../../styles/teamProfile.css";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export default function TeamProfile() {
   const { theme } = useTheme();
+
+  const [users, setUsers] = useState<UserAdminI[]>([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/teamProfil`)
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
+
   return (
     <main>
       <header className="top-title">
@@ -21,247 +33,63 @@ export default function TeamProfile() {
       </header>
 
       <div className="all-of-the-cards">
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
-          </div>
-
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
-            </div>
-
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
+        {users.map((el) => (
+          <div className="content" key={el.id}>
+            <div>
+              <div className="back-of-img">
                 <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
+                  className="profile-img"
+                  src={`${import.meta.env.VITE_API_URL}/${el.profil_img}`}
+                  alt="profile"
                 />
               </div>
-            </article>
-
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
-
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
-          </div>
-
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
             </div>
 
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
-                <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
-                />
+            <section className="team-cards">
+              <div className="team-info">
+                <h3>{el.firstname}</h3>
+                <h3>{el.lastname}</h3>
               </div>
-            </article>
 
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
-          </div>
+              <article className="team-profile-icon">
+                <h3>Level...{el.level}</h3>
+                <div>
+                  <a href={el.github_url} rel="noopener noreferrer">
+                    <img
+                      src={
+                        theme ? "github-for-light-theme.png" : "github-icon.png"
+                      }
+                      alt="github-icon"
+                    />
+                  </a>
+                  <a
+                    href={el.linkedin_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src={
+                        theme
+                          ? "linkedin-for-light-theme.png"
+                          : "linkedin-1121.png"
+                      }
+                      alt="linkedin-icon"
+                    />
+                  </a>
+                </div>
+              </article>
 
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
-            </div>
-
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
-                <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
-                />
+              <div className="profile-content">
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Facilis, repellat! Veniam, esse ipsam sit modi consequuntur
+                  rem harum doloremque illum mollitia illo, omnis at quod
+                  voluptatibus iste officiis totam laborum.
+                </p>
               </div>
-            </article>
-
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
+            </section>
           </div>
-
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
-            </div>
-
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
-                <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
-                />
-              </div>
-            </article>
-
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
-          </div>
-
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
-            </div>
-
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
-                <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
-                />
-              </div>
-            </article>
-
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
-        <div className="content">
-          <div>
-            <div className="back-of-img">
-              <img className="profile-img" src="profile.jpg" alt="profile" />
-            </div>
-          </div>
-
-          <section className="team-cards">
-            <div className="team-info">
-              <h3>Prénom</h3>
-              <h3>Nom</h3>
-            </div>
-
-            <article className="team-profile-icon">
-              <h3>titre</h3>
-              <div>
-                <img
-                  src={theme ? "github-for-light-theme.png" : "github-icon.png"}
-                  alt="github-icon"
-                />
-                <img
-                  src={
-                    theme ? "linkedin-for-light-theme.png" : "linkedin-1121.png"
-                  }
-                  alt="linkedin-icon"
-                />
-              </div>
-            </article>
-
-            <div className="profile-content">
-              <p>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Tempora consequatur facilis ducimus, non architecto perferendis,
-                ut, cumque ratione accusamus velit ex ipsum ipsam sit? Cum
-                dolorum doloremque fugit qui unde voluptatem dignissimos autem
-                non
-              </p>
-            </div>
-          </section>
-        </div>
+        ))}
       </div>
     </main>
   );
