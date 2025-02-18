@@ -43,7 +43,11 @@
   justify-content: center;
   align-items: center;
 }
-
+.text-input {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+}
 .testimonial-formation {
   display: flex;
 }
