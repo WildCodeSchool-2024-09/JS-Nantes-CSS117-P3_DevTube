@@ -1,8 +1,34 @@
+import { useEffect, useState } from "react";
 import type { InfoVideoToUpdateProps } from "../../types/InfoVideoToUpdateProps";
+import useToast from "../../utils/useToastify";
 
 export default function InfoVideoToUpdate({
   videoToUpdate,
 }: InfoVideoToUpdateProps) {
+  const { notifyError } = useToast();
+  const [categories, setCategories] = useState<Category[]>([]);
+
+  useEffect(() => {
+    const urlForCategories = `${import.meta.env.VITE_API_URL}/api/categories`;
+    recoverCategories(urlForCategories);
+  }, []);
+
+  async function recoverCategories(url: string) {
+    const token = localStorage.getItem("token");
+
+    try {
+      const request = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      const datas = await request.json();
+      setCategories(datas);
+    } catch (err) {
+      notifyError("You are log out !");
+    }
+  }
+
   return (
     <section>
       <fieldset className="main-info-video-wrapper">
@@ -79,17 +105,21 @@ export default function InfoVideoToUpdate({
             className="admin-check-box"
           />
         </label>
-        <label id="category-title" htmlFor="category_id">
-          Title of the catergory
+        <label htmlFor="category_id" className="label-category">
+          Choose a category language of videos
         </label>
-        <input
-          defaultValue={videoToUpdate?.category_id}
-          type="text"
-          name="category_id"
-          id="category_id"
-          readOnly
-          required
-        />
+        <select name="category_id" id="category_id">
+          <option value="">
+            --Please choose a category language of videos--
+          </option>
+          {categories.map((category) => {
+            return (
+              <option key={category.id} value={category.id}>
+                {category.name}
+              </option>
+            );
+          })}
+        </select>
       </fieldset>
     </section>
   );
