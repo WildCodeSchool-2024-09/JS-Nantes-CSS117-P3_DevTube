@@ -32,27 +32,34 @@ export default function TeamProfile() {
 
 			<div className="all-of-the-cards">
 				{users.map((el) => (
-					<div className="content" key={el.id}>
+					<section className="content" key={el.id}>
 						<div>
-							<div className="back-of-img">
+							<aside className="back-of-img">
 								<img
 									className="profile-img"
 									src={`${import.meta.env.VITE_API_URL}/${el.profil_img}`}
 									alt="profile"
 								/>
-							</div>
+							</aside>
 						</div>
 
 						<section className="team-cards">
 							<div className="team-info">
-								<h3>{el.firstname}</h3>
-								<h3>{el.lastname}</h3>
+								<h3>
+									{el.firstname}
+									{el.lastname}
+								</h3>
 							</div>
 
 							<article className="team-profile-icon">
 								<h3>Level...{el.level}</h3>
 								<div>
-									<a href={el.github_url} rel="noopener noreferrer">
+									<a
+										href={el.github_url}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{" "}
 										<img
 											src={
 												theme ? "github-for-light-theme.png" : "github-icon.png"
@@ -86,7 +93,7 @@ export default function TeamProfile() {
 								</p>
 							</div>
 						</section>
-					</div>
+					</section>
 				))}
 			</div>
 		</main>

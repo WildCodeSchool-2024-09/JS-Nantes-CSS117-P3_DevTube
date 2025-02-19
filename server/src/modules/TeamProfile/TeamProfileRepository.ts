@@ -1,6 +1,5 @@
 import databaseClient from "../../../database/client";
 import type { Result, Rows } from "../../../database/client";
-import type { User } from "./../../modules/user/user";
 
 class TeamProfilRepository {
 	async readAll() {
