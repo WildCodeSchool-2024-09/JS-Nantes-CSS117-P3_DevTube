@@ -141,128 +141,130 @@ export default function FormUserAdmin() {
 
   return (
     <>
-      <form ref={formRef} className="form-admin-wrapper form-admin">
-        <fieldset>
-          <legend>User manager</legend>
+      <section className="section-admin-container">
+        <form ref={formRef} className="form-admin-wrapper form-admin">
+          <fieldset>
+            <legend>User manager</legend>
 
-          <label htmlFor="search-user-by-email">Search a user by email</label>
-          <input
-            ref={focusInSearch}
-            className="search-admin"
-            type="search"
-            id="search-user-by-email"
-            name="search-user-by-email"
-            placeholder="Type the user's email."
-            onChange={handleOnChange}
-          />
-          <button
-            type="button"
-            id="search-user-by-email"
-            className="standard-button"
-            onClick={handleSearchClick}
-            style={{ marginTop: "24px" }}
-          >
-            Search
-          </button>
-        </fieldset>
-        <fieldset>
-          <legend>Main information about user</legend>
-
-          <label htmlFor="username">First name</label>
-          <input
-            type="text"
-            id="username"
-            name="username"
-            defaultValue={selectedUser?.firstname || ""}
-            required
-          />
-
-          <label id="lastname" htmlFor="lastname">
-            Last name
-          </label>
-          <input
-            type="text"
-            name="lastname"
-            defaultValue={selectedUser?.lastname || ""}
-            required
-          />
-
-          <label id="email" htmlFor="email">
-            Email
-          </label>
-          <input
-            type="text"
-            name="email"
-            defaultValue={selectedUser?.email || ""}
-            required
-          />
-
-          <label id="level" htmlFor="level">
-            Level
-          </label>
-          <input
-            type="level"
-            defaultValue={selectedUser?.level || ""}
-            name="level"
-            aria-labelledby="level"
-            required
-          />
-
-          <label htmlFor="user-is-admin" className="admin-label-wrapper">
-            Check the box if the user is an administrator
+            <label htmlFor="search-user-by-email">Search a user by email</label>
             <input
-              type="checkbox"
-              checked={selectedUser?.is_admin || false}
-              onChange={updateUserAdminStatus}
-              id="user-is-admin"
-              name="user-is-admin"
-              className="admin-check-box"
+              ref={focusInSearch}
+              className="search-admin"
+              type="search"
+              id="search-user-by-email"
+              name="search-user-by-email"
+              placeholder="Type the user's email."
+              onChange={handleOnChange}
+            />
+            <button
+              type="button"
+              id="search-user-by-email"
+              className="standard-button"
+              onClick={handleSearchClick}
+              style={{ marginTop: "24px" }}
+            >
+              Search
+            </button>
+          </fieldset>
+          <fieldset>
+            <legend>Main information about user</legend>
+
+            <label htmlFor="username">First name</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              defaultValue={selectedUser?.firstname || ""}
               required
             />
-          </label>
-        </fieldset>
 
-        <fieldset>
-          <label id="subscription-date" htmlFor="subscription-date">
-            Subscription date
-          </label>
-          <input
-            type="text"
-            name="publication-date"
-            defaultValue={convertRegistrationDate as string}
-            aria-labelledby="publication-date"
-            required
-          />
-        </fieldset>
+            <label id="lastname" htmlFor="lastname">
+              Last name
+            </label>
+            <input
+              type="text"
+              name="lastname"
+              defaultValue={selectedUser?.lastname || ""}
+              required
+            />
 
-        <section className="section-img-wrapper">
-          <img
-            src={
-              selectedUser?.profil_img
-                ? `${import.meta.env.VITE_API_URL}/${selectedUser.profil_img}`
-                : `${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user_profile.png`
-            }
-            alt="The user's profil avatar"
-          />
-        </section>
+            <label id="email" htmlFor="email">
+              Email
+            </label>
+            <input
+              type="text"
+              name="email"
+              defaultValue={selectedUser?.email || ""}
+              required
+            />
 
-        <section className="admin-btn-wrapper">
-          <button
-            type="button"
-            onClick={downloadAllUsers}
-            className="standard-button"
-          >
-            Users csv file
-          </button>
-          <button
-            type="button"
-            onClick={handleDeleteUser}
-            className="standard-button"
-          >
-            Delete
-          </button>
-        </section>
-      </form>
+            <label id="level" htmlFor="level">
+              Level
+            </label>
+            <input
+              type="level"
+              defaultValue={selectedUser?.level || ""}
+              name="level"
+              aria-labelledby="level"
+              required
+            />
+
+            <label htmlFor="user-is-admin" className="admin-label-wrapper">
+              Check the box if the user is an administrator
+              <input
+                type="checkbox"
+                checked={selectedUser?.is_admin || false}
+                onChange={updateUserAdminStatus}
+                id="user-is-admin"
+                name="user-is-admin"
+                className="admin-check-box"
+                required
+              />
+            </label>
+          </fieldset>
+
+          <fieldset>
+            <label id="subscription-date" htmlFor="subscription-date">
+              Subscription date
+            </label>
+            <input
+              type="text"
+              name="publication-date"
+              defaultValue={convertRegistrationDate as string}
+              aria-labelledby="publication-date"
+              required
+            />
+          </fieldset>
+
+          <section className="section-img-wrapper">
+            <img
+              src={
+                selectedUser?.profil_img
+                  ? `${import.meta.env.VITE_API_URL}/${selectedUser.profil_img}`
+                  : `${import.meta.env.VITE_API_URL}/assets/images/userprofil/avatar/user_profile.png`
+              }
+              alt="The user's profil avatar"
+            />
+          </section>
+
+          <section className="admin-btn-wrapper">
+            <button
+              type="button"
+              onClick={downloadAllUsers}
+              className="standard-button"
+            >
+              Users csv file
+            </button>
+            <button
+              type="button"
+              onClick={handleDeleteUser}
+              className="standard-button"
+            >
+              Delete
+            </button>
+          </section>
+        </form>
+      </section>
     </>
   );
 }
