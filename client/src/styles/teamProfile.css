@@ -1,5 +1,8 @@
-.team-info h3 {
-  margin-right: 5px;
+.all-of-the-cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .top-paragraph {
@@ -23,20 +26,23 @@
   justify-content: center;
 }
 .profile-img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
   align-items: center;
   object-fit: cover;
 }
 .back-of-img {
-  height: 179px;
-  width: 170px;
+  height: 181px;
+  width: 145px;
   display: flex;
+  background-color: var(--secondary-color);
   justify-content: center;
   align-items: center;
+  margin-right: 5px;
 }
 .team-info h3 {
+  margin-right: 5px;
   font-size: 16px;
   color: var(--text-color);
 }
@@ -51,7 +57,7 @@
 }
 .content {
   display: flex;
-  width: 550px;
+  width: 350px;
   height: 185px;
   padding: 2px;
   margin: 30px;
@@ -74,10 +80,10 @@
 }
 
 .profile-content p {
-  padding: 3px;
-  font-size: 15px;
+  font-size: 13px;
 }
 .team-cards {
+  padding: 0 10px;
   background-color: var(--secondary-color);
 }
 
@@ -88,12 +94,11 @@
     gap: 30px;
     justify-content: center;
   }
-  .team-info h3 {
-    margin-right: 5px;
+
+  .content {
+    width: 450px;
   }
-  .team-cards {
-    background-color: var(--secondary-color);
-  }
+
   .header-content {
     display: flex;
     flex-direction: column;
@@ -108,38 +113,18 @@
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    object-fit: cover;
   }
+
   .back-of-img {
     background: var(--tertiary-color);
     border-right: var(--secondary-color) 2px solid;
     height: 181px;
     width: 170px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-  }
-  .team-info h3 {
-    font-size: 16px;
-  }
-
-  .team-profile-icon h3 {
-    color: var(--accent-color-1);
-    font-weight: bold;
-  }
-
-  .team-profile-icon {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 3px solid var(--accent-color-1);
-  }
-  .team-profile-icon img {
-    width: 20px;
-    height: auto;
-    margin-right: 10px;
   }
 
   .profile-content p {
     font-size: 15px;
   }
 }
+/* test*/

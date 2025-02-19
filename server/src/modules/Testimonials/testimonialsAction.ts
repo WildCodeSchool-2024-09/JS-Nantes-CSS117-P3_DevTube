@@ -1,11 +1,24 @@
 import type { RequestHandler } from "express";
+import { type JwtPayload, decode } from "jsonwebtoken";
 import TestimonialsRepository from "./TestimonialsRepository";
 
 const add: RequestHandler = async (req, res, next) => {
   try {
-    const userId: number = req.body.user_id;
+    const authorization = req.get("Authorization");
+
+    if (!authorization) {
+      throw new Error("Authorization header must be provided");
+    }
+    const secretKey = process.env.APP_SECRET;
+    if (!secretKey) {
+      throw new Error("no secretKey");
+    }
+    const [type, token] = authorization.split(" ");
+
+    const payload = decode(token) as JwtPayload;
+
     const newTestimonial = {
-      user_id: userId,
+      user_id: payload?.id,
       text_testimonial: req.body.text_testimonial,
     };
 
@@ -16,6 +29,7 @@ const add: RequestHandler = async (req, res, next) => {
     next(err);
   }
 };
+
 const browse: RequestHandler = async (req, res, next) => {
   try {
     const testimonialy = await TestimonialsRepository.readAll();
