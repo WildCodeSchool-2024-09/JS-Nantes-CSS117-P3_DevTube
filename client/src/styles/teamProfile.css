@@ -3,10 +3,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 3rem 0 0;
 }
 
 .top-paragraph {
-  width: 50%;
+  width: 80%;
 }
 
 .header-content {
@@ -127,4 +128,15 @@
     font-size: 15px;
   }
 }
-/* test*/
+
+@media screen and (min-width: 768px) {
+  .top-paragraph {
+    width: 60%;
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .top-paragraph {
+    width: 50%;
+  }
+}

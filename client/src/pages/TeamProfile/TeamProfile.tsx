@@ -46,13 +46,12 @@ export default function TeamProfile() {
             <section className="team-cards">
               <div className="team-info">
                 <h3>
-                  {el.firstname}
-                  {el.lastname}
+                  {el.firstname} {el.lastname}
                 </h3>
               </div>
 
               <article className="team-profile-icon">
-                <h3>Level...{el.level}</h3>
+                <h3>Level {el.level}</h3>
                 <div>
                   <a
                     href={el.github_url}
