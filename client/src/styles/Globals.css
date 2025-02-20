@@ -139,6 +139,7 @@ button {
   border-radius: 8px;
   color: var(--text-color);
   font-size: 16px;
+  font-weight: bold;
   height: 40px;
   width: 100px;
   transition: all 0.3s ease-out;
@@ -151,7 +152,6 @@ button {
     var(--accent-color-1)
   );
   color: black;
-  font-weight: bold;
 }
 
 .big-cta {

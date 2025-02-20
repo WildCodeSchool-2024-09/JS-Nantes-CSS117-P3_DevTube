@@ -2,7 +2,6 @@ import { createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import FormUserAdmin from "./components/FormUserAdmin/FormUserAdmin";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
-import About from "./pages/About/About";
 import AddVideo from "./pages/Admin/AddVideo";
 import Admin from "./pages/Admin/Admin";
 import AdminVideoManager from "./pages/Admin/AdminVideoManager";
@@ -59,10 +58,6 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <HomePage />,
-      },
-      {
-        path: "/about",
-        element: <About />,
       },
       {
         path: "/subscribe",
