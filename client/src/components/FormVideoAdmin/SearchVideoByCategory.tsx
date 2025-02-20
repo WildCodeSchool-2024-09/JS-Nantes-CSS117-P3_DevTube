@@ -37,7 +37,7 @@ export default function SearchVideoByCategory() {
       const datas = await request.json();
       setVideosByCategory(datas);
     } catch (err) {
-      notifyError("You are log out !");
+      console.error(err);
     }
   }
 
