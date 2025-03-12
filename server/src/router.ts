@@ -70,6 +70,7 @@ const upload = multer({ storage: storage, fileFilter }).fields([
   { name: "thumbnail", maxCount: 1 },
 ]);
 
+import { validateTestimonial } from "./modules/Testimonials/Testimonial.validate";
 import testimonialsAction from "./modules/Testimonials/testimonialsAction";
 import favoriteActions from "./modules/favorite/favoriteActions";
 
@@ -91,7 +92,7 @@ router.get("/api/favorites-user/:id", favoriteActions.readList);
 //get all favorites of one user by user-id without datas videos => just a list of favorites
 router.get("/api/video-favorites/:id", favoriteActions.readVideos);
 
-router.post("/api/testimonial", testimonialsAction.add);
+router.post("/api/testimonial", validateTestimonial, testimonialsAction.add);
 //vient chercher toutes les videos d'une catégorie à partir de l'id de la catégorie
 router.get("/api/download/users", userActions.getUserCsvFile);
 router.post("/api/categories", categoryActions.add);

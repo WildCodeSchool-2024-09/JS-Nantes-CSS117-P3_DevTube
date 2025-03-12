@@ -16,8 +16,6 @@ function VideoCard({
   isLarge,
   displayCardInfo = true,
 }: VideoCardProps) {
-  // TODO :favorites gestion with heart empty or orange heart
-
   const { theme } = useTheme();
   const { auth } = useAuth();
   const { user } = useContext(AuthContext) ?? {};
