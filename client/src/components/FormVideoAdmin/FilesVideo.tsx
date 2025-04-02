@@ -1,12 +1,34 @@
+import { useEffect, useState } from "react";
 import type { FilesVideoProps } from "../../types/FilesVideoProps.";
 
 export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
+  const [previewImage, setPreviewImage] = useState("");
+
+  useEffect(() => {
+    if (videoToUpdate?.preview_image) {
+      setPreviewImage(
+        `${import.meta.env.VITE_API_URL}${videoToUpdate.preview_image}`,
+      );
+    }
+  }, [videoToUpdate]);
+
+  const handleImageChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const imageUrl = URL.createObjectURL(file);
+      setPreviewImage(imageUrl);
+    }
+  };
+
   return (
     <div>
       <section className="preview-image-choice">
         <img
           className="preview-image"
-          src={`${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`}
+          src={
+            previewImage ||
+            `${import.meta.env.VITE_API_URL}${videoToUpdate?.preview_image}`
+          }
           alt="The preview of the video."
         />
         <label htmlFor="preview_image">Change the preview image</label>
@@ -15,6 +37,7 @@ export default function FilesVideo({ videoToUpdate }: FilesVideoProps) {
           id="preview_image"
           name="preview_image"
           accept="image/png, image/jpeg"
+          onChange={handleImageChange}
         />
       </section>
       <section className="file-video-choice">
