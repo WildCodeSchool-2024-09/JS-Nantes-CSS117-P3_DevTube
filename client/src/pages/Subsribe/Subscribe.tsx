@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import "../../styles/Subscribe.css";
+import Joi from "joi";
 import { useNavigate } from "react-router-dom";
 import { useSetFocus } from "../../utils/useSetFocus";
 import useToast from "../../utils/useToastify";
@@ -14,6 +15,39 @@ export default function Subscribe() {
     formRef.current?.reset();
     setFile(null);
     setImageSrc("");
+  };
+
+  const schema = Joi.object({
+    password: Joi.string()
+      .min(8)
+      .max(20)
+      .pattern(/[A-Z]/, "majuscule")
+      .pattern(/[0-9]/, "chiffre")
+      .pattern(/[!@#$%^&*(),.?":{}|<>]/, "caractère spécial")
+      .required(),
+  });
+
+  const [password, setPassword] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const [validationPassword, setValidationPassword] = useState({
+    minLength: false,
+    maxLength: true,
+    uppercase: false,
+    number: false,
+    specialChar: false,
+  });
+
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentPassword = e.currentTarget.value;
+    setPassword(currentPassword);
+
+    setValidationPassword({
+      minLength: currentPassword.length >= 8,
+      maxLength: currentPassword.length <= 20,
+      uppercase: /[A-Z]/.test(currentPassword),
+      number: /[0-9]/.test(currentPassword),
+      specialChar: /[!@#$%^&*(),.?":{}|<>]/.test(currentPassword),
+    });
   };
 
   // Get the form data
@@ -46,6 +80,18 @@ export default function Subscribe() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+
+    const { error } = schema.validate(
+      { password: password },
+      { abortEarly: false },
+    );
+
+    if (error) {
+      for (const err of error.details) {
+        notifyError(err.message);
+      }
+      return;
+    }
 
     try {
       const formDataImage = new FormData();
@@ -143,8 +189,41 @@ export default function Subscribe() {
           id="password"
           aria-labelledby="password"
           placeholder="Enter your password."
+          onChange={handleChangePassword}
+          onFocus={() => setIsFocused(true)}
+          onBlur={() => setIsFocused(false)}
           required
         />
+
+        {isFocused && (
+          <section className="box-validation-wrapper">
+            <p
+              className={`box-validation-p ${validationPassword.minLength ? "text-green" : "text-red"}`}
+            >
+              8 caractères minimum
+            </p>
+            <p
+              className={`box-validation-p ${validationPassword.maxLength ? "text-green" : "text-red"}`}
+            >
+              20 caractères maximum
+            </p>
+            <p
+              className={`box-validation-p ${validationPassword.uppercase ? "text-green" : "text-red"}`}
+            >
+              1 majuscule
+            </p>
+            <p
+              className={`box-validation-p ${validationPassword.number ? "text-green" : "text-red"}`}
+            >
+              1 chiffre
+            </p>
+            <p
+              className={`box-validation-p ${validationPassword.specialChar ? "text-green" : "text-red"}`}
+            >
+              1 caractère spécial
+            </p>
+          </section>
+        )}
 
         <label htmlFor="confirm_password">
           Confirm your password <span className="mandatory-data">*</span>
